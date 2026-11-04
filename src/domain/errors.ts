@@ -6,7 +6,8 @@ export type ErrorCode =
   | 'INVALID_COMMAND' | 'CANCELLED' | 'DEADLINE_EXCEEDED' | 'INJECTED_FAILURE' | 'PROBE_FAILED'
   | 'INVALID_NAME' | 'INVALID_NOTE' | 'ENTITY_MISSING' | 'ENTITY_REFERENCED' | 'STALE_WRITE'
   | 'ACTIVE_ACCOUNT_REQUIRED' | 'MATCHING_CATEGORY_REQUIRED' | 'TRANSFER_TARGET_REQUIRED'
-  | 'CATEGORY_TYPE_FIXED' | 'RECURRING_ACTIVITY' | 'LINKED_REFUNDS' | 'UNSUPPORTED_EDIT';
+  | 'CATEGORY_TYPE_FIXED' | 'RECURRING_ACTIVITY' | 'LINKED_REFUNDS' | 'UNSUPPORTED_EDIT'
+  | 'REFUND_ORIGINAL_INVALID' | 'REFUND_EXCEEDS_PURCHASE' | 'BUDGET_EXISTS' | 'BUDGET_CATEGORY_REQUIRED' | 'INVALID_DATE_RANGE';
 
 export class AppError extends Error {
   readonly code: ErrorCode;
@@ -42,6 +43,11 @@ export function errorMessage(error: unknown): string {
     case 'CATEGORY_TYPE_FIXED': return 'A category keeps its original type. Create a new category to use a different type.';
     case 'RECURRING_ACTIVITY': return 'This item has pending scheduled entries. Resolve them before archiving.';
     case 'LINKED_REFUNDS': return 'Linked refunds must be kept consistent. The purchase cannot be deleted or reduced below its refunds.';
+    case 'REFUND_ORIGINAL_INVALID': return 'A refund needs its original purchase Expense and that purchase’s category. Reopen the purchase and choose Refund again.';
+    case 'REFUND_EXCEEDS_PURCHASE': return 'Refunds for this purchase cannot add up to more than the purchase. Enter a smaller amount.';
+    case 'BUDGET_EXISTS': return 'This category already has a Budget for this month. Edit that Budget instead.';
+    case 'BUDGET_CATEGORY_REQUIRED': return 'Choose an active Expense category for this Budget.';
+    case 'INVALID_DATE_RANGE': return 'Choose a From date on or before the To date.';
     case 'UNSUPPORTED_EDIT': return 'This entry needs its linked history controls, which are not available in this version.';
     case 'INVALID_AMOUNT': return 'Enter a valid amount greater than zero. Check the calculation before saving.';
     case 'DIVISION_BY_ZERO': return 'A calculation cannot divide by zero. Change the calculation before saving.';

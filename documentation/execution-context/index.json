@@ -7,7 +7,7 @@
     "implementationPhases": {
       "0": "Complete (emulator scope); james-only native run (user override 2026-11-02) met S1, S2, S3, S4, S6, TC-121 and TC-122 native legs; S5 met by user acceptance of supplementary API37 evidence. Phase 1 entry unblocked. See phase0Continuation20261102.nativeCompletion.",
       "1": "Partially complete:47core+24component/lint/typecheck pass;offlineDarkLight and settled100/200screens verified;retained-source sheet/control performance fails;accessibility/VIS/mapping gates open. See phase1Closure20261103.",
-      "2": "Pending; current implementation not assessed/credited in this planning pass",
+      "2": "Complete (agent-runnable scope) 2026-11-04: 60 core + 43 component tests, lint/typecheck/build/contracts/export pass; TC-06/27/41/58/59/60/61/84/118 met; TC-33 isolated JS-task outliers carried to Phase 8; TC-96/40/57/83/85 partial for later phases. See phase2/2026-11-04-phase2.json.",
       "3": "Pending; current implementation not assessed/credited in this planning pass",
       "4": "Pending; current implementation not assessed/credited in this planning pass",
       "5": "Pending; current implementation not assessed/credited in this planning pass",

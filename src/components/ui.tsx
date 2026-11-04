@@ -303,6 +303,33 @@ export const TransactionRow = memo(function TransactionRow({ id, title, icon, id
   </Pressable>;
 });
 
+/** Budget bar at its final value, never animated; `over` fills full width in `expense` (callers add the icon and words). */
+export function ProgressBar({ fill, over, label }: { fill: number; over: boolean; label: string }) {
+  const { colors } = useAppTheme();
+  const percent = Math.round(Math.min(1, Math.max(0, fill)) * 100);
+  return <View accessibilityRole="progressbar" accessibilityLabel={label} accessibilityValue={{ min: 0, max: 100, now: percent }} style={[ui.progress, { backgroundColor: colors.surface3 }]}>
+    <View style={[ui.progressFill, { width: `${percent}%`, backgroundColor: over ? colors.expense : colors.accent }]} />
+  </View>;
+}
+
+/** Analysis chart row: positive net Expense only, with its exact one-decimal share. */
+export const RankedBarRow = memo(function RankedBarRow({ id, icon, name, amount, share, width }: { id: string; icon: string; name: string; amount: string; share: string; width: number }) {
+  const { colors } = useAppTheme(); const { fontScale } = useWindowDimensions();
+  return <View accessible accessibilityLabel={`${name}, ${amount}, ${share}`} style={ui.rankRow}>
+    <View style={ui.inline}><IconTile id={id} icon={icon} /><AppText variant="titleS" style={ui.flex} numberOfLines={fontScale >= layout.nameWrapScale ? 2 : 1}>{name}</AppText><View style={ui.amountColumn}><MoneyText value={amount} /><AppText variant="caption" style={{ color: colors.textSecondary }}>{share}</AppText></View></View>
+    <View style={[ui.rankTrack, { backgroundColor: colors.surface2 }]}><View style={[ui.rankFill, { width: `${width}%`, backgroundColor: colors.accent }]} /></View>
+  </View>;
+});
+
+/** Analysis list row: every Expense category; a negative result reads "Net refund" with its icon, not color alone. */
+export const RankedListRow = memo(function RankedListRow({ id, icon, name, amount, netRefund, archived }: { id: string; icon: string; name: string; amount: string; netRefund: boolean; archived: boolean }) {
+  const { colors } = useAppTheme(); const { fontScale } = useWindowDimensions();
+  return <View accessible accessibilityLabel={`${name}${archived ? ', Archived' : ''}, ${amount}${netRefund ? ', Net refund' : ''}`} style={[ui.row, { backgroundColor: colors.surface1, borderBottomColor: colors.divider }]}>
+    <IconTile id={id} icon={icon} /><View style={ui.flex}><AppText variant="titleS" numberOfLines={fontScale >= layout.nameWrapScale ? 2 : 1}>{name}</AppText><View style={ui.inline}>{archived ? <Badge label="Archived" /> : null}{netRefund ? <Badge label="Net refund" /> : null}</View></View>
+    <View style={ui.amountColumn}>{netRefund ? <RegistryIcon name="refund" color={colors.textSecondary} /> : null}<MoneyText value={amount} /></View>
+  </View>;
+});
+
 export const ui = StyleSheet.create({
   flex: { flex: 1 }, gap: { gap: spacing.s2 }, content: { padding: spacing.s4, gap: spacing.s4, flexGrow: 1 },
   header: { flexDirection: 'row', alignItems: 'center', gap: spacing.s2, paddingHorizontal: spacing.s4, paddingVertical: spacing.s2 },
@@ -332,4 +359,9 @@ export const ui = StyleSheet.create({
   handle: { width: layout.sheetHandleWidth, height: layout.sheetHandleHeight, borderRadius: radius.rFull },
   row: { minHeight: layout.rowHeight, flexDirection: 'row', alignItems: 'center', gap: spacing.s3, padding: spacing.s3, borderBottomWidth: metrics.hairline },
   amountColumn: { flexShrink: 1, alignItems: 'flex-end', maxWidth: '50%', gap: spacing.s1 },
+  progress: { height: layout.progressBar, borderRadius: radius.rFull, overflow: 'hidden' },
+  progressFill: { height: layout.progressBar, borderRadius: radius.rFull },
+  rankRow: { paddingVertical: spacing.s3, gap: spacing.s2 },
+  rankTrack: { height: layout.rankBar, borderRadius: radius.rFull, overflow: 'hidden' },
+  rankFill: { height: layout.rankBar, borderRadius: radius.rFull },
 });

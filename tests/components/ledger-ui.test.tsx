@@ -13,9 +13,12 @@ import { LedgerRepository } from '../../src/repositories/ledger';
 import TransactionEntry from '../../src/screens/transaction';
 import Preferences from '../../src/screens/preferences';
 import Records, { MonthPicker } from '../../src/screens/records';
+import Budgets from '../../src/screens/budgets';
+import Analysis from '../../src/screens/analysis';
+import { EntityEditor } from '../../src/screens/entities';
 import { FlashList } from '@shopify/flash-list';
 import { AppError } from '../../src/domain/errors';
-import type { AccountBalance, CategoryRow, RecordsPage, TransactionInput, TransactionRow as StoredRow } from '../../src/repositories/ledger';
+import type { AccountBalance, AnalysisView, BudgetRow, BudgetsView, CategoryRow, RecordsPage, ReferenceCounts, RefundStatus, TransactionInput, TransactionRow as StoredRow } from '../../src/repositories/ledger';
 import type { PreferencesPortable } from '../../src/domain/portable';
 import { AppearanceProvider } from '../../src/theme/provider';
 import { LedgerTabBar } from '../../src/components/ledger-shell';
@@ -73,7 +76,15 @@ const fake = {
   saveTransaction: jest.fn<Promise<unknown>, [string, string, TransactionInput, boolean]>(),
   records: jest.fn<ReturnType<LedgerRepository['records']>, [string]>(),
   page: jest.fn<Promise<RecordsPage>, Parameters<LedgerRepository['page']>>(),
+  refundStatus: jest.fn<Promise<RefundStatus>, [string]>(), budgets: jest.fn<Promise<BudgetsView>, [string]>(), analysis: jest.fn<Promise<AnalysisView>, [string, string]>(),
+  deleteBudget: jest.fn<Promise<unknown>, [string, string, string]>(), references: jest.fn<Promise<ReferenceCounts>, [string, string]>(), latestBudgetMonth: jest.fn<Promise<string | null>, [string]>(),
 };
+// Renders every FlashList row in place, so a test can press controls inside rows that share the screen's overlay.
+const listImplementation = jest.mocked(FlashList).getMockImplementation();
+function renderListRows() {
+  jest.mocked(FlashList).mockImplementation(props => <View>{(props.data ?? []).map((item, index) => <View key={props.keyExtractor?.(item, index) ?? index}>{props.renderItem?.({ item, index, target: 'Cell' })}</View>)}</View>);
+}
+afterEach(() => { if (listImplementation) jest.mocked(FlashList).mockImplementation(listImplementation); });
 function Providers({ children }: React.PropsWithChildren) { return <LedgerProvider><OverlayProvider>{children}</OverlayProvider></LedgerProvider>; }
 beforeEach(() => {
   jest.clearAllMocks();
@@ -535,4 +546,138 @@ test('NFR-11: one hidden animated view mounts at first idle and leaves after a f
   await act(async () => { flushIdle(); });
   expect(screen.queryByTestId('animation-warmup', { includeHiddenElements: true })).toBeNull();
   expect(idleCallbacks.size).toBe(0);
+});
+
+const purchase: StoredRow = {
+  id: '40000000-0000-4000-8000-000000000009', idempotencyToken: account.id, type: 'expense', expenseEffect: 'purchase', amountMinor: 10000,
+  accountingDate: '2026-11-03', occurredAtUtc: account.createdAtUtc, createdTimeZoneId: 'Asia/Manila', createdUtcOffsetMinutes: 480,
+  note: null, accountId: account.id, categoryId: category.id, toAccountId: null, refundOfTransactionId: null,
+  originOccurrenceId: null, originKind: 'manual', originRuleTitleSnapshot: null, originScheduleSnapshot: null, originOccurrenceDate: null,
+  createdAtUtc: account.createdAtUtc, updatedAtUtc: account.updatedAtUtc, accountName: 'Cash', categoryName: 'Food', categoryIcon: 'food', accountIcon: 'cash', toAccountName: null,
+};
+
+test('BR-23/TC-84: a refund opens from its purchase with the remaining amount, fixed category and receiving account, and saves the link', async () => {
+  fake.transaction.mockResolvedValue(purchase);
+  fake.refundStatus.mockResolvedValue({ purchaseMinor: 10000n, refundedMinor: 3000n });
+  await render(<Providers><TransactionEntry refundOfId={purchase.id} /></Providers>);
+  expect(await screen.findByText('Refund purchase')).toBeTruthy();
+  expect(screen.getByText('Available to refund: ₱70.00')).toBeTruthy(); expect(screen.getByText('Purchase ₱100.00 on 2026-11-03 · Refunded ₱30.00')).toBeTruthy();
+  expect(screen.getByText('Category: Food (from the purchase)')).toBeTruthy(); expect(screen.getByText('Receiving account')).toBeTruthy();
+  expect(screen.queryByRole('button', { name: 'Income' })).toBeNull(); expect(screen.queryByRole('button', { name: 'Food' })).toBeNull();
+  expect(screen.getByLabelText('₱70.00')).toBeTruthy();
+  await fireEvent.press(screen.getByRole('button', { name: 'Save' }));
+  expect(fake.refundStatus).toHaveBeenCalledWith(purchase.id);
+  expect(fake.saveTransaction.mock.calls[0]?.[2]).toMatchObject({ type: 'expense', amountExpression: '70.00', accountId: account.id, categoryId: category.id, toAccountId: null, refundOfTransactionId: purchase.id });
+  expect(fake.saveTransaction.mock.calls[0]?.[3]).toBe(false);
+});
+
+test('FR-TRN-008: a refunded purchase keeps type and category fixed and offers Refund only while an amount remains', async () => {
+  fake.transaction.mockResolvedValue(purchase);
+  fake.refundStatus.mockResolvedValueOnce({ purchaseMinor: 10000n, refundedMinor: 3000n });
+  const first = await render(<Providers><TransactionEntry id={purchase.id} /></Providers>);
+  expect(await screen.findByText('Refunded ₱30.00 of ₱100.00. Type and category stay fixed, and the amount cannot be lower than the refunds.')).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Food' }).props.accessibilityState.disabled).toBe(true);
+  await fireEvent.press(screen.getByRole('button', { name: 'Transaction actions' }));
+  await fireEvent.press(await screen.findByRole('button', { name: 'Refund' }));
+  await waitFor(() => expect(router.push).toHaveBeenCalledWith({ pathname: '/transaction/new', params: { refundOfId: purchase.id } }));
+  await first.unmount();
+  fake.refundStatus.mockResolvedValueOnce({ purchaseMinor: 10000n, refundedMinor: 10000n });
+  await render(<Providers><TransactionEntry id={purchase.id} /></Providers>);
+  await fireEvent.press(await screen.findByRole('button', { name: 'Transaction actions' }));
+  expect(await screen.findByRole('button', { name: 'Duplicate' })).toBeTruthy(); expect(screen.queryByRole('button', { name: 'Refund' })).toBeNull();
+});
+
+const budget = (changes: Partial<BudgetRow>): BudgetRow => ({ id: '50000000-0000-4000-8000-000000000001', categoryId: category.id, month: '2026-11', limitMinor: 2000, updatedAtUtc: account.updatedAtUtc,
+  categoryName: 'Food', categoryIcon: 'food', categoryArchived: 0, spentMinor: 0n, ...changes });
+
+test('FR-BUD-003/TC-06: Budget cards state over, reached, net refund and remaining in words, not color alone', async () => {
+  renderListRows();
+  const other: CategoryRow = { ...category, id: '30000000-0000-4000-8000-000000000002', name: 'Bills', icon: 'bills' };
+  fake.budgets.mockImplementation(async month => ({ month, unbudgeted: [other], budgets: [
+    budget({ spentMinor: 2100n }),
+    budget({ id: '50000000-0000-4000-8000-000000000002', categoryName: 'Transport', spentMinor: 2000n }),
+    budget({ id: '50000000-0000-4000-8000-000000000003', categoryName: 'Health', spentMinor: -3000n, categoryArchived: 1 }),
+    budget({ id: '50000000-0000-4000-8000-000000000004', categoryName: 'Shopping', spentMinor: 500n }),
+  ] }));
+  await render(<Providers><Budgets /></Providers>);
+  expect(await screen.findByText('Over by ₱1.00')).toBeTruthy(); expect(screen.getByText('Spent ₱21.00 of ₱20.00')).toBeTruthy();
+  expect(screen.getByText('Limit reached')).toBeTruthy();
+  expect(screen.getByText('Net refund +₱30.00 · Limit ₱20.00')).toBeTruthy(); expect(screen.getByText('₱50.00 left')).toBeTruthy(); expect(screen.getByText('Archived')).toBeTruthy();
+  expect(screen.getByText('₱15.00 left')).toBeTruthy();
+  const bar = screen.getByLabelText('Food: Spent ₱21.00 of ₱20.00. Over by ₱1.00');
+  expect(bar.props.accessibilityRole).toBe('progressbar');
+  expect(screen.getByText('Categories without a Budget')).toBeTruthy();
+  // One labelled row target; the visible action stays short so a long name keeps its width on device.
+  expect(screen.getAllByText('Set Budget')).toHaveLength(1); expect(screen.queryByText('Set Bills Budget')).toBeNull();
+  await fireEvent.press(screen.getByRole('button', { name: 'Set Bills Budget' }));
+  expect(router.push).toHaveBeenCalledWith({ pathname: '/budget/new', params: { categoryId: other.id, month: fake.budgets.mock.calls[0]?.[0] } });
+});
+
+test('TC-58/96: deleting a Budget confirms that finance is unchanged, sends the expected version and reloads', async () => {
+  renderListRows();
+  fake.budgets.mockImplementation(async month => ({ month, unbudgeted: [], budgets: [budget({ spentMinor: 100n })] }));
+  fake.deleteBudget.mockResolvedValue({});
+  await render(<Providers><Budgets /></Providers>);
+  await fireEvent.press(await screen.findByRole('button', { name: 'Food Budget actions' }));
+  await fireEvent.press(await screen.findByRole('button', { name: 'Delete Budget' }));
+  expect(await screen.findByText('Delete the Food Budget for 2026-11? Transactions, balances and Analysis stay unchanged. You can create it again later.')).toBeTruthy();
+  await fireEvent.press(screen.getByRole('button', { name: 'Delete Budget' }));
+  await waitFor(() => expect(fake.deleteBudget).toHaveBeenCalledWith(expect.any(String), '50000000-0000-4000-8000-000000000001', account.updatedAtUtc));
+  await waitFor(() => expect(fake.budgets.mock.calls.length).toBeGreaterThan(1));
+});
+
+test('SCR-04 states: no Budgets lists unbudgeted categories; no Expense categories shows an empty state; a route month is applied', async () => {
+  renderListRows();
+  jest.mocked(useLocalSearchParams).mockReturnValue({ month: '2025-03' });
+  fake.budgets.mockImplementation(async month => ({ month, unbudgeted: [category], budgets: [] }));
+  const first = await render(<Providers><Budgets /></Providers>);
+  expect(await screen.findByText('No Budgets this month')).toBeTruthy(); expect(screen.getByText('Set a monthly limit for a category below.')).toBeTruthy();
+  expect(fake.budgets).toHaveBeenCalledWith('2025-03');
+  await first.unmount();
+  jest.mocked(useLocalSearchParams).mockReturnValue({ month: 'not-a-month' });
+  fake.budgets.mockImplementation(async month => ({ month, unbudgeted: [], budgets: [] }));
+  await render(<Providers><Budgets /></Providers>);
+  expect(await screen.findByText('No Expense categories')).toBeTruthy();
+  expect(fake.budgets.mock.calls.at(-1)?.[0]).toMatch(/^\d{4}-\d{2}$/); expect(fake.budgets.mock.calls.at(-1)?.[0]).not.toBe('not-a-month');
+});
+
+const analysisRow = (id: string, name: string, netMinor: bigint, isArchived = 0) => ({ id, name, icon: 'food', isArchived, netMinor });
+test('FR-ANA-001/002: Analysis shows Income, signed net Expense, the largest category and positive-only shares', async () => {
+  renderListRows();
+  fake.analysis.mockImplementation(async (from, to) => ({ from, to, incomeMinor: 50000n, expenseMinor: 5000n, categories: [
+    analysisRow('30000000-0000-4000-8000-000000000011', 'Other', 4000n, 1), analysisRow('30000000-0000-4000-8000-000000000012', 'Food', 3000n),
+    analysisRow('30000000-0000-4000-8000-000000000013', 'Bills', 0n), analysisRow('30000000-0000-4000-8000-000000000014', 'Shopping', -2000n),
+  ] }));
+  await render(<Providers><Analysis /></Providers>);
+  expect(await screen.findByText('Largest Expense category: Other')).toBeTruthy();
+  expect(screen.getByText('Net Expense')).toBeTruthy(); expect(screen.getByText('+₱500.00')).toBeTruthy();
+  expect(screen.getByText('57.1%')).toBeTruthy(); expect(screen.getByText('42.9%')).toBeTruthy();
+  expect(screen.getByText('Net refund')).toBeTruthy(); expect(screen.getByText('Archived')).toBeTruthy();
+  const [from, to] = fake.analysis.mock.calls[0] ?? [];
+  expect(from).toMatch(/^\d{4}-\d{2}-01$/); expect(to?.slice(0, 7)).toBe(from?.slice(0, 7));
+});
+
+test('FR-ANA-003/TC-61: no positive category shows an empty chart and Net refund total; an inverted range keeps the last range', async () => {
+  renderListRows();
+  fake.analysis.mockImplementation(async (from, to) => ({ from, to, incomeMinor: 0n, expenseMinor: -2000n, categories: [analysisRow('30000000-0000-4000-8000-000000000014', 'Shopping', -2000n)] }));
+  await render(<Providers><Analysis /></Providers>);
+  expect(await screen.findByText('No positive spending')).toBeTruthy();
+  expect(screen.queryByText(/Largest Expense category/)).toBeNull(); expect(screen.getAllByText('Net refund').length).toBeGreaterThan(0);
+  const [from] = fake.analysis.mock.calls[0] ?? [];
+  await fireEvent.press(screen.getByRole('button', { name: `From ${from}` }));
+  await fireEvent.changeText(screen.getByLabelText('Date (YYYY-MM-DD)'), '9999-12-01');
+  await fireEvent.press(screen.getByRole('button', { name: 'Apply date' }));
+  expect(screen.getByText('Choose a From date on or before the To date.')).toBeTruthy();
+  expect(screen.getByRole('button', { name: `From ${from}` })).toBeTruthy(); expect(fake.analysis).toHaveBeenCalledTimes(1);
+});
+
+test('FR-CAT-002/TC-58: a category used only by Budgets explains the order and opens Budgets at the latest month', async () => {
+  fake.references.mockResolvedValue({ transactions: 0, budgets: 2, revisions: 0, occurrences: 0 });
+  fake.latestBudgetMonth.mockResolvedValue('2026-10');
+  await render(<Providers><EntityEditor kind="category" id={category.id} /></Providers>);
+  await fireEvent.press(await screen.findByRole('button', { name: 'Delete' }));
+  expect(await screen.findByText(/^Used only by 2 budgets\. Delete those Budgets first, then delete this category\./)).toBeTruthy();
+  await fireEvent.press(screen.getByRole('button', { name: 'Open Budgets' }));
+  await waitFor(() => expect(router.navigate).toHaveBeenCalledWith({ pathname: '/budgets', params: { month: '2026-10' } }));
+  expect(fake.latestBudgetMonth).toHaveBeenCalledWith(category.id);
 });

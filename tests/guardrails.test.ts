@@ -84,6 +84,15 @@ test('TC-97 token legs: both appearances meet text/control/palette contrast from
   }
 });
 
+test('TC-27 contrast leg: Budget progress and Analysis bar fills meet 3:1 against their tracks and card surfaces in both appearances', () => {
+  for (const appearance of ['dark', 'light'] as const) {
+    const palette = colors[appearance];
+    // ProgressBar: accent (within) or expense (reached/over) on surface3 inside a surface1 card; RankedBarRow: accent on surface2.
+    for (const fill of ['accent', 'expense'] as const) for (const track of ['surface3', 'surface1'] as const) assert.ok(contrast(palette[fill], palette[track]) >= 3, `${appearance}/${fill}/${track}`);
+    for (const track of ['surface2', 'bg'] as const) assert.ok(contrast(palette.accent, palette[track]) >= 3, `${appearance}/accent/${track}`);
+  }
+});
+
 test('PERF-01 fixture is deterministic and pins its complete data identity and required counts', () => {
   const first = generatePerfFixture();
   const second = generatePerfFixture();

@@ -1,0 +1,62 @@
+{
+  "phase": 2,
+  "title": "Refunds, Budgets, and Analysis",
+  "recordedDate": "2026-11-04",
+  "status": "Complete (agent-runnable scope); TC-33 isolated JS-task outliers carried to Phase 8 under the Phase 1 precedent",
+  "baseline": {
+    "head": "fd69dec",
+    "workingCopy": "Phase 1 uncommitted changes preserved; originals snapshotted in .cache/phase2/session-2026-11-04",
+    "checks": { "lint": "pass", "typecheck": "pass", "core": "47 pass", "components": "35 pass", "build": "pass", "contracts": "pass" },
+    "repomixPacket": { "file": ".cache/phase2/session-2026-11-04/phase2-packet.xml", "sha256": "443dbacde2a722f22d7c893109e616a6a400162768b52753bfd14e3e8228f405", "files": 48 }
+  },
+  "changes": {
+    "modified": ["src/repositories/ledger.ts", "src/domain/errors.ts", "src/domain/money.ts", "src/components/ui.tsx", "src/theme/tokens.ts", "src/screens/transaction.tsx", "src/screens/entities.tsx", "src/app/(tabs)/analysis.tsx", "src/app/(tabs)/budgets.tsx", "src/app/transaction/new.tsx", "tests/ledger.test.ts", "tests/components/ledger-ui.test.tsx", "tests/guardrails.test.ts"],
+    "added": ["src/domain/reports.ts", "src/screens/budgets.tsx", "src/screens/analysis.tsx", "src/app/budget/new.tsx", "src/app/budget/[id].tsx"],
+    "notChanged": ["dependencies", "schema/migrations", "native projects", "app config"]
+  },
+  "decisions": [
+    "Refunds start only from a purchase's overflow Refund action; the repository rechecks the inherited category inside the hashed request.",
+    "Over-refund is checked inside the coordinator's exclusive write transaction.",
+    "spent == limit shows 'Limit reached' with the warning icon; 'Over by' only when spent > limit.",
+    "Analysis lists active Expense categories plus archived ones with rows in range, ranked in SQL by net DESC, name, id; the total equals the sum of listed rows.",
+    "Analysis range uses the validated text date editor (no native picker in the pinned APK).",
+    "Budget edit keeps category and month fixed; an archived category's existing Budget limit may be edited.",
+    "New read methods are async so invalid input rejects instead of throwing inside a screen effect."
+  ],
+  "bugsFixed": [
+    "Budgets month with no Budget and no active Expense category showed a bare header instead of the empty state.",
+    "Unbudgeted rows with long names collapsed the name column to 4 px on device; rows are now one labelled target with a short visible 'Set Budget'."
+  ],
+  "verification": {
+    "final": { "lint": "pass", "typecheck": "pass", "core": "60 pass", "components": "43 pass, no act warnings", "build": "pass", "contracts": "pass", "androidExport": "pass", "bundleGuard": "pass, 1982 sources" },
+    "logs": ".cache/phase2/session-2026-11-04/final2-*.log",
+    "device": {
+      "device": "MuMu james emulator-5554 only",
+      "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+      "fixtureSha256": "31ddef3124f1e1431e9ff0e1520ef7307f836a808622e30df2e63755773d34d3",
+      "flow": "Refund of the 2025-03-27 ₱382.39 purchase from its overflow action; Analysis net Expense moved by exactly ₱382.39, Income unchanged; refund month 2026-11 Budget showed 'Net refund +₱382.39 · Limit ₱100.00' and '₱482.39 left' in Dark and Light; current-month Analysis showed 'Net refund' and 'No positive spending' without a largest category; inverted range rejected inline with range kept; no ReactNativeJS warnings or errors.",
+      "tc27": "Budgets and Analysis × Dark/Light × 100%/200%: 0 issues, repeat pixel diff 0.0",
+      "tc33": {
+        "conditions": "Metro --no-dev --minify, 60 Hz, one warm-up excluded, 30 s per run",
+        "scoredRuns": 12,
+        "allRuns": "0 frames over 100 ms, 0% jank, event p95 <= 47 ms",
+        "noJsTaskOver50ms": "9 of 12: Analysis 4/4, Budgets 3/4 (57.5 ms), Records 2/4 (56.5 ms, 63.8 ms)"
+      },
+      "files": {
+        "qa/phase2-device.json": "bf7da4e545dcd0623f02df6091ef9d010ec4d01315acd6c9314f911d66f3ff26",
+        "qa/demo-current-month.json": "66b1da4f044beb30e0e7ef013501e4d4ed2b676789cdc4543ca03955fb493de9",
+        "qa/a11y-phase2.json": "b54de6ae80c08b2c5f1d61bd4b07b31a160e60607fcbab5ab827dbcfda4da8fc",
+        "qa/tc33-Light.json": "9fa3278e4549cd422ac908ea5fe956ee8b9927bad13ff62973974a6bf2ea0d36",
+        "qa/tc33-Dark.json": "02b27266de1bed19ed2f3271824d7b978f38fbbda8ac4c85cb0990b7ab48114b"
+      },
+      "superseded": "qa/superseded-oldbundle holds dev-bundle and stale-bundle runs; not scored",
+      "ownerRestore": "DB/WAL/SHM hashes equal the snapshot; font scale null; animation scales 0.5/0.5/null; frame rate automatic; port reverse removed; only user 0"
+    }
+  },
+  "testCases": {
+    "met": ["TC-06", "TC-27", "TC-41", "TC-58", "TC-59", "TC-60", "TC-61", "TC-84", "TC-118"],
+    "exceptionCarried": { "TC-33": "isolated 56-64 ms JS tasks in 3 of 12 runs; Phase 8 re-verifies" },
+    "partial": { "TC-96": "budget_pace removal (Phase 7) and PDF (Phase 6)", "TC-40": "rule and restore legs", "TC-57": "PDF (Phase 6)", "TC-83": "PDF (Phase 6) and restore (Phase 5)", "TC-85": "PDF (Phase 6) and restore (Phase 5)" }
+  },
+  "notDone": "No commit, push, build, upload, deployment or remote migration (not authorized)."
+}

@@ -1,3 +1,2 @@
-import { FoundationScreen } from '@/components/foundation-screen';
-
-export default function Screen() { return <FoundationScreen title="Analysis" />; }
+export { default } from '@/screens/analysis';
+export { RouteFailure as ErrorBoundary } from '@/components/ledger-shell';

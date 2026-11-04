@@ -2,11 +2,11 @@ import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex, utf8ToBytes } from '@noble/hashes/utils.js';
 import type { SqlConnection } from '../db/connection.ts';
 import type { DatabaseCoordinator } from '../db/coordinator.ts';
-import { captureCreationMetadata, resolveAccountingTimeAsync } from '../domain/dates.ts';
+import { accountingDate, captureCreationMetadata, resolveAccountingTimeAsync } from '../domain/dates.ts';
 import { AppError } from '../domain/errors.ts';
 import { monthValue, shortText, uuidValue } from '../domain/ledger.ts';
 import { amountFromExpression, safeInteger, storedMinor } from '../domain/money.ts';
-import type { Account, Category, PreferencesPortable, Transaction } from '../domain/portable.ts';
+import type { Account, Budget, Category, PreferencesPortable, Transaction } from '../domain/portable.ts';
 import { portableWrite, type ReceiptResult, type WriteCommand } from './write-receipts.ts';
 import type { FaultPoint } from '../db/migrations/index.ts';
 import { yieldTask } from '../domain/tasks.ts';
@@ -27,9 +27,19 @@ export type TransactionInput = {
   accountId: string; categoryId: string | null; toAccountId: string | null;
   accountingDate: string; localTime: string | null; timeZoneId: string; chosenOffsetMinutes: number | null;
   note: string | null; correctDate: boolean; expectedUpdatedAtUtc: string | null;
+  /** Set only for a linked Expense refund (BR-23); its category must be the purchase's category. */
+  refundOfTransactionId: string | null;
   creationMetadata: ReturnType<typeof captureCreationMetadata>;
   retained: Pick<Transaction, 'idempotencyToken' | 'accountingDate' | 'occurredAtUtc'> | null;
 };
+/** A purchase amount and the exact total of its non-deleted linked refunds. */
+export type RefundStatus = { purchaseMinor: bigint; refundedMinor: bigint };
+export type BudgetRow = Omit<Budget, 'createdAtUtc'> & { categoryName: string; categoryIcon: string; categoryArchived: number; spentMinor: bigint };
+export type BudgetsView = { month: string; budgets: BudgetRow[]; unbudgeted: CategoryRow[] };
+export type BudgetInput = { categoryId: string; month: string; limitExpression: string; decimalSeparator: string; expectedUpdatedAtUtc: string | null };
+export type AnalysisCategory = Pick<CategoryRow, 'id' | 'name' | 'icon' | 'isArchived'> & { netMinor: bigint };
+/** One snapshot: the net-Expense total is the sum of the ranked categories, so chart, list and total share one row set. */
+export type AnalysisView = { from: string; to: string; incomeMinor: bigint; expenseMinor: bigint; categories: AnalysisCategory[] };
 export type AccountInput = { name: string; icon: string; openingExpression: string; decimalSeparator: string; expectedUpdatedAtUtc: string | null; isArchived?: boolean };
 export type CategoryInput = { name: string; icon: string; type: Category['type']; expectedUpdatedAtUtc: string | null; isArchived?: boolean };
 export type DisplayPreferences = Pick<PreferencesPortable, 'currencySign' | 'currencyPosition' | 'displayDecimalPlaces' | 'notesVisibleInList' | 'uiMode' | 'dailyReminderTime'>;
@@ -85,17 +95,11 @@ export class LedgerRepository {
     return this.db.read(async tx => {
       // One row per account: SQLite SUM over the schema's integer amounts is exact and raises on int64 overflow
       // (TOTAL would use floats), and text results keep every digit for BigInt. Outgoing legs use accountId, incoming transfers toAccountId.
-      let rows: (AccountRow & { sourceMinor: string | null; destinationMinor: string | null })[];
-      try {
-        rows = await tx.getAllAsync(`
+      const rows = await exact(() => tx.getAllAsync<AccountRow & { sourceMinor: string | null; destinationMinor: string | null }>(`
           SELECT a.*,
             (SELECT CAST(SUM(CASE WHEN t.type='income' OR t.expenseEffect='refund' THEN t.amountMinor ELSE -t.amountMinor END) AS TEXT) FROM "Transaction" t WHERE t.accountId=a.id) AS sourceMinor,
             (SELECT CAST(SUM(t.amountMinor) AS TEXT) FROM "Transaction" t WHERE t.toAccountId=a.id) AS destinationMinor
-          FROM Account a ${activeOnly ? 'WHERE a.isArchived=0' : ''} ORDER BY a.createdAtUtc,a.id`);
-      } catch (error) {
-        if (error instanceof Error && /integer overflow/i.test(error.message)) throw new AppError('AMOUNT_OUT_OF_RANGE');
-        throw error;
-      }
+          FROM Account a ${activeOnly ? 'WHERE a.isArchived=0' : ''} ORDER BY a.createdAtUtc,a.id`));
       return rows.map(({ sourceMinor, destinationMinor, ...row }) => ({ ...row, balanceMinor: storedMinor(row.openingBalanceMinor, true) + summedMinor(sourceMinor) + summedMinor(destinationMinor) }));
     });
   }
@@ -179,41 +183,45 @@ export class LedgerRepository {
     const metadata = captureCreationMetadata(input.creationMetadata.createdAtUtc, input.creationMetadata.createdTimeZoneId);
     if (metadata.createdUtcOffsetMinutes !== input.creationMetadata.createdUtcOffsetMinutes) throw new AppError('INVALID_DATE');
     const retained = input.retained;
+    const refund = input.refundOfTransactionId !== null;
     if (editing && !retained) throw new AppError('INVALID_COMMAND');
     const when = editing && !input.correctDate && retained
       ? { accountingDate: retained.accountingDate, occurredAtUtc: retained.occurredAtUtc }
       : await resolveAccountingTimeAsync(input.accountingDate, input.timeZoneId, input.localTime ?? undefined, input.chosenOffsetMinutes ?? undefined);
     const fields: Omit<Transaction, 'createdAtUtc' | 'updatedAtUtc'> = {
       id, idempotencyToken: editing && retained ? retained.idempotencyToken : operationToken,
-      type: input.type, expenseEffect: input.type === 'expense' ? 'purchase' : null, amountMinor: amount,
+      type: input.type, expenseEffect: input.type === 'expense' ? refund ? 'refund' : 'purchase' : null, amountMinor: amount,
       accountingDate: when.accountingDate, occurredAtUtc: when.occurredAtUtc,
       createdTimeZoneId: metadata.createdTimeZoneId, createdUtcOffsetMinutes: metadata.createdUtcOffsetMinutes,
       note: input.note, accountId: input.accountId, categoryId: input.categoryId, toAccountId: input.toAccountId,
-      refundOfTransactionId: null, originOccurrenceId: null, originKind: 'manual', originRuleTitleSnapshot: null, originScheduleSnapshot: null, originOccurrenceDate: null,
+      refundOfTransactionId: input.refundOfTransactionId, originOccurrenceId: null, originKind: 'manual', originRuleTitleSnapshot: null, originScheduleSnapshot: null, originOccurrenceDate: null,
     };
     return this.write({ operationToken, entityId: id, operation: editing ? 'edit' : 'create', entityType: 'transaction', input: { ...fields } }, async (tx, stamp) => {
       if (!['income', 'expense', 'transfer'].includes(input.type)) throw new AppError('INVALID_COMMAND');
       const old = editing ? await tx.getFirstAsync<Transaction>('SELECT * FROM "Transaction" WHERE id=?', id) : null;
       const updated = editing ? versionStamp(old, input.expectedUpdatedAtUtc, stamp) : stamp;
-      if (old?.expenseEffect === 'refund' || old?.originKind === 'recurring') throw new AppError('UNSUPPORTED_EDIT');
+      if (old?.originKind === 'recurring') throw new AppError('UNSUPPORTED_EDIT');
+      // A refund stays linked to its original purchase; no other entry becomes a refund on edit.
+      if (old && (old.expenseEffect === 'refund' ? old.refundOfTransactionId !== input.refundOfTransactionId : refund)) throw new AppError('INVALID_COMMAND');
       if (old && (metadata.createdAtUtc !== old.createdAtUtc || metadata.createdTimeZoneId !== old.createdTimeZoneId || metadata.createdUtcOffsetMinutes !== old.createdUtcOffsetMinutes || fields.idempotencyToken !== old.idempotencyToken ||
         (!input.correctDate && (fields.accountingDate !== old.accountingDate || fields.occurredAtUtc !== old.occurredAtUtc)))) throw new AppError('INVALID_COMMAND');
       if (input.note !== null && (typeof input.note !== 'string' || [...input.note].length > 4000)) throw new AppError('INVALID_NOTE');
-      await validateTargets(tx, input, old);
-      // Preserve future-phase refund invariants if this repository is opened against a valid history fixture.
-      if (old) {
+      if (refund) await validateRefund(tx, id, input, amount, old);
+      else await validateTargets(tx, input, old);
+      // A purchase with linked refunds keeps its type and category and never falls below its refunded total.
+      if (old && !refund) {
         const refunds = await tx.getAllAsync<{ amountMinor: number }>('SELECT amountMinor FROM "Transaction" WHERE refundOfTransactionId=?', id);
         if (refunds.length && (input.type !== old.type || input.categoryId !== old.categoryId || refunds.reduce((sum, row) => sum + storedMinor(row.amountMinor), 0n) > BigInt(amount))) throw new AppError('LINKED_REFUNDS');
       }
       await this.fault('ledger:before-transaction');
       if (old) {
         await tx.runAsync('UPDATE "Transaction" SET type=?,expenseEffect=?,amountMinor=?,accountingDate=?,occurredAtUtc=?,note=?,accountId=?,categoryId=?,toAccountId=?,updatedAtUtc=? WHERE id=?',
-          input.type, input.type === 'expense' ? 'purchase' : null, amount, when.accountingDate, when.occurredAtUtc, input.note, input.accountId, input.categoryId, input.toAccountId, updated, id);
+          input.type, fields.expenseEffect, amount, when.accountingDate, when.occurredAtUtc, input.note, input.accountId, input.categoryId, input.toAccountId, updated, id);
       } else {
         await tx.runAsync(`INSERT INTO "Transaction"(id,idempotencyToken,type,expenseEffect,amountMinor,accountingDate,occurredAtUtc,createdTimeZoneId,createdUtcOffsetMinutes,note,accountId,categoryId,toAccountId,refundOfTransactionId,originOccurrenceId,originKind,originRuleTitleSnapshot,originScheduleSnapshot,originOccurrenceDate,createdAtUtc,updatedAtUtc)
-          VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,NULL,NULL,'manual',NULL,NULL,NULL,?,?)`,
-        id, operationToken, input.type, input.type === 'expense' ? 'purchase' : null, amount, when.accountingDate, when.occurredAtUtc, metadata.createdTimeZoneId, metadata.createdUtcOffsetMinutes,
-        input.note, input.accountId, input.categoryId, input.toAccountId, metadata.createdAtUtc, new Date(Math.max(Date.parse(stamp), Date.parse(metadata.createdAtUtc))).toISOString());
+          VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,NULL,'manual',NULL,NULL,NULL,?,?)`,
+        id, operationToken, input.type, fields.expenseEffect, amount, when.accountingDate, when.occurredAtUtc, metadata.createdTimeZoneId, metadata.createdUtcOffsetMinutes,
+        input.note, input.accountId, input.categoryId, input.toAccountId, input.refundOfTransactionId, metadata.createdAtUtc, new Date(Math.max(Date.parse(stamp), Date.parse(metadata.createdAtUtc))).toISOString());
       }
       // Effects are derived from one row; there is no materialized half-transfer balance to expose.
       await this.fault('ledger:after-transaction');
@@ -224,11 +232,87 @@ export class LedgerRepository {
     return this.write({ operationToken, entityId: id, operation: 'delete', entityType: 'transaction', input: { id } }, async (tx, stamp) => {
       const old = await tx.getFirstAsync<Transaction>('SELECT * FROM "Transaction" WHERE id=?', id);
       versionStamp(old, expectedUpdatedAtUtc, stamp);
-      if (old?.originKind === 'recurring' || old?.expenseEffect === 'refund') throw new AppError('UNSUPPORTED_EDIT');
+      if (old?.originKind === 'recurring') throw new AppError('UNSUPPORTED_EDIT');
+      // Deleting a refund reverses its credit and Expense reduction and frees that amount; a refunded purchase stays.
       if (await tx.getFirstAsync('SELECT id FROM "Transaction" WHERE refundOfTransactionId=? LIMIT 1', id)) throw new AppError('LINKED_REFUNDS');
       await this.fault('ledger:before-transaction');
       await tx.runAsync('DELETE FROM "Transaction" WHERE id=?', id);
       await this.fault('ledger:after-transaction');
+    });
+  }
+
+  /** Purchase amount and the exact total of its non-deleted refunds (BR-23). */
+  async refundStatus(originalId: string): Promise<RefundStatus> {
+    uuidValue(originalId);
+    return this.db.read(async tx => {
+      const { purchaseMinor, refundedMinor } = await refundStatus(tx, originalId, null);
+      return { purchaseMinor, refundedMinor };
+    });
+  }
+
+  /** Budgets with signed spent for the month and the active Expense categories still without one (FR-BUD-002/005). */
+  async budgets(month: string): Promise<BudgetsView> {
+    monthValue(month);
+    return this.db.write(async tx => {
+      const rows = await exact(() => tx.getAllAsync<Omit<BudgetRow, 'spentMinor'> & { spentMinor: string | null }>(`
+        SELECT b.id,b.categoryId,b.month,b.limitMinor,b.updatedAtUtc,c.name AS categoryName,c.icon AS categoryIcon,c.isArchived AS categoryArchived,
+          (SELECT CAST(SUM(CASE WHEN t.expenseEffect='refund' THEN -t.amountMinor ELSE t.amountMinor END) AS TEXT) FROM "Transaction" t
+            WHERE t.type='expense' AND t.categoryId=b.categoryId AND t.accountingDate>=? AND t.accountingDate<=?) AS spentMinor
+        FROM Budget b JOIN Category c ON c.id=b.categoryId WHERE b.month=? ORDER BY c.name,c.id`, `${month}-01`, `${month}-31`, month));
+      const unbudgeted = await tx.getAllAsync<CategoryRow>(`SELECT c.* FROM Category c WHERE c.type='expense' AND c.isArchived=0
+        AND NOT EXISTS(SELECT 1 FROM Budget b WHERE b.categoryId=c.id AND b.month=?) ORDER BY c.name,c.id`, month);
+      return { month, budgets: rows.map(row => ({ ...row, spentMinor: summedMinor(row.spentMinor) })), unbudgeted };
+    });
+  }
+
+  async latestBudgetMonth(categoryId: string): Promise<string | null> {
+    uuidValue(categoryId);
+    return this.db.read(async tx => (await tx.getFirstAsync<{ month: string }>('SELECT month FROM Budget WHERE categoryId=? ORDER BY month DESC LIMIT 1', categoryId))?.month ?? null);
+  }
+
+  async saveBudget(operationToken: string, id: string, input: BudgetInput, editing = false) {
+    const month = monthValue(input.month);
+    const limitMinor = safeInteger(amountFromExpression(input.limitExpression, { decimalSeparator: input.decimalSeparator }));
+    const fields = { id, categoryId: uuidValue(input.categoryId), month, limitMinor };
+    return this.write({ operationToken, entityId: id, operation: editing ? 'edit' : 'create', entityType: 'budget', input: fields }, async (tx, stamp) => {
+      if (editing) {
+        // BR-11/FR-BUD-004: an edit replaces only this month's limit; its category and month stay fixed.
+        const old = await tx.getFirstAsync<Budget>('SELECT * FROM Budget WHERE id=?', id);
+        const updated = versionStamp(old, input.expectedUpdatedAtUtc, stamp);
+        if (old?.categoryId !== fields.categoryId || old.month !== month) throw new AppError('INVALID_COMMAND');
+        await tx.runAsync('UPDATE Budget SET limitMinor=?,updatedAtUtc=? WHERE id=?', limitMinor, updated, id);
+      } else {
+        const category = await tx.getFirstAsync<CategoryRow>('SELECT * FROM Category WHERE id=?', fields.categoryId);
+        if (!category || category.type !== 'expense' || category.isArchived) throw new AppError('BUDGET_CATEGORY_REQUIRED');
+        if (await tx.getFirstAsync('SELECT id FROM Budget WHERE categoryId=? AND month=?', fields.categoryId, month)) throw new AppError('BUDGET_EXISTS');
+        await tx.runAsync('INSERT INTO Budget VALUES(?,?,?,?,?,?)', id, fields.categoryId, month, limitMinor, stamp, stamp);
+      }
+    });
+  }
+
+  /** FR-BUD-007: removes only the Budget row; transactions, balances and Analysis are untouched. */
+  deleteBudget(operationToken: string, id: string, expectedUpdatedAtUtc: string) {
+    return this.write({ operationToken, entityId: id, operation: 'delete', entityType: 'budget', input: { id } }, async (tx, stamp) => {
+      versionStamp(await tx.getFirstAsync<Budget>('SELECT * FROM Budget WHERE id=?', id), expectedUpdatedAtUtc, stamp);
+      await tx.runAsync('DELETE FROM Budget WHERE id=?', id);
+    });
+  }
+
+  /** FR-ANA-001-003 for an inclusive accounting-date range, ranked by signed net Expense, then name. */
+  async analysis(from: string, to: string): Promise<AnalysisView> {
+    accountingDate(from); accountingDate(to);
+    if (from > to) throw new AppError('INVALID_DATE_RANGE');
+    return this.db.write(async tx => {
+      const income = await exact(() => tx.getFirstAsync<{ total: string | null }>(`SELECT CAST(SUM(amountMinor) AS TEXT) AS total FROM "Transaction"
+        WHERE type='income' AND accountingDate>=? AND accountingDate<=?`, from, to));
+      // Every active Expense category, plus archived ones with rows in the range (BR-09), including zero and negative results.
+      const rows = await exact(() => tx.getAllAsync<Omit<AnalysisCategory, 'netMinor'> & { netMinor: string | null }>(`
+        SELECT c.id,c.name,c.icon,c.isArchived,CAST(n.net AS TEXT) AS netMinor FROM Category c LEFT JOIN (
+          SELECT categoryId,SUM(CASE WHEN expenseEffect='refund' THEN -amountMinor ELSE amountMinor END) AS net FROM "Transaction"
+          WHERE type='expense' AND accountingDate>=? AND accountingDate<=? GROUP BY categoryId) n ON n.categoryId=c.id
+        WHERE c.type='expense' AND (c.isArchived=0 OR n.categoryId IS NOT NULL) ORDER BY COALESCE(n.net,0) DESC,c.name,c.id`, from, to));
+      const categories = rows.map(row => ({ ...row, netMinor: summedMinor(row.netMinor) }));
+      return { from, to, incomeMinor: summedMinor(income?.total ?? null), expenseMinor: categories.reduce((sum, row) => sum + row.netMinor, 0n), categories };
     });
   }
 
@@ -262,6 +346,33 @@ async function pageQuery(tx: SqlConnection, month: string, cursor: PageCursor | 
       `${month}-01`, `${month}-31`, ...(cursor ? [cursor.accountingDate, cursor.occurredAtUtc, cursor.id] : []));
       const last = rows[49];
       return { rows: rows.slice(0, 50), next: rows.length > 50 && last ? { accountingDate: last.accountingDate, occurredAtUtc: last.occurredAtUtc, id: last.id } : null };
+}
+
+/** SQLite SUM over integer amounts is exact and raises on int64 overflow (TOTAL would use floats). */
+async function exact<T>(query: () => Promise<T>): Promise<T> {
+  try { return await query(); }
+  catch (error) {
+    if (error instanceof Error && /integer overflow/i.test(error.message)) throw new AppError('AMOUNT_OUT_OF_RANGE');
+    throw error;
+  }
+}
+
+async function refundStatus(tx: SqlConnection, originalId: string, excludeId: string | null): Promise<RefundStatus & { original: Transaction }> {
+  const original = await tx.getFirstAsync<Transaction>('SELECT * FROM "Transaction" WHERE id=?', originalId);
+  if (!original || original.type !== 'expense' || original.expenseEffect !== 'purchase') throw new AppError('REFUND_ORIGINAL_INVALID');
+  const refunded = await tx.getFirstAsync<{ total: string | null }>('SELECT CAST(SUM(amountMinor) AS TEXT) AS total FROM "Transaction" WHERE refundOfTransactionId=? AND id<>?', originalId, excludeId ?? '');
+  return { original, purchaseMinor: storedMinor(original.amountMinor), refundedMinor: summedMinor(refunded?.total ?? null) };
+}
+
+/** FR-TRN-010: read the original and its refunds inside the writer's exclusive transaction, then reject without writing. */
+async function validateRefund(tx: SqlConnection, id: string, input: TransactionInput, amount: number, old: Transaction | null) {
+  if (input.type !== 'expense' || input.toAccountId !== null || !input.refundOfTransactionId || input.refundOfTransactionId === id) throw new AppError('INVALID_COMMAND');
+  const status = await refundStatus(tx, uuidValue(input.refundOfTransactionId), id);
+  // The refund inherits the purchase category, which may since have been archived (FR-TRN-002).
+  if (status.original.categoryId !== input.categoryId) throw new AppError('REFUND_ORIGINAL_INVALID');
+  const account = await tx.getFirstAsync<AccountRow>('SELECT * FROM Account WHERE id=?', uuidValue(input.accountId));
+  if (!account || (account.isArchived && old?.accountId !== input.accountId)) throw new AppError('ACTIVE_ACCOUNT_REQUIRED');
+  if (status.refundedMinor + BigInt(amount) > status.purchaseMinor) throw new AppError('REFUND_EXCEEDS_PURCHASE');
 }
 
 function summedMinor(value: string | null): bigint {

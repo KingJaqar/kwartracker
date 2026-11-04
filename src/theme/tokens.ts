@@ -52,4 +52,6 @@ export const layout = {
   fab: 56, listBottomPadding: 88, moneyMinScale: 0.5,
   skeletonDelay: 150, toastDuration: 3000, pressedOpacity: 0.6,
   keyColumns: 4, maximumInlineAccounts: 5, maximumInlineCategories: 6,
+  /** Section 6A.8: Budget ProgressBar and Analysis RankedBarRow heights. */
+  progressBar: 8, rankBar: 6,
 } as const;

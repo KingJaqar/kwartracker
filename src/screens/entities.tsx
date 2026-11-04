@@ -56,17 +56,18 @@ export function EntityList({ kind }: { kind: Kind }) {
 export function EntityEditor({ kind, id }: { kind: Kind; id?: string }) {
   const { repository } = useLedger();
   const query = useLedgerQuery(useCallback(async () => {
-    if (!id) return { row: null, counts: null };
+    if (!id) return { row: null, counts: null, budgetMonth: null };
     const [rows, counts] = await Promise.all([kind === 'account' ? repository.accounts() : repository.categories(), repository.references(kind, id)]);
     const row = rows.find(item => item.id === id);
     if (!row) throw new AppError('ENTITY_MISSING');
-    return { row, counts };
+    // FR-CAT-002: a category referenced only by Budgets is deleted after those Budgets; open the latest one's month.
+    return { row, counts, budgetMonth: kind === 'category' && counts.budgets > 0 ? await repository.latestBudgetMonth(id) : null };
   }, [kind, id, repository]));
   if (!query.data) return <Screen title={kind === 'account' ? 'Account' : 'Category'} onBack={goBack}><View style={ui.content}>{query.error ? <InlineError error={query.error} retry={query.retry} /> : <Skeleton />}</View></Screen>;
-  return <EntityForm key={`${kind}:${id ?? 'new'}`} kind={kind} initial={query.data.row} counts={query.data.counts} />;
+  return <EntityForm key={`${kind}:${id ?? 'new'}`} kind={kind} initial={query.data.row} counts={query.data.counts} budgetMonth={query.data.budgetMonth} />;
 }
 
-function EntityForm({ kind, initial: incoming, counts }: { kind: Kind; initial: AccountRow | CategoryRow | null; counts: ReferenceCounts | null }) {
+function EntityForm({ kind, initial: incoming, counts, budgetMonth }: { kind: Kind; initial: AccountRow | CategoryRow | null; counts: ReferenceCounts | null; budgetMonth: string | null }) {
   const [initial] = useState(incoming);
   const { repository } = useLedger(); const overlay = useOverlay(); const mutation = useLedgerMutation(); const identity = useCommandIdentity();
   const [id] = useState(() => initial?.id ?? newId()); const [name, setName] = useState(initial?.name ?? ''); const [icon, setIcon] = useState(initial?.icon ?? (kind === 'account' ? 'wallet' : 'other'));
@@ -90,9 +91,11 @@ function EntityForm({ kind, initial: incoming, counts }: { kind: Kind; initial: 
   function lifecycle(action: 'archive' | 'restore' | 'delete') {
     if (!initial) return;
     const references = counts ? Object.entries(counts).filter(([, count]) => count > 0).map(([label, count]) => `${count} ${label}`).join(', ') : '';
+    const onlyBudgets = Boolean(counts && counts.budgets > 0 && counts.transactions === 0 && counts.revisions === 0 && counts.occurrences === 0);
     overlay.show({ title: `${action === 'delete' ? 'Delete' : action === 'archive' ? 'Archive' : 'Restore'} ${kind}?`, kind: 'dialog', destructive: action !== 'restore', content: close => <EntityConfirmation kind={kind} initial={initial} action={action} close={close} finished={() => setDone(true)} message={action === 'delete'
-      ? references ? `Used by ${references}. This item cannot be deleted. Archive it to keep its history.` : `Delete “${initial.name}”? This cannot be undone.`
-      : action === 'archive' ? `Hide “${initial.name}” from new-entry pickers? Saved history and balances stay available.` : `Make “${initial.name}” selectable again? Saved history stays unchanged.`} blocked={action === 'delete' && Boolean(references)} /> });
+      ? onlyBudgets ? `Used only by ${references}. Delete those Budgets first, then delete this category. You can also archive it to keep its history.`
+        : references ? `Used by ${references}. This item cannot be deleted. Archive it to keep its history.` : `Delete “${initial.name}”? This cannot be undone.`
+      : action === 'archive' ? `Hide “${initial.name}” from new-entry pickers? Saved history and balances stay available.` : `Make “${initial.name}” selectable again? Saved history stays unchanged.`} blocked={action === 'delete' && Boolean(references)} budgetMonth={action === 'delete' && onlyBudgets ? budgetMonth : null} /> });
   }
   return <KeyboardAvoidingView style={ui.flex} behavior="padding"><Screen title={`${initial ? 'Edit' : 'Create'} ${kind}`} onBack={() => { if (!mutation.pending) goBack(); }} scroll>
     <TextField label="Name" value={name} maxLength={120} onChangeText={setName} onBlur={validateName} error={nameError} editable={!mutation.pending} />
@@ -106,11 +109,13 @@ function EntityForm({ kind, initial: incoming, counts }: { kind: Kind; initial: 
   </Screen></KeyboardAvoidingView>;
 }
 
-function EntityConfirmation({ kind, initial, action, close, finished, message, blocked }: { kind: Kind; initial: AccountRow | CategoryRow; action: 'archive' | 'restore' | 'delete'; close: (then?: () => void) => void; finished: () => void; message: string; blocked: boolean }) {
+function EntityConfirmation({ kind, initial, action, close, finished, message, blocked, budgetMonth = null }: { kind: Kind; initial: AccountRow | CategoryRow; action: 'archive' | 'restore' | 'delete'; close: (then?: () => void) => void; finished: () => void; message: string; blocked: boolean; budgetMonth?: string | null }) {
   const { repository } = useLedger(); const mutation = useLedgerMutation(); const identity = useCommandIdentity(); const [committed, setCommitted] = useState(false);
   useOverlayWriteGuard(mutation.pending);
   useEffect(() => { if (committed && !mutation.pending) close(finished); }, [committed, mutation.pending, close, finished]);
-  if (blocked) return <View style={ui.gap}><AppText>{message}</AppText><GhostButton label="Cancel" onPress={close} /></View>;
+  if (blocked) return <View style={ui.gap}><AppText>{message}</AppText>
+    {budgetMonth ? <GhostButton label="Open Budgets" onPress={() => close(() => router.navigate({ pathname: '/budgets', params: { month: budgetMonth } }))} /> : null}
+    <GhostButton label="Cancel" onPress={close} /></View>;
   return <View style={ui.gap}><Dialog message={message} action={action === 'archive' ? 'Archive' : action === 'restore' ? 'Restore' : 'Delete'} busy={mutation.pending} close={close} onConfirm={() => {
     const token = identity.token({ kind, id: initial.id, action, expected: initial.updatedAtUtc });
     void mutation.run(() => repository.lifecycle(token, kind, initial.id, action, initial.updatedAtUtc), () => setCommitted(true));

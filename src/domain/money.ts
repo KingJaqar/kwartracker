@@ -79,7 +79,8 @@ export function evaluateExpression(input: string, decimalSeparator = '.'): Ratio
   return value;
 }
 
-function roundHalfUp(numerator: bigint, denominator: bigint): bigint {
+/** Exact half-up rounding of numerator/denominator (denominator > 0); a negative half tie rounds away from zero. */
+export function roundHalfUp(numerator: bigint, denominator: bigint): bigint {
   const magnitude = numerator < 0n ? -numerator : numerator;
   const rounded = magnitude / denominator + (magnitude % denominator * 2n >= denominator ? 1n : 0n);
   return numerator < 0n ? -rounded : rounded;

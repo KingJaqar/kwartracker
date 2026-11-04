@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-03",
+  "phase": 1,
+  "status": "Partially complete",
+  "evidenceRoot": ".cache/phase1/approved-qa-2026-11-03",
+  "baseline": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 pass",
+    "components": "20 pass",
+    "buildGuard": "pass",
+    "contractGuard": "pass"
+  },
+  "final": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 baseline passes reused; core/repository/schema unchanged",
+    "components": "24 pass across4 suites",
+    "androidHermesExport": "pass",
+    "bundleGuard": "pass,1977 source identities"
+  },
+  "acceptance": [
+    {
+      "id": "TC-01",
+      "status": "met",
+      "scope": "automated Income/Expense matching categories, one row and exact account effects"
+    },
+    {
+      "id": "TC-02",
+      "status": "met",
+      "scope": "automated symmetric Transfer and unchanged Income/Expense aggregates"
+    },
+    {
+      "id": "TC-03",
+      "status": "met",
+      "scope": "automated same/missing/archived destination rejection with unchanged logical tables/receipts"
+    },
+    {
+      "id": "TC-04",
+      "status": "met",
+      "scope": "automated midnight/noon/DST/correction/accounting-month and creation-metadata assertions"
+    },
+    {
+      "id": "TC-05",
+      "status": "met",
+      "scope": "automated referenced category archive/restore, active pickers/history and invariant totals"
+    },
+    {
+      "id": "TC-07",
+      "status": "met",
+      "scope": "automated Transfer deletion fault checkpoints; both derived account effects roll back together"
+    },
+    {
+      "id": "TC-08",
+      "status": "met",
+      "scope": "automated referenced account archive/restore with picker and balance invariance"
+    },
+    {
+      "id": "TC-13",
+      "status": "met",
+      "scope": "automated persisted 2→0→2 display and unchanged financial rows"
+    },
+    {
+      "id": "TC-15",
+      "status": "met",
+      "scope": "automated exact seven seeds, no reseed after deletion/restart admission, first-account guidance action"
+    },
+    {
+      "id": "TC-28",
+      "status": "met",
+      "scope": "automated repository concurrency/receipt replay and UI double-Save guard"
+    },
+    {
+      "id": "TC-29",
+      "status": "met",
+      "scope": "automated Transfer amount/destination edit faults and atomic replacement"
+    },
+    {
+      "id": "TC-30",
+      "status": "met",
+      "scope": "automated exact terminating/non-terminating/malformed arithmetic and no-write rejection"
+    },
+    {
+      "id": "TC-39",
+      "status": "met",
+      "scope": "automated half-up and zero-after-rounding rejection; display never rescales finance"
+    },
+    {
+      "id": "TC-79",
+      "status": "met",
+      "scope": "actual host SQLite max_page_count exhaustion plus injected checkpoints and component draft/token retention; Android native run remains pending under the demo gate"
+    },
+    {
+      "id": "TC-97",
+      "status": "met",
+      "scope": "source lint/token scan, both-appearance text/control/palette/tinted-tile contrast and deterministic palette identity; no row blur/gradient/shadow added"
+    },
+    {
+      "id": "TC-101",
+      "status": "pending manual verification",
+      "scope": "Host amount/render/order/save guards pass; final source UX saves pass. Prior ten-key native burst retained historically; complete final interaction matrix pending."
+    },
+    {
+      "id": "TC-103",
+      "status": "pending manual verification",
+      "scope": "Host queue/reduced-motion configuration reviewed;24 component cases include background-isolation regression. Native haptics optional/deferred; current sheet/tabs/reduce-motion matrix incomplete,passcode leg Phase4."
+    },
+    {
+      "id": "TC-105",
+      "status": "met",
+      "scope": "Host exact keysets/concurrency/aggregate and saved-row paging tests pass; native PERF counts,pages,exact totals and six scroll samples recorded. Final overlay shared-UI retest pending separately."
+    },
+    {
+      "id": "TC-113",
+      "status": "not met",
+      "scope": "write endpoints, signed opening balances, half-up and exact totals above2^53 pass. App import rejection is unimplemented until Phase5; no whole-case pass or waiver"
+    },
+    {
+      "id": "TC-114",
+      "status": "met",
+      "scope": "automated exact approved seeds/icons, name/icon edits, type immutability and historical linked-name/totals assertions"
+    },
+    {
+      "id": "UX-01 dry run",
+      "status": "met",
+      "scope": "Five unique Income and Expense UI runs,medians7.660/7.714seconds,four activations+one scroll; measured after saved-row fix and before final overlay isolation; final shared-UI regression remains pending separately."
+    },
+    {
+      "id": "Records scroll dry run",
+      "status": "met",
+      "scope": "Six60s warmed Dark/Light samples on verified fixture meet measured frame/response/no-long-task targets; final overlay change not re-certified. No standalone/release claim."
+    },
+    {
+      "id": "UI-PERF-01 dry run",
+      "status": "not met",
+      "scope": "Complete interaction matrix unpassed. Sheet sample had54.369ms task before overlay correction; close frames unavailable. Final scale retest pending after connection failures; no waiver."
+    },
+    {
+      "id": "VIS-01",
+      "status": "pending manual verification",
+      "scope": "pinned profile, key screen states, both appearances/font scales; approved baseline and comparison absent"
+    },
+    {
+      "id": "Offline Dark/Light demo and native accessibility/state review",
+      "status": "pending manual verification",
+      "scope": "Compatible native Income/Expense/repository journeys pass; partial200% evidence only,TalkBack absent,one-handed/state audit incomplete. Standalone cold-start deferred underSection3.6."
+    }
+  ],
+  "native": {
+    "apkSHA256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+    "target": "MuMu james Android12/API32,1080x1920,density480",
+    "scope": "Existing debug development-client APK; local Metro Hermes JavaScript with __DEV__ false for scroll; no release certification",
+    "functional": "Fresh QA seeds/Cash creation; actual Income/Expense UI saves; native transfer/edit/replay/stale/archive/reference/rollback assertions pass",
+    "ux": {
+      "income": {
+        "medianUpperBoundSeconds": 7.659624199848622,
+        "runs": 5,
+        "nonKeypadActivations": 4,
+        "scrollGestures": 1,
+        "savedRowsVisible": true
+      },
+      "expense": {
+        "medianUpperBoundSeconds": 7.714185599936172,
+        "runs": 5,
+        "nonKeypadActivations": 4,
+        "scrollGestures": 1,
+        "savedRowsVisible": true
+      }
+    },
+    "fixture": "500 Accounts/200 Categories/10000 Transactions/10000 receipts; native277 unique month rows in6 pages,50-row first page,140202403 expense minor units; fixture hash/counts/integrity verified",
+    "scroll": "Six60s samples:59.365–59.884fps,max present interval66.667ms,eventp95≤37.081ms,no observed JS task>50ms. These precede final overlay correction; not a whole interaction-matrix PASS. Cumulative gfxinfo0jank retained; invalid FrameCompleted values not used.",
+    "sheet": "Ten Light open/close cycles: eventp95=36.501ms,one54.369ms task;10open layer captures,close layer disappears. CPU trace identified background context propagation/Fabric work. Owned correction host-verified; final scale sheet retest pending after runtime connection instability.",
+    "accessibility": "Partial200% captures; Entry captured loading skeleton,not final form. TalkBack package absent. Screen-wide audit unpassed.",
+    "cleanup": "Explicitly approved profile10 removed successfully; only Owner0 and pinned package confirmed; dynamic_adjust_frame_rate=true restored; default100% font confirmed; synthetic staging file removed; no Owner financial mutation",
+    "logs": "owner-runtime.log when final smoke completes; host NO_COLOR warning and emulator-native warnings retained",
+    "finalOwnerSmoke": "Final source reopened Owner guided empty state, no synthetic rows; month sheet opens/closes; original APK hash reverified; no captured ReactNativeJS exception. This is not scale/performance certification."
+  },
+  "remaining": [
+    "Final sheet/tab/segmented/button/keypad/reduced-motion matrix and shared-UI runtime regression; profile runtime became unstable after restart",
+    "TalkBack/manual accessible focus and one-handed audit; complete200% settled screens",
+    "Owner-approved pinned VIS baselines and comparison",
+    "TC113 import assertion belongs toPhase5;TC103 passcode leg belongs toPhase4;whole-case claims withheld"
+  ],
+  "changes": [
+    "Records memoized primitive presentation retained",
+    "Committed transaction returns to accounting month and reveals saved row across keyset pages; validated route values, exhausted/error retry and cancel guards",
+    "Overlay command context stays stable; sheet surface styling scoped to overlay, preventing background consumers rerendering; modal focus/queue/write protections retained",
+    "Regression coverage for saved row, invalid route, exhausted cursor/retry and background overlay isolation"
+  ],
+  "dependenciesAdded": [],
+  "continuation": "User explicitly approved temporary QA profile and cleanup",
+  "diagnostics": [
+    "First category timing script used wrong fixed position;stopped and corrected to live XML. Failed fifth Expense save-row visibility was real and fixed.",
+    "First fixture exec-in loader did not retain bytes;diagnosed and replaced with guarded QA-only push/copy plus SHA256 verification.",
+    "Initial effect state synchronization rejected by lint;replaced by operation-keyed Records and cancellable pagination;no suppression.",
+    "Shared ADB stalled;isolated5038 connection restored control. Managed-profile restart hit locked-profile credential-intent failure and recurring transport loss;two approaches exhausted,stopped native test loop.",
+    "Cleanup profile name checked immediately before removal;success and onlyuser0 verified.",
+    "Final overlay correction backed by trace/source and component evidence;on-device scale verification remains pending."
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "date": "2026-11-03",
+  "phase": 1,
+  "status": "Partially complete",
+  "evidenceRoot": ".cache/phase1/closure-2026-11-03",
+  "baseline": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 pass",
+    "components": "24 pass across4 suites",
+    "logs": "baseline-lint.log,baseline-typecheck.log,baseline-test.log"
+  },
+  "final": {
+    "sourceIdentity": "All4 retained app/test files exactly match baseline SHA256 after modal experiment reverted",
+    "lint": "baseline pass reused for identical retained source; experimental pass also recorded",
+    "typecheck": "baseline pass reused for identical retained source; experimental pass also recorded",
+    "coreTests": "47 baseline pass; core/repository/schema unchanged",
+    "components": "24 baseline pass;24 experimental pass; retained source matches baseline",
+    "androidHermesExport": "Earlier approved-qa final pass reused; retained source unchanged",
+    "bundleGuard": "Earlier1977-source pass reused; no shipping source/dependency changed",
+    "visualPackage": {
+      "screenshotCount": 24,
+      "primaryScreenTitles": 20,
+      "embeddedImagesMatchManifest": true,
+      "allDimensions": "1080x1920",
+      "approval": "pending"
+    },
+    "mappingPatch": "git apply --check pass after LF correction; proposed only"
+  },
+  "acceptance": [
+    {
+      "id": "TC-01",
+      "status": "met",
+      "scope": "automated Income/Expense matching categories, one row and exact account effects"
+    },
+    {
+      "id": "TC-02",
+      "status": "met",
+      "scope": "automated symmetric Transfer and unchanged Income/Expense aggregates"
+    },
+    {
+      "id": "TC-03",
+      "status": "met",
+      "scope": "automated same/missing/archived destination rejection with unchanged logical tables/receipts"
+    },
+    {
+      "id": "TC-04",
+      "status": "met",
+      "scope": "automated midnight/noon/DST/correction/accounting-month and creation-metadata assertions"
+    },
+    {
+      "id": "TC-05",
+      "status": "met",
+      "scope": "automated referenced category archive/restore, active pickers/history and invariant totals"
+    },
+    {
+      "id": "TC-07",
+      "status": "met",
+      "scope": "automated Transfer deletion fault checkpoints; both derived account effects roll back together"
+    },
+    {
+      "id": "TC-08",
+      "status": "met",
+      "scope": "automated referenced account archive/restore with picker and balance invariance"
+    },
+    {
+      "id": "TC-13",
+      "status": "met",
+      "scope": "automated persisted 2\u00e2\u2020\u20190\u00e2\u2020\u20192 display and unchanged financial rows"
+    },
+    {
+      "id": "TC-15",
+      "status": "met",
+      "scope": "automated exact seven seeds, no reseed after deletion/restart admission, first-account guidance action"
+    },
+    {
+      "id": "TC-28",
+      "status": "met",
+      "scope": "automated repository concurrency/receipt replay and UI double-Save guard"
+    },
+    {
+      "id": "TC-29",
+      "status": "met",
+      "scope": "automated Transfer amount/destination edit faults and atomic replacement"
+    },
+    {
+      "id": "TC-30",
+      "status": "met",
+      "scope": "automated exact terminating/non-terminating/malformed arithmetic and no-write rejection"
+    },
+    {
+      "id": "TC-39",
+      "status": "met",
+      "scope": "automated half-up and zero-after-rounding rejection; display never rescales finance"
+    },
+    {
+      "id": "TC-79",
+      "status": "met",
+      "scope": "actual host SQLite max_page_count exhaustion plus injected checkpoints and component draft/token retention; Android native run remains pending under the demo gate"
+    },
+    {
+      "id": "TC-97",
+      "status": "met",
+      "scope": "source lint/token scan, both-appearance text/control/palette/tinted-tile contrast and deterministic palette identity; no row blur/gradient/shadow added"
+    },
+    {
+      "id": "TC-101",
+      "status": "pending manual verification",
+      "scope": "Host render isolation/arithmetic/loading/latest-type/haptics-mock assertions pass; native ordered1234567890 retained. Native ten taps within exactly one second and complete final keypad latency not certified."
+    },
+    {
+      "id": "TC-103",
+      "status": "pending manual verification",
+      "scope": "Source motion/worklet inventory retained. System transition scale0, JS reload, month-sheet open/close pass functionally; original0.5 restored. Every-animation instant/<=100ms motion timing unverified. Native haptics deferred under3.6; passcode leg Phase4, mapping approval pending."
+    },
+    {
+      "id": "TC-105",
+      "status": "met",
+      "scope": "Host exact keysets/concurrency/aggregate and saved-row paging tests pass; native PERF counts,pages,exact totals and six scroll samples recorded. Final overlay shared-UI retest pending separately."
+    },
+    {
+      "id": "TC-113",
+      "status": "not met",
+      "scope": "write endpoints, signed opening balances, half-up and exact totals above2^53 pass. App import rejection is unimplemented until Phase5; no whole-case pass or waiver"
+    },
+    {
+      "id": "TC-114",
+      "status": "met",
+      "scope": "automated exact approved seeds/icons, name/icon edits, type immutability and historical linked-name/totals assertions"
+    },
+    {
+      "id": "UX-01 dry run",
+      "status": "met",
+      "scope": "Five unique Income and Expense UI runs,medians7.660/7.714seconds,four activations+one scroll; measured after saved-row fix and before final overlay isolation; final shared-UI regression remains pending separately."
+    },
+    {
+      "id": "Records scroll dry run",
+      "status": "met",
+      "scope": "Six60s warmed Dark/Light samples on verified fixture meet measured frame/response/no-long-task targets; final overlay change not re-certified. No standalone/release claim."
+    },
+    {
+      "id": "UI-PERF-01 dry run",
+      "status": "not met",
+      "scope": "Retained Light20valid sheet samples:mean57.5475fps,max116.667ms frame interval,eventp95201.0176ms,JSmax119.5467ms(1task>50). Modal-onShow experiment alsofailed and reverted. Final30tabs/30segments/ten-key observed96.2957ms eventp95,3tasks>50,max104.6104ms;308history entries dropped,so no complete p95/no-loss PASS."
+    },
+    {
+      "id": "VIS-01",
+      "status": "pending manual verification",
+      "scope": "24raw content-state candidates:fivePhase1screens plus bottomPreferences,bothappearances,font100/200;20primary titles/dimensions/hashes/embeddedbytes pass. Owner approval,0.1% regression comparison and expanded error/loading/empty states pending."
+    },
+    {
+      "id": "Offline Dark/Light demo and native accessibility/state review",
+      "status": "pending manual verification",
+      "scope": "Offline saves separately met. Five settled screens in bothappearances at100/200; bounded scrolling reaches200% Entry controls. TalkBack absent;fullfocus/one-handed/software-IME/state audit and animation-duration proof unpassed. No standalone startup claim."
+    },
+    {
+      "id": "Offline Dark/Light loaded-client save",
+      "status": "met",
+      "scope": "Actual normal-UI saves whileWiFi0/no default network; rows7.90/8.90 verified,WiFi1 restored; no cold-start claim."
+    },
+    {
+      "id": "200% settled content/reachability",
+      "status": "met",
+      "scope": "AllfivePhase1screens bothappearances have correct titles; Entry controls reached via bounded scrolling. Limited content/reachability evidence,not whole accessibility PASS."
+    },
+    {
+      "id": "Keyboard and reduced-motion functional smoke",
+      "status": "met",
+      "scope": "Hardware text input retains unsaved note; focus hides keypad,scroll reachesDonewriting,dismiss restores keypad,Back cancels. OS reduce-motion0+reload sheet open/close passes functionally; original0.5 restored. Software IME occlusion/every-animation timing unverified."
+    }
+  ],
+  "native": {
+    "apkSHA256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+    "target": "MuMu james Android12/API32,1080x1920,density480",
+    "scope": "Existing debug development-client APK; local Metro Hermes JavaScript with __DEV__ false for scroll; no release certification",
+    "functional": "Fresh QA seeds/Cash creation; actual Income/Expense UI saves; native transfer/edit/replay/stale/archive/reference/rollback assertions pass",
+    "ux": {
+      "income": {
+        "medianUpperBoundSeconds": 7.659624199848622,
+        "runs": 5,
+        "nonKeypadActivations": 4,
+        "scrollGestures": 1,
+        "savedRowsVisible": true
+      },
+      "expense": {
+        "medianUpperBoundSeconds": 7.714185599936172,
+        "runs": 5,
+        "nonKeypadActivations": 4,
+        "scrollGestures": 1,
+        "savedRowsVisible": true
+      }
+    },
+    "fixture": "500 Accounts/200 Categories/10000 Transactions/10000 receipts; native277 unique month rows in6 pages,50-row first page,140202403 expense minor units; fixture hash/counts/integrity verified",
+    "scroll": "Six60s samples:59.365\u00e2\u20ac\u201c59.884fps,max present interval66.667ms,eventp95\u00e2\u2030\u00a437.081ms,no observed JS task>50ms. These precede final overlay correction; not a whole interaction-matrix PASS. Cumulative gfxinfo0jank retained; invalid FrameCompleted values not used.",
+    "sheet": "Retained Light20valid sheet samples:mean57.5475fps,max116.667ms frame interval,eventp95201.0176ms,JSmax119.5467ms(1task>50). Modal-onShow experiment alsofailed and reverted. Final30tabs/30segments/ten-key observed96.2957ms eventp95,3tasks>50,max104.6104ms;308history entries dropped,so no complete p95/no-loss PASS.",
+    "accessibility": "Offline saves separately met. Five settled screens in bothappearances at100/200; bounded scrolling reaches200% Entry controls. TalkBack absent;fullfocus/one-handed/software-IME/state audit and animation-duration proof unpassed. No standalone startup claim.",
+    "cleanup": "Exact approved KwartrackerClosureQA user10 removed; onlyOwner0. Synthetic staging removed; WiFi1,font1.0,transition0.5,demoAllowed0 restored. Dynamic frame adjustmenttrue read back,onlyjames restarted. Original APK hash unchanged; no Owner financial write.",
+    "logs": "owner-runtime.log: Running main only; no captured ReactNativeJS warning/error. Host SQLite/module-type warnings pre-existing.",
+    "finalOwnerSmoke": "pass: Owner first-account guidance, zero totals, month sheet open/close, unchanged pinned APK",
+    "interactionSamples": [
+      {
+        "development": false,
+        "eventP95Ms": 201.017603,
+        "events": 20,
+        "maximumTaskMs": 119.546685,
+        "milliseconds": 13168.005938999995,
+        "overflow": 0,
+        "processHistoryDropped": 0,
+        "routeVerification": "Host UI assertions before and after sample",
+        "tasksAbove50ms": 1
+      },
+      {
+        "development": false,
+        "eventP95Ms": 70.176603,
+        "events": 2,
+        "maximumTaskMs": 838.709185,
+        "milliseconds": 1872.1962620000122,
+        "overflow": 0,
+        "processHistoryDropped": 0,
+        "routeVerification": "Host UI assertions before and after sample",
+        "tasksAbove50ms": 3
+      },
+      {
+        "development": false,
+        "eventP95Ms": 48.622776,
+        "events": 20,
+        "maximumTaskMs": 89.483861,
+        "milliseconds": 13228.405904000043,
+        "overflow": 0,
+        "processHistoryDropped": 0,
+        "routeVerification": "Host UI assertions before and after sample",
+        "tasksAbove50ms": 1
+      },
+      {
+        "development": false,
+        "eventP95Ms": 96.295663,
+        "events": 142,
+        "maximumTaskMs": 104.610413,
+        "milliseconds": 33545.04391200002,
+        "overflow": 0,
+        "processHistoryDropped": 308,
+        "routeVerification": "Host UI assertions before and after sample",
+        "tasksAbove50ms": 3
+      }
+    ],
+    "sampleInterpretation": [
+      "0: retained Light source20sheet interactions;FAIL",
+      "1: startup-contaminated experiment;INVALID",
+      "2: settled Dark onShow experiment;FAIL,reverted",
+      "3: retained controls;308history entries dropped,observed longtasksFAIL;incomplete response certification"
+    ]
+  },
+  "remaining": [
+    "Current-client sheet/control performance fails50ms task limit;sheet201.018ms p95/116.667ms frame alsofail. Two approaches exhausted; no further speculative change retained.",
+    "Native10taps/second and complete lossless current-source keypad/scale recertification",
+    "TalkBack capability,fullfocus/software-IME/one-handed/state audit,every-animation reduce-motion timing",
+    "Owner visual approval,expanded state baselines and0.1% comparison",
+    "Owner scheduling decision:TC103Phase4/TC113Phase5; later-phase assertions unavailable,not waived"
+  ],
+  "changes": [
+    "No retained app/test edit in this closure continuation; earlier saved-row and overlay isolation retained",
+    "24screenshot candidates,manifest,self-contained review gallery",
+    "Exact review-only scheduling patch:121active cases once; no PRD oracle modified",
+    "OnlyselectedPhase1 progress/context updated"
+  ],
+  "dependenciesAdded": [],
+  "continuation": "User explicitly approved temporary QA profile and cleanup",
+  "diagnostics": [
+    "Full sheet sampler captures close layer before destruction; old missing-close evidence not PASS.",
+    "Modal-onShow alsofailed;exact baseline source restored; startup-contaminated sample INVALID.",
+    "Finalcontrols308history dropped: observed p95 only;3observed long tasks fail independently.",
+    "Keyboard harness corrected offviewport bounds and verified actual keypad buttons rather than persistent amount readout.",
+    "PatchCRLF mismatch diagnosed; LF bytes now match plan and applicability passes; not applied.",
+    "SystemUI clock repinned before final screenshots; Android clock itself clips at200%.",
+    "Earlier approval-review quota/Windows UI timeout did not authorize bypass; later approved ADB work succeeded. No unresolved automatic-review rejection.",
+    "Exact profile-name guard before deletion;onlyOwner verified afterjames-only restart;no commit/push/build/deploy/remote mutation."
+  ],
+  "supersedesCurrentStatus": "2026-11-03-approved-qa.json; historical evidence retained",
+  "closureItems": [
+    {
+      "artifact": "closure/Visual-review.html",
+      "status": "prepared;approval pending",
+      "manifest": "closure/visual-manifest.json"
+    },
+    {
+      "artifact": "closure/Acceptance-mapping-proposed.md",
+      "status": "prepared;not applied",
+      "patch": "closure/Acceptance-mapping.patch"
+    }
+  ],
+  "prdSHA256Unchanged": "6f37ffd1111977aa4a3896081f4bdf127c8430ba61cd93519762f4406550b24a",
+  "manualVerificationSteps": {
+    "TalkBack": [
+      "Make TalkBack available on james without replacing the pinned app APK; enable it in Accessibility settings.",
+      "At100% and200% text, in Dark and Light, traverse Records, Accounts, Categories, Entry and Preferences. Verify announced labels/roles/selected values, logical focus order, error announcements, sheet focus containment and return focus after dismissal. Record failures by screen/control; package absence is not PASS."
+    ],
+    "SoftwareKeyboard": [
+      "Enable the software keyboard for the emulator and enter note/account/category text. Verify the focused field and Done writing remain reachable, amount keypad hides during note focus, dismissal restores it with the draft intact, and Back does not accidentally commit. Repeat at200% in both appearances."
+    ],
+    "Motion": [
+      "With OS reduced motion enabled before reloading JS, enumerate each current animation and record frame timing. Every animation must be instant or opacity-only <=100ms. Verify no repeated/layout/list-row animation; preserve Phase4 passcode leg as pending. Restore original transition scale0.5 afterward."
+    ],
+    "Visual": [
+      "Open closure/Visual-review.html and inspect each content candidate by screen,appearance,font size. Record approval or requested changes; candidates do not include all empty/loading/error states.",
+      "Capture and approve missing states on the same device/APK, then run pinned pixel comparison at0.1% tolerance; review differences rather than approving automatically."
+    ],
+    "OneHanded": [
+      "Review the entry journey at100%/200% with the agreed emulator scope. Record whether amount keys,account/category selection,Save,Back and errors remain reachable and whether scrolling is clear. A screenshot alone is not usability approval."
+    ]
+  }
+}

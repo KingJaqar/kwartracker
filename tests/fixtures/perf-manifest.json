@@ -1,0 +1,16 @@
+{
+  "seed": "kwartracker-perf-01-v1",
+  "seedHash": "8b2559cbd4d06d6e942bf32f56823684fa8b9a48f48d09fd62c6b82e35cd3973",
+  "counts": {
+    "Account": 500,
+    "Category": 200,
+    "Transaction": 10000,
+    "Budget": 120,
+    "RecurringRule": 50,
+    "RecurringRuleRevision": 50,
+    "RecurringPausePeriod": 0,
+    "RecurringOccurrenceLedger": 500,
+    "WriteReceipt": 10000,
+    "PreferencesPortable": 1
+  }
+}

@@ -1,0 +1,415 @@
+{
+  "date": "2026-11-04",
+  "phase": 1,
+  "status": "Partially complete; no whole-phase PASS (sheet first open after launch accepted by the Owner as a once-per-process exception, not a pass; first-visit tab mount tasks need an applicability decision; Expense UX-01, reduced-motion, offline and segmented-control re-runs pending)",
+  "instructions": "Root CLAUDE.md -> AGENTS.md applied (Expo Router, CNG, lint + typecheck before done). No conflict with the plan.",
+  "context": {
+    "git": "HEAD c2cc5f2; 254-line porcelain status, tracked patch (sha256 aa1e2505...) and untracked src/tests/scripts/execution-context tar (sha256 6eceea50...) in .cache/phase1/session-2026-11-04b. Final porcelain status identical to baseline.",
+    "repomix": "1.18.1; tabs packet (12 files: tabs routes, ledger-shell, provider, navigation, records, AGENTS/CLAUDE) sha256 bd59682d..., security clean; supplemental ui.tsx packet sha256 3573b29c...; ui.tsx overlay range 1-126 and TextField/ListRowToggle 206-226 read from source.",
+    "device": "MuMu james emulator-5554, Owner user 0 only; installed APK sha256 5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e (matches pinned). QA users 10/11/12 still listed, not touched.",
+    "metro": "localhost:8096 --no-dev --minify, file watching on; PERF-01 fixture db sha256 652c89ce... in Owner app storage under the Section 3.6 snapshot/restore procedure; MuMu dynamic_adjust_frame_rate false (60 Hz) during runs."
+  },
+  "baseline": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "core": "47/47",
+    "components": "28/28",
+    "checkBuild": "pass",
+    "checkContracts": "pass"
+  },
+  "changed": [
+    {
+      "file": "src/components/ledger-shell.tsx",
+      "requirement": "NFR-11(a) tab switch response",
+      "change": "LedgerTabBar commits the pressed tab's selected indicator first and calls navigation.navigate on the next requestAnimationFrame (frame cancelled on unmount or superseded press). tabPress is still emitted synchronously and preventDefault is honoured."
+    },
+    {
+      "file": "src/components/ui.tsx",
+      "requirement": "FR-DSN accessibility / A11Y-01 (agent-runnable leg)",
+      "change": "ListRowToggle's inner native Switch gets focusable={false} and importantForAccessibility='no-hide-descendants'. Before, Android's compressed accessibility tree exposed it as a second, unlabelled clickable/focusable control inside the labelled 'Show archived' row."
+    },
+    {
+      "file": "tests/components/ledger-ui.test.tsx",
+      "change": "Two regressions: tab indicator selects on press and navigation waits for the frame (fails on the old synchronous navigate); toggle row exposes one labelled switch and the inner RCTSwitch is hidden (fails without the fix)."
+    }
+  ],
+  "dependencies": "none added; no migration, schema, native or config change",
+  "revertedExperiments": [
+    "records.tsx A/B without the Year TextField (diagnostic; restored byte-exact, sha256 8022d90d...)",
+    "db-gate.tsx splash-time TextInput warm-up (improved createNode 22.8 -> 14.7 ms but frames over 100 ms remained; restored from the baseline snapshot, sha256 5cfc1561...)"
+  ],
+  "uiPerf": {
+    "tabs": {
+      "before": "event p95 99-109 ms (2026-11-04 earlier runs)",
+      "dark": [
+        {
+          "run": 1,
+          "eventP95Ms": 58.4,
+          "tasksOver50": 5,
+          "maxTaskMs": 84.8,
+          "over100msFrames": 0,
+          "jankPct": 0,
+          "note": "long tasks at 0.04-0.62 s = first visits to Accounts/Categories in this process, plus one 58 ms task at 12.2 s"
+        },
+        {
+          "run": 2,
+          "eventP95Ms": 53.9,
+          "tasksOver50": 0,
+          "over100msFrames": 0,
+          "maxFrameMs": 26,
+          "jankPct": 0
+        }
+      ],
+      "light": [
+        {
+          "run": 1,
+          "eventP95Ms": 57.0,
+          "tasksOver50": 2,
+          "maxTaskMs": 80.3,
+          "over100msFrames": 0,
+          "jankPct": 0,
+          "note": "tasks at first switch after the appearance change (frozen screens catching up)"
+        },
+        {
+          "run": 2,
+          "eventP95Ms": 44.1,
+          "tasksOver50": 0,
+          "over100msFrames": 0,
+          "maxFrameMs": 24,
+          "jankPct": 0,
+          "complete": false,
+          "processHistoryDropped": 52
+        }
+      ],
+      "verdict": "(a) response p95 <= 100 ms met in all four runs; steady-state switches have no task over 50 ms; first-visit/post-theme mount tasks of 57-85 ms remain. Tab switches use animation 'none', so whether NFR-11(c) ('during any animation or gesture') covers them is an open applicability question, not a claimed pass.",
+      "evidence": ".cache/phase1/session-2026-11-04b/qa/perf-tabs-*-run*.json, cdp-results.jsonl"
+    },
+    "sheets": {
+      "warm": {
+        "dark": {
+          "eventP95Ms": 50.2,
+          "tasksOver50": 0,
+          "maxFrameMs": 65,
+          "over100msFrames": 0
+        },
+        "light": {
+          "eventP95Ms": 50.4,
+          "tasksOver50": 0,
+          "maxFrameMs": 69,
+          "over100msFrames": 0
+        },
+        "verdict": "met (10 open/close cycles each, 0% jank)"
+      },
+      "freshLaunch": {
+        "dark": {
+          "eventP95Ms": 54.4,
+          "tasksOver50": 1,
+          "maxTaskMs": 66.5,
+          "over100msFrames": 3
+        },
+        "light": {
+          "eventP95Ms": 51.2,
+          "tasksOver50": 1,
+          "maxTaskMs": 71.3,
+          "over100msFrames": 3
+        },
+        "verdict": "not met: the single task is the first open after launch (t=0.03 s)"
+      },
+      "diagnosis": "CPU trace of the first open: one 84 ms window, completeRoot 30.7 ms + createNode 22.8 ms. A/B with the month picker's Year TextField removed: fresh first open had 0 tasks over 50 ms and 0 frames over 100 ms. Cause: the process's first native TextInput creation/measure. Two fix approaches (inline overlay earlier; warm-up now) did not close it; stopped under the execution rules.",
+      "evidence": ".cache/phase1/session-2026-11-04b/qa/perf-sheet-*-{fresh,warm,fresh-noyear,fresh-warmup}.json, trace-first-open*.json"
+    }
+  },
+  "ux01": {
+    "method": "Five Income saves on the PERF-01 fixture, Add transaction -> account -> scroll -> category -> amount keys -> Save; host monotonic time until a uiautomator dump shows the saved amount on Records (upper bound including adb/dump latency).",
+    "medianUpperBoundS": 5.441,
+    "runsS": [
+      5.529,
+      5.315,
+      5.441,
+      5.353,
+      5.471
+    ],
+    "nonKeypadActivations": 4,
+    "scrolls": 1,
+    "verdict": "met (limits: median <= 10 s, <= 5 non-keypad activations). Expense leg not re-run this session; earlier same-day Expense runs remain historical.",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/ux01-income-fast.json"
+  },
+  "accessibility": {
+    "method": "uiautomator --compressed (accessibility-important views) on Records, Entry, month sheet, drawer, Preferences, Accounts, Categories; Dark/Light at font scale 1.0 and 2.0. Checks: every clickable labelled; targets >= 44 dp (132 px at 480 dpi).",
+    "result": "No unlabelled control after the ListRowToggle fix. All remaining size flags are rows/chips clipped at a scroll viewport or screen edge (bottom y 879, 1677, 1725, 1920), confirmed in screenshots. With a sheet or drawer open the background is absent from the tree. At 200% the tab bar is icon-only as designed.",
+    "beforeAfter": "Accounts compressed tree before fix: Switch '' [892,703][1032,784] clickable/focusable; after: only 'Show archived'.",
+    "notCovered": "TalkBack listening and one-handed judgement removed by Section 3.7; software IME and reduced-motion timing not re-run this session.",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/audit-*.json, a11y-*.xml, a11y-accounts-compressed-{before,fixed}.xml"
+  },
+  "vis01": {
+    "baselines": "28 agent-selected captures vis-{dark,light}-{100,200}-{records,entry,month-sheet,drawer,preferences,accounts,categories}-1.png on the PERF-01 fixture; hashes in .cache/phase1/session-2026-11-04b/vis01-baselines.sha256",
+    "comparison": "Independent re-navigation capture of each screen: pixel difference 0.0 for all 28 pairs (status bar rows 0-99 masked; tolerance 0.1%).",
+    "limit": "Baselines are fixture-populated and date-dependent (current month 2026-11); a later comparison must use the same fixture, date and device profile."
+  },
+  "final": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "core": "47/47",
+    "components": "32/32 (after idle animation warm-up)",
+    "checkBuild": "pass",
+    "checkContracts": "pass",
+    "validationExport": "pass",
+    "checkBundle": "pass, 1977 sources, probes/showcase absent"
+  },
+  "ownerRestore": {
+    "db": "0ac346d7f1e12b57fc03e9b5cc569fb43d914dfa581053717358b9c68f1f9926",
+    "wal": "3126178520e830cfe2f9da9a290867a2bd96006a63156d268cdefa5df62bdd42",
+    "shm": "6c26606d35a2f95649e4f441d305723f097d870cc66e83c35223a78b234e0fce",
+    "settings": "font_scale 1.0, transition 0.5, window 0.5, animator null (match snapshot); dynamic_adjust_frame_rate true restored and james restarted",
+    "appState": "Owner guided empty ledger, +₱0.00/−₱0.00, no synthetic rows, no ReactNativeJS W/E lines",
+    "leftovers": [
+      "files/SQLite/kwartracker.db*.qa-fixture (now also holding this session's synthetic UX-01 rows)",
+      "/data/local/tmp/kw-perf.db"
+    ],
+    "leftoverAction": "await Owner approval to delete"
+  },
+  "incident": "During the first 200% audit the hard-coded menu tap missed, Back left the app and later taps opened MuMu Store's search screen. Nothing was installed or updated (no package install/update time on 2026-11-04); Home was pressed. The audit now finds 'Open menu' by label.",
+  "remaining": [
+    "Decide whether NFR-11(c) applies to un-animated tab switches; if yes, pre-mount tabs after startup (React Navigation preload) is the remaining option",
+    "Expense UX-01 leg and reduced-motion timing on current source not re-run"
+  ],
+  "limits": "No commit, push, build, upload, deployment, remote migration, Owner data write/delete, QA profile change or later-phase work.",
+  "yearStepper": {
+    "decision": "Owner chose 'Use a year stepper' on 2026-11-04",
+    "file": "src/screens/records.tsx",
+    "change": "MonthPicker (now exported) replaces the Year TextField with Previous year / Next year IconButtons bounded 1900-9999 and a polite live-region year header; chips select monthValue(year-month). TextField import removed.",
+    "test": "tests/components/ledger-ui.test.tsx: 'NFR-11: the month sheet steps the year without a native TextInput and stays within 1900-9999'; the host-type TextInput detector was confirmed to find a TextField in a scratch probe (removed).",
+    "checks": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "core": "47/47",
+      "components": "31/31",
+      "checkBuild": "pass",
+      "checkContracts": "pass"
+    },
+    "device": "james, APK sha256 5739550a... (matches pinned), fresh minified Metro on 8096, PERF-01 fixture under Section 3.6 snapshot/restore, dynamic_adjust_frame_rate false then restored true. Sheet dump: Previous year, Next year, 2026, Current month; no EditText.",
+    "freshFirstOpen": [
+      {
+        "appearance": "light",
+        "eventP95Ms": 48.0,
+        "maxTaskMs": 57.1,
+        "over100msFrames": 2,
+        "jankPct": 0
+      },
+      {
+        "appearance": "dark",
+        "eventP95Ms": 42.2,
+        "maxTaskMs": 59.5,
+        "over100msFrames": 2,
+        "jankPct": 0
+      },
+      {
+        "appearance": "dark",
+        "run": 2,
+        "eventP95Ms": 39.3,
+        "maxTaskMs": 61.6,
+        "over100msFrames": 2,
+        "jankPct": 0
+      },
+      {
+        "appearance": "light",
+        "run": 2,
+        "eventP95Ms": 44.7,
+        "maxTaskMs": 59.5,
+        "over100msFrames": 2,
+        "jankPct": 0
+      }
+    ],
+    "warm": [
+      {
+        "appearance": "light",
+        "eventP95Ms": 39.9,
+        "tasksOver50": 0,
+        "maxFrameMs": 73,
+        "over100msFrames": 0
+      },
+      {
+        "appearance": "dark",
+        "eventP95Ms": 44.6,
+        "tasksOver50": 0,
+        "maxFrameMs": 69,
+        "over100msFrames": 0
+      }
+    ],
+    "verdict": "Improved but not met (was one 66-71 ms task and 3 frames over 100 ms). Third approach to this gate; stopped under the execution rules. The earlier no-Year-field A/B (0 tasks) differs from the stepper only by the stepper row; the remaining task's cause is not established.",
+    "harness": "audit.appearance now waits for Records and skips Save when the chosen appearance is already selected; an earlier Metro left on 8096 had no debug target after the emulator restart and was replaced.",
+    "ownerRestore": "DB 0ac346d7..., WAL 3126178..., SHM 6c26606... match the pre-run snapshot; font_scale restored to unset (snapshot value), animation scales 0.5/0.5/null; dynamic_adjust_frame_rate true and james restarted. App not reopened after restore (no Metro).",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/perf-sheet-*-{fresh,warm}-stepper*.json, a11y-stepper-month-sheet.xml, owner-snapshot-stepper/, owner-restore-stepper.txt, stepper-*.log",
+    "concurrency": "A separate Claude session (evidence .cache/phase1/continue-2026-11-04; report phase1/2026-11-04-continuation-coordination.json) drove james and source launches about 11:56-12:04 and ran a server on 8097. That overlaps this session's failed setup attempts (empty UI tree, no debug target on 8096), not the counted runs: the four fresh samples ended 12:05:33, 12:07:49, 12:09:40 and 12:11:24, after that session's last evidence (12:04:26); it wrote its coordination report at 12:09:13 and said it would wait. All four agree (57-62 ms, 2 frames over 100 ms). This session's Owner restore used its own 12:00 snapshot, whose hashes match the earlier verified Owner state."
+  },
+  "firstOpenProfile": {
+    "decision": "Owner chose 'Profile it once' on 2026-11-04",
+    "setup": "james emulator-5554, APK sha256 5739550a... (pinned), fresh minified --no-dev Metro on 8096, PERF-01 fixture under Section 3.6 snapshot/restore, dynamic_adjust_frame_rate false then restored true; the other Claude session's last write was 12:06 and james was idle on the launcher before the run. A Metro on 8081 started 05:26 by another process was left untouched.",
+    "method": "Two launches (bundle warm-up, then a fresh process); RN DevTools Tracing CPU profile around the first month-sheet open and scrim close; symbolicated with the matching Metro source map (prof.mjs, analyze-trace.cjs, window-trace.cjs).",
+    "largestWindowMs": 101.0,
+    "breakdownMs": {
+      "render": 59.2,
+      "commit": 40.5,
+      "createNode": 17.6,
+      "completeRoot": 23.9,
+      "layoutEffects": 16.2,
+      "reanimatedAnimatedComponentMount": 12.3,
+      "reanimatedCssKeyframesRegistry": 7.4,
+      "reanimatedSharedValueAndWorkletSetup": "about 10",
+      "overlayInclusive": 9.5
+    },
+    "comparedWithTextInputTrace": "createNode 22.8 -> 17.6 ms, renderWithHooks self 14.0 -> 9.6 ms, completeRoot 30.7 -> 30.2 ms (whole trace)",
+    "finding": "One synchronous render+commit of the whole sheet in a fresh process, including first-in-process Reanimated setup for the overlay's animated views. No single app component dominates. Warm opens skip the one-time setup.",
+    "proposedFix": "Split mount tried and reverted (see splitMount).",
+    "ownerRestore": "DB 0ac346d7..., WAL 3126178..., SHM 6c26606... match the pre-run snapshot; font_scale unset, animation scales 0.5/0.5/null as snapshotted; dynamic_adjust_frame_rate true and james restarted.",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/trace-first-open-stepper.json, first3.map, window-trace.cjs; owner-snapshot-profile/, owner-restore-profile.txt"
+  },
+  "splitMount": {
+    "decision": "Owner chose 'Try split mount' on 2026-11-04",
+    "change": "Overlay rendered content only after a requestAnimationFrame (cancelled on unmount); four overlay tests waited for content; new test 'a sheet commits its shell first and mounts its content on the next frame' failed on the old overlay.",
+    "checks": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "core": "47/47",
+      "components": "32/32, no act warnings over six runs",
+      "checkBuild": "pass",
+      "checkContracts": "pass"
+    },
+    "device": "james, APK 5739550a... pinned, fresh minified Metro 8096, PERF-01 fixture under Section 3.6, 60 Hz; other session's last write 12:06; james idle beforehand.",
+    "runs": [
+      {
+        "appearance": "light",
+        "kind": "fresh",
+        "eventP95Ms": 85.4,
+        "maxTaskMs": 50.4,
+        "over100msFrames": 6
+      },
+      {
+        "appearance": "light",
+        "kind": "warm",
+        "eventP95Ms": 82.7,
+        "maxTaskMs": 0,
+        "over100msFrames": 0
+      },
+      {
+        "appearance": "light",
+        "kind": "fresh run 2",
+        "eventP95Ms": 78.5,
+        "maxTaskMs": 0,
+        "over100msFrames": 1
+      },
+      {
+        "appearance": "dark",
+        "kind": "fresh",
+        "eventP95Ms": 83.9,
+        "maxTaskMs": 0,
+        "over100msFrames": 4
+      },
+      {
+        "appearance": "dark",
+        "kind": "warm",
+        "eventP95Ms": 201.2,
+        "maxTaskMs": 102.7,
+        "over100msFrames": 13,
+        "note": "max frame bucket 1550 ms; possible emulator stall"
+      },
+      {
+        "appearance": "dark",
+        "kind": "fresh run 2",
+        "eventP95Ms": 278.3,
+        "maxTaskMs": 260.2,
+        "over100msFrames": 10,
+        "note": "uiautomator 'null root node' error during this run; max frame bucket 1800 ms"
+      }
+    ],
+    "verdict": "Regressed: event p95 roughly doubled (now spans the content frame) and frames over 100 ms increased. Reverted byte-exact (ui.tsx 9712d7ff..., ledger-ui.test.tsx 003058d2...). Fourth approach to this gate; stopped.",
+    "ownerRestore": "DB 0ac346d7..., WAL 3126178..., SHM 6c26606... match the pre-run snapshot; font_scale unset, animation scales 0.5/0.5/null; dynamic_adjust_frame_rate true and james restarted.",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/perf-sheet-*-split*.json, ui.tsx.split, ledger-ui.test.tsx.split, split-*.log, owner-snapshot-split/, owner-restore-split.txt"
+  },
+  "animationWarmup": {
+    "decision": "Owner chose 'Try library-level fix' on 2026-11-04",
+    "cause": "On populated Records no Reanimated view is mounted, so the month sheet's Animated.Views were the first in the process and paid Reanimated's first-mount setup (AnimatedComponent mount, CSS/keyframe managers, worklet serialization).",
+    "change": "src/components/ui.tsx: OverlayProvider mounts AnimationWarmup (hidden 1x1 Animated.View with one useAnimatedStyle, pointerEvents none, accessibility hidden) at the first requestIdleCallback and unmounts it after one requestAnimationFrame; show() marks it done so it never runs after or during an overlay.",
+    "test": "tests/components/ledger-ui.test.tsx: idle-callback shim (held until flushIdle) and 'NFR-11: one hidden animated view mounts at first idle and leaves after a frame; an earlier overlay skips it' (fails without the change).",
+    "checks": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "core": "47/47",
+      "components": "32/32, no act warnings over four runs",
+      "checkBuild": "pass",
+      "checkContracts": "pass"
+    },
+    "runs": [
+      {
+        "appearance": "light",
+        "kind": "fresh",
+        "eventP95Ms": 46.5,
+        "maxTaskMs": 52.1,
+        "over100msFrames": 2
+      },
+      {
+        "appearance": "light",
+        "kind": "warm",
+        "eventP95Ms": 43.2,
+        "maxTaskMs": 0,
+        "over100msFrames": 0
+      },
+      {
+        "appearance": "light",
+        "kind": "fresh run 2",
+        "eventP95Ms": 42.2,
+        "maxTaskMs": 55.5,
+        "over100msFrames": 2
+      },
+      {
+        "appearance": "dark",
+        "kind": "fresh",
+        "eventP95Ms": 40.8,
+        "maxTaskMs": 53.6,
+        "over100msFrames": 1
+      },
+      {
+        "appearance": "dark",
+        "kind": "warm",
+        "eventP95Ms": 43.4,
+        "maxTaskMs": 0,
+        "over100msFrames": 0
+      },
+      {
+        "appearance": "dark",
+        "kind": "fresh run 2",
+        "eventP95Ms": 44.7,
+        "maxTaskMs": 0,
+        "over100msFrames": 1
+      }
+    ],
+    "trace": "First open with warm-up: largest window 79.6 ms profiled (was 101.0); layout effects 2.7 ms (was 16.2); createNode 22.6, completeRoot 21.3, renderWithHooks inclusive 20.2.",
+    "verdict": "Improved, not met. Kept as a measured improvement with no regression in response or warm opens. Remaining cost is Fabric native view creation/mount of the sheet tree.",
+    "notMeasured": "The warm-up's own idle task after startup.",
+    "deviceNote": "com.afakan.timedlock installed on james 13:11:38 and opened 13:12 by something outside this session; not running during these runs; left untouched.",
+    "ownerRestore": "DB 0ac346d7..., WAL 3126178..., SHM 6c26606... match the pre-run snapshot; font_scale unset, animation scales 0.5/0.5/null; dynamic_adjust_frame_rate true and james restarted.",
+    "evidence": ".cache/phase1/session-2026-11-04b/qa/perf-sheet-*-warmup2*.json, trace-first-open-warmup2.json, first4.map; ui.tsx.pre-warmup, ledger-ui.test.tsx.pre-warmup, warmup-*.log, owner-snapshot-warmup/, owner-restore-warmup.txt"
+  },
+  "ownerAcceptance": {
+    "date": "2026-11-04",
+    "decision": "Owner chose 'Accept the cost'",
+    "scope": "UI-PERF-01 sheet leg, first open after a fresh launch only: one 52-56 ms JS task in 3 of 4 runs and 1-2 frames over 100 ms after the year stepper and idle animation warm-up. Warm opens and response p95 meet every limit.",
+    "classification": "Owner-accepted exception; not a pass and not a numeric waiver of NFR-11 for any other surface.",
+    "reopenIf": "A later change makes warm opens fail or increases the first-open cost.",
+    "codeChange": "none"
+  },
+  "housekeeping": {
+    "date": "2026-11-04",
+    "authority": "Owner: 'approvals for CRJD including deleting any data or files are authorized for all phases'",
+    "deleted": [
+      "files/SQLite/kwartracker.db.qa-fixture",
+      "files/SQLite/kwartracker.db-wal.qa-fixture",
+      "files/SQLite/kwartracker.db-shm.qa-fixture",
+      "/data/local/tmp/kw-perf.db",
+      "Android users 10, 11, 12"
+    ],
+    "note": "Removing user 10 restarted the Android framework once; james recovered by itself.",
+    "after": "pm list users shows Owner (0) only; Owner DB/WAL/SHM hashes unchanged; font_scale null, animation scales 0.5/0.5/null.",
+    "untouched": "com.afakan.timedlock (not installed by this work)"
+  }
+}

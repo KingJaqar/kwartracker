@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-31",
+  "status": "S2 measured candidate selected for later Phase4 integration; no production credential implementation in Phase0",
+  "parameters": {
+    "iterations": 600000,
+    "outputBits": 256,
+    "saltBits": 128
+  },
+  "rejectedCandidates": [
+    {
+      "implementation": "@noble/hashes2.4.0 JavaScript",
+      "outcome": "Exceeded cooperative deadline; no750ms claim"
+    },
+    {
+      "implementation": "Android BC SecretKeyFactory",
+      "milliseconds": 4843.9789,
+      "vectorMatches": true,
+      "within750ms": false,
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api36-pbkdf2-result.json"
+    }
+  ],
+  "candidatePackages": [
+    {
+      "name": "react-native-quick-crypto",
+      "version": "1.1.9",
+      "integrity": "sha512-u60Kr4EdAYI1ksGq7uwJfOXNJR/iWkCQ1AxfoVbjM/pEpiydddzsFXFYqwyv7EeB7eTDgg5/LiCGwNxA7W7NKA=="
+    },
+    {
+      "name": "react-native-nitro-modules",
+      "version": "0.37.1",
+      "integrity": "sha512-KpW6EQVQ/bfegpCGxN9Be+ndvsfj56t4IESEvCASu9gWpJa/NDfHpIeIwCOvZQ3eXmLEj6YD4wCLqcC1FJPr2w=="
+    },
+    {
+      "name": "react-native-quick-base64",
+      "version": "3.0.1",
+      "integrity": "sha512-EjUP2U7WqKmlMmoY7XGyHomy8bM0q4+yCDCRg4ZezQ6zedYRwc7yVk4V2O/iSftKaLEzhuW98lpyPMdk1iPHXQ=="
+    }
+  ],
+  "installation": {
+    "command": "npx expo install react-native-quick-crypto@1.1.9 react-native-nitro-modules@0.37.1 react-native-quick-base64@3.0.1",
+    "exitCode": 1,
+    "detail": "npm dependency installation succeeded; Expo could not write dynamic app.config.js. Added the documented plugin manually; effective config, SDK check, exports, lint/typecheck/tests and Doctor pass. No unchanged installer retry."
+  },
+  "review": {
+    "sourceContext": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/crypto-context.xml",
+    "identityIndex": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/crypto-context/source-index.json",
+    "derive": "Published1.1.9 HybridPbkdf2.cpp calls fastpbkdf2_hmac_sha256 in owned native buffers on async Promise worker; no JS iteration loop.",
+    "compare": "Fixed32-byte arrays; installed timingSafeEqual.ts validates equal byte lengths and calls HybridUtils.cpp CRYPTO_memcmp. OpenSSL3.6 documentation and installed source reviewed. No selected runtime or secret-memory certification claimed.",
+    "limitations": [
+      "Actual Android16/17<=750ms measurement pending",
+      "Pinned native ABI/build/provenance confirmation pending successful APK",
+      "Production credential integration and full security review remain Phase4",
+      "Native library creates private buffer copies; JavaScript cleanup does not prove zeroization of all native allocations"
+    ],
+    "licenses": "Full available dependency licenses and pinned upstream MIT/OpenSSL texts retained in THIRD_PARTY_NOTICES. fastpbkdf2 source dedication retained; no hand-written crypto algorithm."
+  },
+  "audit": {
+    "before": {
+      "info": 0,
+      "low": 6,
+      "moderate": 42,
+      "high": 6,
+      "critical": 0,
+      "total": 54
+    },
+    "after": {
+      "info": 0,
+      "low": 6,
+      "moderate": 42,
+      "high": 6,
+      "critical": 0,
+      "total": 54
+    },
+    "newAdvisoryNames": [],
+    "changedExistingPackageVersions": [],
+    "note": "Current-date comparison of preserved pre-install lock versus new lock; old eight-advisory checkpoint is historical."
+  },
+  "selection": {
+    "date": "2026-11-02",
+    "implementation": "react-native-quick-crypto1.1.9 native fastpbkdf2/OpenSSL",
+    "buildId": "83caa6fc-e946-40ef-a505-07d26e33f268",
+    "apkSha256": "2343c5cc89df9183991b6322471ba1ad55c6015df02dfc44c30c43073d6f414a",
+    "scope": "Explicit user emulator override; not physical-device performance",
+    "measurements": [
+      {
+        "serial": "emulator-5580",
+        "milliseconds": 213.35529400012456,
+        "includesFirstModuleLoad": true,
+        "evidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-fast-kdf.json"
+      },
+      {
+        "serial": "emulator-5584",
+        "milliseconds": 570.4645999999484,
+        "includesFirstModuleLoad": true,
+        "evidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api37-fast-kdf-observed.json"
+      }
+    ],
+    "parameters": {
+      "iterations": 600000,
+      "outputBits": 256,
+      "saltBits": 128
+    },
+    "comparison": "Equal fixed32-byte buffers; native CRYPTO_memcmp; installed native call sites reread this session",
+    "provenance": "Pinned lock integrity and retained notices unchanged; built same package versions in reviewed diagnostic APK",
+    "limitations": [
+      "Emulator observations do not certify physical performance",
+      "Production enrollment/verification and full SEC-REV-01 remain Phase4",
+      "No certification of zeroization of all native/private buffer copies"
+    ]
+  }
+}

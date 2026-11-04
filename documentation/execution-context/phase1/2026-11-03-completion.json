@@ -1,0 +1,170 @@
+{
+  "date": "2026-11-03",
+  "phase": 1,
+  "status": "Partially complete",
+  "evidenceRoot": ".cache\\phase1\\completion-2026-11-03",
+  "baseline": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 pass",
+    "components": "20 pass",
+    "buildGuard": "pass",
+    "contractGuard": "pass"
+  },
+  "final": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 baseline passes reused: no domain/repository/storage change",
+    "components": "21 pass, all four suites",
+    "androidHermesExport": "pass",
+    "bundleGuard": "pass,1977 sources"
+  },
+  "acceptance": [
+    {
+      "id": "TC-01",
+      "status": "met",
+      "scope": "automated Income/Expense matching categories, one row and exact account effects"
+    },
+    {
+      "id": "TC-02",
+      "status": "met",
+      "scope": "automated symmetric Transfer and unchanged Income/Expense aggregates"
+    },
+    {
+      "id": "TC-03",
+      "status": "met",
+      "scope": "automated same/missing/archived destination rejection with unchanged logical tables/receipts"
+    },
+    {
+      "id": "TC-04",
+      "status": "met",
+      "scope": "automated midnight/noon/DST/correction/accounting-month and creation-metadata assertions"
+    },
+    {
+      "id": "TC-05",
+      "status": "met",
+      "scope": "automated referenced category archive/restore, active pickers/history and invariant totals"
+    },
+    {
+      "id": "TC-07",
+      "status": "met",
+      "scope": "automated Transfer deletion fault checkpoints; both derived account effects roll back together"
+    },
+    {
+      "id": "TC-08",
+      "status": "met",
+      "scope": "automated referenced account archive/restore with picker and balance invariance"
+    },
+    {
+      "id": "TC-13",
+      "status": "met",
+      "scope": "automated persisted 2→0→2 display and unchanged financial rows"
+    },
+    {
+      "id": "TC-15",
+      "status": "met",
+      "scope": "automated exact seven seeds, no reseed after deletion/restart admission, first-account guidance action"
+    },
+    {
+      "id": "TC-28",
+      "status": "met",
+      "scope": "automated repository concurrency/receipt replay and UI double-Save guard"
+    },
+    {
+      "id": "TC-29",
+      "status": "met",
+      "scope": "automated Transfer amount/destination edit faults and atomic replacement"
+    },
+    {
+      "id": "TC-30",
+      "status": "met",
+      "scope": "automated exact terminating/non-terminating/malformed arithmetic and no-write rejection"
+    },
+    {
+      "id": "TC-39",
+      "status": "met",
+      "scope": "automated half-up and zero-after-rounding rejection; display never rescales finance"
+    },
+    {
+      "id": "TC-79",
+      "status": "met",
+      "scope": "actual host SQLite max_page_count exhaustion plus injected checkpoints and component draft/token retention; Android native run remains pending under the demo gate"
+    },
+    {
+      "id": "TC-97",
+      "status": "met",
+      "scope": "source lint/token scan, both-appearance text/control/palette/tinted-tile contrast and deterministic palette identity; no row blur/gradient/shadow added"
+    },
+    {
+      "id": "TC-101",
+      "status": "pending manual verification",
+      "scope": "Host keypad/render/double-save tests pass. Prior recorded ten-tap client result retained; populated final-source journey pending disposable data."
+    },
+    {
+      "id": "TC-103",
+      "status": "pending manual verification",
+      "scope": "Host popup queue tests pass; native motion sample invalid. Missing native haptics deferred; passcode shake belongs to Phase4."
+    },
+    {
+      "id": "TC-105",
+      "status": "met",
+      "scope": "automated real PERF-01 keysets/concurrent insert-delete/exact aggregates, primitive row memo isolation and no row queries; native scroll dry run is a separate pending gate New prepared-display/paging regression passes; final-source native scale retest pending."
+    },
+    {
+      "id": "TC-113",
+      "status": "not met",
+      "scope": "write endpoints, signed opening balances, half-up and exact totals above2^53 pass. App import rejection is unimplemented until Phase5; no whole-case pass or waiver"
+    },
+    {
+      "id": "TC-114",
+      "status": "met",
+      "scope": "automated exact approved seeds/icons, name/icon edits, type immutability and historical linked-name/totals assertions"
+    },
+    {
+      "id": "UX-01 dry run",
+      "status": "pending manual verification",
+      "scope": "Prior five Expense runs retained historically; full Income/final-source journey pending disposable data."
+    },
+    {
+      "id": "Records scroll dry run",
+      "status": "pending manual verification",
+      "scope": "actual app, approved PERF fixture, both appearances, raw frame evidence"
+    },
+    {
+      "id": "UI-PERF-01 dry run",
+      "status": "pending manual verification",
+      "scope": "Not met: prior no-long-task failure remains unresolved; current sheet measurements invalid (15Hz, missing layer presents, corrupt frame timestamps)."
+    },
+    {
+      "id": "VIS-01",
+      "status": "pending manual verification",
+      "scope": "pinned profile, key screen states, both appearances/font scales; approved baseline and comparison absent"
+    },
+    {
+      "id": "Offline Dark/Light demo and native accessibility/state review",
+      "status": "pending manual verification",
+      "scope": "Pinned client loaded; empty/seeded screens and Light/System preferences exercised. Full populated journey/TalkBack/200%/one-handed review pending. Standalone cold-start deferred under Section3.6."
+    }
+  ],
+  "native": {
+    "apkSHA256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+    "device": "james Android12/API32,1080x1920",
+    "server": "local8094 --no-dev --minify",
+    "flows": "Records guided empty state, Accounts empty state, seeded Categories, month sheet/back, drawer/Preferences, Light save and System restore",
+    "financeMutation": "none",
+    "measurements": "20 sheet open/close captures invalid; not PASS",
+    "console": "No ReactNativeJS exception found in captured current-process log; native graphics/hidden-API warnings present. Metro host NO_COLOR warning retained. Not warning-free certification."
+  },
+  "remaining": [
+    "Await explicit temporary-profile/cleanup permission; no profile created",
+    "Run populated Income/Expense and final-source PERF on isolated synthetic data",
+    "Configure60Hz and fix measurement layer/timestamps before interaction matrix",
+    "TalkBack/200%/one-handed audit and owner-approved VIS baseline",
+    "TC113 import belongs to Phase5; TC103 passcode belongs to Phase4"
+  ],
+  "changes": [
+    "Memoized primitive Records presentation; stable renderer removes per-recycle formatting",
+    "Component regression for stable loading data/exact subtitle-money/date grouping"
+  ],
+  "dependenciesAdded": []
+}

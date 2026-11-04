@@ -41,3 +41,14 @@ example
 # generated native folders
 /ios
 /android
+
+# Local test/build evidence and caches (synthetic fixtures remain in source)
+.cache/
+coverage/
+*.db
+*.db-*
+*.sqlite*
+*.kwarbackup.json
+*.keystore
+**/recovery-artifacts/
+**/telemetry-queue/

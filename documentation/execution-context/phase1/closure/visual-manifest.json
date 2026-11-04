@@ -1,0 +1,186 @@
+{
+  "status": "candidate; owner approval pending",
+  "date": "2026-11-03",
+  "apkSHA256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+  "device": "james Android12/API32,x86_64,1080x1920,density480",
+  "pinning": "SystemUI demo clock12:34,battery100%,notifications hidden immediately before each screenshot; real date unchanged; fonts100%/200%; Tools bubble disabled only in temporary QA profile",
+  "dataset": "Synthetic repository-generated functional fixture plus offline Transport7.90 and8.90 expenses; no Owner data",
+  "sourceIdentity": "../../../../.cache/phase1/closure-2026-11-03/baseline.json",
+  "limits": [
+    "These are content-state baseline candidates; full error/empty/loading state expansion remains a separate acceptance obligation.",
+    "No baseline approved yet; no VIS-01 PASS or design sign-off implied.",
+    "At200%,entry details require scrolling; gallery includes initial viewport. See reachability evidence.",
+    "Screenshot images preserve raw emulator pixels. Android SystemUI clock itself clips at200% font scale; no pixels were edited."
+  ],
+  "images": [
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "records",
+      "file": "visual-candidates/dark-records-100.png",
+      "sha256": "cb6368495b98e262b4d3b95bc52a826968c45aac5554988d3febe23dad713db0"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "accounts",
+      "file": "visual-candidates/dark-accounts-100.png",
+      "sha256": "86b36c59d96c733a3707b578ae288f1d5f31bfe5930533513ef48c792e1923cd"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "categories",
+      "file": "visual-candidates/dark-categories-100.png",
+      "sha256": "7dfe303f65f3cc83590e38d6059aaed9fda4e2459f6b81290fb39d02eb465f32"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "entry",
+      "file": "visual-candidates/dark-entry-100.png",
+      "sha256": "177ad9b0e433d626f2254b0c78bec41eaef3b3725813ba4084b40b2f71c897d7"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "preferences",
+      "file": "visual-candidates/dark-preferences-100.png",
+      "sha256": "8496e7f5e5734c8d942a61b2e8f3b3f57a4f9cf105af3417863475dfa36be279"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 100,
+      "screen": "preferences-bottom",
+      "file": "visual-candidates/dark-preferences-bottom-100.png",
+      "sha256": "2021140a14b4ee6d9f5e0c0977fe3c383cf1ea827034f3e6dc2e98abc85880fb"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "records",
+      "file": "visual-candidates/dark-records-200.png",
+      "sha256": "3896a7b222556e63fc82650d842a360871d5e012dcc4cfce39f95ff9809768e3"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "accounts",
+      "file": "visual-candidates/dark-accounts-200.png",
+      "sha256": "c61d49e3a92c949335f148beab9f0af21a724101103f096665e8fc4d0202e733"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "categories",
+      "file": "visual-candidates/dark-categories-200.png",
+      "sha256": "e65e00de8a3f8683449ab5bf16a903815ad454b955756c44b00f1e5e96cc6399"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "entry",
+      "file": "visual-candidates/dark-entry-200.png",
+      "sha256": "5237052fa737df3e92ac77c17bf58e315e11e450e7e05d0f5d326e6665f87194"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "preferences",
+      "file": "visual-candidates/dark-preferences-200.png",
+      "sha256": "a221464fb17f05f8c5868bfd8b027ead56f542dbddfbbe63d8f45c8a88b500df"
+    },
+    {
+      "appearance": "dark",
+      "fontScale": 200,
+      "screen": "preferences-bottom",
+      "file": "visual-candidates/dark-preferences-bottom-200.png",
+      "sha256": "b4ca56659f676f2f19dba84710694207d0ce87c2714fd5d936f053636a254043"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "records",
+      "file": "visual-candidates/light-records-100.png",
+      "sha256": "1b8080d17c36349742818e25a59f5d95cb259f259b007a77a30c048f163e3db1"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "accounts",
+      "file": "visual-candidates/light-accounts-100.png",
+      "sha256": "9451277f11f05d83d19b0fc895c5704d9a745d49806747664a34b3a11dbb7b3a"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "categories",
+      "file": "visual-candidates/light-categories-100.png",
+      "sha256": "9556991fafae9f8668bea2128e46805607f2eeebd3775dda0db05db0eaffcc10"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "entry",
+      "file": "visual-candidates/light-entry-100.png",
+      "sha256": "78dcf811855b795075c86a7ca844af0fc9d4f89e94fde856dff418367c23dd47"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "preferences",
+      "file": "visual-candidates/light-preferences-100.png",
+      "sha256": "07d7f0eb57703bbdbcb0bc32e49e4ebf26492fde36128404eb9cf67790510f01"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 100,
+      "screen": "preferences-bottom",
+      "file": "visual-candidates/light-preferences-bottom-100.png",
+      "sha256": "ab29eb1f827942cdfd68477fb23635c71746df975f7e9c7ccdc439b3a2deb86a"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "records",
+      "file": "visual-candidates/light-records-200.png",
+      "sha256": "ad556f3bb058a728140d38ad697db18ae95572b608a74b5054b43f493cb6b5d2"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "accounts",
+      "file": "visual-candidates/light-accounts-200.png",
+      "sha256": "b8381731c4130e3e8f7da706a27db6fe31ae08df53f9f84e83210b83ef40370c"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "categories",
+      "file": "visual-candidates/light-categories-200.png",
+      "sha256": "38097941b47d94eba7c86650dde67ffc8d3d700fc13119bce4647d1a32a32fa0"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "entry",
+      "file": "visual-candidates/light-entry-200.png",
+      "sha256": "ca9d20a67b30e9504548c6fb44b69be1f4db30e815321a8b4bee24abbeec8271"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "preferences",
+      "file": "visual-candidates/light-preferences-200.png",
+      "sha256": "534db037d884dc111273c4fd22f89b9046052c9504ce127a374d7e0ac9d954c1"
+    },
+    {
+      "appearance": "light",
+      "fontScale": 200,
+      "screen": "preferences-bottom",
+      "file": "visual-candidates/light-preferences-bottom-200.png",
+      "sha256": "4e7a92803d8b7f7d29e67d8f7bd725306b14f50df387c2d8ae0870f74eac747a"
+    }
+  ],
+  "sourceIdentitySHA256": "f6794e2084b8152ff5ddd08ef5314f8efceebf66fb43630fac5866eedc8ff3eb"
+}

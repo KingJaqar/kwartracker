@@ -1,0 +1,289 @@
+{
+  "date": "2026-11-02",
+  "status": "Complete (emulator scope); Phase 1 entry unblocked. S1-S4, S6, TC-121 and TC-122 native legs met on MuMu james; S5 met by the user's explicit acceptance of the supplementary API37 evidence",
+  "authority": "User override 2026-11-02: \"remove the API36 emulator requirement, only use mumuplayer james as main one and only emulator\". MuMu james is the only Phase 0 target; API36 is removed from scope; API37 results earlier in this session are supplementary only. Competing host emulators (LDPlayer instance 1, API37 AVD) were shut down with the user's approval.",
+  "scope": "Run the Phase 0 native gates on the existing verified probe and normal validation APKs. No repository source change, no dependency, no cloud build, upload, commit, push or publication.",
+  "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/claude-2026-11-02/james",
+  "preservation": "Working copy unchanged apart from this record, the Phase 0 plan note and index.json; pre-edit copies kept outside the repository. Earlier harnesses (device-probe.py, s3r.py, s4r.py, tc121r.py, s5.py, s6.py) kept unchanged; james copies are separate files. Failed attempts retained under james/failed1-15hz and james/failed2-s3-dropped.",
+  "target": {
+    "name": "MuMu james (MuMuPlayer Global, instance 0)",
+    "serial": "127.0.0.1:16384",
+    "model": "ASUS_AI2201_A",
+    "android": "12 / API 32",
+    "abi": "x86_64 (primaryCpuAbi of both packages)",
+    "build": "user, no root (shell uid 2000, su absent)",
+    "display": "1080x1920, density 480; modes 60 Hz and 15 Hz",
+    "renderer": "MuMu vk, renderer_strategy perf, gpu_mode middle; 4 vCPU / 4 GB",
+    "telephony": "No running phone service ('service check phone' -> not found)",
+    "backup": "Backup Manager disabled; only com.google.android.gms BackupTransportService and D2dTransport; no LocalTransport; no bmgr; 'cmd backup' unimplemented"
+  },
+  "apks": {
+    "probe": {
+      "buildId": "80c8dd8c-8843-46bf-8442-734941b0168c",
+      "sha256": "1f8271200956b0b1514879b7c74381b08f78706b48f21f0ce8e153441a9a1f2a",
+      "install": "adb install -r on james (no uninstall/data clearing); installed base.apk sha256 equal"
+    },
+    "normalValidation": {
+      "buildId": "45d749c0-d222-4c6b-a7e9-1b6833b6ee10",
+      "sha256": "1f1ecdf8f9f35374356ef4e57ab4e6a0f84210b6c05b43d9c44fae21966e08fd",
+      "install": "adb install -r on james; installed base.apk sha256 equal; non-debuggable"
+    },
+    "developmentClient": "ca81554a-6ca5-4990-9297-15d50d679532 already installed on james (2026-11-02 reconciliation)"
+  },
+  "harness": {
+    "jprobe.py": {
+      "sha256": "25c9dd3402eaf4b5903c043b346bf505ad8cea6bfd0e2350049889a1e9d8903c",
+      "note": "Copy of device-probe.py: james-only allowlist, UTF-8 ADB decoding, evidence under ./james"
+    },
+    "james-native.py": {
+      "sha256": "c0102aa9fce6c8293d5d71b081eff128c225aaeaa85c4312a4139bb949dc77fb",
+      "note": "S1 matrix and extras, TC-122, S6; oracles of native-batch.py/s1-tc122.py/s6.py"
+    },
+    "tc121j.py": {
+      "sha256": "8aaab6696d1e1006b4bb95ba0e4ba6144f006bff1cddcb86b775e436fb71d109",
+      "note": "Offline window runs as a detached on-device script that restores radios and night mode itself (MuMu ADB rides the guest network)"
+    },
+    "s3j.py": {
+      "sha256": "4b8731787caad8baf6a9ae96a80330a44ab5fb787c7d862d31d8cdb71ec5fccb",
+      "note": "Attempts 1-2 (history)"
+    },
+    "s3j2.py": {
+      "sha256": "36935d6c6187d0926d09648ddea4a27c0e00539441237c32cf8622bac53a590b",
+      "note": "Attempt 3: fresh process per part; sheet open/close measured as separate frame windows"
+    },
+    "s4j.py": {
+      "sha256": "c400f57275599ea93837fc8becc9075a4bde9120599ab603125c5cc47f6b406a",
+      "note": "Baseline Asia/Manila, test zone Asia/Tokyo, HOME after timezone schedule, kernel boot_id check, MuMuManager fallback (not needed)"
+    },
+    "s5j.py": {
+      "sha256": "9b6081dca4c9a271b671e769477748e1ba6bf95b70a0b4164e33f1b1526da08d",
+      "note": "Read-only capability and policy-input record"
+    }
+  },
+  "baselineChecks": {
+    "lint": 0,
+    "typecheck": 0,
+    "test": {
+      "exit": 0,
+      "corePassed": 32,
+      "componentPassed": 7
+    },
+    "checkContracts": {
+      "exit": 0,
+      "note": "Pre-existing Node MODULE_TYPELESS_PACKAGE_JSON warning for src/db/schema.ts"
+    },
+    "checkBuild": 0,
+    "final": "Rerun after documentation edits; see finalChecks"
+  },
+  "results": {
+    "S1": {
+      "status": "Met on james",
+      "result": "james-native-result.json sha256 333ba6487ca03f34dc2133ecf999576a1bf2d94624fcb0a547241e2db86c9175",
+      "observed": "restore-points on james equals the recorded 56-checkpoint list; all 56 paused at their checkpoint and recovered in a distinct process; 8 injected provider/cleanup failures kept committed recovery gated with the journal retained and finished on explicit retry (dataset new); precommit corruption restored the old dataset and postcommit corruption stayed gated as CORRUPT with the journal retained"
+    },
+    "TC122": {
+      "status": "Phase 0 native legs met on james; full recovery/unlock integration remains Phase 5",
+      "observed": "empty/current/unknown/newer fixtures passed; real transaction pauses at before-schema, after-schema, 0:1 after-step and before-commit, then termination restored the original source (version 0, 0 objects) in a distinct process"
+    },
+    "S2": {
+      "status": "Met on james",
+      "result": "james-s2-fast-kdf.json sha256 02572dbd2b36fe60bbeef3a2d27b99470f92130eefbd4a70abcda128a513a49e",
+      "observed": "react-native-quick-crypto 1.1.9 fastpbkdf2: 600,000 iterations, 256-bit output, 128-bit salt, 357.01 ms including first module load (<=750 ms), vector matched, mismatch rejected with native CRYPTO_memcmp"
+    },
+    "S6": {
+      "status": "Met on james",
+      "samples": [
+        {
+          "preparePid": 30952,
+          "coldPid": 31403,
+          "recoveryMs": 9683.9,
+          "migrationMs": 9.7,
+          "integrityMs": 162.9
+        },
+        {
+          "preparePid": 31589,
+          "coldPid": 32032,
+          "recoveryMs": 9719.1,
+          "migrationMs": 10.5,
+          "integrityMs": 158.5
+        },
+        {
+          "preparePid": 32222,
+          "coldPid": 32671,
+          "recoveryMs": 9656.1,
+          "migrationMs": 9.8,
+          "integrityMs": 156.1
+        },
+        {
+          "preparePid": 390,
+          "coldPid": 845,
+          "recoveryMs": 9823.5,
+          "migrationMs": 11.1,
+          "integrityMs": 150.6
+        },
+        {
+          "preparePid": 1088,
+          "coldPid": 1958,
+          "recoveryMs": 9669.2,
+          "migrationMs": 10.8,
+          "integrityMs": 167.2
+        }
+      ],
+      "oracle": "Five distinct process-cold PIDs, each distinct from its prepare PID; seed 8b2559cb…; exact PERF counts (10,000 transactions, 500 accounts, 200 categories, 120 budgets, 50 rules, 500 ledger rows); order recovery,migration,integrity,ready; second migration current with no writes; recovered device state new. No duration gate applies per plan S6."
+    },
+    "TC121": {
+      "status": "Phase 0 shell legs met on james",
+      "result": "james-tc121-result.json sha256 f529b96be809fc939cb444f722d2a16e6e0438cf993c65f6028d660d99914080; evaluation james-tc121-evaluation.json sha256 eb40e721e6c315fbb82b53a00dfb6711867d34846c7880487ff127bc957aa84d",
+      "observed": "Airplane on, Wi-Fi off, Active default network none, no mobile network agent; non-debuggable; Hermes bytecode bundle; four Inter weights; only Expo 57 release dev-launcher stubs; COLD launch dark and light; shell text visible; background exactly #0E0F13 and #F5F6F8; no unexpected log lines; radios 0/1/1 and night mode restored",
+      "evaluationNote": "The raw run reported 'not met' solely because mobile_data stayed 1: james runs no telephony service, so 'svc data disable' is a no-op and no cellular network can exist. Recorded as not applicable; no rerun."
+    },
+    "S3": {
+      "status": "Met on james (dark and light)",
+      "results": {
+        "dark": "james-s3v3-dark-result.json sha256 38dd32c6963f681d9b242dcb00da49c80f3d2bdd2939b7c32be607a587d4e7d1",
+        "light": "james-s3v3-light-result.json sha256 d25aa7752c2294dc8f2ab4ff45e6db1b472fcd4d00a849baef30ae47eae6d54d"
+      },
+      "measured": {
+        "dark": {
+          "keypadBurst": {
+            "keys": 10,
+            "inOrder": true,
+            "registrationSpanMs": 168.1,
+            "eventP95Ms": 34.4,
+            "tasksOver50ms": 0
+          },
+          "buttonPress": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 11.0,
+            "eventP95Ms": 39.0
+          },
+          "tab": {
+            "averageFps": 57.3,
+            "jankyPercent": 0,
+            "maxFrameMs": 7.5,
+            "eventP95Ms": 38.9
+          },
+          "banner": {
+            "averageFps": 57.4,
+            "jankyPercent": 0,
+            "maxFrameMs": 6.0,
+            "eventP95Ms": 20.6
+          },
+          "shake": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 5.6,
+            "eventP95Ms": 24.4
+          },
+          "sheet": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 6.7,
+            "eventP95Ms": 37.9
+          },
+          "listFling": {
+            "averageFps": 59.2,
+            "jankyPercent": 0,
+            "maxFrameMs": 41.1,
+            "eventP95Ms": 18.9,
+            "minVisibleRows": 6
+          }
+        },
+        "light": {
+          "keypadBurst": {
+            "keys": 10,
+            "inOrder": true,
+            "registrationSpanMs": 152.0,
+            "eventP95Ms": 36.6,
+            "tasksOver50ms": 0
+          },
+          "buttonPress": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 5.6,
+            "eventP95Ms": 33.2
+          },
+          "tab": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 7.3,
+            "eventP95Ms": 36.8
+          },
+          "banner": {
+            "averageFps": 57.4,
+            "jankyPercent": 0,
+            "maxFrameMs": 6.6,
+            "eventP95Ms": 20.4
+          },
+          "shake": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 9.5,
+            "eventP95Ms": 21.6
+          },
+          "sheet": {
+            "averageFps": 60.0,
+            "jankyPercent": 0,
+            "maxFrameMs": 21.9,
+            "eventP95Ms": 36.4
+          },
+          "listFling": {
+            "averageFps": 59.6,
+            "jankyPercent": 0,
+            "maxFrameMs": 46.5,
+            "eventP95Ms": 19.4,
+            "minVisibleRows": 5
+          }
+        }
+      },
+      "oracle": "NFR-11 (a) p95 <=100 ms; (b) >=55 fps average over 10 runs, <=2% jank, no frame >100 ms; (c) no JS task >50 ms; (d) no blank rows after fling; (e) ten taps in order within 1 s; every JS sample valid (no dropped/overflow/invalid entries). All met in both appearances; no threshold changed.",
+      "attempts": [
+        {
+          "attempt": 1,
+          "outcome": "Not met: MuMu dynamic_adjust_frame_rate held the display in its 15 Hz mode (VSYNC 66.7 ms), so averages were ~15 fps and event p95 ~130-140 ms. Diagnosis: SurfaceFlinger active mode 15 Hz, primaryRefreshRateRange [0 15]. Correction: dynamic_adjust_frame_rate=false through MuMuManager, player restarted (60 Hz, VSYNC 16.7 ms). Setting restored to true and the player restarted after S4."
+        },
+        {
+          "attempt": 2,
+          "outcome": "Not met: p95, JS tasks, taps and rows passed, but the sheet sample counted the scripted 0.47 s idle wait between open and close as frame time (30.5 fps while every frame met its 16.7 ms vsync with 0 jank), and the later sheet/list JS samples were marked invalid by dropped counts 24-82. Diagnosis from React Native 0.86 source: droppedEntriesCount reports evictions from the process-wide 150-entry event buffer since process start, while observers receive every entry. Correction (s3j2.py): fresh app process before each part; sheet open and close measured as separate frame windows."
+        },
+        {
+          "attempt": 3,
+          "outcome": "Met in dark and light"
+        }
+      ],
+      "limitation": "Emulator scope (user override); not presented as physical mid-range device evidence"
+    },
+    "S4": {
+      "status": "Met on james",
+      "permissionAndCancel": {
+        "granted": "james-s4-cancel-granted.json sha256 cc34c70f4f8081224494d7ca1bd98932c8eb5cc29552924542739b42589ae455: permission granted (API 32 has no runtime prompt), own identifier cancelled, other identifiers preserved",
+        "denied": "james-s4-cancel-blocked.json sha256 8c2afc318ed122d3363f5e031e3d097c7ec144ebac73ff956fda8009da93f624: app notifications blocked in Android Settings (importance NONE) -> permission denied, nothing scheduled, outcome permission-denied",
+        "regranted": "james-s4-cancel-regranted.json sha256 eec349f4b1ac0ab3b256819115963a5444a5f26d41581726f67186fab4bf731e: notifications re-allowed; granted and per-identifier cancel pass again"
+      },
+      "reboot": "Daily trigger 20:03 Asia/Manila scheduled; adb reboot; kernel boot_id changed (f4bba041… -> f530f1c2…); Expo re-armed exactly one alarm at 20:03:00.000 after boot; notification tag kwartracker-foundation-reboot posted at 20:04:03 device time; request retained, then cancelled",
+      "timezone": "Process stopped, automatic zone off, zone set to Asia/Tokyo; cold launch reconciled one request at 21:09 Asia/Tokyo; app sent to HOME; exactly one alarm at 21:09:00.000; notification posted at 21:10:20; request retained with currentTimeZone Asia/Tokyo, then cancelled",
+      "restored": "Zone Asia/Manila, automatic zone 1, final inspect found no request; no clock jumps",
+      "elapsedSeconds": 725.3
+    },
+    "S5": {
+      "status": "Met by user acceptance of supplementary API37 evidence (not exercisable on james)",
+      "result": "james-s5-result.json sha256 573b9117adfe297303d3ff6834969425e58f9b3e617470fe09ac4997ee56b777",
+      "observed": "Read-only. Both packages: flags [HAS_CODE ALLOW_CLEAR_USER_DATA] without ALLOW_BACKUP (OS reads allowBackup=false); targetSdk 36. Packaged backup/extraction rules exclude all nine domains for cloud backup and device transfer (verified from the normal APK earlier). james has no LocalTransport, no bmgr, an unimplemented 'cmd backup', no root, and only Google cloud/D2D transports. Neither a cloud nor a device-transfer pass can run without sending data to Google, which this execution does not permit.",
+      "supplementary": "API37 (outside the james-only scope): cloud pass 'Backup is not allowed'; device-transfer preflight -1002 with no LocalTransport data for the package under root (api37-s5-result.json sha256 c2e0b8d8…). The plan's 2026-11-02 reconciliation states that preflight rejection alone is not omission proof.",
+      "acceptance": "User decision 2026-11-02: \"Accept API37 for S5\". Accepted evidence: API37 api37-s5-result.json (cloud pass refused 'Backup is not allowed'; device-transfer preflight -1002; rooted inspection found no LocalTransport data for the package; synthetic markers present before and after) together with the james OS policy inputs (no ALLOW_BACKUP flag; all nine domains excluded for cloud and device transfer). Limitation retained: GMS D2dTransport and a real device-to-device transfer were not exercised; full TC-76 integration remains Phase 6."
+    }
+  },
+  "supplementaryApi37": "Earlier in this session on emulator-5584 (API37): S1 56+10, TC-122 8, S6 5 samples, TC-121r and S5 met; S3 dark not met under host contention; S4 reboot leg met. Retained for history, not used for james acceptance.",
+  "environmentRestored": {
+    "mumuDynamicAdjustFrameRate": "true (restored; player restarted)",
+    "timezone": "Asia/Manila, auto_time_zone 1",
+    "nightMode": "yes",
+    "radios": "airplane 0, wifi 1, mobile_data 1",
+    "probeNotifications": "allowed",
+    "otherHostEmulators": "LDPlayer instance 1 and the API37 AVD remain shut down (user-approved); MuMu instances king and locko untouched"
+  },
+  "remaining": [
+    "None for Phase 0 under the emulator scope. iOS legs remain Deferred; full TC-76 integration remains Phase 6; full recovery/unlock integration remains Phase 5; emulator results are not physical-device results."
+  ]
+}

@@ -1,0 +1,698 @@
+{
+  "artifact": "REL-EVD-01 Phase0 execution report",
+  "date": "2026-10-31",
+  "phaseStatus": "Partially complete",
+  "phase1Entry": "Not started; mandatory Phase0 exit gates open, next native build blocked by EAS allowance",
+  "sourceGitReference": "c2cc5f23a1d313adda90cd24e6828777c87c3553",
+  "sourceIsDirty": true,
+  "checks": [
+    {
+      "command": "npm run lint",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "No lint errors or warnings.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/lint-final-2.log",
+      "sha256": "e25e181f4b275d6bb660cc33bdd0799810685553a53c88c1e3b4b77dd027a4c9"
+    },
+    {
+      "command": "npm run typecheck",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "No TypeScript errors.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/typecheck-final-2.log",
+      "sha256": "93f1df3cbe63d27bdb663d37a703572a747ff74d3d4815abe47da7a4d2676b7d"
+    },
+    {
+      "command": "npm run test:core",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "24 host domain/SQLite/fault/schema/guardrail tests passed.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/core-final-2.log",
+      "sha256": "f63ef5337699a86b0477f5ca94a9256925c28479c37fe20e37e9df3f6db13612"
+    },
+    {
+      "command": "npm run test:components",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "3 startup-gate component tests passed.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/components-final.log",
+      "sha256": "453f57f4e04567dd493361beecca58fc3fdb99153d59d5bc1f7afe5292c886eb"
+    },
+    {
+      "command": "npx expo-doctor@1.21.5",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "21/21 checks passed after the final prototype configuration.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/expo-doctor-final.log",
+      "sha256": "034e6a035ebc285318478d08ac2b1f6b182022e50eeda2ded136e0081d2f5a80"
+    },
+    {
+      "command": "npx expo install --check",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "SDK 57 dependencies are up to date.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/compatibility-final.log",
+      "sha256": "3b47e85d27d2de36267a75ebb6564b5e4f839e57a0b0b01556af9427b198f899"
+    },
+    {
+      "command": "npm ls --depth=0",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Installed direct dependency tree is consistent.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/dependency-tree-final.log",
+      "sha256": "3ec53ab8e20cc0c2f43f06f1e7e49f4446d686a53824997c0d8b2b407ff4c2da"
+    },
+    {
+      "command": "npx expo config --type introspect --json",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Normal validation config introspection passed; no root android/ios folders generated.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/introspect-final.json",
+      "sha256": "ec6f05a108be5e6770e73dbcca332b8677c5de8d8b95cc5285bf2c85029cdb3e"
+    },
+    {
+      "command": "APP_VARIANT=validation npx expo export --platform android --output-dir dist/validation --source-maps --max-workers 2",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Normal validation Hermes bundle passed. Separate source-map check inspected 1,899 sources; no showcase, isolated root, probes or test fixtures.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/validation-export-final.log",
+      "sha256": "57fe01c318acdef554f4ee101ba4144b34d8afcf21eb5ab7676da2b0942abb5a"
+    },
+    {
+      "command": "APP_VARIANT=validation KWARTRACKER_PROBE_ONLY=1 npx expo export --platform android --output-dir dist/foundation-probe --source-maps --max-workers 2",
+      "environment": "Windows 10.0.26300; Node 24.13.1; npm 11.8.0; working copy",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Isolated nonshipping prototype Hermes bundle passed; not an APK/runtime test.",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/logs/probe-export-final.log",
+      "sha256": "0823bc64c0b0bd848e82fa94d553bddb3ba421f7e408a53ad444139ea33f380a"
+    },
+    {
+      "command": "npm run lint",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "No lint errors/warnings",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/post-exclusion-lint.log",
+      "sha256": "e25e181f4b275d6bb660cc33bdd0799810685553a53c88c1e3b4b77dd027a4c9"
+    },
+    {
+      "command": "npm run typecheck",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "No type errors",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/post-exclusion-typecheck.log",
+      "sha256": "93f1df3cbe63d27bdb663d37a703572a747ff74d3d4815abe47da7a4d2676b7d"
+    },
+    {
+      "command": "npm run test:core",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "29 tests passed; actual full run before only the exclusion guard changed",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-core.log",
+      "sha256": "4b228b8cc005fe711158fe4b3120b4568a756ce2d5bfc0c5f0357b95ac237ee6"
+    },
+    {
+      "command": "node --test --test-timeout=30000 tests/guardrails.test.ts",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "5 affected guardrail tests passed after exclusion correction",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/post-exclusion-guards.log",
+      "sha256": "a1b3b691b4026af187ae4e65a804ba1a62d9bf3122476192264d99c07b4de75b"
+    },
+    {
+      "command": "npm run test:components",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "5 tests passed after mocking the independent native KDF in admission tests",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-components-fixed.log",
+      "sha256": "8b7ab2e942cd81661e723da4e35e49313b67a0a568d2096340417aba3e71747e"
+    },
+    {
+      "command": "npx expo-doctor@latest",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "21/21 after final native probe/candidate exclusions",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/doctor-final-native-isolation.log",
+      "sha256": "034e6a035ebc285318478d08ac2b1f6b182022e50eeda2ded136e0081d2f5a80"
+    },
+    {
+      "command": "npx expo install --check",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Dependencies up to date",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/sdk-after-crypto.log",
+      "sha256": "3b47e85d27d2de36267a75ebb6564b5e4f839e57a0b0b01556af9427b198f899"
+    },
+    {
+      "command": "npx expo export --platform android --output-dir dist/foundation-probe4 --source-maps --max-workers 2",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Standalone Hermes probe bundle compiled; no native execution claim",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-export.log",
+      "sha256": "4e98f00533938937fbb7df545a4ccf3bac66e03d62d9e1f5e2b3cfcd9143d15d"
+    },
+    {
+      "command": "npx expo export --platform android --output-dir dist/normal-with-crypto --source-maps --max-workers 2",
+      "date": "2026-10-31",
+      "result": "pass",
+      "exitCode": 0,
+      "detail": "Normal Hermes bundle compiled; checker inspected1899 sources and found probes/fixtures absent",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/normal-with-crypto-export.log",
+      "sha256": "492db19aafd5946661432ee72596924c7403467226d6d6c2d77acaf3987b62ee"
+    }
+  ],
+  "additionalChecks": {
+    "contracts": "npm run check:contracts passed",
+    "profiles": "npm run check:build passed",
+    "workflow": "AUTO-PR YAML parsed; null pull_request event options are valid; remote job not executed",
+    "diff": "git diff --check passed; platform LF/CRLF notices are tooling output",
+    "sourceReview": "Owned changes reviewed; no console logging, TODOs, explicit any, ts-ignore or lint suppression in src/",
+    "planScope": "Exact before-Phase0 and Phase1-onward bytes preserved; historical context and phases1–8 unchanged."
+  },
+  "baseline": {
+    "typecheck": "exit2: two missing CSS declarations in superseded starter source",
+    "lint": "exit1: no ESLint config; automatic setup failed under sandbox network",
+    "config": "exit0",
+    "tests": "No prior test suite",
+    "snapshots": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/baseline",
+    "manifest": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/baseline-manifest.json",
+    "patch": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/baseline.patch",
+    "exception": "Expo lint added ESLint declarations before snapshot; initial package blob separately recovered as baseline/package-before-lint.json; this tool delta was not attributed to user work."
+  },
+  "acceptance": [
+    {
+      "id": "routing-and-gates",
+      "status": "met (local assertions)",
+      "native": "pending manual verification"
+    },
+    {
+      "id": "config-and-build-profiles",
+      "status": "met (static assertions)",
+      "native": "pending project/archive/APK/install/runtime evidence"
+    },
+    {
+      "id": "design-tokens-font-icon-foundation",
+      "status": "met (local source/contrast/import assertions)",
+      "native": "pending visual/font/physical performance evidence"
+    },
+    {
+      "id": "domain-core",
+      "status": "met (tested domain legs)",
+      "native": "timezone/runtime parity pending; no whole later-phase TC pass"
+    },
+    {
+      "id": "database-migrations-exclusive-writes-receipts-restore-admission",
+      "status": "met (host tests)",
+      "native": "Android durability and TC-122 native legs pending"
+    },
+    {
+      "id": "CI-fixture-fault-harness-QA-draft",
+      "status": "met (local implementation)",
+      "native": "Remote CI not run; later feature suites remain assigned to their phases"
+    },
+    {
+      "id": "TC-120",
+      "status": "met",
+      "remaining": "EAS workflow/install/Metro and daily/rebuild instructions now verified. Native spike acceptance is separate."
+    },
+    {
+      "id": "TC-121-phase0-shell",
+      "status": "not met",
+      "remaining": "Android16 offline cold launch and non-debuggable embedded-Hermes APK verified. Explicit remaining runtime flag capture, Android17 check, and warning-fix runtime verification pending."
+    },
+    {
+      "id": "S1",
+      "status": "not met",
+      "remaining": "Native primitive passed Android16. New host56-boundary restore/device-state matrix passes. Actual interrupted next-APK outcomes and internal flush/rename failure coverage remain unverified."
+    },
+    {
+      "id": "S2",
+      "status": "not met",
+      "remaining": "BC candidate4843.9789ms failed750ms. QuickCrypto candidate installed/source-reviewed but unselected until next-APK measurements on designated emulator images."
+    },
+    {
+      "id": "S3",
+      "status": "not met",
+      "procedure": "Native-verification.md",
+      "remaining": "Required emulator native outcomes remain; see Native-verification.md. Physical hardware no longer required."
+    },
+    {
+      "id": "S4",
+      "status": "not met",
+      "procedure": "Native-verification.md",
+      "remaining": "Android16 deny/grant/cancel, reboot delivery and background timezone delivery observed; original settings restored. Date-cache and foreground-presentation constraints recorded. Android17 pending stable image; no full S4 pass."
+    },
+    {
+      "id": "S5",
+      "status": "not met",
+      "procedure": "Native-verification.md",
+      "remaining": "Synthetic markers prepared; local backup refused. Device-transfer flag attempt failed preflight; no marker-omission pass. Original settings restored."
+    },
+    {
+      "id": "S6",
+      "status": "not met",
+      "procedure": "Native-verification.md",
+      "remaining": "Full-PERF recovery/startup adapter authored; five process-cold samples per designated image pending next APK."
+    },
+    {
+      "id": "TC-122",
+      "status": "partial host Phase0 legs only",
+      "remaining": "Native migration fault/termination evidence; full recovery/unlock integration remains Phase5"
+    },
+    {
+      "id": "EXEC-VER-01",
+      "status": "partially met",
+      "remaining": "Required context consumed/security scans passed; recorded extraction-bound deviations prevent full procedural-compliance claim."
+    }
+  ],
+  "warnings": {
+    "hostTools": "Node SQLite experimental and module-type notices retained; no application runtime warning claim.",
+    "bundler": "Vendor Hermes undeclared-global warnings retained; local export succeeded.",
+    "audit": "54 current advisories (6low,42moderate,6high) on both old/new locks; no new names or existing package-version changes. Prior8 count historical.",
+    "runtimeConsole": "StatusBarModule edge-to-edge warning and startup frame stalls observed. Text-style API correction passes host checks; rebuilt runtime verification pending."
+  },
+  "constraints": {
+    "commits": 0,
+    "pushes": 0,
+    "easJobs": 5,
+    "remoteMigrations": 0,
+    "deployments": 0,
+    "financialDataMutation": "none; synthetic test databases only"
+  },
+  "manualVerification": "Native-verification.md",
+  "qaPlan": "qa-plan.json",
+  "compatibility": "compatibility.json",
+  "buildEvidence": "build-ver-01.json",
+  "humanReport": "Progress.md",
+  "authorization": "Explicit user yes authorizes cached Expo account/project setup, signing, reviewed-source upload and internal APK builds. Subsequent emulator instruction supersedes physical hardware requirements. No commits/pushes/store/OTA/hosting/remote migrations authorized.",
+  "currentBuildEvidence": "build-ver-01.json",
+  "blockers": [
+    {
+      "status": "blocked",
+      "provider": "EAS",
+      "action": "Create next internal Android probe build",
+      "reason": "Account monthly Android build allowance exhausted",
+      "reportedReset": "2026-11-01; approximately18hours from refusal",
+      "log": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-build.log",
+      "logSha256": "be7e94463c6928a8738dbd0d29ca691aafa2935ac02f2ee5db27cdd7d0d5ebe0",
+      "source": {
+        "label": "probe4",
+        "status": "pass",
+        "files": 132,
+        "uploadedTarballSha256": "d1f066f27724b8de7a8b6b9fa9fca81c94a55977535d8cac8a97d35b20f2118d",
+        "reviewedManifestSha256": "dbb1b8f4b9055cdf53fe743e2cb2d8fc7b013ad89670bacfadf27d65819acd68"
+      },
+      "buildId": null,
+      "apk": null,
+      "retry": "No unchanged resubmission. Resume when allowance changes or user supplies separately authorized capacity.",
+      "billingChanged": false
+    },
+    {
+      "status": "not verified",
+      "images": [
+        "Android17/API37/x86_64/16KB CP21.260330.005, auto and software renderers",
+        "Newer installed PlayStore CP21.260330.012, fresh task-owned profile/software renderer"
+      ],
+      "failure": "System surfaceflinger abort !hasReadColorBufferDma persisted after both diagnosed repair approaches. Newer image installed validation APK, but system service crash interrupted offline assertion before app launch; no runtime PASS.",
+      "stopped": "Both task-owned unstable VMs stopped after evidence capture; no user emulator touched.",
+      "radioCleanup": {
+        "result": "not restored on stopped newer test VM: services disappeared during cleanup",
+        "observed": {
+          "data": "0",
+          "wifi": "0",
+          "airplane": "1"
+        },
+        "scope": "Only isolated stopped task-owned VM; recheck/restore before future reuse"
+      },
+      "logs": [
+        "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-auto-gpu-crash.txt",
+        "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-software-crash.txt",
+        "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-play-crash.txt"
+      ]
+    }
+  ],
+  "nextBuild": {
+    "status": "blocked",
+    "provider": "EAS",
+    "action": "Create next internal Android probe build",
+    "reason": "Account monthly Android build allowance exhausted",
+    "reportedReset": "2026-11-01; approximately18hours from refusal",
+    "log": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-build.log",
+    "logSha256": "be7e94463c6928a8738dbd0d29ca691aafa2935ac02f2ee5db27cdd7d0d5ebe0",
+    "source": {
+      "label": "probe4",
+      "status": "pass",
+      "files": 132,
+      "uploadedTarballSha256": "d1f066f27724b8de7a8b6b9fa9fca81c94a55977535d8cac8a97d35b20f2118d",
+      "reviewedManifestSha256": "dbb1b8f4b9055cdf53fe743e2cb2d8fc7b013ad89670bacfadf27d65819acd68"
+    },
+    "buildId": null,
+    "apk": null,
+    "retry": "No unchanged resubmission. Resume when allowance changes or user supplies separately authorized capacity.",
+    "billingChanged": false
+  },
+  "nativeObservations": {
+    "S1": {
+      "source": "C:\\Users\\User\\.codex\\visualizations\\2026\\10\\23\\01a16906-88e5-72e2-af38-a4c7ae871c24\\phase0\\2026-10-27\\api36-durable-io-after.xml",
+      "result": {
+        "operation": "f390ea10-4dd6-46e1-b59f-9ecb681a7c56",
+        "fileDescriptorSync": "returned successfully",
+        "sameDirectoryRename": "returned successfully",
+        "parentDirectoryFsync": "returned successfully",
+        "journalReplacement": "{\"synthetic\":true,\"operation\":\"f390ea10-4dd6-46e1-b59f-9ecb681a7c56\",\"phase\":\"NEW_RENAMED\"}",
+        "rollbackRetained": true,
+        "scope": "Synthetic marker files only; combine with SQLite/WAL and interruption/device-state matrix before S1 can pass"
+      },
+      "interpretation": "Actual completed probe result recovered from retained Android UI XML; driver extraction failed before quote-format correction."
+    },
+    "S2": {
+      "source": "C:\\Users\\User\\.codex\\visualizations\\2026\\10\\23\\01a16906-88e5-72e2-af38-a4c7ae871c24\\phase0\\2026-10-27\\api36-result-scrolled.xml",
+      "result": {
+        "candidate": "Android SecretKeyFactory PBKDF2WithHmacSHA256 (unselected)",
+        "provider": "BC",
+        "apiLevel": 36,
+        "iterations": 600000,
+        "outputBits": 256,
+        "saltBits": 128,
+        "milliseconds": 4843.9789,
+        "within750ms": false,
+        "vectorMatches": true,
+        "comparison": "MessageDigest.isEqual, separate fixed 32-byte arrays; platform implementation review pending"
+      },
+      "interpretation": "Actual completed probe result recovered from retained Android UI XML; driver extraction failed before quote-format correction."
+    },
+    "S4": {
+      "denied": {
+        "serial": "emulator-5580",
+        "label": "S4 notification permission and cancel",
+        "elapsedMs": 33949,
+        "result": {
+          "permission": "denied",
+          "scheduled": false,
+          "outcome": "permission-denied"
+        }
+      },
+      "granted": {
+        "serial": "emulator-5580",
+        "label": "S4 notification permission and cancel",
+        "elapsedMs": 8114,
+        "result": {
+          "permission": "granted",
+          "scheduled": true,
+          "cancelledOwnIdentifier": true,
+          "otherIdentifiersPreserved": true,
+          "rebootAndTimeZone": "pending physical-device procedure"
+        }
+      },
+      "rebootDelivery": {
+        "serial": "emulator-5580",
+        "attempts": [
+          {
+            "observation": 0,
+            "date": "Sat Oct 31 05:14:50 UTC 2026",
+            "elapsedMs": 795
+          },
+          {
+            "observation": 1,
+            "date": "Sat Oct 31 05:15:02 UTC 2026",
+            "elapsedMs": 13561
+          },
+          {
+            "observation": 2,
+            "date": "Sat Oct 31 05:15:15 UTC 2026",
+            "elapsedMs": 26027
+          },
+          {
+            "observation": 3,
+            "date": "Sat Oct 31 05:15:27 UTC 2026",
+            "elapsedMs": 38371
+          },
+          {
+            "observation": 4,
+            "date": "Sat Oct 31 05:15:40 UTC 2026",
+            "elapsedMs": 50677
+          },
+          {
+            "observation": 5,
+            "date": "Sat Oct 31 05:15:52 UTC 2026",
+            "elapsedMs": 62995
+          },
+          {
+            "observation": 6,
+            "date": "Sat Oct 31 05:16:04 UTC 2026",
+            "elapsedMs": 75453
+          },
+          {
+            "observation": 7,
+            "date": "Sat Oct 31 05:16:17 UTC 2026",
+            "elapsedMs": 87817
+          },
+          {
+            "observation": 8,
+            "date": "Sat Oct 31 05:16:29 UTC 2026",
+            "elapsedMs": 100209
+          },
+          {
+            "observation": 9,
+            "date": "Sat Oct 31 05:16:41 UTC 2026",
+            "elapsedMs": 112574
+          },
+          {
+            "observation": 10,
+            "date": "Sat Oct 31 05:16:54 UTC 2026",
+            "elapsedMs": 124896
+          },
+          {
+            "observation": 11,
+            "date": "Sat Oct 31 05:17:06 UTC 2026",
+            "elapsedMs": 137290
+          }
+        ],
+        "status": "notification record observed after emulator reboot"
+      },
+      "rebootCancel": {
+        "serial": "emulator-5580",
+        "label": "S4 inspect/cancel reboot probe",
+        "elapsedMs": 7759,
+        "result": {
+          "wasScheduled": true,
+          "trigger": {
+            "type": "daily",
+            "hour": 5,
+            "channelId": "foundation-probe",
+            "minute": 16
+          },
+          "currentTimeZone": "GMT",
+          "cancelled": true
+        }
+      },
+      "timezoneDelivery": {
+        "serial": "emulator-5580",
+        "attempts": [
+          {
+            "observation": 0,
+            "date": "Sat Oct 31 05:30:38 UTC 2026",
+            "elapsedMs": 305
+          },
+          {
+            "observation": 1,
+            "date": "Sat Oct 31 05:30:50 UTC 2026",
+            "elapsedMs": 12643
+          },
+          {
+            "observation": 2,
+            "date": "Sat Oct 31 05:31:03 UTC 2026",
+            "elapsedMs": 24942
+          },
+          {
+            "observation": 3,
+            "date": "Sat Oct 31 05:31:15 UTC 2026",
+            "elapsedMs": 37238
+          },
+          {
+            "observation": 4,
+            "date": "Sat Oct 31 05:31:27 UTC 2026",
+            "elapsedMs": 49591
+          },
+          {
+            "observation": 5,
+            "date": "Sat Oct 31 05:31:40 UTC 2026",
+            "elapsedMs": 61868
+          },
+          {
+            "observation": 6,
+            "date": "Sat Oct 31 05:31:52 UTC 2026",
+            "elapsedMs": 74167
+          },
+          {
+            "observation": 7,
+            "date": "Sat Oct 31 05:32:06 UTC 2026",
+            "elapsedMs": 87937
+          },
+          {
+            "observation": 8,
+            "date": "Sat Oct 31 05:32:18 UTC 2026",
+            "elapsedMs": 100270
+          },
+          {
+            "observation": 9,
+            "date": "Sat Oct 31 05:32:30 UTC 2026",
+            "elapsedMs": 112570
+          },
+          {
+            "observation": 10,
+            "date": "Sat Oct 31 05:32:43 UTC 2026",
+            "elapsedMs": 125107
+          },
+          {
+            "observation": 11,
+            "date": "Sat Oct 31 05:32:55 UTC 2026",
+            "elapsedMs": 137447
+          },
+          {
+            "observation": 12,
+            "date": "Sat Oct 31 05:33:08 UTC 2026",
+            "elapsedMs": 149775
+          },
+          {
+            "observation": 13,
+            "date": "Sat Oct 31 05:33:20 UTC 2026",
+            "elapsedMs": 162212
+          },
+          {
+            "observation": 14,
+            "date": "Sat Oct 31 05:33:32 UTC 2026",
+            "elapsedMs": 174558
+          },
+          {
+            "observation": 15,
+            "date": "Sat Oct 31 05:33:47 UTC 2026",
+            "elapsedMs": 188922
+          },
+          {
+            "observation": 16,
+            "date": "Sat Oct 31 05:33:59 UTC 2026",
+            "elapsedMs": 201258
+          },
+          {
+            "observation": 17,
+            "date": "Sat Oct 31 05:34:11 UTC 2026",
+            "elapsedMs": 213634
+          },
+          {
+            "observation": 18,
+            "date": "Sat Oct 31 05:34:24 UTC 2026",
+            "elapsedMs": 226067
+          },
+          {
+            "observation": 19,
+            "date": "Sat Oct 31 05:34:36 UTC 2026",
+            "elapsedMs": 238643
+          },
+          {
+            "observation": 20,
+            "date": "Sat Oct 31 05:34:49 UTC 2026",
+            "elapsedMs": 251328
+          },
+          {
+            "observation": 21,
+            "date": "Sat Oct 31 05:35:02 UTC 2026",
+            "elapsedMs": 264096
+          }
+        ],
+        "status": "notification record observed for timezone case",
+        "notificationWhen": 1793424900559
+      },
+      "timezoneCancel": {
+        "serial": "emulator-5580",
+        "label": "S4 inspect/cancel reboot probe",
+        "elapsedMs": 8877,
+        "result": {
+          "wasScheduled": true,
+          "trigger": {
+            "type": "daily",
+            "hour": 13,
+            "channelId": "foundation-probe",
+            "minute": 34
+          },
+          "currentTimeZone": "Asia/Manila",
+          "cancelled": true
+        }
+      },
+      "finalState": {
+        "autoTimeZone": "1",
+        "timezone": "GMT",
+        "airplane": "0",
+        "data": "1",
+        "wifi": "1"
+      },
+      "remaining": "Android17 compatibility not verified; running-process Date timezone cache and foreground suppression are diagnosed prototype findings. Full product reconciliation remains Phase6."
+    },
+    "S5": {
+      "serial": "emulator-5580",
+      "original": {
+        "transport": "com.google.android.gms/.backup.BackupTransportService",
+        "enabled": "Backup Manager currently disabled",
+        "parameters": "null"
+      },
+      "observations": [
+        {
+          "mode": "local transport backup flag",
+          "parameters": "is_device_transfer=false,log_agent_results=true",
+          "output": "Running incremental backup for 1 requested packages.\r\nPackage com.alex123superman.kwartracker.validation.probe with result: Backup is not allowed\r\nBackup finished with result: Success\r\n"
+        },
+        {
+          "mode": "local transport device-transfer flag",
+          "parameters": "is_device_transfer=true,log_agent_results=true",
+          "output": "Running incremental backup for 1 requested packages.\r\nPackage @pm@ with result: Success\r\n=> Event{BACKUP_MANAGER_POLICY / ERROR_PREFLIGHT : package = com.alex123superman.kwartracker.validation.probe(v1)}\r\nPackage com.alex123superman.kwartracker.validation.probe with result: Transport rejected package because it wasn't able to process it at the time\r\nBackup finished with result: Success\r\n"
+        }
+      ],
+      "cleanup": [
+        {
+          "args": [
+            "bmgr",
+            "enable"
+          ],
+          "output": "Backup Manager now disabled\r\n"
+        },
+        {
+          "args": [
+            "settings",
+            "delete"
+          ],
+          "output": "Deleted 1 rows\r\n"
+        },
+        {
+          "args": [
+            "bmgr",
+            "transport"
+          ],
+          "output": "Selected transport com.google.android.gms/.backup.BackupTransportService (formerly com.android.localtransport/.LocalTransport)\r\n"
+        }
+      ],
+      "selection": "Selected transport com.android.localtransport/.LocalTransport (formerly com.google.android.gms/.backup.BackupTransportService)\r\n",
+      "restored": {
+        "transport": "com.google.android.gms/.backup.BackupTransportService",
+        "enabled": "Backup Manager currently disabled",
+        "parameters": "null"
+      }
+    }
+  }
+}

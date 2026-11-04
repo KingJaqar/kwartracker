@@ -1,0 +1,1631 @@
+{
+  "revision": "1.11.2",
+  "recordedDate": "2026-11-03",
+  "scope": "One existing development-client APK across Phases0\u00e2\u20ac\u201c8; compatible Metro/host/james execution; native changes and dependent missing-native/standalone claims optional/deferred. Documentation scope amendment only.",
+  "state": {
+    "documentation": "Phase1 execution results/progress updated; earlier planning-only results remain historical.",
+    "implementationPhases": {
+      "0": "Complete (emulator scope); james-only native run (user override 2026-11-02) met S1, S2, S3, S4, S6, TC-121 and TC-122 native legs; S5 met by user acceptance of supplementary API37 evidence. Phase 1 entry unblocked. See phase0Continuation20261102.nativeCompletion.",
+      "1": "Partially complete:47core+24component/lint/typecheck pass;offlineDarkLight and settled100/200screens verified;retained-source sheet/control performance fails;accessibility/VIS/mapping gates open. See phase1Closure20261103.",
+      "2": "Pending; current implementation not assessed/credited in this planning pass",
+      "3": "Pending; current implementation not assessed/credited in this planning pass",
+      "4": "Pending; current implementation not assessed/credited in this planning pass",
+      "5": "Pending; current implementation not assessed/credited in this planning pass",
+      "6": "Pending; current implementation not assessed/credited in this planning pass",
+      "7": "Pending; current implementation not assessed/credited in this planning pass",
+      "8": "Pending; current implementation not assessed/credited in this planning pass"
+    }
+  },
+  "baseline": {
+    "repository": "G:\\codebase\\kwartracker",
+    "head": "c2cc5f23a1d313adda90cd24e6828777c87c3553",
+    "workingCopy": "47 untracked paths at baseline; tracked staged/unstaged diff empty. Documentation was untracked; HEAD is not its backup.",
+    "ownership": "Pre-existing working-copy inputs preserved; this task owns only documented subsequent deltas.",
+    "evidence": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\git-baseline.json",
+    "recoverySnapshots": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline",
+    "patch": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-owned-paths.patch",
+    "patchLimitation": "Empty tracked patch; exact file snapshots are the recovery source for untracked inputs.",
+    "inputs": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "b7d381dd55800d242252e8bf89a40b026586d254e34908210931bc35582396a3",
+        "bytes": 2598,
+        "lines": 41,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "package.json",
+        "sha256": "a4b8c7ddbc691cd58f8e0f45e2401c52b08bb7fdf25dc54e7f141a5bd8e1f189",
+        "bytes": 1208,
+        "lines": 43,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "app.json",
+        "sha256": "6325cf4dead4071ad8c8d4b727a32d6d252017b2c3e9cd4ad7144866a0e59582",
+        "bytes": 1059,
+        "lines": 42,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "1044ca3cb6bbe9ef040cdad2c9314bf75d93129778690378f2f9e710e1fe23d2",
+        "bytes": 449,
+        "lines": 43,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "sha256": "79c2dac5bca96469769a04f27ee5510637a87abd349747590550ab0922d4417c",
+        "bytes": 285320,
+        "lines": 1490,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "sha256": "775e959194023ae30a9304a8b7acc74127c6e6032f6557b079638d350a08a7ca",
+        "bytes": 39575,
+        "lines": 433,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Revision-Validation.md",
+        "sha256": "482c2da82058f0760e75e1f16c624ae8512ba83cd604b3f849410f3ba8427364",
+        "bytes": 3443,
+        "lines": 50,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Android-EAS-Build-Workflow.md",
+        "sha256": "86b183495464688c53f6a4edf1036884812366b5898adfaba382137ad1293c5d",
+        "bytes": 13248,
+        "lines": 121,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/contracts/Backup-v6.md",
+        "sha256": "b400051b0e36693a2be118ab4d7fada7d27b8aed555d1b4eb6c81ea831f5982e",
+        "bytes": 18938,
+        "lines": 82,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/contracts/eas-build-profiles.example.json",
+        "sha256": "0acdd97a4e4e4a2d76fa291b90e739d404cc66575939fab17ecaf3dda8c946e4",
+        "bytes": 537,
+        "lines": 26,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      }
+    ]
+  },
+  "instructions": {
+    "authority": "Current human instructions and applicable repository instructions precede generated guidance.",
+    "AGENTS": "Current root AGENTS.md and CLAUDE.md apply. Version-matched SDK docs, lint and typecheck are mandatory; older revocation wording is historical.",
+    "deployment": "Current user scope: no new APK/source upload/build/native replacement; reuse pinned development client and Metro. Native changes optional/deferred. Store/OTA/hosting/production publication remains excluded."
+  },
+  "versions": {
+    "expoDeclared": "~57.0.31",
+    "reactNativeDeclared": "0.86.3",
+    "versionLimit": "Current declared/installed versions are recorded under phase1.versions; they do not prove native build/runtime compatibility.",
+    "repomix": "1.18.1 installed/cached; no installation",
+    "reader": "Local XML validation/extraction role; no vendor service assumed",
+    "repowise": "Not available in exposed tools; optional, unused; direct discovery used"
+  },
+  "context": {
+    "baselinePacket": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-context.xml",
+      "sha256": "55ab391577d8f960e91e09567e7838e168c030e2f12ec928b9de3d463035bf93",
+      "manifest": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\packet-manifest.json",
+      "status": "Historical identity archive; not a claim the full main PRD was re-read this pass.",
+      "tokenEstimate": 87922,
+      "estimateIsActualUsage": false
+    },
+    "requiredScopedPacket": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\scoped-context.xml",
+      "sha256": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+      "selectors": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\range-selectors.json",
+      "entries": "Full original execution plan plus 74 exact requirement/oracle source-line selections.",
+      "completedReads": [
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 1,
+          "endLine": 121,
+          "chars": 11952,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 122,
+          "endLine": 243,
+          "chars": 11939,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 244,
+          "endLine": 398,
+          "chars": 11980,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 399,
+          "endLine": 433,
+          "chars": 5188,
+          "complete": true
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "requirements-and-oracles.md",
+          "startLine": 1,
+          "endLine": 38,
+          "chars": 11645,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "requirements-and-oracles.md",
+          "startLine": 39,
+          "endLine": 74,
+          "chars": 10198,
+          "complete": true
+        }
+      ]
+    },
+    "ownedChangeSupplement": {
+      "packet": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-context.xml",
+      "sha256": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+      "tool": "Repomix 1.18.1",
+      "command": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\repomix\\bin\\repomix.cjs",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-inputs",
+        "--style",
+        "xml",
+        "--parsable-style",
+        "--output",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-context.xml",
+        "--include",
+        "*.diff",
+        "--ignore",
+        "**/.env*,**/*.key,**/*.db,**/node_modules/**"
+      ],
+      "exitCode": 0,
+      "security": "enabled; no suspicious files detected; see generation log",
+      "sourceCompression": false,
+      "selectors": "two source diff extracts: all additions/revisions, hunk positions, two context lines",
+      "expectedActualMatch": true,
+      "entries": [
+        {
+          "path": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+          "sha256": "a289a287c55a55e5a83b1db1ab076bb782688d22c546fa02c887ae99d0aa9fa7",
+          "lines": 363,
+          "chars": 39650
+        },
+        {
+          "path": "Kwartracker-PRD-SRS-v1_11.md.diff",
+          "sha256": "1a475d4ef2861330fb39d7bc10a1f47af99224dc57567f4161b93a98cff9b20d",
+          "lines": 200,
+          "chars": 39264
+        }
+      ],
+      "omissions": "Unchanged bodies and previously read deleted bodies; complete original-to-target patches retained beside manifest. No application code or private financial data included.",
+      "diagnosedRetry": "Initial XML-style output was not parsable XML; regenerated once with --parsable-style and narrower extracts. No source edit or security bypass.",
+      "tokenEstimate": 19525,
+      "estimateIsActualModelUsage": false
+    },
+    "supplementReads": [
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 1,
+        "endLine": 55,
+        "chars": 11332,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 56,
+        "endLine": 154,
+        "chars": 11946,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 155,
+        "endLine": 304,
+        "chars": 11752,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 305,
+        "endLine": 363,
+        "chars": 6328,
+        "complete": true
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 1,
+        "endLine": 64,
+        "chars": 11878,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 65,
+        "endLine": 110,
+        "chars": 11942,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 111,
+        "endLine": 178,
+        "chars": 11952,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 179,
+        "endLine": 200,
+        "chars": 4385,
+        "complete": true
+      }
+    ],
+    "finalCorrectionSupplement": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-context.xml",
+      "sha256": "db5a0ac5c02ac51a902fefd6d73f2f675328a072e4fe2b7def62cdd6a6552143",
+      "tool": "Repomix 1.18.1",
+      "exitCode": 0,
+      "security": "enabled; see correction-generation.log",
+      "selectors": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-selectors.json",
+      "scope": "seven exact lines correcting CI/device and TC-77 phase prerequisites and historical wording; prior supplement remains historical",
+      "generationCommand": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/User/AppData/Roaming/npm/node_modules/repomix/bin/repomix.cjs",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-inputs",
+        "--style",
+        "xml",
+        "--parsable-style",
+        "--output",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-context.xml",
+        "--include",
+        "corrections.md"
+      ],
+      "tokenEstimate": 1348,
+      "estimateIsActualModelUsage": false
+    },
+    "correctionReads": [
+      {
+        "packet": "db5a0ac5c02ac51a902fefd6d73f2f675328a072e4fe2b7def62cdd6a6552143",
+        "entry": "corrections.md",
+        "startLine": 1,
+        "endLine": 15,
+        "chars": 2777,
+        "complete": true
+      }
+    ],
+    "supersession": "First changed packet is the reviewed predecessor; final correction packet updates only CI/device environment, TC-77 ownership and historical wording. currentSources identify final document bytes.",
+    "cacheRule": "Local cache paths are evidence references, not portable committed payloads. If unavailable, regenerate and revalidate required context; never fabricate reuse.",
+    "sourceVerification": "All initial XML entries compared to original-source content (wrapper whitespace only); original baseline input hashes rechecked before installation; supplemental diffs computed from exact baseline and revised sources.",
+    "readLimits": "Initially <=12000 characters and <=200 lines; all required scoped entries and supplemental entries consumed across explicit continuations.",
+    "analysisLimit": "No claim of exhaustive new review of all unchanged historical source documents or app behavior.",
+    "usage": "No measured usage savings claimed."
+  },
+  "currentSources": [
+    {
+      "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+      "sha256": "6f37ffd1111977aa4a3896081f4bdf127c8430ba61cd93519762f4406550b24a"
+    },
+    {
+      "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+      "sha256": "b4440754db5bd45cc4e446a9258e669f1c2dd7402bd430f7162c1f2920b9b015"
+    }
+  ],
+  "verifiedFindings": [
+    {
+      "id": "P-01",
+      "label": "verified fact",
+      "source": "TC-09/62/64/65/66/68/70/122; plan Sections 5\u00e2\u20ac\u201c7",
+      "result": "Prerequisite-aware integration/partial-leg map; no application results."
+    },
+    {
+      "id": "P-02",
+      "label": "assumption",
+      "source": "FR-ERR-005; TC-122",
+      "result": "Selected migration contract binding; native implementation/termination pending."
+    },
+    {
+      "id": "P-03",
+      "label": "verified fact",
+      "source": "EXEC-01/EXEC-VER-01; plan Sections 3.4/3.5/6/9",
+      "result": "Planning exception, completion/recovery/reporting/checklists explicit."
+    }
+  ],
+  "verification": {
+    "documentChecks": {
+      "label": "verified fact",
+      "revision": "1.11.2",
+      "scope": "Static planning structure/links/tables/ownership/growth only; no app checks run.",
+      "checks": 14,
+      "passed": 14,
+      "evidence": "execution-context/planning-v1_11_2/results.json"
+    },
+    "baselineDocumentChecks": {
+      "checks": 7,
+      "passed": 0,
+      "evidence": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-checks.json",
+      "meaning": "Known document gaps before the authorized edit, not application test failures."
+    },
+    "backupFixtures": {
+      "command": "python G:/codebase/kwartracker/documentation/contracts/validate_backup_v6.py",
+      "result": "26/26 passed in pre-edit baseline; golden balances -12000/-500; September net Expense 10000, October 2000.",
+      "reuseReason": "No backup schema, validator, contract or fixture edits in this task; current identities retained in local evidence. No duplicate rerun.",
+      "inputIdentities": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\verified-fixture-identities.json",
+      "evidenceLimit": "Observed command result in task history; not a native SQLite/restore test."
+    },
+    "appBuildDeviceSecurity": "Pending/unavailable to this planning pass; no checks run or results newly verified.",
+    "contextIntegrity": {
+      "result": "PASS",
+      "assertions": "Continuous full required-entry read coverage, <=12000 chars/200 lines, packet/input identities, security results and final document source identities verified."
+    },
+    "priorRevisionResults": {
+      "label": "verified fact",
+      "scope": "Historical 1.11.1 57/57 static and 26/26 backup result records; no rerun/current runtime PASS inferred.",
+      "evidence": "Kwartracker-PRD-SRS-v1_11-Revision-Validation.md"
+    }
+  },
+  "externalVerification": [
+    {
+      "url": "https://docs.expo.dev/versions/v57.0.0/sdk/sqlite/",
+      "date": "2026-10-23",
+      "scope": "SDK57 exclusive transaction uses supplied transaction handle and commit/rollback behavior; capability only."
+    },
+    {
+      "url": "https://www.sqlite.org/pragma.html#pragma_user_version",
+      "date": "2026-10-23",
+      "scope": "Application-controlled database user_version; native interruption safety still requires tests."
+    }
+  ],
+  "guide": {
+    "path": "documentation_guides/expo-android-development-build-guide.docx",
+    "sha256": "247cc211a1c5bdfe9727e41bc36b43f3d821811580fa28bae5d71607aca036be",
+    "status": "Previously consulted; identity revalidated, unchanged. Referenced in Phase 0 and build workflow."
+  },
+  "unresolved": [
+    {
+      "topic": "Native recovery, migration, secrets, notification and performance feasibility",
+      "status": "Unrun evidence, not assumed success; OCR remains Deferred",
+      "nextGate": "Phase0 isolated probes then feature phases and final physical APK suites",
+      "label": "assumption"
+    },
+    {
+      "topic": "EAS project/account/projectId, provider/configuration and actual native dependency selection",
+      "status": "Use existing documented owners and gates; no credentials or project identity invented",
+      "nextGate": "Phase0/BUILD-VER-01 and relevant security/privacy gates",
+      "label": "open decision"
+    },
+    {
+      "topic": "Historical deployed backups",
+      "status": "No absence inferred; COMPAT-BKP-01 investigation retained",
+      "nextGate": "Before compatibility freeze/final APK acceptance",
+      "label": "assumption"
+    }
+  ],
+  "cleanup": "No original product code, historical requirements, contracts, guide or user files deleted. Only task-owned staging helpers exist outside the repository.",
+  "planningPass": {
+    "staticCheckCorrections": "In-memory launcher command exceeded Windows argument limit; moved to stdin without helper files. Corrected one stale text selector and one checker boundary selector before the passing planning checks. No app operation or repeated unchanged implementation attempt. Automatic review rejected the single oversized terminal input; smaller reviewed chunks completed successfully. No remaining approval blocker.",
+    "label": "verified fact",
+    "scope": "Two plans and maintained context notes only; no code/data/dependency/build/deploy work.",
+    "baseline": [
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "sha256": "efb7a6442b4961a57c0fba43130fc0dff56b9b177d0182f1931d339952d0b552",
+        "bytes": 299497
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "sha256": "20f44b269d70ee19a36dc423cf0e02f0d4858b77b88e290d4f09901fbafaf519",
+        "bytes": 57478
+      },
+      {
+        "path": "documentation/execution-context/index.json",
+        "sha256": "125107a19e763c7cc40b430b2ef644bceb9aa1ce1d648a610768a001384e04dd",
+        "bytes": 21017
+      },
+      {
+        "path": "package.json",
+        "sha256": "a4b8c7ddbc691cd58f8e0f45e2401c52b08bb7fdf25dc54e7f141a5bd8e1f189",
+        "bytes": 1208
+      }
+    ],
+    "snapshots": "execution-context/planning-v1_11_2/baseline",
+    "git": {
+      "head": "c2cc5f23a1d313adda90cd24e6828777c87c3553",
+      "status": "48 untracked paths before this pass; staged/unstaged tracked diff empty",
+      "evidence": "Observed Git status/diff/HEAD command output in planning session; exact snapshots preserve untracked plans."
+    },
+    "heavySteps": {
+      "label": "assumption",
+      "status": "Deferred to execution entry; no planning gap required packets, app baseline runs or environment setup."
+    },
+    "decisions": [
+      {
+        "label": "verified fact",
+        "choice": "Reuse existing IDs/statuses and one shared completion contract",
+        "basis": "PRD Sections 0/1; D-114/115; avoids competing evidence/approval schemes."
+      },
+      {
+        "label": "verified fact",
+        "choice": "Real recovery/unlock, transport and normalization cases complete in 5/6/7; early probes partial",
+        "basis": "TC-09/62/64/65/66/68/70/122 and phase scope prerequisites."
+      }
+    ],
+    "packageFact": {
+      "label": "verified fact",
+      "source": "package.json:7,22,34\u00e2\u20ac\u201c40",
+      "expoDeclared": "~57.0.24",
+      "reactNativeDeclared": "0.86.3",
+      "limit": "Declared only; no installed/native compatibility or tool availability inferred."
+    },
+    "reads": [
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "scope": "Current Sections 1\u00e2\u20ac\u201c12; large output truncations followed by targeted material-range reads."
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "scope": "Sections 0/1/15/20 and exact TC/FR/NFR/D/artifact rows governing prerequisites; not a fresh exhaustive historical-source review."
+      }
+    ],
+    "sourceEvidence": [
+      {
+        "label": "verified fact",
+        "source": "baseline/Kwartracker-PRD-SRS-v1_11.md:989,1042,1044\u00e2\u20ac\u201c1048,1050,1117",
+        "fact": "Restore/device-state, telemetry and real gate-order oracles exceed early prototype prerequisites; snapshot fixes line identities."
+      },
+      {
+        "label": "verified fact",
+        "source": "baseline/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md:138\u00e2\u20ac\u201c172,279\u00e2\u20ac\u201c303,315\u00e2\u20ac\u201c339,351\u00e2\u20ac\u201c369",
+        "fact": "Foundation, security, backup and service scopes deliver distinct prerequisites."
+      }
+    ],
+    "limits": "No runtime/native/device/tool/provider behavior newly verified; validation is planning-only.",
+    "sourceLocations": [
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 65,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 732,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1006,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1059,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1061,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1062,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1063,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1065,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1067,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1134,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1437,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "line": 1438,
+        "sha256": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "line": 86,
+        "sha256": "d5b3d80346dcb5efb1f2d4bdd1eea8a84ecdc8ed040f2f47e8b1da7f2dfca6f2",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "line": 93,
+        "sha256": "d5b3d80346dcb5efb1f2d4bdd1eea8a84ecdc8ed040f2f47e8b1da7f2dfca6f2",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "line": 465,
+        "sha256": "d5b3d80346dcb5efb1f2d4bdd1eea8a84ecdc8ed040f2f47e8b1da7f2dfca6f2",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "line": 513,
+        "sha256": "d5b3d80346dcb5efb1f2d4bdd1eea8a84ecdc8ed040f2f47e8b1da7f2dfca6f2",
+        "label": "verified fact",
+        "scope": "Source location of selected contract/plan rule; not runtime evidence"
+      }
+    ],
+    "writeVerification": {
+      "label": "verified fact",
+      "result": "Final plan bytes match recorded source identities; package.json unchanged; exact pre-edit snapshots retained.",
+      "checks": "14 targeted static planning checks passed; no application checks run."
+    }
+  },
+  "versions_evidenceStatus": "Historical v1.11.1 observation; revalidate relevant identity/version/capability at execution entry. Not newly observed availability/result.",
+  "context_evidenceStatus": "Historical v1.11.1 observation; revalidate relevant identity/version/capability at execution entry. Not newly observed availability/result.",
+  "guide_evidenceStatus": "Historical v1.11.1 observation; revalidate relevant identity/version/capability at execution entry. Not newly observed availability/result.",
+  "externalVerification_evidenceStatus": "Historical v1.11.1 observation; revalidate relevant identity/version/capability at execution entry. Not newly observed availability/result.",
+  "easBuildBudget": {
+    "date": "2026-10-31",
+    "appliesTo": "Phases 0\u00e2\u20ac\u201c8; documentation policy only, no additional implementation authorization",
+    "policy": "documentation/Android-EAS-Build-Workflow.md#9-build-budget-for-all-execution-phases",
+    "phaseChecklist": "Execution plan Section 3.6, referenced by all nine phase checklists",
+    "capacity": {
+      "status": "Not rechecked in this documentation update",
+      "lastObservation": "2026-10-31 EAS monthly Android allowance refusal; reset reported as 2026-11-01, not verified current availability",
+      "evidence": "phase0/build-ver-01.json#/nextProbeBuild",
+      "remaining": null,
+      "reserve": null,
+      "rule": "Observe account capacity; allocate candidate submissions/reserve and confirm headroom before any new upload or submission"
+    },
+    "ledger": {
+      "existingAttempts": "phase0/build-ver-01.json#/probeAttempts",
+      "existingArtifacts": "phase0/build-ver-01.json#/apkArtifacts",
+      "existingRefusal": "phase0/build-ver-01.json#/nextProbeBuild",
+      "futureEntries": [],
+      "requiredFields": [
+        "date",
+        "phase",
+        "reason",
+        "observedCapacity",
+        "plannedSubmissions",
+        "reserve",
+        "sourceArchiveHash",
+        "lockAndConfigHashes",
+        "profileAndPackage",
+        "nativeCompatibility",
+        "bundledJavaScriptIdentity",
+        "buildIdOrRefusal",
+        "status",
+        "apkHash",
+        "accountingImpactWhenKnown",
+        "acceptanceScopeAndReuseLimits"
+      ]
+    },
+    "context": {
+      "packet": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/quota-all-phases/context.xml",
+      "sha256": "acf0a3633810cd057c24d1d473c8455c1b44bcab08eeda31f754ef874d88db84",
+      "tool": "Repomix1.18.1; --style xml --quiet; security checks enabled; exit0",
+      "entries": 5,
+      "readCharacterRanges": [
+        [
+          0,
+          9999
+        ],
+        [
+          10000,
+          19999
+        ],
+        [
+          20000,
+          26352
+        ]
+      ],
+      "analysis": "Existing standalone evidence is candidate-specific. Dev client supports compatible source changes; native changes require rebuilt runtime, and changed embedded JS requires validation build for final acceptance. Shared all-phase rule supersedes duplicated Phase0 policy.",
+      "omissionCorrection": "Excerpt generator requested workflow130..122 (empty) and plan581..601 (clamped to591). Actual packet coverage records these; omitted workflow112..122 references read directly before editing. No required policy content missing."
+    },
+    "sourceHashes": [
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "sha256": "7fc13b193fd624456517761be0e36fa57e7c5b52cc6ef6f2ce092084a64609c7"
+      },
+      {
+        "path": "documentation/Android-EAS-Build-Workflow.md",
+        "sha256": "1cd2c45301079cbf6c7a3bc614b4b166dfd2ad39bfd8aa260eef43497934e66e"
+      },
+      {
+        "path": "documentation/execution-context/phase0/Progress.md",
+        "sha256": "995ce5c76450ad03c77c602c0ab0014e07bdae2f47f00c7143186f1770211c15"
+      }
+    ],
+    "verification": {
+      "baseline": "Reused earlier same-session lint/typecheck PASS; runtime sources/config unchanged by documentation work",
+      "postChange": "Results recorded in C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/quota-all-phases/review.json",
+      "easSubmitted": false,
+      "billingChanged": false
+    },
+    "sourceManifest": "Prior 87-source manifest is historical for the execution-plan entry; current document hashes are here. Runtime source identities unchanged."
+  },
+  "phase0Execution": {
+    "buildBudget": {
+      "date": "2026-10-31",
+      "policy": "documentation/Android-EAS-Build-Workflow.md#9-build-budget-for-all-execution-phases",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/quota-policy/review.json",
+      "phaseStatus": "unchanged; partially complete",
+      "easSubmitted": false,
+      "sourceManifestStatus": "Prior 87-source manifest remains historical: execution-plan hash superseded by quota-policy review; runtime source identities unchanged."
+    },
+    "date": "2026-10-31",
+    "phaseStatus": "Partially complete",
+    "scope": "Foundation and synthetic probes only",
+    "baseline": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/entry.json",
+    "initialOwnership": "Tracked files initially clean; documentation/, documentation_guides/ and workspace file pre-existing untracked. Do not infer HEAD backup for those inputs.",
+    "results": "documentation/execution-context/phase0/results.json",
+    "report": "documentation/execution-context/phase0/Progress.md",
+    "qaPlan": "documentation/execution-context/phase0/qa-plan.json",
+    "nativeProcedures": "documentation/execution-context/phase0/Native-verification.md",
+    "packets": [
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/source-context.xml",
+        "sha256": "d2a4701417f66870c06072d2aacbe492d917b2a62e492abfda4b5b4b1b8fc3d4",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/requirements-context.xml",
+        "sha256": "3e2b1a12b55383d6bd4d8c888321319a76215eaa5b9608e57c77a31bfd030271",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/final-source-context.xml",
+        "sha256": "11a5bfe273107e3045051068e478756d380e92bdca3d10920ca0ef170a370929",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/probe-contract-context.xml",
+        "sha256": "a9d7342fb0f09bb5908a312fb9a46b3aa73bea621a6cda8f8c83ab53192ce546",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/final-correction-context.xml",
+        "sha256": "9a019e23314faf9a30a1d163f142872c09f59141f965c06edc340ba8893c28ee",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/handoff-supplement.xml",
+        "sha256": "6896e7d07cfe2884a1927d83c0b57f8dda46dc33d188d4638031554e8876efe4",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; generation log reports no suspicious files",
+        "exitCode": 0
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/native-correction-1031.xml",
+        "sha256": "b1758461b8d21698964786793eb8ccec22be4d0c41932a6e177761222942d438",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; no suspicious files detected",
+        "exitCode": 0,
+        "selectors": "FoundationProbesModule.kt only; corrected public O_RDONLY directory fsync",
+        "actualEntries": [
+          "modules/kwartracker-foundation-probes/android/src/main/java/expo/modules/kwartrackerfoundation/FoundationProbesModule.kt"
+        ],
+        "read": {
+          "lines": 148,
+          "chars": 7843,
+          "complete": true,
+          "compression": "none"
+        }
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/restore-delta-before.xml",
+        "sha256": "ab8e540de398a68f490a10e9aca3f45696e1d5be6ace456ad897749f6c44a411",
+        "tool": "Repomix1.18.1",
+        "security": "enabled; no suspicious files detected",
+        "exitCode": 0,
+        "selectors": "src/probes/platform.ts, src/app/_layout.tsx, plugins/with-backup-exclusions.js",
+        "actualEntries": [
+          "plugins/with-backup-exclusions.js",
+          "src/probes/platform.ts",
+          "src/app/_layout.tsx"
+        ],
+        "read": {
+          "lines": 99,
+          "chars": 7098,
+          "complete": true,
+          "compression": "none"
+        }
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/restore-after.xml",
+        "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "modules/kwartracker-foundation-probes/android/src/main/java/expo/modules/kwartrackerfoundation/FoundationProbesModule.kt",
+          "scripts/test-affected.mjs",
+          "src/app/_foundation/run.tsx",
+          "src/probes/platform.ts",
+          "src/probes/restore-native.ts",
+          "src/probes/restore-protocol.ts",
+          "src/probes/restore-runner.ts",
+          "src/probes/runner-screen.tsx",
+          "src/probes/showcase.tsx",
+          "src/probes/use-finite-probe.ts",
+          "tests/restore-probe.test.ts",
+          "src/app/_layout.tsx",
+          "package.json"
+        ],
+        "reads": [
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 1,
+            "last": 140,
+            "chars": 7629,
+            "next": 141,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 141,
+            "last": 290,
+            "chars": 9026,
+            "next": 291,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 291,
+            "last": 421,
+            "chars": 10860,
+            "next": 422,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 422,
+            "last": 571,
+            "chars": 10707,
+            "next": 572,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 572,
+            "last": 693,
+            "chars": 10790,
+            "next": 694,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 694,
+            "last": 843,
+            "chars": 9773,
+            "next": 844,
+            "totalLines": 920
+          },
+          {
+            "packet": "restore-after.xml",
+            "sha256": "92efd0549cb576df3d8bb194c779816360a884096867eb10d3b622a4eafbd598",
+            "first": 844,
+            "last": 920,
+            "chars": 4189,
+            "next": null,
+            "totalLines": 920
+          }
+        ],
+        "complete": true,
+        "omissions": "None; full selected source entries"
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/migration-startup-before.xml",
+        "sha256": "5f2b7c2eb6d2b2aa1ace4a714cf5a335a2dbe6ec65259dfd64f6174cfb5cf07c",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "src/db/migrations/chain.ts",
+          "src/db/migrations/index.ts",
+          "src/probes/native.ts"
+        ],
+        "reads": [
+          {
+            "packet": "migration-startup-before.xml",
+            "sha256": "5f2b7c2eb6d2b2aa1ace4a714cf5a335a2dbe6ec65259dfd64f6174cfb5cf07c",
+            "first": 1,
+            "last": 150,
+            "chars": 10035,
+            "next": 151,
+            "totalLines": 223
+          },
+          {
+            "packet": "migration-startup-before.xml",
+            "sha256": "5f2b7c2eb6d2b2aa1ace4a714cf5a335a2dbe6ec65259dfd64f6174cfb5cf07c",
+            "first": 151,
+            "last": 223,
+            "chars": 5706,
+            "next": null,
+            "totalLines": 223
+          }
+        ],
+        "complete": true,
+        "omissions": "None; full selected source entries"
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/crypto-context.xml",
+        "sha256": "c1fc293947971faa6776b234281abb77e1fee5b2f2cfeeada5dee3f6c0c9bd40",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "HybridPbkdf2.cpp",
+          "HybridUtils-timing.cpp",
+          "pbkdf2.ts",
+          "source-index.json",
+          "timingSafeEqual.ts",
+          "withRNQC.js"
+        ],
+        "reads": [
+          {
+            "packet": "crypto-context.xml",
+            "sha256": "c1fc293947971faa6776b234281abb77e1fee5b2f2cfeeada5dee3f6c0c9bd40",
+            "first": 1,
+            "last": 150,
+            "chars": 7706,
+            "next": 151,
+            "totalLines": 321
+          },
+          {
+            "packet": "crypto-context.xml",
+            "sha256": "c1fc293947971faa6776b234281abb77e1fee5b2f2cfeeada5dee3f6c0c9bd40",
+            "first": 151,
+            "last": 300,
+            "chars": 5530,
+            "next": 301,
+            "totalLines": 321
+          },
+          {
+            "packet": "crypto-context.xml",
+            "sha256": "c1fc293947971faa6776b234281abb77e1fee5b2f2cfeeada5dee3f6c0c9bd40",
+            "first": 301,
+            "last": 321,
+            "chars": 882,
+            "next": null,
+            "totalLines": 321
+          }
+        ],
+        "complete": true,
+        "omissions": "Source-index records original source identities and exact extracted ranges; uncalled API tails omitted."
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-context.xml",
+        "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "00-FoundationProbesModule.kt.diff",
+          "01-restore-native.ts.diff",
+          "02-restore-runner.ts.diff",
+          "03-use-finite-probe.ts.diff",
+          "04-showcase.tsx.diff",
+          "05-runner-screen.tsx.diff",
+          "06-index.ts.diff",
+          "07-chain.ts.diff",
+          "08-ui-stack.tsx.diff",
+          "09-ui-observation.ts",
+          "10-quick-kdf.ts",
+          "11-migration-native.ts",
+          "12-startup-native.ts",
+          "13-database.test.ts.diff",
+          "14-probe-deadline.test.tsx.diff",
+          "15-app.config.js.diff",
+          "source-index.json"
+        ],
+        "reads": [
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 1,
+            "last": 135,
+            "chars": 10940,
+            "next": 136,
+            "totalLines": 813
+          },
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 136,
+            "last": 264,
+            "chars": 10908,
+            "next": 265,
+            "totalLines": 813
+          },
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 265,
+            "last": 401,
+            "chars": 10990,
+            "next": 402,
+            "totalLines": 813
+          },
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 402,
+            "last": 549,
+            "chars": 10988,
+            "next": 550,
+            "totalLines": 813
+          },
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 550,
+            "last": 680,
+            "chars": 10942,
+            "next": 681,
+            "totalLines": 813
+          },
+          {
+            "packet": "probe4-context.xml",
+            "sha256": "59095cd7248c789a1846719439ae5c288d04ca01b61712560c4379f1c0d4764d",
+            "first": 681,
+            "last": 813,
+            "chars": 8719,
+            "next": null,
+            "totalLines": 813
+          }
+        ],
+        "complete": true,
+        "omissions": "Complete changed hunks/new files; unchanged bodies reuse restore-after/migration-startup/original audited probe3 sources. Explicit source-index entries record all omissions."
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/autolinking-correction.xml",
+        "sha256": "7d065451dcc0d2a0dec4d9d934d36c0f80777a9c5d85903e59b106153f4af294",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "scripts/check-build-config.mjs",
+          ".easignore",
+          "package.json"
+        ],
+        "reads": [
+          {
+            "packet": "autolinking-correction.xml",
+            "sha256": "7d065451dcc0d2a0dec4d9d934d36c0f80777a9c5d85903e59b106153f4af294",
+            "first": 1,
+            "last": 150,
+            "chars": 8771,
+            "next": 151,
+            "totalLines": 204
+          },
+          {
+            "packet": "autolinking-correction.xml",
+            "sha256": "7d065451dcc0d2a0dec4d9d934d36c0f80777a9c5d85903e59b106153f4af294",
+            "first": 151,
+            "last": 204,
+            "chars": 2751,
+            "next": null,
+            "totalLines": 204
+          }
+        ],
+        "complete": true,
+        "omissions": "None; full selected source entries"
+      },
+      {
+        "path": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/final-native-isolation.xml",
+        "sha256": "227329c82a07006de8f70cff50129939b7f13f1a14feb4cd0a2c1f0dae1b99f9",
+        "tool": "Repomix1.18.1",
+        "security": "Enabled; no suspicious files detected in generation log",
+        "exitCode": 0,
+        "actualEntries": [
+          "scripts/check-build-config.mjs",
+          "package.json"
+        ],
+        "reads": [
+          {
+            "packet": "final-native-isolation.xml",
+            "sha256": "227329c82a07006de8f70cff50129939b7f13f1a14feb4cd0a2c1f0dae1b99f9",
+            "first": 1,
+            "last": 150,
+            "chars": 10049,
+            "next": 151,
+            "totalLines": 174
+          },
+          {
+            "packet": "final-native-isolation.xml",
+            "sha256": "227329c82a07006de8f70cff50129939b7f13f1a14feb4cd0a2c1f0dae1b99f9",
+            "first": 151,
+            "last": 174,
+            "chars": 1379,
+            "next": null,
+            "totalLines": 174
+          }
+        ],
+        "complete": true,
+        "omissions": "None; full selected source entries"
+      }
+    ],
+    "context": {
+      "repowise": "Unavailable/optional, unused; rg discovery used",
+      "reader": "Local XML parse/extraction role",
+      "sourceVerification": "Original source and authored full patches resolve compressed bodies, handlers, styles and cleanup; tests and final manifests verify current identities.",
+      "completedReads": "Initial guide/full selected Phase0 + overall context and relevant PRD/schema original/XML reads; final compressed68-entry packet completely read through reader0-4; probe contract read through reader5-6; correction entries read fully; handoff supplement read with explicit continuation.",
+      "continuations": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/reader-chunks.json",
+      "deviations": "Initial schema output exceeded200 lines; reader0/1 header accounting also exceeded intended line bound. Actual covered content retained; subsequent continuations split by actual lines. No perfect bounds compliance or usage savings claim.",
+      "supersession": "Historical source packet preserved; final compressed packet has body/constant gaps resolved from source. Correction/handoff supplement supersede only their changed entries. Planning evidence is historical unless explicitly revalidated.",
+      "continuationReads": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/reader-1031.json"
+    },
+    "decisions": [
+      "Real migration path0\u00e2\u2020\u20191 only; no inferred backup/app version mapping.",
+      "Current metadata capture is separate from corrected occurrence time; historical sub-minute occurrence offsets do not become integer creation metadata.",
+      "Retain restore admission after failure; recovery/reopen must prove safety.",
+      "Use configured bundled font names/PostScript names; immediate system fallback requires no asynchronous font wait.",
+      "No new account/theme fields outside exact portable contract.",
+      "Isolated standalone probe uses separate Router root/package/scheme; normal validation excludes diagnostics."
+    ],
+    "operations": {
+      "attempts": 1,
+      "checkDeadlineMs": 180000,
+      "nativeProbeDeadlineMs": 30000,
+      "fixtureRows": "finite21,421 rows across portable entities",
+      "dateOffsetCandidates": 1681,
+      "retry": "Explicit user action or diagnosed relevant change only",
+      "cancel": "Cooperative safe boundaries; native calls/KDF already in flight cannot be forcibly cancelled",
+      "recovery": "Exact snapshots; no live data swaps performed"
+    },
+    "authorizationConflict": "Resolved by explicit user authorization for EAS internal setup/signing/source upload/builds; publication and Git commits/pushes remain excluded.",
+    "pending": [
+      "Next EAS probe job after allowance reset/authorized capacity",
+      "S1 native full restart/device-state and durable-internal-boundary matrix",
+      "S2 native candidate <=750ms and full provenance/security review",
+      "S3 actual frame/event/task/key limits in both appearances",
+      "S4 remaining timezone/native compatibility; S5 actual transfer marker omission",
+      "S6 five full-fixture process-cold ordered samples; TC-122 native process/storage matrix",
+      "TC-121 explicit optimization/runtime flags and rebuilt warning-free runtime",
+      "Remote CI not run; no push authorized"
+    ],
+    "sourceManifest": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/source-manifest-1031.json",
+    "applicabilityOverride": {
+      "userText": "emulator is enough, no need for physixal device",
+      "scope": "Current Phase0\u00e2\u2020\u20191",
+      "targets": [
+        "MuMu Android12/API32/x86_64",
+        "isolated Android16/API36/x86_64 1080x1920 density480",
+        "isolated Android17/API37/x86_64 profile created, not yet exercised"
+      ],
+      "unchanged": "Numeric, functional, durability, security and regression oracles. iOS Deferred."
+    },
+    "continuation": {
+      "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27",
+      "baseline1031": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/baseline-1031.json",
+      "checks": "Lint/typecheck,29 core and5 component tests pass; affected5 guards pass after autolinking change; Doctor21/21, SDK and both Hermes exports pass.",
+      "builds": [
+        {
+          "id": "ca81554a-6ca5-4990-9297-15d50d679532",
+          "status": "FINISHED"
+        },
+        {
+          "id": "69bd0351-cf9c-485a-8069-0400f942d428",
+          "status": "FINISHED"
+        },
+        {
+          "id": "57891d3b-b96e-4757-8eaf-d50694723802",
+          "status": "ERRORED"
+        },
+        {
+          "id": "82ebe427-4ef7-4c7d-83ac-38680519102d",
+          "status": "ERRORED"
+        },
+        {
+          "id": "301a0ee3-84da-4a3e-b541-14c22324bfec",
+          "status": "FINISHED"
+        }
+      ],
+      "sourceSnapshot": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/FoundationProbesModule-1031-before.kt",
+      "operations": {
+        "perNativeActionDeadlineMs": 30000,
+        "perAdbCommandMs": 15000,
+        "offlineCheckMs": 120000,
+        "settledRadioObservations": 12,
+        "radioObservationIntervalMs": 500,
+        "offlineAttempts": "Initial radio read and default-network read failed due asynchronous updates. Both diagnosed and recorded; settled-state attempt passes.",
+        "buildSubmissionAttempts": "One per corrected source; probe3 is not a repeated failed source."
+      },
+      "unresolved": "Actual next-APK S1\u00e2\u20ac\u201cS6/migration acceptance and Android17 stable system image. Phase1 entry remains dependent on these results.",
+      "nextBuild": {
+        "status": "blocked",
+        "provider": "EAS",
+        "action": "Create next internal Android probe build",
+        "reason": "Account monthly Android build allowance exhausted",
+        "reportedReset": "2026-11-01; approximately18hours from refusal",
+        "log": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-build.log",
+        "logSha256": "be7e94463c6928a8738dbd0d29ca691aafa2935ac02f2ee5db27cdd7d0d5ebe0",
+        "source": {
+          "label": "probe4",
+          "status": "pass",
+          "files": 132,
+          "uploadedTarballSha256": "d1f066f27724b8de7a8b6b9fa9fca81c94a55977535d8cac8a97d35b20f2118d",
+          "reviewedManifestSha256": "dbb1b8f4b9055cdf53fe743e2cb2d8fc7b013ad89670bacfadf27d65819acd68"
+        },
+        "buildId": null,
+        "apk": null,
+        "retry": "No unchanged resubmission. Resume when allowance changes or user supplies separately authorized capacity.",
+        "billingChanged": false
+      },
+      "classification": {
+        "done": [
+          "Host foundation/domain/schema/receipt/token/CI draft",
+          "TC-120 actual internal development workflow",
+          "Listed local checks and nonshipping bundle exclusion"
+        ],
+        "partiallyDone": [
+          "TC-121 shell",
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "TC-122 Phase0 native legs"
+        ],
+        "notStarted": [
+          "Phase1 product implementation/acceptance; prerequisites unmet"
+        ]
+      },
+      "installDiscrepancy": "Expo installer wrote dependencies then exited1 because dynamic config required manual plugin edit. Diagnosed edit applied; subsequent config/Doctor/SDK/bundle checks passed.",
+      "cryptoReview": "documentation/execution-context/phase0/native-crypto-review.json",
+      "laterPhaseBytesUnchanged": true
+    },
+    "blockers": [
+      {
+        "status": "blocked",
+        "provider": "EAS",
+        "action": "Create next internal Android probe build",
+        "reason": "Account monthly Android build allowance exhausted",
+        "reportedReset": "2026-11-01; approximately18hours from refusal",
+        "log": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-build.log",
+        "logSha256": "be7e94463c6928a8738dbd0d29ca691aafa2935ac02f2ee5db27cdd7d0d5ebe0",
+        "source": {
+          "label": "probe4",
+          "status": "pass",
+          "files": 132,
+          "uploadedTarballSha256": "d1f066f27724b8de7a8b6b9fa9fca81c94a55977535d8cac8a97d35b20f2118d",
+          "reviewedManifestSha256": "dbb1b8f4b9055cdf53fe743e2cb2d8fc7b013ad89670bacfadf27d65819acd68"
+        },
+        "buildId": null,
+        "apk": null,
+        "retry": "No unchanged resubmission. Resume when allowance changes or user supplies separately authorized capacity.",
+        "billingChanged": false
+      },
+      {
+        "status": "not verified",
+        "images": [
+          "Android17/API37/x86_64/16KB CP21.260330.005, auto and software renderers",
+          "Newer installed PlayStore CP21.260330.012, fresh task-owned profile/software renderer"
+        ],
+        "failure": "System surfaceflinger abort !hasReadColorBufferDma persisted after both diagnosed repair approaches. Newer image installed validation APK, but system service crash interrupted offline assertion before app launch; no runtime PASS.",
+        "stopped": "Both task-owned unstable VMs stopped after evidence capture; no user emulator touched.",
+        "radioCleanup": {
+          "result": "not restored on stopped newer test VM: services disappeared during cleanup",
+          "observed": {
+            "data": "0",
+            "wifi": "0",
+            "airplane": "1"
+          },
+          "scope": "Only isolated stopped task-owned VM; recheck/restore before future reuse"
+        },
+        "logs": [
+          "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-auto-gpu-crash.txt",
+          "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-software-crash.txt",
+          "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-play-crash.txt"
+        ]
+      }
+    ]
+  },
+  "phase0Continuation20261102": {
+    "record": "phase0/2026-11-02.json",
+    "status": "Complete (emulator scope)",
+    "currentAuthority": "User subsequently authorized internal source uploads/builds; publication and billing excluded; 2026-11-02 user override: MuMu james is the only Phase 0 emulator, API36 removed",
+    "buildContinuation": "phase0/2026-11-02-builds.json",
+    "quota": "Provider reported3/15 Android builds before observer build; one subsequent finished build implies4/15 attributable to this task. Not a fresh account-wide usage observation. No overage or billing change authorized.",
+    "phase1Entry": "Unblocked; Phase 0 gates met (S5 by user acceptance of API37 evidence)",
+    "reconciliation": "phase0/2026-11-02-reconciled.json",
+    "developmentClient": "Installed and connected on current MuMu james/API32; existing development build reused",
+    "nativeCompletion": "phase0/2026-11-02-native-completion.json"
+  },
+  "phase1": {
+    "date": "2026-11-02",
+    "phase": 1,
+    "scope": "Core ledger only; no later-phase features",
+    "baseline": ".cache/phase1/session/baseline.json",
+    "snapshots": "C:/Users/User/.codex/visualizations/2026/11/02/01a19c92-b769-7161-a956-921cb23b5051/phase1-snapshot",
+    "patch": ".cache/phase1/session/baseline.patch",
+    "ownership": "All baseline modifications/untracked code are user work; owned delta measured against exact snapshots",
+    "workflow": "Git baseline \u00e2\u2020\u2019 ripgrep \u00e2\u2020\u2019 local Reader validation \u00e2\u2020\u2019 Repomix 1.18.1 \u00e2\u2020\u2019 bounded XML analysis \u00e2\u2020\u2019 original source verification",
+    "packets": {
+      "source": {
+        "path": ".cache/phase1/session/source.xml",
+        "sha256": "82567701e80557e2a741eaa71d40a9a712bedd366783f0a38b6df1b205c8a18c"
+      },
+      "requirements": {
+        "path": ".cache/phase1/session/requirements.xml",
+        "sha256": "fe9a044c8438a6433c94859a90587ae828c7dc24c3e71a4f0db26d540c9b19f3"
+      },
+      "supplement": {
+        "path": ".cache/phase1/session/supplement.xml",
+        "sha256": "818cb8942ae9ce75c64bd6ed4db4907e16dfb00cb004a43bac5300c05dbdebab"
+      },
+      "receipt-contract": {
+        "path": ".cache/phase1/session/receipt-contract.xml",
+        "sha256": "6c15ee219c75a3f348d0758a0c8851a4f40900ff2f572afd9639e5006d69a5d0"
+      }
+    },
+    "selectors": ".cache/phase1/session/selectors.json",
+    "rangeSelectors": ".cache/phase1/session/requirements-ranges.json",
+    "reads": ".cache/phase1/session/reads.jsonl",
+    "sourceVerification": "Every XML entry parsed and compared to original current source, ignoring only wrapper whitespace. Session-original reads reused for identical entries; remaining entries fully read in bounded chunks.",
+    "repowise": "Unavailable; optional; direct ripgrep used",
+    "baselineChecks": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "test": "pass: 32 core and7 component cases; actual baseline-test.log, correcting the earlier inherited29 count",
+      "buildGuard": "pass",
+      "bundleGuard": "pass on existing baseline export; fresh post-change export required",
+      "contracts": "pass"
+    },
+    "limits": {
+      "checks": {
+        "maxAttempts": 1,
+        "deadlineSeconds": 180,
+        "progress": "captured logs and process status",
+        "cancel": "terminate process on deadline",
+        "recovery": "read-only checks; snapshots retain existing files"
+      },
+      "packet": {
+        "maxAttempts": 1,
+        "deadlineSeconds": 120
+      },
+      "build": {
+        "submissions": 0,
+        "reason": "current prompt excludes uploads/build submissions"
+      },
+      "finalChecks": {
+        "maxAttempts": 1,
+        "deadlineSeconds": 180,
+        "reuse": "No unchanged successful check repeated; scoped reruns followed source changes or diagnosed setup failures",
+        "recovery": "Read-only checks and disposable host SQLite databases only"
+      },
+      "export": {
+        "maxAttemptsPerSource": 1,
+        "deadlineSeconds": 300,
+        "diagnosis": "First managed TEMP export failed write permission; one workspace-TEMP correction passed. Later exports followed concrete UI/receipt source changes; no unchanged failed build retry.",
+        "recovery": "Local dist output only; no APK, native compilation or source upload"
+      }
+    },
+    "findings": [
+      {
+        "id": "entry",
+        "result": "Phase0 latest james-only completion retained; source gates/migration/coordinator/receipt/money/token foundations inspected; source/native/build changes do not inherit prior native acceptance."
+      },
+      {
+        "id": "implementation",
+        "result": "All authorized local Phase1 product paths and required shared components/repository contracts implemented. No later product phase executed."
+      },
+      {
+        "id": "receipts-v1",
+        "result": "Backup-v6.md line46 schema-field encoding verified against persisted fields in tests/ledger.test.ts. Draft expressions/expected-row-version are excluded from canonical hashes; lifecycle uses {id}."
+      },
+      {
+        "id": "runtime-safety",
+        "result": "Finite date and aggregate batches yield to the event loop; writes serialize, failures roll back, typed storage errors preserve input, edit snapshots remain fixed, no retry/polling loop added."
+      }
+    ],
+    "discrepancies": [
+      "Current root instructions apply despite stale historical index language about AGENTS revocation. Lint/typecheck required.",
+      "Phase0 latest completion supersedes older blocked entries; emulator override is retained, numeric gates unchanged.",
+      "Plan references repositories and product screens not yet present; existing routes are foundation shells.",
+      "Request excludes uploads/builds; historical build authorization does not authorize this Phase1 upload.",
+      "Initial requirements staging inherited ignored .cache parent; actual contents 0. Corrected once to permitted external staging with copied gitignore, security enabled; three intended entries included.",
+      "Python console default cp1252 failed at chunk48; switched UTF8; required continuations resumed.",
+      "Snapshot initially under .cache produced a Jest duplicate-package warning. Moved snapshots outside repo before implementation; no permanent Jest config change needed.",
+      "Final v6 companion review found draft-oriented receipt encoding; corrected to the existing version1 schema-field contract and added exact persisted-field assertions. No normative schema/contract revision.",
+      "TC-113 includes app-import rejection although its product import/restore path is scheduled in Phase5; money/write/storage legs passed, full case not credited.",
+      "Initial [id] foundation-route XML boilerplate read gap was explicitly closed; no omitted continuation credited as read."
+    ],
+    "buildBudget": {
+      "capacity": "Not required for zero planned submissions; historical capacity remains unverified",
+      "submissions": 0,
+      "existingArtifacts": "Phase0 normal/probe APKs contain older JS and omit new Phase1 native dependencies; cannot establish current acceptance",
+      "planned": "Zero new submissions across all phases; one existing development-client APK via Metro. Previous proposed validation/development builds superseded by explicit2026-11-03 user instruction.",
+      "reserve": "preserve capacity for later phases, final candidate and diagnosed correction; quantify only after account observation",
+      "reuseInspection": {
+        "date": "2026-11-02",
+        "evidence": ".cache/phase1/session/existing-apk-reuse.json",
+        "result": "Cached development and normal-validation APK hashes match recorded installed artifacts. All DEX files scanned: ExpoSQLite control present; ExpoHaptics/RNCDatePicker/RNCTimePicker registration strings absent in both. Native registration names confirmed against package native source.",
+        "limit": "Static artifact inspection; no new device runtime or test-suite run."
+      }
+    },
+    "nextGates": [
+      "Isolate missing-native imports and adapt Phase1 date entry to a real existing-client-compatible path without weakening exact dates/financial safety",
+      "Run current-client applicable james functional/UI/accessibility/VIS assertions with source/APK identities",
+      "Retain TC-113 import/Phase5 discrepancy; no whole-case pass or automatic waiver"
+    ],
+    "status": "Partially complete",
+    "results": "phase1/results.json",
+    "progress": "phase1/Progress.md",
+    "nativeProcedures": "phase1/Native-verification.md",
+    "versions": {
+      "expo": "57.0.31",
+      "react": "19.2.3",
+      "react-native": "0.86.3",
+      "expo-router": "57.0.29",
+      "expo-sqlite": "57.0.4",
+      "expo-haptics": "57.0.3",
+      "@react-native-community/datetimepicker": "9.1.0",
+      "react-native-reanimated": "4.5.1",
+      "react-native-worklets": "0.10.1",
+      "@shopify/flash-list": "2.0.2",
+      "lucide-react-native": "1.61.0"
+    },
+    "readEvidence": {
+      "originalPacket": ".cache/phase1/session/packet-manifest.json",
+      "boundedXml": ".cache/phase1/session/reads.jsonl",
+      "supplement": ".cache/phase1/session/supplement-reads.json",
+      "receiptContract": ".cache/phase1/session/receipt-contract-reads.json",
+      "reuse": "Session-original source analysis reused only after XML content identity was verified. Remaining entries and diagnosed continuations read explicitly. Source packets are historical pre-edit context, not final runtime proof."
+    },
+    "verification": {
+      "lint": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/acceptance-lint.log"
+      },
+      "typecheck": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/acceptance-typecheck.log"
+      },
+      "fullTests": {
+        "core": 47,
+        "components": 17,
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/conformance-test.log"
+      },
+      "finalAffectedLedger": {
+        "tests": 15,
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/acceptance-ledger.log",
+        "reuse": "Only latest-type SQL and a restore assertion changed after the full pass; other suites are unchanged for their relevant dependencies."
+      },
+      "export": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/acceptance-export.log",
+        "nativeRuntime": "not tested"
+      },
+      "bundleGuard": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/acceptance-bundle.log"
+      },
+      "buildGuard": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/final-check-build.log",
+        "reuse": "Relevant config/profile/guard inputs unchanged"
+      },
+      "contracts": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/final-check-contracts.log",
+        "reuse": "Schema/generator/fixture inputs unchanged; v1 receipt encodings separately verified"
+      },
+      "dependencyMap": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/dependencies-check.log",
+        "limit": "Offline SDK57 map only"
+      },
+      "remoteCI": "not run",
+      "native": "pending",
+      "visualBaseline": "pending UX approval"
+    },
+    "review": {
+      "baseline": ".cache/phase1/session/baseline.json",
+      "patch": ".cache/phase1/session/owned.patch",
+      "ownedReview": ".cache/phase1/session/owned-review.json",
+      "candidateSources": ".cache/phase1/session/candidate-sources.json",
+      "dependencyDelta": ".cache/phase1/session/dependency-delta.json",
+      "result": "Owned changes confined to Phase1 and strictly required integration. No whitespace defects, debug logging, any/@ts-ignore/lint suppressions or new production mock data found in authored paths. Five root tab routes moved into (tabs); URLs preserved. Original snapshots retained.",
+      "exportSourceVerification": ".cache/phase1/session/export-source-verification.json"
+    },
+    "decisions": [
+      "Use retained receipts as first-launch evidence: seed only a never-used ledger, atomically with seven creation receipts; deleting seeds does not seed again.",
+      "Preserve schema1 and v6; no migration is necessary for these repositories/screens.",
+      "Group repeated bounded values with SQL COUNT and accumulate BigInts to avoid unchecked SUM/TOTAL and unsafe Number narrowing.",
+      "Serialize Records first page/header in one read snapshot through the existing coordinator writer queue.",
+      "Derive last-confirmed type from the creation receipt commit timestamp with a rowid tie-break; do not store a new preference.",
+      "Freeze original edit snapshots and prepared creation metadata for an unchanged retry; ignore stale async query/page results.",
+      "Use the installed Expo CLI route generator before typecheck to avoid the verified Windows watcher defect; do not cast Hrefs or change node_modules."
+    ],
+    "currentScopePolicy": "singleClientPolicy (2026-11-03) supersedes historical native-build gating in phase1/results and Native-verification; original results retained"
+  },
+  "singleClientPolicy": {
+    "date": "2026-11-03",
+    "authority": "User: leave native changes optional, only use one dev-client apk for all phases, update the plan",
+    "scope": "All phases0\u00e2\u20ac\u201c8, including final review; no final-validation exception",
+    "plan": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md#36-one-development-client-apk-and-optional-native-changes--all-phases",
+    "prd": "documentation/Kwartracker-PRD-SRS-v1_11.md#current-gate-and-artifact-applicability",
+    "client": {
+      "buildId": "ca81554a-6ca5-4990-9297-15d50d679532",
+      "package": "com.alex123superman.kwartracker.development",
+      "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+      "target": "MuMu james",
+      "identityLimit": "Installed pinned APK SHA256 verified on james2026-11-03; Owner user0 is the only installed Kwartracker client after data-preserving app cleanup."
+    },
+    "plannedBuilds": 0,
+    "nativeChanges": "Optional/deferred; no SDK/module/config/native change required to close a phase",
+    "missingNativeFeatures": "Optional/deferred or real compatible implementation preserving non-deferred finance/security guarantees; isolate unavailable module imports",
+    "claims": "Compatible assertion-level outcomes required; original full scenarios with deferred assertions stay full-case deferred. No release/standalone/offline-startup certification from dev-client observations.",
+    "phaseDependencies": "Required compatible financial/security contracts remain; optional native-only work/evidence does not block unrelated progression",
+    "currentImplementationGap": "Phase1 compatibility adaptation implemented and checked; dated plan continuation records actual runtime evidence and remaining acceptance gaps.",
+    "baseline": ".cache/phase1/single-client-policy-2026-11-03/baseline.json",
+    "packets": ".cache/phase1/single-client-policy-2026-11-03/policy-context.xml",
+    "xmlReads": ".cache/phase1/single-client-policy-2026-11-03/reads.json",
+    "checks": {
+      "lint": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/single-client-lint.log"
+      },
+      "typecheck": {
+        "exitCode": 0,
+        "evidence": ".cache/phase1/session/single-client-typecheck.log"
+      },
+      "reuse": "No code/config/dependency changes after those checks; document checks below are separate"
+    },
+    "effects": "Documentation only; no app/config/dependency/CI mutation, cloud job, native compilation, upload, install, commit or push",
+    "verification": {
+      "results": ".cache/phase1/single-client-policy-2026-11-03/results.json",
+      "documentChecksPassed": 43,
+      "lintExitCode": 0,
+      "typecheckExitCode": 0,
+      "applicationSourcesUnchanged": true,
+      "ownedDiff": ".cache/phase1/single-client-policy-2026-11-03/owned.patch",
+      "limits": "Documentation validation only; no new application/runtime/build PASS."
+    },
+    "activeInstallationRule": "One pinned development client in james Owner user0 across all phases. No additional variants/clones/test profiles without explicit permission.",
+    "cleanup": "phase1/2026-11-03-client-cleanup.json",
+    "cleanupStatus": "Complete2026-11-03: validation/probe variants removed; user-approved QA profiles10/11 removed; MuMu clonesN1/N2 removed separately. Final single Owner profile, package and launcher icon verified; pinned APK hash unchanged."
+  },
+  "phase1Closure20261103": {
+    "report": "phase1/2026-11-03-closure.json",
+    "context": ".cache/phase1/closure-2026-11-03/context-index.json",
+    "sourceChange": "none retained in closure continuation",
+    "prdSHA256": "6f37ffd1111977aa4a3896081f4bdf127c8430ba61cd93519762f4406550b24a"
+  },
+  "humanReviewScope20261103": {
+    "authority": "Explicit user instruction: remove human visual sign-off and tests for all phases",
+    "planSection": "3.7",
+    "appliesTo": "Phases0\u20138",
+    "removed": [
+      "Human visual/baseline approval",
+      "Human-run/attended/subjective test legs"
+    ],
+    "required": "Automated and agent-run checks, underlying behavior, numeric limits, finance/security safeguards",
+    "evidenceLabel": "Removed by user scope; never PASS",
+    "history": "Older pending-human labels superseded; observations and original test outcomes retained",
+    "planSHA256": "de1a306fceecbe4b73c98d1261dc6e6c3dcb0c693d7e296d7596e8cc5ba9e935",
+    "context": ".cache/plan-human-gates-2026-11-03/reader-index.json"
+  },
+  "phase1LDPlayer20261103": {
+    "status": "Partially complete",
+    "report": "phase1/2026-11-03-ldplayer.json",
+    "context": ".cache\\phase1\\resume-2026-11-03\\context-index.json",
+    "applicationSourceChanges": [],
+    "device": "LDPlayer Deposito Seguro Dev;verified index1/serial emulator-5556;API28",
+    "requiredDecision": "TC103/TC113 scheduling correction remains unapplied"
+  },
+  "phase1Session20261104b": {
+    "status": "Partially complete",
+    "ownerAcceptance": "UI-PERF-01 sheet first open after launch accepted as a once-per-process exception (2026-11-04); not a pass",
+    "report": "phase1/2026-11-04-tabs-a11y-vis.json",
+    "context": ".cache/phase1/session-2026-11-04b",
+    "packets": {
+      "tabs": "bd59682deadee2d2a75f0d4f4b216351402c93ee2eee32755b9e504f0b3c339f",
+      "ui": "3573b29c868404450289fc84b7487076f7b2b75c06f23b7ac15964991514ea16"
+    },
+    "applicationSourceChanges": [
+      "src/components/ledger-shell.tsx (tab indicator first, navigate next frame)",
+      "src/components/ui.tsx (ListRowToggle inner Switch hidden from accessibility; idle Reanimated warm-up before the first sheet)",
+      "src/screens/records.tsx (month sheet year stepper replaces the Year TextField)"
+    ],
+    "tests": "tests/components/ledger-ui.test.tsx +4 (32 component tests)",
+    "device": "MuMu james emulator-5554 Owner; APK sha256 matches pinned",
+    "openDecisions": [
+      "sheet first open after launch (first native TextInput)",
+      "NFR-11(c) applicability to un-animated first-visit tab mounts",
+      "fixture leftover deletion approval"
+    ]
+  },
+  "phase1Completion20261104": {
+    "status": "Complete (agent-runnable scope)",
+    "report": "phase1/2026-11-04-phase1-completion.json",
+    "context": ".cache/phase1/session-2026-11-04c",
+    "ownerException": "UI-PERF-01 sheet first open after launch (Owner-accepted, not a pass)",
+    "supersedesOpenDecisions": "phase1Session20261104b.openDecisions resolved: tabs fixed under NFR-11(c); fixture leftovers deleted"
+  }
+}

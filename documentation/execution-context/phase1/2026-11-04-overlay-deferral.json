@@ -1,0 +1,270 @@
+{
+  "date": "2026-11-04",
+  "phase": 1,
+  "status": "Partially complete; no whole-phase PASS (tabs fail; sheet first-open-after-launch has one >100 ms frame; UX/VIS matrix open)",
+  "instructions": "Root CLAUDE.md -> AGENTS.md applied (Expo Router, CNG, expo install, lint+typecheck before done). No conflict with the plan.",
+  "baseline": {
+    "git": "HEAD c2cc5f2; 253-line porcelain status, tracked patch and untracked src/tests tar in .cache/phase1/session-2026-11-04 (local, gitignored). Final status identical to baseline.",
+    "checks": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "core": "47/47 pass",
+      "components": "25/25 pass",
+      "build": "pass",
+      "contracts": "pass (pre-existing MODULE_TYPELESS warning)"
+    },
+    "repomix": "1.18.1, 18-file UI packet (components, screens, services/ledger, theme, root/tab layouts), sha256 9e1a7d6c2b772f2a59f33c1a484156bc7ee177347ef85978c17d959babd088ff, security check clean; ui.tsx read completely in three <=12,000-char chunks; records.tsx entry read completely; other entries read by targeted source ranges."
+  },
+  "finding": "NFR-11(c) defect in source: sheet/drawer selections ran screen state changes and navigation in the same tick as close(), so Records month reload + FlashList remount, entry-screen picker re-render, icon change and route pushes executed during the exit animation. This is a plausible contributor to the recorded >50 ms JS tasks during sheet close; not yet re-measured.",
+  "changed": [
+    "src/components/ui.tsx: close(then?) queues `then` until the exit animation's completion callback (after spec.onClose); runs immediately when no overlay is active; still refused while a write lock is held. Pan gesture memoized; scrim/Back/drag use an argument-free dismiss. Modal content wrapped in GestureHandlerRootView per RNGH Android Modal guidance.",
+    "src/screens/records.tsx: month pick applies after the sheet exits.",
+    "src/screens/entities.tsx: icon pick and post-commit lifecycle navigation run after exit.",
+    "src/screens/transaction.tsx: account/category pick, Duplicate navigation and post-delete dismissTo run after exit.",
+    "src/components/ledger-shell.tsx: drawer links navigate after the drawer exits.",
+    "tests/components/ledger-ui.test.tsx: reanimated mock can hold timing callbacks; new regression asserts deferred selection runs only after exit completion."
+  ],
+  "dependencies": "none added; no migration, schema, native or config change",
+  "final": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "components": "26/26 pass (rerun after drag work; source byte-identical to exported bundle)",
+    "androidHermesExport": "pass (APP_VARIANT=validation)",
+    "bundleGuard": "pass, 1977 sources, probes/showcase absent",
+    "core/build/contracts": "inputs unchanged; baseline results reused"
+  },
+  "native": {
+    "device": "MuMu james emulator-5554, ASUS_AI2201_A, API 32, Owner user 0 only used",
+    "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e (matches pinned)",
+    "metro": "localhost:8095 with NODE_OPTIONS=--dns-result-order=ipv4first and file watching ON. Correction: earlier runs this session used CI=1, which disables watching, so device runs after the first bundle served pre-root-view source; those results are superseded below.",
+    "passed": [
+      "Final source (watched Metro, full relaunch): sheet drag-to-close (pan active, translationY 267.5 > 72) and short drag stays open",
+      "drawer handle drag-to-close",
+      "month chip pick -> Records 2026-03 after close",
+      "scrim tap and Android Back dismiss without change",
+      "drawer -> Preferences navigation and Back",
+      "0 ReactNativeJS W/E lines"
+    ],
+    "dataSafety": "No financial write. An over-running scripted tap opened Create account; left without Save, Records verified empty.",
+    "dragRootCause": "RN Modal on Android renders outside the app GestureHandlerRootView, so the handle pan never received touches. A/B on watched Metro: without the in-Modal GestureHandlerRootView only the mount marker logged and the sheet stayed open; with it begin/start/finalize fired and it closed. Temporary diagnostics removed (0 matches)."
+  },
+  "acceptance": [
+    {
+      "criterion": "Exact financial/rounding/atomic host gates",
+      "status": "met (unchanged inputs, baseline 47 core)"
+    },
+    {
+      "criterion": "No state change/navigation during sheet/drawer exit (NFR-11(c) source contract)",
+      "status": "met in host regression + functional device smoke"
+    },
+    {
+      "criterion": "UI-PERF-01 numeric sheet/control gates",
+      "status": "not met / not re-measured"
+    },
+    {
+      "criterion": "Sheet drag-to-close (FR-DSN pop-up gesture)",
+      "status": "met on device (sheet and drawer); host test mocks gestures"
+    },
+    {
+      "criterion": "Populated UX/scale/state/accessibility/VIS-01 matrix",
+      "status": "pending agent verification"
+    }
+  ],
+  "discrepancies": [
+    "Plan says QA users were removed leaving only Owner 0; james currently lists users 10 KwartrackerPhase1ManagedQA, 11 KwartrackerQAReserved11, 12 KwartrackerPhase1FreshQA. Not created or touched this session."
+  ],
+  "remaining": [
+    "Re-measure sheet open/close and tab/segment interactions with lossless instrumentation on the PERF fixture",
+    "Populated current-source UX, accessibility, reduced-motion and VIS-01 comparisons"
+  ],
+  "limits": "No commit, push, build, upload, deployment, remote migration, Owner data write/delete, QA profile change or later-phase work.",
+  "environmentAmendment": {
+    "qaProfiles": "removed for every phase (user instruction 2026-11-04)",
+    "emulator": "MuMuPlayer james only; LDPlayer results are diagnostic, not evidence",
+    "ownerStorage": "Section 3.6 snapshot/restore"
+  },
+  "accountsQuery": {
+    "file": "src/repositories/ledger.ts",
+    "before": "~10,000 grouped rows summed in JS; 470-526 ms JS task on Accounts focus (PERF-01 fixture)",
+    "after": "one row per account; exact SQLite SUM cast to TEXT; overflow -> AMOUNT_OUT_OF_RANGE; non-integer -> INVALID_AMOUNT",
+    "test": "tests/ledger.test.ts PERF-01 compares every balance with a row-derived reference incl. transfer and refund",
+    "reverted": [
+      "rAF-deferred refetch in provider.tsx",
+      "freezeOnBlur:false in (tabs)/_layout.tsx"
+    ]
+  },
+  "uiPerfJames60Hz": {
+    "setup": "pinned dev APK, --no-dev --minify bundle, PERF-01 fixture 31ddef31..., dynamic_adjust_frame_rate false during runs then restored true",
+    "invalidatedRun": "first Dark run at 15 Hz",
+    "pass": [
+      "keypad (ten taps in order, event p95 41-48 ms)",
+      "scroll 3x60 s both themes (0% jank, max frame <=24 ms; one 56 ms task Dark)"
+    ],
+    "segments": "event p95 ~79 ms; one 54 ms task Light",
+    "fail": {
+      "sheets": "JS p95 45-49 ms but ~1 native frame >100 ms per open",
+      "tabs": "event p95 104-105 ms; 6 tasks >50 ms (max 86 ms) over 30 switches"
+    },
+    "caveat": "observer droppedEntriesCount non-zero on long runs; task counts are lower bounds",
+    "evidence": ".cache/phase1/session-2026-11-04/qa/perf-*.json"
+  },
+  "ownerRestore": {
+    "db": "0ac346d7f1e12b57fc03e9b5cc569fb43d914dfa581053717358b9c68f1f9926",
+    "wal": "3126178520e830cfe2f9da9a290867a2bd96006a63156d268cdefa5df62bdd42",
+    "shm": "6c26606d35a2f95649e4f441d305723f097d870cc66e83c35223a78b234e0fce",
+    "settings": "font_scale 1.0, animator null, transition 0.5, window 0.5 (match snapshot)",
+    "frameRate": "dynamic_adjust_frame_rate=true restored, james restarted",
+    "appState": "Owner empty ledger, no synthetic rows",
+    "leftovers": [
+      "files/SQLite/kwartracker.db*.qa-fixture",
+      "/data/local/tmp/kw-perf.db"
+    ],
+    "leftoverAction": "await Owner approval to delete"
+  },
+  "finalChecks2": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "testCore": "47/47",
+    "testComponents": "26/26",
+    "checkBuild": "pass",
+    "checkContracts": "pass",
+    "validationExport": "pass",
+    "checkBundle": "1977 sources pass"
+  },
+  "inlineOverlay": {
+    "file": "src/components/ui.tsx",
+    "change": "RN Modal replaced by absolute in-window layer; BackHandler dismiss (consumed while open), Keyboard-event bottom inset, mount-time header focus; inner GestureHandlerRootView removed",
+    "test": "tests/components/ledger-ui.test.tsx hardware Back test (27 component tests pass)",
+    "modalBaseline": {
+      "dark": {
+        "over100ms": 18,
+        "frameP95": 97,
+        "maxFrame": 150
+      },
+      "light": {
+        "over100ms": 18,
+        "frameP95": 101,
+        "maxFrame": 150
+      }
+    },
+    "inlineRuns": [
+      {
+        "run": 1,
+        "theme": "light",
+        "note": "first sheet after fresh launch",
+        "over100ms": 1,
+        "maxFrame": 117,
+        "maxTaskMs": 67.6,
+        "eventP95": 54.6
+      },
+      {
+        "run": 1,
+        "theme": "dark",
+        "over100ms": 0,
+        "maxFrame": 65,
+        "eventP95": 48.7
+      },
+      {
+        "run": 2,
+        "theme": "dark",
+        "over100ms": 0,
+        "maxFrame": 57,
+        "eventP95": 47.6
+      },
+      {
+        "run": 2,
+        "theme": "light",
+        "over100ms": 0,
+        "maxFrame": 65,
+        "eventP95": 44.4
+      },
+      {
+        "run": 3,
+        "theme": "dark",
+        "over100ms": 0,
+        "maxFrame": 53,
+        "eventP95": 45.9
+      },
+      {
+        "run": 3,
+        "theme": "light",
+        "over100ms": 0,
+        "maxFrame": 61,
+        "eventP95": 43.7
+      }
+    ],
+    "functional": "scrim, drag, Back (keyboard then sheet), drawer Back pass; no JS warning/error",
+    "unverified": "keyboard inset: james renders no soft keyboard (mInputShown=true, nothing drawn)",
+    "ownerRestore": "re-snapshot identical (0ac346d7.../3126.../6c26...), restored and hash-verified; dynamic_adjust_frame_rate=true; settings match"
+  },
+  "finalChecks3": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "testCore": "47/47",
+    "testComponents": "27/27",
+    "checkBuild": "pass",
+    "checkContracts": "pass",
+    "validationExport": "pass",
+    "checkBundle": "1977 sources pass"
+  },
+  "tabProfiling": {
+    "method": "RN DevTools Tracing CPU profile via Metro inspector (Profiler domain unsupported), minified bundle symbolicated with matching Metro source map",
+    "evidence": [
+      ".cache/phase1/session-2026-11-04/qa/trace-first.json",
+      "trace-steady.json",
+      "trace-steady2.json",
+      "analyze-trace.cjs",
+      "prof.mjs"
+    ],
+    "findings": {
+      "firstVisit": "Accounts/Categories lazy mount: 3-4 tasks 52-85 ms (Fabric completeRoot 145 ms, createNode 64 ms in first-visit trace)",
+      "steadyBefore": "focus refetch -> loading render + data render + FlashList row updates; decimalSeparator Intl.NumberFormat per render (78 ms over 30 switches)",
+      "steadyAfter": "app code ~10 ms total; remaining tab navigator React update + Fabric completeRoot ~20 ms/switch"
+    },
+    "change": {
+      "file": "src/services/ledger/provider.tsx",
+      "what": "useLedgerQuery reloads on focus only when stale (missed publish while blurred, input changed, last load failed or interrupted, explicit retry)",
+      "test": "tests/components/ledger-ui.test.tsx refocus test; fails on baseline hook (2 loads vs 1)"
+    },
+    "result": {
+      "before": {
+        "tabsEventP95": [
+          104.5,
+          105.0
+        ]
+      },
+      "after": [
+        {
+          "theme": "light",
+          "p95": 109.0
+        },
+        {
+          "theme": "dark",
+          "p95": 103.3
+        },
+        {
+          "theme": "light",
+          "p95": 102.7
+        },
+        {
+          "theme": "dark",
+          "p95": 99.0
+        }
+      ],
+      "maxTaskMs": "81-85 (first visits)",
+      "frames>100ms": 0
+    },
+    "status": "blocked after third attempt; next options need a decision (native tabs or post-startup pre-mount)",
+    "ownerRestore": "hash-verified again; frame rate true; settings match"
+  },
+  "finalChecks4": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "testCore": "47/47",
+    "testComponents": "28/28",
+    "checkBuild": "pass",
+    "checkContracts": "pass",
+    "validationExport": "pass",
+    "checkBundle": "1977 sources pass"
+  }
+}

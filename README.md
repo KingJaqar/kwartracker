@@ -1,56 +1,19 @@
-# Welcome to your Expo app 👋
+# Kwartracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An offline personal expense tracker built with Expo SDK 57, React Native 0.86 and Expo Router. Phase 0 supplies the gated empty shell, domain/database foundations and synthetic verification tools. Product workflows arrive in later phases. Development/validation EAS APKs build and install; native spike acceptance remains in progress. On 2026-10-27 the owner authorized emulator evidence for this Phase 0→1 execution in place of physical Android devices; numeric and functional targets remain required.
 
-## Get started
+Use Node 24.13.1 and npm with the committed lockfile. Run `npm ci`, then `npm run lint`, `npm run typecheck`, and `npm test`. `npm run check:contracts` checks the generated portable types and app-schema fingerprint against their source. `npm run check:build` checks internal APK profiles and publication guardrails. AUTO-PR runs the affected suites on pull requests and the complete suite on main; the workflow is prepared locally and has not been run remotely.
 
-1. Install dependencies
+All route files live in `src/app/`. The provider order is DbGate → LockGate → root stack. LockGate passes through in Phase 0. Startup opens once per attempt, preserves unsupported/corrupt databases and requires explicit Retry after failure. App schema 1 is independent of portable backup v6. There are no recognized historical app schemas beyond an empty version 0. Synthetic older-version tests do not expand that compatibility contract.
 
-   ```bash
-   npm install
-   ```
+Read [the execution plan](documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md), [the PRD/SRS](documentation/Kwartracker-PRD-SRS-v1_11.md), [the Android EAS workflow](documentation/Android-EAS-Build-Workflow.md), and [pending native verification](documentation/execution-context/phase0/Native-verification.md). No store submission, OTA publication, public hosting, production environment, or local native compilation is part of this milestone.
 
-2. Start the app
+The approved account/project is `@alex123superman/kwartracker`, linked in app.json. Its new base package is `com.alex123superman.kwartracker`; `APP_VARIANT=development` or `validation` derives separate packages and schemes. `KWARTRACKER_ANDROID_PACKAGE` can explicitly override the base for a separately reviewed setup. Existing app name, slug, icon assets and base configuration are retained. Internal EAS setup/signing/source uploads/builds are authorized; store/OTA/hosting publication is excluded.
 
-   ```bash
-   npx expo start
-   ```
+For daily development after the private development APK is installed, set `APP_VARIANT=development` and run `npx expo start --dev-client --lan`. Open the current URL/QR in the matching installed APK. JavaScript changes use Fast Refresh. Follow the Android workflow for private-network/firewall checks, cache troubleshooting, optional tunnel acknowledgement and native rebuild triggers. Rebuild native changes through EAS.
 
-In the output, you'll find options to open the app in a
+The development-only `/showcase` route runs explicit synthetic checks. It is excluded, with all probes/test fixtures, from normal validation bundles. To check that boundary locally, set `APP_VARIANT=validation`, run `npx expo export --platform android --output-dir dist/validation --source-maps --max-workers 2`, then `npm run check:bundle`. This checks JavaScript/Hermes bundling; it does not build an APK, exercise Android runtime, or establish device performance.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Inter fonts are bundled through the config plugin. Theme tokens, appearance resolution and per-icon Lucide imports are centralized in `src/theme/`; the lint rule rejects literal colors/spacing/type/motion outside the token source. The icon registry uses Lucide 1.61's `fingerprint-pattern` and `trash` modules for the former `fingerprint` and `trash-2` names. Unknown stored keys retain their value and render the neutral fallback. Full license texts are in `THIRD_PARTY_NOTICES/`.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The PERF-01 generator and pinned manifest live in `tests/fixtures/`. Host tests never substitute for native SQLite/WAL, SecureStore, scheduler or backup/transfer evidence. The user accepts emulator evidence for Phase0→1; isolated Android16/17 profiles retain numeric/security gates. Android16's platform PBKDF2 candidate failed750ms; the pinned QuickCrypto/native support candidate needs its own EAS APK measurement. The next source archive is audited, but EAS refused job creation on2026-10-31 because the monthly allowance is exhausted. Full Phase0 exit remains open; Phase1 has not started. See the current execution report for exact results and build identities.

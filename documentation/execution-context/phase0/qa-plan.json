@@ -1,0 +1,3852 @@
+{
+  "artifact": "QA-PLAN-01",
+  "revision": "1.11.2",
+  "scope": "Initial assertion checklist; later phases own executable feature procedures. All results remain pending unless separately attributed in Phase 0 results.",
+  "cases": [
+    {
+      "id": "TC-01",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-TRN-001/002, FR-ACC-001/002",
+      "oracle": "Create positive Income and Expense with matching categories; each appears once and changes its account by the exact integer amount.",
+      "assertions": [
+        {
+          "id": "TC-01.1",
+          "expected": "Create positive Income and Expense with matching categories; each appears once and changes its account by the exact integer amount.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-02",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-02/04, FR-TRN-007",
+      "oracle": "Transfer 100000 minor units A→B; A decreases and B increases by 100000 in one commit; Income/Expense/Budget totals do not change.",
+      "assertions": [
+        {
+          "id": "TC-02.1",
+          "expected": "Transfer 100000 minor units A→B;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-02.2",
+          "expected": "A decreases and B increases by 100000 in one commit;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-02.3",
+          "expected": "Income/Expense/Budget totals do not change.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-03",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-TRN-002",
+      "oracle": "Reject Transfer with identical, missing, or archived target; database remains byte-for-byte logically unchanged.",
+      "assertions": [
+        {
+          "id": "TC-03.1",
+          "expected": "Reject Transfer with identical, missing, or archived target; database remains byte-for-byte logically unchanged.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-04",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-08, FR-TRN-005",
+      "oracle": "Create records around midnight and DST transitions; selected accounting dates and month membership remain exactly as saved.",
+      "assertions": [
+        {
+          "id": "TC-04.1",
+          "expected": "Create records around midnight and DST transitions; selected accounting dates and month membership remain exactly as saved.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-05",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-09, FR-CAT-002/003",
+      "oracle": "Archive/restore a referenced Category; pickers hide/show it while historical rows and aggregates remain unchanged.",
+      "assertions": [
+        {
+          "id": "TC-05.1",
+          "expected": "Archive/restore a referenced Category; pickers hide/show it while historical rows and aggregates remain unchanged.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-06",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-BUD-002/003",
+      "oracle": "Cross a Budget limit with confirmed Expenses; exact spent/remaining and text/icon warning appear.",
+      "assertions": [
+        {
+          "id": "TC-06.1",
+          "expected": "Cross a Budget limit with confirmed Expenses; exact spent/remaining and text/icon warning appear.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-07",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-04, FR-TRN-007/009",
+      "oracle": "Delete a Transfer with a fault injected between its two conceptual account effects; either both effects disappear or neither does.",
+      "assertions": [
+        {
+          "id": "TC-07.1",
+          "expected": "Delete a Transfer with a fault injected between its two conceptual account effects; either both effects disappear or neither does.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-08",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-ACC-003/004",
+      "oracle": "Archive/restore a referenced Account; active pickers and historical balance/display obey BR-09.",
+      "assertions": [
+        {
+          "id": "TC-08.1",
+          "expected": "Archive/restore a referenced Account; active pickers and historical balance/display obey BR-09.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-09",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-BKP-001–008, FR-REC-015",
+      "oracle": "Export and restore v6 on a fresh install; all portable canonical table hashes/counts, receipts, archived-history refund links, revisions, cursors, and ledger states match. Device state matches FR-BKP-003; schedule/SDK side effects do not run during recovery.",
+      "assertions": [
+        {
+          "id": "TC-09.1",
+          "expected": "Export and restore v6 on a fresh install; all portable canonical table hashes/counts, receipts, archived-history refund links, revisions, cursors, and ledger states match.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-09.2",
+          "expected": "Device state matches FR-BKP-003; schedule/SDK side effects do not run during recovery.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-10",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-004/008/010",
+      "oracle": "Truncate/corrupt backup and alter a manifest hash; each restore is rejected before live mutation.",
+      "assertions": [
+        {
+          "id": "TC-10.1",
+          "expected": "Truncate/corrupt backup and alter a manifest hash; each restore is rejected before live mutation.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-11",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-005",
+      "oracle": "Fail passcode five times; fifth failure imposes exactly 30 seconds and no early attempt is accepted.",
+      "assertions": [
+        {
+          "id": "TC-11.1",
+          "expected": "Fail passcode five times; fifth failure imposes exactly 30 seconds and no early attempt is accepted.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-12",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-NOT-001/004",
+      "oracle": "Deny notification permission; toggle remains OFF, accessible guidance appears, core use continues.",
+      "assertions": [
+        {
+          "id": "TC-12.1",
+          "expected": "Deny notification permission; toggle remains OFF, accessible guidance appears, core use continues.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-13",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-05–07, FR-SET-001",
+      "oracle": "With stored 1234 minor units, display 2→0→2 yields 12.34→12→12.34 and no stored column changes.",
+      "assertions": [
+        {
+          "id": "TC-13.1",
+          "expected": "With stored 1234 minor units, display 2→0→2 yields 12.34→12→12.34 and no stored column changes.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-14",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-TRN-006",
+      "oracle": "Duplicate manual, recurring, and refund Transactions; each new draft has a new token and no recurrence/refund link. A duplicated refund is a purchase Expense draft, and an archived inherited category is cleared and blocks Save until an active category is selected.",
+      "assertions": [
+        {
+          "id": "TC-14.1",
+          "expected": "Duplicate manual, recurring, and refund Transactions; each new draft has a new token and no recurrence/refund link.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-14.2",
+          "expected": "A duplicated refund is a purchase Expense draft, and an archived inherited category is cleared and blocks Save until an active category is selected.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-15",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-CAT-004, FR-NAV-002",
+      "oracle": "Fresh install seeds the approved categories and guides account creation without dead-end navigation.",
+      "assertions": [
+        {
+          "id": "TC-15.1",
+          "expected": "Fresh install seeds the approved categories and guides account creation without dead-end navigation.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-16",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-003/004",
+      "oracle": "Evaluate a weekday rule across a 40-date gap; exactly 10 oldest become `deferred_backlog`, 30 newest become pending/confirmed, the persistent backlog notice shows 10 and its date range, and immediate automatic reopen changes nothing.",
+      "assertions": [
+        {
+          "id": "TC-16.1",
+          "expected": "Evaluate a weekday rule across a 40-date gap; exactly 10 oldest become `deferred_backlog`, 30 newest become pending/confirmed, the persistent backlog notice shows 10 and its date range, and immediate automatic reopen changes nothing.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-17",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-008",
+      "oracle": "Pause across five scheduled dates, resume, and evaluate; those dates are `excluded_pause` and never generate Transactions.",
+      "assertions": [
+        {
+          "id": "TC-17.1",
+          "expected": "Pause across five scheduled dates, resume, and evaluate; those dates are `excluded_pause` and never generate Transactions.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-18",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-010",
+      "oracle": "Archive a target of an active rule; the warning shows affected pending/backlog counts, the rule pauses, pending and deferred rows become `skipped_target_archived`, and unarchive does not resume or rewrite them.",
+      "assertions": [
+        {
+          "id": "TC-18.1",
+          "expected": "Archive a target of an active rule; the warning shows affected pending/backlog counts, the rule pauses, pending and deferred rows become `skipped_target_archived`, and unarchive does not resume or rewrite them.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-19",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-10, FR-ACC-003, FR-CAT-002",
+      "oracle": "Attempt hard-delete of an entity referenced by active, paused, or tombstoned recurrence history; every attempt is rejected.",
+      "assertions": [
+        {
+          "id": "TC-19.1",
+          "expected": "Attempt hard-delete of an entity referenced by active, paused, or tombstoned recurrence history; every attempt is rejected.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-21",
+      "firstCompletePassPhase": 3,
+      "requirements": "NFR-03",
+      "oracle": "Run the recurrence portion of PERF-01 and meet all five-run thresholds.",
+      "assertions": [
+        {
+          "id": "TC-21.1",
+          "expected": "Run the recurrence portion of PERF-01 and meet all five-run thresholds.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-22",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-001, FR-ERR-004",
+      "oracle": "Reject rule with empty weekdays, invalid timezone, end before start, invalid targets, or non-positive/round-to-zero amount.",
+      "assertions": [
+        {
+          "id": "TC-22.1",
+          "expected": "Reject rule with empty weekdays, invalid timezone, end before start, invalid targets, or non-positive/round-to-zero amount.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-23",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-13/14, FR-REC-005/007",
+      "oracle": "Pending rows affect no Records/balance/Budget/Analysis/PDF surface; confirmation atomically creates one Transaction; skip remains permanently absent.",
+      "assertions": [
+        {
+          "id": "TC-23.1",
+          "expected": "Pending rows affect no Records/balance/Budget/Analysis/PDF surface; confirmation atomically creates one Transaction; skip remains permanently absent.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-24",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-008",
+      "oracle": "Two disjoint pause/resume cycles produce exactly two non-overlapping exclusion intervals and exclude only dates in `[start,end)`.",
+      "assertions": [
+        {
+          "id": "TC-24.1",
+          "expected": "Two disjoint pause/resume cycles produce exactly two non-overlapping exclusion intervals and exclude only dates in `[start,end)`.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-25",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-005/006",
+      "oracle": "Fail four times, restart, fail fifth, reboot mid-delay; counter and remaining delay survive.",
+      "assertions": [
+        {
+          "id": "TC-25.1",
+          "expected": "Fail four times, restart, fail fifth, reboot mid-delay; counter and remaining delay survive.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-26",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-003/009, FR-SEC-007",
+      "oracle": "Forgot passcode→two-confirmation reset→supported restore; app is unlocked afterward and offers fresh enrollment without restoring old credentials.",
+      "assertions": [
+        {
+          "id": "TC-26.1",
+          "expected": "Forgot passcode→two-confirmation reset→supported restore; app is unlocked afterward and offers fresh enrollment without restoring old credentials.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-27",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-BUD-003, NFR-07",
+      "oracle": "Budgets expose labels, ≥44dp targets, 200% scaling, and non-color warning; automated contrast scan meets NFR-07.",
+      "assertions": [
+        {
+          "id": "TC-27.1",
+          "expected": "Budgets expose labels, ≥44dp targets, 200% scaling, and non-color warning; automated contrast scan meets NFR-07.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-28",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-TRN-011",
+      "oracle": "Rapid double Save produces one committed token and one Transaction.",
+      "assertions": [
+        {
+          "id": "TC-28.1",
+          "expected": "Rapid double Save produces one committed token and one Transaction.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-29",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-04, FR-TRN-007",
+      "oracle": "Edit Transfer amount and destination with injected fault; each edit commits both account effects or neither.",
+      "assertions": [
+        {
+          "id": "TC-29.1",
+          "expected": "Edit Transfer amount and destination with injected fault; each edit commits both account effects or neither.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-30",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-TRN-003, NFR-05",
+      "oracle": "Evaluate terminating/non-terminating arithmetic and malformed forms; integer output follows half-up scale-2 or rejects with no write.",
+      "assertions": [
+        {
+          "id": "TC-30.1",
+          "expected": "Evaluate terminating/non-terminating arithmetic and malformed forms; integer output follows half-up scale-2 or rejects with no write.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-31",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-TRN-006",
+      "oracle": "Duplicate recurring-origin Transaction; saved duplicate is `originKind=manual` with no origin snapshot/link.",
+      "assertions": [
+        {
+          "id": "TC-31.1",
+          "expected": "Duplicate recurring-origin Transaction; saved duplicate is `originKind=manual` with no origin snapshot/link.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-32",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-ACC-004, FR-CAT-003",
+      "oracle": "Archived entities are absent from all new-entry/new-rule/reassignment pickers yet render in historical views.",
+      "assertions": [
+        {
+          "id": "TC-32.1",
+          "expected": "Archived entities are absent from all new-entry/new-rule/reassignment pickers yet render in historical views.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-33",
+      "firstCompletePassPhase": 2,
+      "requirements": "NFR-03",
+      "oracle": "Run the scroll portion of PERF-01 and meet every per-run threshold.",
+      "assertions": [
+        {
+          "id": "TC-33.1",
+          "expected": "Run the scroll portion of PERF-01 and meet every per-run threshold.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-34",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-004/008",
+      "oracle": "A schema-v6 file with unresolved FK, duplicate unique key, refund/backlog inconsistency, or invariant violation is rejected before live mutation.",
+      "assertions": [
+        {
+          "id": "TC-34.1",
+          "expected": "A schema-v6 file with unresolved FK, duplicate unique key, refund/backlog inconsistency, or invariant violation is rejected before live mutation.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-35",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-PDF-001/002",
+      "oracle": "PDF containing Transfer, recurring purchase, and Expense refund labels them correctly; it excludes Transfer, subtracts Refund from Expense, and never adds Refund to Income.",
+      "assertions": [
+        {
+          "id": "TC-35.1",
+          "expected": "PDF containing Transfer, recurring purchase, and Expense refund labels them correctly; it excludes Transfer, subtracts Refund from Expense, and never adds Refund to Income.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-36",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-BKP-001, FR-PDF-003, FR-ERR-002",
+      "oracle": "Exhaust storage during backup and PDF creation; no final/partial output remains and app data is unchanged.",
+      "assertions": [
+        {
+          "id": "TC-36.1",
+          "expected": "Exhaust storage during backup and PDF creation; no final/partial output remains and app data is unchanged.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-37",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-004",
+      "oracle": "Background 59 seconds: unlocked; background 60 seconds: locked; cold launch/device-lock signal: locked.",
+      "assertions": [
+        {
+          "id": "TC-37.1",
+          "expected": "Background 59 seconds: unlocked; background 60 seconds: locked; cold launch/device-lock signal: locked.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-38",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-ACC-001, FR-CAT-001, FR-SET-002",
+      "oracle": "Edit Account, Category, and portable Preferences; restart and verify exact persisted values and effects.",
+      "assertions": [
+        {
+          "id": "TC-38.1",
+          "expected": "Edit Account, Category, and portable Preferences; restart and verify exact persisted values and effects.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-39",
+      "firstCompletePassPhase": 1,
+      "requirements": "BR-05–07, FR-TRN-003, FR-SET-001",
+      "oracle": "Store ₱12.34, switch 2→0→2, and enter values requiring rounding; stored financial columns never rescale and zero-after-rounding rejects.",
+      "assertions": [
+        {
+          "id": "TC-39.1",
+          "expected": "Store ₱12.34, switch 2→0→2, and enter values requiring rounding; stored financial columns never rescale and zero-after-rounding rejects.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-40",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-TRN-002/003/010, FR-REC-001",
+      "oracle": "Reject negative expressions/values and category mismatch across manual entry, purchase/refund entry, rule creation, confirmation, edit, and restore. A rule cannot create a refund.",
+      "assertions": [
+        {
+          "id": "TC-40.1",
+          "expected": "Reject negative expressions/values and category mismatch across manual entry, purchase/refund entry, rule creation, confirmation, edit, and restore.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-40.2",
+          "expected": "A rule cannot create a refund.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-41",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-TRN-008/010, FR-ERR-001",
+      "oracle": "Edit/correct Income and purchase Expense with fault injection; the old effect is replaced atomically. With a linked refund, reject original type/category change and any amount below cumulative refunds without changing either row.",
+      "assertions": [
+        {
+          "id": "TC-41.1",
+          "expected": "Edit/correct Income and purchase Expense with fault injection; the old effect is replaced atomically.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-41.2",
+          "expected": "With a linked refund, reject original type/category change and any amount below cumulative refunds without changing either row.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-42",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-TRN-005, FR-REC-013",
+      "oracle": "Create recurrence in `Asia/Manila`, travel to another timezone, and evaluate around midnight/DST elsewhere; occurrence/accounting date remains the rule-zone date and UTC time represents rule-zone noon.",
+      "assertions": [
+        {
+          "id": "TC-42.1",
+          "expected": "Create recurrence in `Asia/Manila`, travel to another timezone, and evaluate around midnight/DST elsewhere; occurrence/accounting date remains the rule-zone date and UTC time represents rule-zone noon.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-43",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-TRN-011",
+      "oracle": "Commit token T, replay after restart, edit/delete its target, then replay again and after backup/restore. Each identical request returns the original receipt projection, creates no new row, and preserves current totals. Different payload with T returns IDEMPOTENCY_CONFLICT.",
+      "assertions": [
+        {
+          "id": "TC-43.1",
+          "expected": "Commit token T, replay after restart, edit/delete its target, then replay again and after backup/restore.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-43.2",
+          "expected": "Each identical request returns the original receipt projection, creates no new row, and preserves current totals.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-43.3",
+          "expected": "Different payload with T returns IDEMPOTENCY_CONFLICT.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-44",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-15, FR-REC-014",
+      "oracle": "Delete a generated Transaction, reopen twice, and evaluate after rule edit; ledger is `deleted_transaction` and no replacement appears.",
+      "assertions": [
+        {
+          "id": "TC-44.1",
+          "expected": "Delete a generated Transaction, reopen twice, and evaluate after rule edit; ledger is `deleted_transaction` and no replacement appears.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-45",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-002",
+      "oracle": "Trigger cold launch/resume/concurrent calls and first focus after fixed-rule-zone midnight while continuously foregrounded; evaluate each interval once. Device-zone midnight alone does not advance a rule whose zone date has not changed.",
+      "assertions": [
+        {
+          "id": "TC-45.1",
+          "expected": "Trigger cold launch/resume/concurrent calls and first focus after fixed-rule-zone midnight while continuously foregrounded; evaluate each interval once.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-45.2",
+          "expected": "Device-zone midnight alone does not advance a rule whose zone date has not changed.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-46",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-REC-003/004/015",
+      "oracle": "Evaluate capped history twice and after backup/restore; all keys remain unique, deferred rows remain recoverable and unchanged without user action, backlog count/date range matches, and no duplicate Transaction appears.",
+      "assertions": [
+        {
+          "id": "TC-46.1",
+          "expected": "Evaluate capped history twice and after backup/restore; all keys remain unique, deferred rows remain recoverable and unchanged without user action, backlog count/date range matches, and no duplicate Transaction appears.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-47",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-005/007",
+      "oracle": "Confirm-all, confirm-one, edited-amount confirm, and skip; each pending row reaches exactly one legal terminal/confirmed state with correct amount.",
+      "assertions": [
+        {
+          "id": "TC-47.1",
+          "expected": "Confirm-all, confirm-one, edited-amount confirm, and skip; each pending row reaches exactly one legal terminal/confirmed state with correct amount.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-48",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-006/016",
+      "oracle": "Confirmation OFF creates ledger+Transaction atomically and shows exact post-run count; injected failure creates neither.",
+      "assertions": [
+        {
+          "id": "TC-48.1",
+          "expected": "Confirmation OFF creates ledger+Transaction atomically and shows exact post-run count; injected failure creates neither.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-49",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-008/013",
+      "oracle": "Pause/resume same scheduling day before evaluation yields empty interval; pause through next date excludes that date; boundary dates follow `[start,end)`.",
+      "assertions": [
+        {
+          "id": "TC-49.1",
+          "expected": "Pause/resume same scheduling day before evaluation yields empty interval; pause through next date excludes that date; boundary dates follow `[start,end)`.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-50",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-16, FR-REC-009",
+      "oracle": "Make two edits on 2026-10-23 Asia/Manila, both effective 2026-10-24; sequences 2/3 coexist and 3 alone wins on the 24th. Current/past/pending/deferred rows keep sequence-1 snapshots. Attempt a timezone edit and receive RULE_TIMEZONE_IMMUTABLE with no state change.",
+      "assertions": [
+        {
+          "id": "TC-50.1",
+          "expected": "Make two edits on 2026-10-23 Asia/Manila, both effective 2026-10-24; sequences 2/3 coexist and 3 alone wins on the 24th.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-50.2",
+          "expected": "Current/past/pending/deferred rows keep sequence-1 snapshots.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-50.3",
+          "expected": "Attempt a timezone edit and receive RULE_TIMEZONE_IMMUTABLE with no state change.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-51",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-010, FR-ACC-003, FR-CAT-002",
+      "oracle": "Archive a target with multiple rules and pending/deferred rows; all dependent rules pause and both row types skip in one commit; injected failure changes nothing.",
+      "assertions": [
+        {
+          "id": "TC-51.1",
+          "expected": "Archive a target with multiple rules and pending/deferred rows; all dependent rules pause and both row types skip in one commit; injected failure changes nothing.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-52",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-17, FR-REC-011/012",
+      "oracle": "Remove rule containing confirmed, pending, deferred-backlog, skipped, pause, and revision history; pending/deferred rows cancel, history remains, and the rule never evaluates.",
+      "assertions": [
+        {
+          "id": "TC-52.1",
+          "expected": "Remove rule containing confirmed, pending, deferred-backlog, skipped, pause, and revision history; pending/deferred rows cancel, history remains, and the rule never evaluates.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-53",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-REC-014/015, FR-BKP-001–008",
+      "oracle": "Delete generated transaction, remove rule, backup, restore, reopen; tombstone/history/snapshot/dispositions match and no regeneration occurs.",
+      "assertions": [
+        {
+          "id": "TC-53.1",
+          "expected": "Delete generated transaction, remove rule, backup, restore, reopen; tombstone/history/snapshot/dispositions match and no regeneration occurs.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-54",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-REC-015",
+      "oracle": "Backup/restore every recurrence disposition, including deferred backlog and explicit exclusion, plus each cursor; logical hashes, visible backlog, and next evaluation result match the source device.",
+      "assertions": [
+        {
+          "id": "TC-54.1",
+          "expected": "Backup/restore every recurrence disposition, including deferred backlog and explicit exclusion, plus each cursor; logical hashes, visible backlog, and next evaluation result match the source device.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-55",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-016, FR-ERR-001",
+      "oracle": "Inject failure after each rule during a multi-rule pass; the entire pass rolls back and retry creates the exact intended rows once.",
+      "assertions": [
+        {
+          "id": "TC-55.1",
+          "expected": "Inject failure after each rule during a multi-rule pass; the entire pass rolls back and retry creates the exact intended rows once.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-56",
+      "firstCompletePassPhase": 3,
+      "requirements": "FR-REC-016, FR-ERR-002",
+      "oracle": "Exhaust storage during multi-rule pass; no cursor/ledger/Transaction changes persist, error appears, and next trigger retries successfully after space is freed.",
+      "assertions": [
+        {
+          "id": "TC-56.1",
+          "expected": "Exhaust storage during multi-rule pass; no cursor/ledger/Transaction changes persist, error appears, and next trigger retries successfully after space is freed.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-57",
+      "firstCompletePassPhase": 6,
+      "requirements": "BR-03/09, FR-ACC-002, FR-BUD-002, FR-ANA-003, FR-PDF-002",
+      "oracle": "Archive entities with history; balances, Budget spent, Analysis, Records, and PDF remain numerically identical and labels remain visible.",
+      "assertions": [
+        {
+          "id": "TC-57.1",
+          "expected": "Archive entities with history; balances, Budget spent, Analysis, Records, and PDF remain numerically identical and labels remain visible.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-58",
+      "firstCompletePassPhase": 2,
+      "requirements": "BR-10, FR-CAT-002",
+      "oracle": "Category referenced only by Budget cannot delete; after explicit Budget deletion and with no other references, category delete succeeds.",
+      "assertions": [
+        {
+          "id": "TC-58.1",
+          "expected": "Category referenced only by Budget cannot delete; after explicit Budget deletion and with no other references, category delete succeeds.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-59",
+      "firstCompletePassPhase": 2,
+      "requirements": "BR-11, FR-BUD-001/004",
+      "oracle": "Attempt duplicate category/month Budget; unique constraint rejects it. Edit mid-month and cross month boundary; current limit replaces immediately and no value rolls forward.",
+      "assertions": [
+        {
+          "id": "TC-59.1",
+          "expected": "Attempt duplicate category/month Budget; unique constraint rejects it.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-59.2",
+          "expected": "Edit mid-month and cross month boundary; current limit replaces immediately and no value rolls forward.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-60",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-BUD-005",
+      "oracle": "Verify active unbudgeted list; archive a category with historical Budget and confirm historical visibility but no new Budget action until restore.",
+      "assertions": [
+        {
+          "id": "TC-60.1",
+          "expected": "Verify active unbudgeted list; archive a category with historical Budget and confirm historical visibility but no new Budget action until restore.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-61",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-ANA-001–003",
+      "oracle": "Use a fixture with ties, Transfers, pending/skipped rows, archived categories, boundary dates, purchases, refunds, and a no-positive-net category range; verify exact net totals, order, positive-only chart denominator, “Net refund” labels, empty state, and shared result set.",
+      "assertions": [
+        {
+          "id": "TC-61.1",
+          "expected": "Use a fixture with ties, Transfers, pending/skipped rows, archived categories, boundary dates, purchases, refunds, and a no-positive-net category range; verify exact net totals, order, positive-only chart denominator, “Net refund” labels, empty state, and shared result set.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-62",
+      "firstCompletePassPhase": 7,
+      "requirements": "BR-18, FR-BKP-002/003",
+      "oracle": "Inspect v6: exact portable preferences survive; no secrets/enabled flags/permission/consent/queues/SuggestionState enter the package. After committed restore/reset, security, reminder, assistive, and telemetry are OFF, notifications are cancelled, OS permission is unchanged, and suggestion history is empty.",
+      "assertions": [
+        {
+          "id": "TC-62.1",
+          "expected": "Inspect v6: exact portable preferences survive; no secrets/enabled flags/permission/consent/queues/SuggestionState enter the package.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-62.2",
+          "expected": "After committed restore/reset, security, reminder, assistive, and telemetry are OFF, notifications are cancelled, OS permission is unchanged, and suggestion history is empty.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-63",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-004/008, FR-ERR-002",
+      "oracle": "Fail restore for insufficient preflight space and fail staging migration/write; live hashes remain unchanged and artifacts clean up.",
+      "assertions": [
+        {
+          "id": "TC-63.1",
+          "expected": "Fail restore for insufficient preflight space and fail staging migration/write; live hashes remain unchanged and artifacts clean up.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-64",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-BKP-005",
+      "oracle": "Attempt writes from every repository while restore lock is held; each returns `RESTORE_IN_PROGRESS`, retains draft input, and commits nothing.",
+      "assertions": [
+        {
+          "id": "TC-64.1",
+          "expected": "Attempt writes from every repository while restore lock is held; each returns `RESTORE_IN_PROGRESS`, retains draft input, and commits nothing.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-65",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-BKP-006–008, FR-ERR-002, REC-BKP-01",
+      "oracle": "Inject termination/disk full before/after every journal flush, rename, DB_COMMITTED marker, normalization action, and cleanup deletion. Pre-commit recovers old data/settings; post-commit completes new/default-off state; blocked recovery mounts no financial/network services. Compare complete hashes and device state against Section 12.",
+      "assertions": [
+        {
+          "id": "TC-65.1",
+          "expected": "Inject termination/disk full before/after every journal flush, rename, DB_COMMITTED marker, normalization action, and cleanup deletion.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-65.2",
+          "expected": "Pre-commit recovers old data/settings; post-commit completes new/default-off state; blocked recovery mounts no financial/network services.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-65.3",
+          "expected": "Compare complete hashes and device state against Section 12.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-66",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-BKP-007, FR-NAV-002, FR-ERR-003",
+      "oracle": "Corrupt replacement after NEW_RENAMED but before DB_COMMITTED; startup restores valid rollback before finance mounts, keeping old device state. Repeat after DB_COMMITTED: block with corrupt-DB recovery and preserve files; no silent rollback.",
+      "assertions": [
+        {
+          "id": "TC-66.1",
+          "expected": "Corrupt replacement after NEW_RENAMED but before DB_COMMITTED; startup restores valid rollback before finance mounts, keeping old device state.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-66.2",
+          "expected": "Repeat after DB_COMMITTED: block with corrupt-DB recovery and preserve files; no silent rollback.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-67",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-009",
+      "oracle": "Terminate reset before/after SQLite commit and during SecureStore clear; restart completes reset and opens unlocked empty first launch.",
+      "assertions": [
+        {
+          "id": "TC-67.1",
+          "expected": "Terminate reset before/after SQLite commit and during SecureStore clear; restart completes reset and opens unlocked empty first launch.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-68",
+      "firstCompletePassPhase": 7,
+      "requirements": "BR-20, FR-BKP-010/011",
+      "oracle": "Schemas 1–5 reject UNSUPPORTED_LEGACY_SCHEMA; 7 rejects BACKUP_FROM_NEWER_APP; missing/string/fraction/zero/negative reject MALFORMED_BACKUP. Exact v6 golden succeeds. Every rejection preserves live hashes, credentials, consent, and schedules.",
+      "assertions": [
+        {
+          "id": "TC-68.1",
+          "expected": "Schemas 1–5 reject UNSUPPORTED_LEGACY_SCHEMA; 7 rejects BACKUP_FROM_NEWER_APP; missing/string/fraction/zero/negative reject MALFORMED_BACKUP.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-68.2",
+          "expected": "Exact v6 golden succeeds.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-68.3",
+          "expected": "Every rejection preserves live hashes, credentials, consent, and schedules.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-69",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-PDF-001/003",
+      "oracle": "Generate, cancel share, complete share, and fail PDF storage; verify inclusive boundaries, confirmed-only content, and temporary-file cleanup.",
+      "assertions": [
+        {
+          "id": "TC-69.1",
+          "expected": "Generate, cancel share, complete share, and fail PDF storage; verify inclusive boundaries, confirmed-only content, and temporary-file cleanup.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-70",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-SEC-001/009",
+      "oracle": "Enroll only exactly six matching digits; plaintext does not appear in logs, storage, snapshots, or telemetry transport.",
+      "assertions": [
+        {
+          "id": "TC-70.1",
+          "expected": "Enroll only exactly six matching digits; plaintext does not appear in logs, storage, snapshots, or telemetry transport.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-71",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-002",
+      "oracle": "Inspect verifier fields, recompute PBKDF2 test vector, verify constant-time comparison review, and meet device timing bound.",
+      "assertions": [
+        {
+          "id": "TC-71.1",
+          "expected": "Inspect verifier fields, recompute PBKDF2 test vector, verify constant-time comparison review, and meet device timing bound.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-72",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-003",
+      "oracle": "Test biometric success, failure, cancel, OS lockout, no enrollment, enrollment change, and device-passcode attempt; only biometric success unlocks and every other path shows app passcode.",
+      "assertions": [
+        {
+          "id": "TC-72.1",
+          "expected": "Test biometric success, failure, cancel, OS lockout, no enrollment, enrollment change, and device-passcode attempt; only biometric success unlocks and every other path shows app passcode.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-73",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-SEC-005/006",
+      "oracle": "Exercise attempts 1–10, success reset, biometric reset, restart, reboot, and clock rollback; observed delays/state exactly match FR-SEC-005/006.",
+      "assertions": [
+        {
+          "id": "TC-73.1",
+          "expected": "Exercise attempts 1–10, success reset, biometric reset, restart, reboot, and clock rollback; observed delays/state exactly match FR-SEC-005/006.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-74",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-NOT-001/002",
+      "oracle": "Enable, change time, enable repeatedly, and disable reminder; exactly one/correct/zero requests exist respectively. With an inactivity notification (FR-AUT-006) pending, disable the daily reminder; verify the daily reminder's own request is cancelled and the inactivity notification remains scheduled and fires as expected.",
+      "assertions": [
+        {
+          "id": "TC-74.1",
+          "expected": "Enable, change time, enable repeatedly, and disable reminder; exactly one/correct/zero requests exist respectively.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-74.2",
+          "expected": "With an inactivity notification (FR-AUT-006) pending, disable the daily reminder; verify the daily reminder's own request is cancelled and the inactivity notification remains scheduled and fires as expected.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-75",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-NOT-003/004",
+      "oracle": "Reboot/change timezone/delete scheduled request; launch reconciliation restores exactly one request when authorized/enabled and none when disabled/denied.",
+      "assertions": [
+        {
+          "id": "TC-75.1",
+          "expected": "Reboot/change timezone/delete scheduled request; launch reconciliation restores exactly one request when authorized/enabled and none when disabled/denied.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-76",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-PRV-001",
+      "oracle": "Inspect Android exclusion rules and iOS support-directory/file resource values after ordinary saves, replacement restore, reset, and restart. Perform backup/device-transfer smoke tests and record observed omissions/restorations. A failed observed exclusion blocks the gate; a passing sample proves that observation only. Verify copy discloses iOS system-control limits; explicit v6 export works.",
+      "assertions": [
+        {
+          "id": "TC-76.1",
+          "expected": "Inspect Android exclusion rules and iOS support-directory/file resource values after ordinary saves, replacement restore, reset, and restart.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-76.2",
+          "expected": "Perform backup/device-transfer smoke tests and record observed omissions/restorations.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-76.3",
+          "expected": "A failed observed exclusion blocks the gate; a passing sample proves that observation only.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-76.4",
+          "expected": "Verify copy discloses iOS system-control limits; explicit v6 export works.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-77",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-PRV-002/003",
+      "oracle": "With consent OFF, assert no SDK init/network/identifier/queue. With ON, inspect all capture paths; opt out offline and verify queued files deleted and later connectivity sends nothing.",
+      "assertions": [
+        {
+          "id": "TC-77.1",
+          "expected": "With consent OFF, assert no SDK init/network/identifier/queue.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-77.2",
+          "expected": "With ON, inspect all capture paths; opt out offline and verify queued files deleted and later connectivity sends nothing.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-78",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-NAV-001",
+      "oracle": "Navigate/deep-link every implemented MVP SCR route (SCR-01/02/04–12); Deferred SCR-03 is absent. Verify lock/recovery precede finance and all routes live under src/app/.",
+      "assertions": [
+        {
+          "id": "TC-78.1",
+          "expected": "Navigate/deep-link every implemented MVP SCR route (SCR-01/02/04–12);",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-78.2",
+          "expected": "Deferred SCR-03 is absent.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-78.3",
+          "expected": "Verify lock/recovery precede finance and all routes live under src/app/.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-79",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-ERR-002",
+      "oracle": "Exhaust storage during manual transaction save; no transaction/idempotency partial state remains and draft input is retained.",
+      "assertions": [
+        {
+          "id": "TC-79.1",
+          "expected": "Exhaust storage during manual transaction save; no transaction/idempotency partial state remains and draft input is retained.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-80",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-ERR-003",
+      "oracle": "Launch with corrupted/truncated DB and failing foreign-key check; financial UI does not mount, file is preserved, and Restore/Reset options work.",
+      "assertions": [
+        {
+          "id": "TC-80.1",
+          "expected": "Launch with corrupted/truncated DB and failing foreign-key check; financial UI does not mount, file is preserved, and Restore/Reset options work.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-81",
+      "firstCompletePassPhase": 8,
+      "requirements": "NFR-01",
+      "oracle": "In airplane mode execute all NFR-01 core workflows; no core action attempts or requires network access.",
+      "assertions": [
+        {
+          "id": "TC-81.1",
+          "expected": "In airplane mode execute all NFR-01 core workflows; no core action attempts or requires network access.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-82",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-13, FR-REC-004/015/016",
+      "oracle": "With 75 deferred occurrences, Generate next batch processes exactly the 30 oldest once; reopening does nothing; then explicitly exclude 20 selected rows and confirm the named count/range. Verify 25 remain deferred, zero unintended Transactions exist, and the state persists across restart and backup/restore.",
+      "assertions": [
+        {
+          "id": "TC-82.1",
+          "expected": "With 75 deferred occurrences, Generate next batch processes exactly the 30 oldest once; reopening does nothing; then explicitly exclude 20 selected rows and confirm the named count/range.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-82.2",
+          "expected": "Verify 25 remain deferred, zero unintended Transactions exist, and the state persists across restart and backup/restore.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-83",
+      "firstCompletePassPhase": 6,
+      "requirements": "BR-02/03/23, FR-TRN-001/002/010, FR-BUD-002, FR-ANA-001, FR-PDF-002",
+      "oracle": "Create a ₱100 purchase and ₱30 refund to a different active account in a later month. Verify original account −₱100, receiving account +₱30, Income unchanged, purchase-month Expense ₱100, refund-month net Expense/Budget −₱30, Records/PDF label Refund, and backup/restore preserves the link and totals.",
+      "assertions": [
+        {
+          "id": "TC-83.1",
+          "expected": "Create a ₱100 purchase and ₱30 refund to a different active account in a later month.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-83.2",
+          "expected": "Verify original account −₱100, receiving account +₱30, Income unchanged, purchase-month Expense ₱100, refund-month net Expense/Budget −₱30, Records/PDF label Refund, and backup/restore preserves the link and totals.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-84",
+      "firstCompletePassPhase": 2,
+      "requirements": "BR-23, FR-TRN-008–011, FR-ERR-001",
+      "oracle": "Against a ₱100 purchase, create/edit/delete partial refunds and race two final refunds. Cumulative committed refunds never exceed ₱100; exactly one racing write succeeds when capacity allows one; original deletion/type/category change and amount below refunded total are rejected; deleting a refund restores its accounting effects and available refundable amount.",
+      "assertions": [
+        {
+          "id": "TC-84.1",
+          "expected": "Against a ₱100 purchase, create/edit/delete partial refunds and race two final refunds.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-84.2",
+          "expected": "Cumulative committed refunds never exceed ₱100; exactly one racing write succeeds when capacity allows one; original deletion/type/category change and amount below refunded total are rejected; deleting a refund restores its accounting effects and available refundable amount.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-85",
+      "firstCompletePassPhase": 6,
+      "requirements": "FR-TRN-010, FR-BUD-002, FR-ANA-001–003, FR-BKP-004, FR-PDF-002",
+      "oracle": "Use purchases/refunds across range and month boundaries, including a category whose refunds exceed purchases in the selected range. Verify signed net Expense, “Net refund,” largest-positive-category behavior, positive-only chart denominator, Budget values, PDF totals, and rejection of malformed or orphaned refund links during restore.",
+      "assertions": [
+        {
+          "id": "TC-85.1",
+          "expected": "Use purchases/refunds across range and month boundaries, including a category whose refunds exceed purchases in the selected range.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-85.2",
+          "expected": "Verify signed net Expense, “Net refund,” largest-positive-category behavior, positive-only chart denominator, Budget values, PDF totals, and rejection of malformed or orphaned refund links during restore.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-86",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-001, BR-26",
+      "oracle": "Feed 3 manual-origin Income/purchase-Expense transactions on the same weekday/account/category with amounts within ±5%; suggestion appears pre-filled correctly. Feed a 4th identical-shape row that is `originKind=recurring`, covered by an existing active rule, or `expenseEffect=refund`; no suggestion fires for any of the three. Declining suppresses the exact pattern instance until it materially changes.",
+      "assertions": [
+        {
+          "id": "TC-86.1",
+          "expected": "Feed 3 manual-origin Income/purchase-Expense transactions on the same weekday/account/category with amounts within ±5%; suggestion appears pre-filled correctly.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-86.2",
+          "expected": "Feed a 4th identical-shape row that is `originKind=recurring`, covered by an existing active rule, or `expenseEffect=refund`; no suggestion fires for any of the three.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-86.3",
+          "expected": "Declining suppresses the exact pattern instance until it materially changes.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-87",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-002",
+      "oracle": "Save a transaction identical in account/type/`expenseEffect`/category/amount/accountingDate to an existing confirmed row; warning appears; Save Anyway commits a second legitimate row; Edit/Cancel commits none. Separately, create a purchase and an unrelated same-amount/category/date refund; verify no warning fires between them because `expenseEffect` differs. Choose Save Anyway three times for one identical combination (across at least two different accounting dates and weekdays); verify `SuggestionState.occurrenceCount` reads 1, 2, then 3 and `dismissedAtUtc` is set at 3, that Edit/Cancel choices in between never changed the count, and that the 4th identical entry saves with no warning. Verify the purchase and refund combinations keep separate rows. Inject a `SuggestionState` write failure after a Save Anyway commit; the financial Save still succeeds. Use the \"Reset suggestion history\" action (FR-AUT-008); verify the same combination now warns again on the next identical Save.",
+      "assertions": [
+        {
+          "id": "TC-87.1",
+          "expected": "Save a transaction identical in account/type/`expenseEffect`/category/amount/accountingDate to an existing confirmed row; warning appears;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.2",
+          "expected": "Save Anyway commits a second legitimate row;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.3",
+          "expected": "Edit/Cancel commits none.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.4",
+          "expected": "Separately, create a purchase and an unrelated same-amount/category/date refund; verify no warning fires between them because `expenseEffect` differs.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.5",
+          "expected": "Choose Save Anyway three times for one identical combination (across at least two different accounting dates and weekdays); verify `SuggestionState.occurrenceCount` reads 1, 2, then 3 and `dismissedAtUtc` is set at 3, that Edit/Cancel choices in between never changed the count, and that the 4th identical entry saves with no warning.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.6",
+          "expected": "Verify the purchase and refund combinations keep separate rows.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.7",
+          "expected": "Inject a `SuggestionState` write failure after a Save Anyway commit; the financial Save still succeeds.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-87.8",
+          "expected": "Use the \"Reset suggestion history\" action (FR-AUT-008); verify the same combination now warns again on the next identical Save.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-88",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-003, BR-26",
+      "oracle": "With only 1 prior matching transaction, no category suggestion appears. With 2+ prior purchase/Income matches where one category reaches ≥60% frequency in the same amount bucket, that category pre-selects. Seed additional refund-type rows in a different category at the same amount; verify they are excluded from the matching pool and do not shift the suggestion. Change the pre-filled value without touching the indicator; verify the next matching entry is still suggested. Dismiss the \"suggested\" indicator; verify the next matching entry in that account/amount-bucket shows no suggestion. Then save entries that shift the majority to a different category; verify the suggestion resumes for the new category (BR-26 materially changed case). Verify the dismiss control's accessibility per NFR-07.",
+      "assertions": [
+        {
+          "id": "TC-88.1",
+          "expected": "With only 1 prior matching transaction, no category suggestion appears.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.2",
+          "expected": "With 2+ prior purchase/Income matches where one category reaches ≥60% frequency in the same amount bucket, that category pre-selects.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.3",
+          "expected": "Seed additional refund-type rows in a different category at the same amount; verify they are excluded from the matching pool and do not shift the suggestion.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.4",
+          "expected": "Change the pre-filled value without touching the indicator; verify the next matching entry is still suggested.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.5",
+          "expected": "Dismiss the \"suggested\" indicator; verify the next matching entry in that account/amount-bucket shows no suggestion.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.6",
+          "expected": "Then save entries that shift the majority to a different category; verify the suggestion resumes for the new category (BR-26 materially changed case).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-88.7",
+          "expected": "Verify the dismiss control's accessibility per NFR-07.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-89",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-004",
+      "oracle": "On day 1–2 of the accounting month, no pace alert fires regardless of spend. From day 3 onward (measured from the accounting month's start, not the Budget row's creation date), cross a Budget's pace threshold by more than 5%; exactly one alert appears per Budget per day. Seed a Budget created on day 15 of its accounting month; verify `daysElapsedInMonth` is still measured from day 1 of that month, not from day 15. Seed a Budget where refunds make `spentToDate` negative; verify no pace alert fires regardless of days elapsed.",
+      "assertions": [
+        {
+          "id": "TC-89.1",
+          "expected": "On day 1–2 of the accounting month, no pace alert fires regardless of spend.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-89.2",
+          "expected": "From day 3 onward (measured from the accounting month's start, not the Budget row's creation date), cross a Budget's pace threshold by more than 5%; exactly one alert appears per Budget per day.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-89.3",
+          "expected": "Seed a Budget created on day 15 of its accounting month; verify `daysElapsedInMonth` is still measured from day 1 of that month, not from day 15.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-89.4",
+          "expected": "Seed a Budget where refunds make `spentToDate` negative; verify no pace alert fires regardless of days elapsed.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-90",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-005",
+      "oracle": "Seed recurring rules, including a Transfer rule, producing a known future negative-balance date within 30 days on each affected account; forecast surfaces the correct account/date, labeled as a projection; pending/deferred-backlog inputs never alter the BR-03 actual balance. Revisit the same account/screen twice in one session; verify the forecast banner surfaces only on the first visit.",
+      "assertions": [
+        {
+          "id": "TC-90.1",
+          "expected": "Seed recurring rules, including a Transfer rule, producing a known future negative-balance date within 30 days on each affected account; forecast surfaces the correct account/date, labeled as a projection; pending/deferred-backlog inputs never alter the BR-03 actual balance.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-90.2",
+          "expected": "Revisit the same account/screen twice in one session; verify the forecast banner surfaces only on the first visit.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-91",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-006",
+      "oracle": "Confirm a transaction; verify exactly one inactivity notification is scheduled 5 days out. Confirm a refund 2 days later; verify the first is cancelled and a new one is scheduled 5 days from the refund. Let one fire while the app is fully terminated; verify delivery occurs without any app process (the absence of any app-registered background task is proven by architecture review INS-ARC-01, not by this device test). With an inactivity notification pending, disable the daily reminder (FR-NOT-002); verify the inactivity notification remains scheduled and fires as expected. Separately, with the daily reminder enabled, disable Assistive suggestions (FR-AUT-008) while an inactivity notification is pending; verify the daily reminder is unaffected and continues firing on schedule. Deny notification permission at the OS level; verify the feature no-ops with no error and no in-app indicator.",
+      "assertions": [
+        {
+          "id": "TC-91.1",
+          "expected": "Confirm a transaction; verify exactly one inactivity notification is scheduled 5 days out.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-91.2",
+          "expected": "Confirm a refund 2 days later; verify the first is cancelled and a new one is scheduled 5 days from the refund.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-91.3",
+          "expected": "Let one fire while the app is fully terminated; verify delivery occurs without any app process (the absence of any app-registered background task is proven by architecture review INS-ARC-01, not by this device test).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-91.4",
+          "expected": "With an inactivity notification pending, disable the daily reminder (FR-NOT-002); verify the inactivity notification remains scheduled and fires as expected.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-91.5",
+          "expected": "Separately, with the daily reminder enabled, disable Assistive suggestions (FR-AUT-008) while an inactivity notification is pending; verify the daily reminder is unaffected and continues firing on schedule.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-91.6",
+          "expected": "Deny notification permission at the OS level; verify the feature no-ops with no error and no in-app indicator.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-92",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-007",
+      "oracle": "Seed a dormant account/category with zero confirmed transactions; it appears once per session in the review list. Seed a second account/category also with zero confirmed transactions but referenced by an active RecurringRule or holding a `pending`/`deferred_backlog` row; verify it is excluded from the list. Archive action on the first follows BR-09 exactly; nothing is auto-archived. Seed a third entity that had a confirmed transaction, then went dormant, then received another confirmed transaction ending that dormancy, then went dormant again; verify the second dormancy period surfaces even though the first was dismissed.",
+      "assertions": [
+        {
+          "id": "TC-92.1",
+          "expected": "Seed a dormant account/category with zero confirmed transactions; it appears once per session in the review list.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-92.2",
+          "expected": "Seed a second account/category also with zero confirmed transactions but referenced by an active RecurringRule or holding a `pending`/`deferred_backlog` row; verify it is excluded from the list.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-92.3",
+          "expected": "Archive action on the first follows BR-09 exactly; nothing is auto-archived.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-92.4",
+          "expected": "Seed a third entity that had a confirmed transaction, then went dormant, then received another confirmed transaction ending that dormancy, then went dormant again; verify the second dormancy period surfaces even though the first was dismissed.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-93",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-008",
+      "oracle": "Turn the Assistive suggestions toggle OFF; verify no FR-AUT-001–007 prompt appears. Turn it back ON; verify previously dismissed patterns (per `SuggestionState`) do not immediately re-surface. Trigger \"Reset suggestion history\"; verify all `SuggestionState` rows are cleared and no financial data changes.",
+      "assertions": [
+        {
+          "id": "TC-93.1",
+          "expected": "Turn the Assistive suggestions toggle OFF; verify no FR-AUT-001–007 prompt appears.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-93.2",
+          "expected": "Turn it back ON; verify previously dismissed patterns (per `SuggestionState`) do not immediately re-surface.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-93.3",
+          "expected": "Trigger \"Reset suggestion history\"; verify all `SuggestionState` rows are cleared and no financial data changes.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-94",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-AUT-009, Section 6",
+      "oracle": "On SCR-06, make a low-balance forecast (FR-AUT-005) and a dormant-entity review (FR-AUT-007) simultaneously eligible; verify only the forecast displays and the review surfaces on the next qualifying view of SCR-06. On SCR-05, make one Save simultaneously eligible for a possible-duplicate warning (FR-AUT-002), a recurring-pattern suggestion (FR-AUT-001), and a category pre-fill indicator (FR-AUT-003); verify the duplicate modal appears first, before commit, and the other two surface afterward in that order across qualifying views. Make a Budget pace alert eligible on SCR-04 while a low-balance forecast is eligible on SCR-06; verify each shows on its own screen and neither is shown on the other's screen.",
+      "assertions": [
+        {
+          "id": "TC-94.1",
+          "expected": "On SCR-06, make a low-balance forecast (FR-AUT-005) and a dormant-entity review (FR-AUT-007) simultaneously eligible; verify only the forecast displays and the review surfaces on the next qualifying view of SCR-06.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-94.2",
+          "expected": "On SCR-05, make one Save simultaneously eligible for a possible-duplicate warning (FR-AUT-002), a recurring-pattern suggestion (FR-AUT-001), and a category pre-fill indicator (FR-AUT-003); verify the duplicate modal appears first, before commit, and the other two surface afterward in that order across qualifying views.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-94.3",
+          "expected": "Make a Budget pace alert eligible on SCR-04 while a low-balance forecast is eligible on SCR-06; verify each shows on its own screen and neither is shown on the other's screen.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-95",
+      "firstCompletePassPhase": 7,
+      "requirements": "BR-27, Section 11",
+      "oracle": "Seed `SuggestionState` rows older than twice their owning feature's lookback window, and rows orphaned by a hard-deleted Account/Category; run a normal app-open pass; verify both classes of row are pruned and no error occurs, including when a pruning pass runs before a prior one has completed. Separately seed old `duplicate`- and `category_hint`-kind rows that are **not** orphaned; verify they survive the same pruning pass untouched. Separately seed a `budget_pace` row for a prior accounting month's Budget that still exists (not deleted); verify it is pruned once the current month advances past it. Orphan rows are detected by existence checks on the plaintext `accountId`/`categoryId` fields (Section 11); verify a `duplicate` row survives while any referencing transaction still exists and is pruned only after every referencing record is deleted and the entity is hard-deleted. Verify a purchase and its same-amount refund produce two independent `duplicate` rows, and that a `dormant_entity` row stops suppressing once a later confirmed transaction exists.",
+      "assertions": [
+        {
+          "id": "TC-95.1",
+          "expected": "Seed `SuggestionState` rows older than twice their owning feature's lookback window, and rows orphaned by a hard-deleted Account/Category; run a normal app-open pass; verify both classes of row are pruned and no error occurs, including when a pruning pass runs before a prior one has completed.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-95.2",
+          "expected": "Separately seed old `duplicate`- and `category_hint`-kind rows that are **not** orphaned; verify they survive the same pruning pass untouched.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-95.3",
+          "expected": "Separately seed a `budget_pace` row for a prior accounting month's Budget that still exists (not deleted); verify it is pruned once the current month advances past it.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-95.4",
+          "expected": "Orphan rows are detected by existence checks on the plaintext `accountId`/`categoryId` fields (Section 11); verify a `duplicate` row survives while any referencing transaction still exists and is pruned only after every referencing record is deleted and the entity is hard-deleted.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-95.5",
+          "expected": "Verify a purchase and its same-amount refund produce two independent `duplicate` rows, and that a `dormant_entity` row stops suppressing once a later confirmed transaction exists.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-96",
+      "firstCompletePassPhase": 2,
+      "requirements": "FR-BUD-007, FR-CAT-002, BR-10",
+      "oracle": "Delete a Budget after confirmation; verify no transaction, balance, Analysis total, or PDF line changes and its `budget_pace` row is removed. For a category referenced only by that Budget and having no other references, verify hard-delete is rejected before the Budget is deleted and succeeds after (BR-10, FR-CAT-002). Verify a category still referenced by transactions remains non-deletable after its Budget is deleted. Recreate a Budget for the same category and month; verify FR-BUD-001 uniqueness holds and the new Budget computes Spent from existing history.",
+      "assertions": [
+        {
+          "id": "TC-96.1",
+          "expected": "Delete a Budget after confirmation; verify no transaction, balance, Analysis total, or PDF line changes and its `budget_pace` row is removed.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-96.2",
+          "expected": "For a category referenced only by that Budget and having no other references, verify hard-delete is rejected before the Budget is deleted and succeeds after (BR-10, FR-CAT-002).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-96.3",
+          "expected": "Verify a category still referenced by transactions remains non-deletable after its Budget is deleted.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-96.4",
+          "expected": "Recreate a Budget for the same category and month; verify FR-BUD-001 uniqueness holds and the new Budget computes Spent from existing history.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-97",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-DSN-002, FR-DSN-005, FR-DSN-006",
+      "oracle": "Design-token conformance. A source scan finds no literal color, spacing, radius, font-size, or duration in `src/app/` or `src/components/` outside the token source. Recompute every contrast ratio in the Section 6A.3 table from the token values for both appearances and assert the stated minimums (text roles ≥4.5:1; `accent`, `controlBorder`, and category colors ≥3:1, including category colors on their 12% tinted tile). Assert the category-color index function is deterministic and returns 0–11. Assert no blur, gradient, or shadow style exists in list-row components.",
+      "assertions": [
+        {
+          "id": "TC-97.1",
+          "expected": "Design-token conformance.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-97.2",
+          "expected": "A source scan finds no literal color, spacing, radius, font-size, or duration in `src/app/` or `src/components/` outside the token source.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-97.3",
+          "expected": "Recompute every contrast ratio in the Section 6A.3 table from the token values for both appearances and assert the stated minimums (text roles ≥4.5:1; `accent`, `controlBorder`, and category colors ≥3:1, including category colors on their 12% tinted tile).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-97.4",
+          "expected": "Assert the category-color index function is deterministic and returns 0–11.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-97.5",
+          "expected": "Assert no blur, gradient, or shadow style exists in list-row components.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-98",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-DSN-001, FR-SET-002, FR-BKP-004",
+      "oracle": "Set system/light/dark appearances; persist and apply instantly. With an invalid locally stored uiMode/theme use defaults without mutating finance. Restore rejects invalid portable enum values under exact v6; valid restore passes. Verify cold-start first frames use correct appearance and SCR-12 uses system appearance.",
+      "assertions": [
+        {
+          "id": "TC-98.1",
+          "expected": "Set system/light/dark appearances; persist and apply instantly.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-98.2",
+          "expected": "With an invalid locally stored uiMode/theme use defaults without mutating finance.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-98.3",
+          "expected": "Restore rejects invalid portable enum values under exact v6; valid restore passes.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-98.4",
+          "expected": "Verify cold-start first frames use correct appearance and SCR-12 uses system appearance.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-99",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-003, NFR-07",
+      "oracle": "Typography. With networking disabled, an internal-validation build renders every type role in Inter including ₱ (U+20B1) and tabular numerals (a column of amounts aligns digit for digit). Simulate font-load failure; launch completes with the system font. At 100%, 150%, and 200% font scale verify hero totals, the entry display, rows, keypad, and tab bar show no clipped or hidden money, and the tab bar becomes icon-only at ≥1.4 with accessible labels.",
+      "assertions": [
+        {
+          "id": "TC-99.1",
+          "expected": "Typography.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-99.2",
+          "expected": "With networking disabled, an internal-validation build renders every type role in Inter including ₱ (U+20B1) and tabular numerals (a column of amounts aligns digit for digit).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-99.3",
+          "expected": "Simulate font-load failure; launch completes with the system font.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-99.4",
+          "expected": "At 100%, 150%, and 200% font scale verify hero totals, the entry display, rows, keypad, and tab bar show no clipped or hidden money, and the tab bar becomes icon-only at ≥1.4 with accessible labels.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-100",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-004, BR-23",
+      "oracle": "Money display. Record every text value rendered by amount components across create, edit, delete, refund, appearance change, display decimals 2→0→2 (TC-13), and rapid repeated mutations. Each value shall equal the domain formatter's exact output for committed data (or the exact live expression result on SCR-05); no intermediate or interpolated value ever renders. Verify the sign and marker conventions (Expense \"−\" in primary text, Income \"+\" in income color, refund \"+\" with a \"Refund\" label and not in income color, Transfer neutral) and that no amount is truncated at 200% font scale.",
+      "assertions": [
+        {
+          "id": "TC-100.1",
+          "expected": "Money display.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-100.2",
+          "expected": "Record every text value rendered by amount components across create, edit, delete, refund, appearance change, display decimals 2→0→2 (TC-13), and rapid repeated mutations.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-100.3",
+          "expected": "Each value shall equal the domain formatter's exact output for committed data (or the exact live expression result on SCR-05); no intermediate or interpolated value ever renders.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-100.4",
+          "expected": "Verify the sign and marker conventions (Expense \"−\" in primary text, Income \"+\" in income color, refund \"+\" with a \"Refund\" label and not in income color, Transfer neutral) and that no amount is truncated at 200% font scale.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-101",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-DSN-007, FR-TRN-003, O1",
+      "oracle": "Keypad and entry. With render counters, a key tap re-renders only the display and the pressed key. Ten taps in one second all register in order. Expression results match the TC-39 vectors; errors appear only after `=` or Save. Save shows Loading and ignores further presses while in flight. A minimal Expense from the opened entry screen needs at most three non-keypad activations. The preselected type equals the type of the latest confirmed transaction (Expense when none exists). With a mocked haptics module: light impact per key, success on commit, error on validation failure.",
+      "assertions": [
+        {
+          "id": "TC-101.1",
+          "expected": "Keypad and entry.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.2",
+          "expected": "With render counters, a key tap re-renders only the display and the pressed key.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.3",
+          "expected": "Ten taps in one second all register in order.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.4",
+          "expected": "Expression results match the TC-39 vectors; errors appear only after `=` or Save.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.5",
+          "expected": "Save shows Loading and ignores further presses while in flight.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.6",
+          "expected": "A minimal Expense from the opened entry screen needs at most three non-keypad activations.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.7",
+          "expected": "The preselected type equals the type of the latest confirmed transaction (Expense when none exists).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-101.8",
+          "expected": "With a mocked haptics module: light impact per key, success on commit, error on validation failure.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-102",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-DSN-008, FR-AUT-001, FR-AUT-002, FR-AUT-009",
+      "oracle": "Pop-ups. For every sheet, dialog, and alert-sheet type verify: one modal at a time with queueing; focus moves to the title and returns to the invoking control; background content is hidden from assistive technology; scrim, back, and swipe dismissal per type; Delete & Reset and restore confirmations are not dismissible by scrim or back; the FR-AUT-002 alert sheet offers Edit, Save Anyway, and Cancel before commit and Save Anyway completes the save; toasts appear one at a time and announce politely; banners render only on focus and never during scrolling or typing; the FR-AUT-001 suggestion sheet appears only before the user has interacted with the screen and otherwise queues for the next focus; no sheet opens during a keyboard animation.",
+      "assertions": [
+        {
+          "id": "TC-102.1",
+          "expected": "Pop-ups.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-102.2",
+          "expected": "For every sheet, dialog, and alert-sheet type verify: one modal at a time with queueing; focus moves to the title and returns to the invoking control; background content is hidden from assistive technology; scrim, back, and swipe dismissal per type;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-102.3",
+          "expected": "Delete & Reset and restore confirmations are not dismissible by scrim or back; the FR-AUT-002 alert sheet offers Edit, Save Anyway, and Cancel before commit and Save Anyway completes the save; toasts appear one at a time and announce politely; banners render only on focus and never during scrolling or typing; the FR-AUT-001 suggestion sheet appears only before the user has interacted with the screen and otherwise queues for the next focus; no sheet opens during a keyboard animation.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-103",
+      "firstCompletePassPhase": 4,
+      "requirements": "FR-DSN-009",
+      "oracle": "Motion and haptics. Enumerate every animation. With OS reduce-motion on, each collapses to an instant change or a ≤100 ms opacity change and the passcode shake becomes a color-and-text change. Static analysis shows only transform and opacity are animated, animations run as UI-thread worklets, and none of the prohibited effects exist (layout-property animation, list-row animation, count-up, blur, shimmer, Lottie, looping). Exactly four haptic events fire and none fires on scrolling, navigation, or tab switches.",
+      "assertions": [
+        {
+          "id": "TC-103.1",
+          "expected": "Motion and haptics.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-103.2",
+          "expected": "Enumerate every animation.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-103.3",
+          "expected": "With OS reduce-motion on, each collapses to an instant change or a ≤100 ms opacity change and the passcode shake becomes a color-and-text change.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-103.4",
+          "expected": "Static analysis shows only transform and opacity are animated, animations run as UI-thread worklets, and none of the prohibited effects exist (layout-property animation, list-row animation, count-up, blur, shimmer, Lottie, looping).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-103.5",
+          "expected": "Exactly four haptic events fire and none fires on scrolling, navigation, or tab switches.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-104",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-011, FR-ERR-004, FR-PRV-002",
+      "oracle": "Screen states and failure containment. For each data screen render loading (shown only after 150 ms), empty, error, and content, with no layout shift between skeleton and content. Inject a render exception into each screen; the error-boundary fallback with Retry appears, the navigation shell remains, the app is never blank, and any reported payload contains only a stable error code (FR-PRV-002). Retry recovers once the fault clears.",
+      "assertions": [
+        {
+          "id": "TC-104.1",
+          "expected": "Screen states and failure containment.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-104.2",
+          "expected": "For each data screen render loading (shown only after 150 ms), empty, error, and content, with no layout shift between skeleton and content.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-104.3",
+          "expected": "Inject a render exception into each screen; the error-boundary fallback with Retry appears, the navigation shell remains, the app is never blank, and any reported payload contains only a stable error code (FR-PRV-002).",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-104.4",
+          "expected": "Retry recovers once the fault clears.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-105",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-DSN-012, NFR-11, PERF-01",
+      "oracle": "Records paging and scale. On the PERF-01 dataset verify: the first page renders at page size 50; keyset pages are contiguous with no duplicate or missing row; a transaction inserted or deleted during scrolling neither duplicates nor skips a row; month header totals equal the domain aggregate; rows make no database calls; rows do not re-render when unrelated state changes.",
+      "assertions": [
+        {
+          "id": "TC-105.1",
+          "expected": "Records paging and scale.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-105.2",
+          "expected": "On the PERF-01 dataset verify: the first page renders at page size 50; keyset pages are contiguous with no duplicate or missing row; a transaction inserted or deleted during scrolling neither duplicates nor skips a row; month header totals equal the domain aggregate; rows make no database calls; rows do not re-render when unrelated state changes.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-106",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-010, FR-NAV-002",
+      "oracle": "Navigation chrome. Tab switching is instant and preserves each tab's scroll position and local state; inactive tabs do not re-render on writes until focused; drawer edge-swipe works only on tab screens; Android back and the iOS back swipe close the top layer first (sheet, dialog, screen) and are ignored during an in-flight Save; the app is portrait-only and not offered as a tablet layout; no financial text exists in the accessibility tree before unlock.",
+      "assertions": [
+        {
+          "id": "TC-106.1",
+          "expected": "Navigation chrome.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-106.2",
+          "expected": "Tab switching is instant and preserves each tab's scroll position and local state; inactive tabs do not re-render on writes until focused; drawer edge-swipe works only on tab screens;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-106.3",
+          "expected": "Android back and the iOS back swipe close the top layer first (sheet, dialog, screen) and are ignored during an in-flight Save; the app is portrait-only and not offered as a tablet layout; no financial text exists in the accessibility tree before unlock.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-107",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-013, FR-BKP-004, D-95",
+      "oracle": "Icons and identity. Every seeded category and account icon key resolves in the registry. An unknown key from a synthetic restored backup renders the `other` glyph, does not fail restore, and leaves stored data unchanged. A category's identity color is identical across sessions, appearances (index), and after backup and restore. Every registry key and system glyph in Section 6A.6 resolves to an existing per-icon module in the pinned `lucide-react-native` version, no barrel import of the package exists in source, and the third-party notices contain the Lucide license text.",
+      "assertions": [
+        {
+          "id": "TC-107.1",
+          "expected": "Icons and identity.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-107.2",
+          "expected": "Every seeded category and account icon key resolves in the registry.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-107.3",
+          "expected": "An unknown key from a synthetic restored backup renders the `other` glyph, does not fail restore, and leaves stored data unchanged.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-107.4",
+          "expected": "A category's identity color is identical across sessions, appearances (index), and after backup and restore.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-107.5",
+          "expected": "Every registry key and system glyph in Section 6A.6 resolves to an existing per-icon module in the pinned `lucide-react-native` version, no barrel import of the package exists in source, and the third-party notices contain the Lucide license text.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-108",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DSN-014, FR-DSN-011, FR-ERR-004",
+      "oracle": "Forms and keyboard. On small and large reference viewports and at 200% font scale, focused fields scroll above the keyboard, docks respect safe-area insets, inline validation appears on blur or Save, submit controls disable and show Loading during writes, and valid input survives a recoverable failure such as `INSUFFICIENT_STORAGE` (FR-ERR-004).",
+      "assertions": [
+        {
+          "id": "TC-108.1",
+          "expected": "Forms and keyboard.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-108.2",
+          "expected": "On small and large reference viewports and at 200% font scale, focused fields scroll above the keyboard, docks respect safe-area insets, inline validation appears on blur or Save, submit controls disable and show Loading during writes, and valid input survives a recoverable failure such as `INSUFFICIENT_STORAGE` (FR-ERR-004).",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-109",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-004, BR-09/23, Section 13",
+      "oracle": "Create purchase/refund, archive both accounts and category, archive rule targets with confirmed and terminal ledger history, export v6 and restore. History/totals/receipts match; original links resolve. Reject new refund/reassignment to archived account and malformed archived-target pending/deferred rows.",
+      "assertions": [
+        {
+          "id": "TC-109.1",
+          "expected": "Create purchase/refund, archive both accounts and category, archive rule targets with confirmed and terminal ledger history, export v6 and restore.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-109.2",
+          "expected": "History/totals/receipts match; original links resolve.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-109.3",
+          "expected": "Reject new refund/reassignment to archived account and malformed archived-target pending/deferred rows.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-110",
+      "firstCompletePassPhase": 3,
+      "requirements": "BR-08, FR-TRN-005/008, FR-REC-014",
+      "oracle": "Move a 3000-minor refund from 2026-09-30 to 2026-10-01 by explicit correction: September net Expense increases 3000 and October decreases 3000, account balance unchanged. Travel changes neither date. Correct a recurring Transaction date without moving its occurrence/origin or regenerating it; fault injection keeps the entire old state.",
+      "assertions": [
+        {
+          "id": "TC-110.1",
+          "expected": "Move a 3000-minor refund from 2026-09-30 to 2026-10-01 by explicit correction: September net Expense increases 3000 and October decreases 3000, account balance unchanged.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-110.2",
+          "expected": "Travel changes neither date.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-110.3",
+          "expected": "Correct a recurring Transaction date without moving its occurrence/origin or regenerating it; fault injection keeps the entire old state.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-111",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-TRN-011",
+      "oracle": "Replay create/edit/delete/archive/confirm/backlog operation receipts after target mutation/deletion, restart, and v6 round trip. Same request returns original projection with no effects; changed request conflicts; failed writes leave no receipt; two simultaneous equal-token requests commit one effect and one receipt.",
+      "assertions": [
+        {
+          "id": "TC-111.1",
+          "expected": "Replay create/edit/delete/archive/confirm/backlog operation receipts after target mutation/deletion, restart, and v6 round trip.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-111.2",
+          "expected": "Same request returns original projection with no effects; changed request conflicts; failed writes leave no receipt; two simultaneous equal-token requests commit one effect and one receipt.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-112",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-REC-003/005/009, Section 12",
+      "oracle": "Exercise initial future/backdated start, two same-boundary edits, confirmation ON→OFF revision, paused intervals, amount override, timezone-edit rejection, and restore. Date selection follows max(boundary,sequence); old/backlog snapshots and override remain exact; pending override confirmation produces exactly the override amount once.",
+      "assertions": [
+        {
+          "id": "TC-112.1",
+          "expected": "Exercise initial future/backdated start, two same-boundary edits, confirmation ON→OFF revision, paused intervals, amount override, timezone-edit rejection, and restore.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-112.2",
+          "expected": "Date selection follows max(boundary,sequence); old/backlog snapshots and override remain exact; pending override confirmation produces exactly the override amount once.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-113",
+      "firstCompletePassPhase": 5,
+      "requirements": "BR-05/06, NFR-05, FR-ACC-001",
+      "oracle": "Verify stored monetary ±1000000000000 endpoints, reject beyond-bound writes/import, allow opening balance 0 and negative, reject non-positive transaction/Budget/rule. 1.005→101 and opening −1.005→−101. Sum enough legal values to exceed 2^53−1 and render exact total without unsafe Number conversion or SQLite SUM overflow.",
+      "assertions": [
+        {
+          "id": "TC-113.1",
+          "expected": "Verify stored monetary ±1000000000000 endpoints, reject beyond-bound writes/import, allow opening balance 0 and negative, reject non-positive transaction/Budget/rule. 1.005→101 and opening −1.005→−101.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-113.2",
+          "expected": "Sum enough legal values to exceed 2^53−1 and render exact total without unsafe Number conversion or SQLite SUM overflow.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-114",
+      "firstCompletePassPhase": 1,
+      "requirements": "FR-CAT-001/004",
+      "oracle": "Seed exactly Expense Food/Transport/Bills/Shopping/Health/Other and Income Salary with documented icon keys once. Name/icon edit succeeds; type change rejects even when unreferenced. Historical linked category name edits never change financial totals/type.",
+      "assertions": [
+        {
+          "id": "TC-114.1",
+          "expected": "Seed exactly Expense Food/Transport/Bills/Shopping/Health/Other and Income Salary with documented icon keys once.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-114.2",
+          "expected": "Name/icon edit succeeds; type change rejects even when unreferenced.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-114.3",
+          "expected": "Historical linked category name edits never change financial totals/type.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-115",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-001/005",
+      "oracle": "Pause export after first table, commit a recurring confirmation/refund edit, finish export. Package is entirely the before-snapshot or entirely the after-snapshot with reciprocal links and matching counts/hashes, never a mix. Concurrent restore cannot replace a database held by export.",
+      "assertions": [
+        {
+          "id": "TC-115.1",
+          "expected": "Pause export after first table, commit a recurring confirmation/refund edit, finish export.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-115.2",
+          "expected": "Package is entirely the before-snapshot or entirely the after-snapshot with reciprocal links and matching counts/hashes, never a mix.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-115.3",
+          "expected": "Concurrent restore cannot replace a database held by export.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-116",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-001/004/010/011, Section 11",
+      "oracle": "Run every cases.json fixture through raw duplicate-key detection, schema/format validation, canonical hash verification, and semantic preflight. Golden archived/refund/backlog/terminal/receipt history passes; unknown nested fields, invalid dates/enums/ranges, orphan links, over-refunds, invalid revision/ledger state fail without changing local/device data.",
+      "assertions": [
+        {
+          "id": "TC-116.1",
+          "expected": "Run every cases.json fixture through raw duplicate-key detection, schema/format validation, canonical hash verification, and semantic preflight.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-116.2",
+          "expected": "Golden archived/refund/backlog/terminal/receipt history passes; unknown nested fields, invalid dates/enums/ranges, orphan links, over-refunds, invalid revision/ledger state fail without changing local/device data.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-117",
+      "firstCompletePassPhase": 7,
+      "requirements": "FR-BKP-003/006–008, REC-BKP-01",
+      "oracle": "Kill/fail storage or SecureStore/scheduler action after DB_COMMITTED and between each normalization action/bitmap flush. Restart retries safely with SCR-12 only; no old credential/consent/queue/notification survives completed restore; all features remain gated while pending. Pre-commit failures preserve old settings. Repeat cleanup failures and corruption cases.",
+      "assertions": [
+        {
+          "id": "TC-117.1",
+          "expected": "Kill/fail storage or SecureStore/scheduler action after DB_COMMITTED and between each normalization action/bitmap flush.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-117.2",
+          "expected": "Restart retries safely with SCR-12 only; no old credential/consent/queue/notification survives completed restore; all features remain gated while pending.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-117.3",
+          "expected": "Pre-commit failures preserve old settings.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-117.4",
+          "expected": "Repeat cleanup failures and corruption cases.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "NIGHTLY",
+          "owner": "QA Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-118",
+      "firstCompletePassPhase": 2,
+      "requirements": "O2, FR-ANA-001–003, RG-01",
+      "oracle": "From current-month Records, read Income/net Expense then open Analysis once to identify largest positive category: at most two distinct screen views and no manual date change/arithmetic. Use ties, archived category, refunds and no-positive category fixtures; show no largest category when none is positive.",
+      "assertions": [
+        {
+          "id": "TC-118.1",
+          "expected": "From current-month Records, read Income/net Expense then open Analysis once to identify largest positive category: at most two distinct screen views and no manual date change/arithmetic.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-118.2",
+          "expected": "Use ties, archived category, refunds and no-positive category fixtures; show no largest category when none is positive.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-119",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-BKP-005/013, FR-DSN-008",
+      "oracle": "Preflight backup A; preview counts/date/schema/replacement warning; Cancel preserves hashes/settings/drafts. With lock enabled require app authentication and explicit Replace. Change package bytes and reject/revalidate before authorization. After successful replacement discard stale old-dataset drafts, even if IDs collide, and require fresh/revalidated input. No post-authorization Cancel appears.",
+      "assertions": [
+        {
+          "id": "TC-119.1",
+          "expected": "Preflight backup A; preview counts/date/schema/replacement warning;",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-119.2",
+          "expected": "Cancel preserves hashes/settings/drafts.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-119.3",
+          "expected": "With lock enabled require app authentication and explicit Replace.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-119.4",
+          "expected": "Change package bytes and reject/revalidate before authorization.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-119.5",
+          "expected": "After successful replacement discard stale old-dataset drafts, even if IDs collide, and require fresh/revalidated input.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-119.6",
+          "expected": "No post-authorization Cancel appears.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-120",
+      "firstCompletePassPhase": 0,
+      "requirements": "FR-DEV-001–005/007, BUILD-VER-01",
+      "oracle": "On the Phase 0 project, verify guide hash, SDK/CLI lock versions, intended EAS project/app identity and effective development profile; assert internal APK/development environment, no production/submit/OTA/hosting hooks. Build/install through EAS cloud, run Metro --dev-client --lan, and open the current QR/URL in this APK. Record build ID/hash/device/install/launch, daily startup/troubleshooting/rebuild instructions. No store account or upload is involved; only actual build/device evidence passes the runtime legs.",
+      "assertions": [
+        {
+          "id": "TC-120.1",
+          "expected": "On the Phase 0 project, verify guide hash, SDK/CLI lock versions, intended EAS project/app identity and effective development profile; assert internal APK/development environment, no production/submit/OTA/hosting hooks.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-120.2",
+          "expected": "Build/install through EAS cloud, run Metro --dev-client --lan, and open the current QR/URL in this APK.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-120.3",
+          "expected": "Record build ID/hash/device/install/launch, daily startup/troubleshooting/rebuild instructions.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-120.4",
+          "expected": "No store account or upload is involved; only actual build/device evidence passes the runtime legs.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-121",
+      "firstCompletePassPhase": 8,
+      "requirements": "FR-DEV-004/006/007, NFR-01/03, BUILD-VER-01",
+      "oracle": "Verify separate validation profile is internal APK, development environment, developmentClient=false with a bundled JS build. Install on the Android reference device, stop Metro/remote debugging, disable networking, cold-launch and run the available core flow. Record actual release-mode/optimization/runtime flags and artifact identity; repeat final NFR-01/PERF-01/security/recovery/payload cases as their features arrive. Dev-client success cannot satisfy validation/offline/performance claims.",
+      "assertions": [
+        {
+          "id": "TC-121.1",
+          "expected": "Verify separate validation profile is internal APK, development environment, developmentClient=false with a bundled JS build.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-121.2",
+          "expected": "Install on the Android reference device, stop Metro/remote debugging, disable networking, cold-launch and run the available core flow.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-121.3",
+          "expected": "Record actual release-mode/optimization/runtime flags and artifact identity; repeat final NFR-01/PERF-01/security/recovery/payload cases as their features arrive.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-121.4",
+          "expected": "Dev-client success cannot satisfy validation/offline/performance claims.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    },
+    {
+      "id": "TC-122",
+      "firstCompletePassPhase": 5,
+      "requirements": "FR-ERR-005, FR-NAV-002, NFR-08",
+      "oracle": "Start with empty version 0, every recognized supported older schema fixture, already-current schema and a newer/unknown nonempty schema. Empty initializes once; supported old data migrates exactly once with unchanged financial/date/refund/ledger/receipt meaning; already-current opens do not rerun writes. Inject storage/process failure after each migration step and before user_version commit: restart sees the complete original version/data or the complete committed target, never a partial chain. Unsupported/newer data is preserved and blocks financial writes with a plain-language explanation. Confirm failed opens stop rather than retry on render/focus, and the gate opens only after recovery/migration/integrity/unlock ordering.",
+      "assertions": [
+        {
+          "id": "TC-122.1",
+          "expected": "Start with empty version 0, every recognized supported older schema fixture, already-current schema and a newer/unknown nonempty schema.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-122.2",
+          "expected": "Empty initializes once; supported old data migrates exactly once with unchanged financial/date/refund/ledger/receipt meaning; already-current opens do not rerun writes.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-122.3",
+          "expected": "Inject storage/process failure after each migration step and before user_version commit: restart sees the complete original version/data or the complete committed target, never a partial chain.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-122.4",
+          "expected": "Unsupported/newer data is preserved and blocks financial writes with a plain-language explanation.",
+          "result": "pending",
+          "evidence": null
+        },
+        {
+          "id": "TC-122.5",
+          "expected": "Confirm failed opens stop rather than retry on render/focus, and the gate opens only after recovery/migration/integrity/unlock ordering.",
+          "result": "pending",
+          "evidence": null
+        }
+      ],
+      "suites": [
+        {
+          "suite": "AUTO-PR",
+          "owner": "Engineering Lead"
+        },
+        {
+          "suite": "RC-DEVICE",
+          "owner": "QA Lead"
+        }
+      ],
+      "platform": "Android; iOS-specific legs Deferred",
+      "procedure": "Run the complete normative oracle in the listed suite/environment; Phase 0 prototype results never imply whole-case PASS."
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "INS-BKP-01",
+      "oracle": "Validate the exact v6 schema, canonical bytes, hashes, semantic constraints, golden case outcomes, consistent export snapshot, unknown-icon preservation, and private-temp/export boundary.",
+      "requirementsAndOwners": "FR-BKP-001/002, Section 11",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-BKP-02",
+      "oracle": "Only v6 is accepted; migration history review and any approved acceptance additions agree with COMPAT-BKP-01 and golden fixtures.",
+      "requirementsAndOwners": "FR-BKP-010/011",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "REC-BKP-01",
+      "oracle": "Applicable Android fault matrix (iOS Deferred under Section 16) proves each Section 12 phase-specific database AND device-state outcome, including journal durability, WAL closure, post-commit normalization, and cleanup retries.",
+      "requirementsAndOwners": "BR-19, NFR-08, TC-65/66/117",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-SEC-01",
+      "oracle": "Internal-validation log/storage inspection finds no plaintext passcode.",
+      "requirementsAndOwners": "FR-SEC-001",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-SEC-02",
+      "oracle": "Internal-validation native configuration and device behavior prove biometric device fallback disabled, exercised on the active Android reference/compatibility devices and on at least one additional Android device from a different OEM biometric stack, because `disableDeviceFallback` enforcement has varied across Android implementations.",
+      "requirementsAndOwners": "FR-SEC-003",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-SEC-03",
+      "oracle": "UI/internal tester privacy copy never equates app lock with encryption.",
+      "requirementsAndOwners": "FR-SEC-008",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "SEC-REV-01",
+      "oracle": "Security signs KDF parameters, test vector, constant-time implementation, dependency provenance, and timing results.",
+      "requirementsAndOwners": "FR-SEC-002",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-PRV-01",
+      "oracle": "Static rules plus captured logs/telemetry contain no prohibited user/financial fields.",
+      "requirementsAndOwners": "FR-TRN-004, FR-SEC-009, FR-PRV-002",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-PRV-02",
+      "oracle": "Generated Android rules, iOS resource flags, reapplication tests, and observed backup/device-transfer smoke tests satisfy FR-PRV-001. Record OS/build/OEM limitations and never claim that a sample proves universal iOS exclusion.",
+      "requirementsAndOwners": "FR-PRV-001, NFR-02",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-PRV-03",
+      "oracle": "SDK configuration proves analytics/tracing/profiling/session replay/automatic breadcrumbs disabled and consent gates initialization.",
+      "requirementsAndOwners": "FR-PRV-003",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "PRIV-VER-01",
+      "oracle": "Controlled transport captures every enabled telemetry path — including captures taken while an FR-AUT suggestion is pending, accepted, and declined — and contains only the allowlist (no FR-AUT computation, outcome, or choice); offline queue and opt-out behavior pass.",
+      "requirementsAndOwners": "FR-PRV-004, FR-AUT (Section 7 acceptance criteria)",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "PRIV-VER-02",
+      "oracle": "Internal tester notice, in-app consent, provider/retention details and OS-backup-limit disclosure match the inspected validation APK. No public website or Apple/Google store declaration is required; store-only declarations are explicitly Deferred and cannot block internal EAS Build completion.",
+      "requirementsAndOwners": "FR-PRV-005, FR-DEV-005",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-ARC-01",
+      "oracle": "Architecture review confirms Expo SDK 57 APIs, `src/app/` routing, generated native folders, no deprecated background-fetch dependency, and no background-task registration anywhere in the assistive-suggestions pipeline (FR-AUT-006, D-60). Review app-schema identity, ordered migration transaction/handle usage and recovery→migration→integrity→unlock ordering against FR-ERR-005/TC-122.",
+      "requirementsAndOwners": "FR-NAV-001/002, FR-ERR-005, Sections 9/12, FR-AUT-006",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "PERF-01",
+      "oracle": "Raw evidence satisfies every Section 8 performance criterion.",
+      "requirementsAndOwners": "NFR-03",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "PERF-GOV-01",
+      "oracle": "QA and Engineering record each trigger review, current supported-OS window, keep/replace decision for the active Android reference/compatibility devices, evidence/rationale, overlap benchmark where possible, and retained historical results.",
+      "requirementsAndOwners": "NFR-04, PERF-01",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "COMPAT-01",
+      "oracle": "Full current Android gated suite passes on both required Android OS majors, with exact physical device/OS/APK/EAS build identifiers. Mark iOS-specific legs Deferred under Section 16; they do not imply iOS support has been verified.",
+      "requirementsAndOwners": "NFR-04",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "UX-01",
+      "oracle": "Five O1 runs per reference device meet time/action limits and one-handed use review; TC-118 independently verifies O2’s two-view bound and exact results.",
+      "requirementsAndOwners": "O1/O2, NFR-06",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-01",
+      "oracle": "Automated contrast plus manual VoiceOver/TalkBack audit covers every implemented MVP SCR screen/control (SCR-01/02/04–12; Deferred SCR-03 excluded) at default and 200% font size, in both Light and Dark appearances.",
+      "requirementsAndOwners": "NFR-07",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "INS-AUT-01",
+      "oracle": "Code review plus captured local network traffic across every FR-AUT/FR-OCR pipeline confirms zero network egress and no financial write outside an explicit confirming user action.",
+      "requirementsAndOwners": "BR-24/25, NFR-09",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "AUT-VER-01",
+      "oracle": "Running FR-AUT-001, 003, 004, 005, and 007 detection against the full PERF-01 fixture dataset (10,000 confirmed transactions, 500 accounts, 200 categories, 120 monthly Budgets, 50 active recurring rules, 500 retained non-confirmed ledger rows) on the PERF-01 reference devices adds no more than 150ms to cold-launch-to-interactive, executes after first paint, and surfaces no more than 3 queued suggestions per app session (excess candidates queue per FR-AUT-009). Re-run whenever PERF-GOV-01 triggers a reference-device review.",
+      "requirementsAndOwners": "NFR-10",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "AUT-VER-02",
+      "oracle": "Measuring elapsed time from tapping Save to the transaction being persisted and the next screen becoming interactive, with FR-AUT-002 and FR-AUT-006 active versus disabled, on the PERF-01 reference devices and fixture; the difference shall not exceed 50ms, a budget set by direct analogy to PERF-01's 200ms p95 response-to-next-frame ceiling and FR-SEC-002's 750ms ceiling for a materially heavier operation. Re-run whenever PERF-GOV-01 triggers a reference-device review.",
+      "requirementsAndOwners": "NFR-10",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-AUT-01",
+      "oracle": "Automated contrast scan plus manual VoiceOver/TalkBack audit of every FR-AUT banner/prompt type and the FR-AUT-006 notification, at default and 200% font size, including focus-and-announcement order for the Save-time duplicate prompt (FR-AUT-002). Runs within the `RC-DEVICE` suite alongside A11Y-01, not a separate accessibility suite.",
+      "requirementsAndOwners": "NFR-07 (as extended by the FR-AUT acceptance criteria)",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "REL-EVD-01",
+      "oracle": "Immutable release evidence index links app commit/build, environment, every required TC result, every artifact above, approvers, and any superseding approved specification revision. A failed or missing normative result cannot be recorded as an accepted deviation under the same baseline.",
+      "requirementsAndOwners": "All release gates",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "QA-PLAN-01",
+      "oracle": "Map every active TC-01–TC-122 (TC-20 retired) and named artifact to individual assertions, prerequisites, primary complete-pass phase, applicable platform, executable procedure/suite, owner, result and evidence. Bind integration methods/pass criteria, code/data recovery and Section 0 evidence labels. Separate partial/prototype results from whole-scenario PASS. Section 6 of the execution plan assigns each active TC exactly one first eligible complete-pass phase; later regression/final-build repetitions retain their own provenance. Every mandatory Android assertion must pass on its required environment; iOS/store legs remain explicitly Deferred.",
+      "requirementsAndOwners": "Sections 15–17, EXEC-01",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "PLAT-VER-01",
+      "oracle": "Engineering demonstrates internal-validation durability primitives, WAL/SHM handling, journal flush/recovery, iOS exclusion metadata reapplication, and SecureStore/scheduler normalization on Android (iOS leg Deferred). Record the selected API/module and exact versions; missing SDK-page access is not a capability proof.",
+      "requirementsAndOwners": "FR-BKP-006/007, FR-PRV-001; Engineering Lead + Security Owner; RC-DEVICE",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "COMPAT-BKP-01",
+      "oracle": "Product/Engineering/Release record whether previously deployed builds or backups exist, search scope and evidence, and migration disposition. No v5 compatibility is claimed. If actual user backups require support, add a separately approved migration contract and fixtures before release; never silently repurpose v5.",
+      "requirementsAndOwners": "FR-BKP-010/011; Product Owner + Engineering Lead + Release Manager; RC-DEVICE",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "DOC-VER-01",
+      "oracle": "Check active ID/anchor uniqueness, exact requirement/test/phase prerequisites, all local links, complete nonduplicated primary TC ownership, current revision/schema consistency, workflow/index freshness, partial-versus-full evidence, and remaining verification limits, claim-label attribution, measurable completion and planning-only write/growth limits. Missing historical approval/tool/runtime results stay explicit.",
+      "requirementsAndOwners": "Sections 0/15/17–20; Requirements Owner + QA Lead; evidence review",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "BUILD-VER-01",
+      "oracle": "Phase 0 records the source guide/hash and implemented EAS setup with actual project/package IDs, versions, safe effective profiles/workflows, private Android APK build/install/launch and Metro result. Record a separate standalone validation build/hash/runtime result and keep dev/validation evidence distinct. Final candidate reruns TC-120 configuration checks and TC-121 standalone checks; no store, OTA, hosting, production environment or auto-submit occurs.",
+      "requirementsAndOwners": "FR-DEV-001–007; Engineering Lead + QA Lead; AUTO-PR static profile checks and RC-DEVICE runtime checks",
+      "result": "pending",
+      "evidence": null
+    },
+    {
+      "id": "EXEC-VER-01",
+      "oracle": "The context index links the actual working-copy Git baseline/snapshots and ownership, scoped discovery/selectors, reusable-reader identities, pinned Repomix generation/security/contents, bounded XML continuation records, original-source verification, diagnosed gaps, and exact baseline/affected/final results. Planning passes record the Section 3.4 deferral rationale; implementation passes require the Section 3.5 sequence. Missing runtime/tool evidence is recorded, not fabricated. No redundant whole-packet reread or check rerun is required without a changed dependency, diagnosed failure, final-candidate obligation or another recorded reason. Owned diff and verified replacement cleanup are reviewed before handoff.",
+      "requirementsAndOwners": "EXEC-01, Section 15/plan Section 3.5; Engineering Lead + QA Lead + Requirements Owner; AUTO-PR scoped checks and RC-DEVICE evidence review",
+      "result": "pending",
+      "evidence": null
+    }
+  ]
+}

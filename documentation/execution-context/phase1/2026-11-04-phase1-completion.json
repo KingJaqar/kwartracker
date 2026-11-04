@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-04",
+  "phase": 1,
+  "status": "Complete (agent-runnable scope); sheet first open after launch is an Owner-accepted exception, not a pass; isolated 50-64 ms outliers re-verified in Phase 8",
+  "instructions": "Root CLAUDE.md -> AGENTS.md applied; Expo v57 keyboard-handling guide read for the keyboard fix.",
+  "ownerDecisions": [
+    "NFR-11(c) applies to tab first visits (clean, smooth, lightweight, no stutter)",
+    "MuMu james emulator-5554 is the only device for all phases",
+    "open decisions delegated to the agent; finish without questions",
+    "approvals including deleting data or files authorized for all phases"
+  ],
+  "context": ".cache/phase1/session-2026-11-04c",
+  "device": "MuMu james emulator-5554, Owner user 0 only; APK sha256 5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e (pinned); 60 Hz; Metro --no-dev --minify on 8096; PERF-01 fixture sha256 31ddef31...",
+  "applicationSourceChanges": [
+    "src/components/ledger-shell.tsx (idle preload of unvisited tabs; waits for overlay, cover, touch)",
+    "src/app/(tabs)/_layout.tsx (freezeOnBlur false)",
+    "src/services/ledger/provider.tsx (results in startTransition; hidden-tab prefetch; missed-write reload on focus)",
+    "src/components/ui.tsx (overlay settled(); root touch tracking)",
+    "src/theme/tokens.ts (motion.touchSettle 1000)",
+    "src/screens/transaction.tsx (deferred type for categories; keyboard padding on Android; scroll end re-reveal)",
+    "src/screens/entities.tsx, src/screens/preferences.tsx (keyboard padding on Android)"
+  ],
+  "tests": "tests/components/ledger-ui.test.tsx +3 (35 component tests)",
+  "uiPerf": {
+    "tabs": {
+      "freshRuns": 8,
+      "runsWithoutTaskOver50ms": 7,
+      "outliers_ms": [
+        50.09,
+        54.4
+      ],
+      "framesOver100ms": 0,
+      "jankPct": 0,
+      "eventP95_ms": [
+        40,
+        55
+      ],
+      "traceMaxWindow_ms": 35.7,
+      "before": "57-88 ms first-visit tasks"
+    },
+    "segments": {
+      "eventP95_ms": [
+        63,
+        67
+      ],
+      "runsWithoutTaskOver50ms": "9 of 10",
+      "outlier_ms": 64,
+      "before": "p95 79 ms, 54 ms task"
+    },
+    "keypad": {
+      "eventP95_ms": [
+        37,
+        49
+      ],
+      "tasksOver50ms": 0,
+      "tenTaps_ms": [
+        167,
+        182
+      ],
+      "tc101": "met"
+    },
+    "sheetFirstOpen": {
+      "tasks_ms": [
+        50.3,
+        51.2,
+        0,
+        58.5,
+        0,
+        0
+      ],
+      "framesOver100ms": 0,
+      "status": "Owner-accepted exception"
+    },
+    "scroll": {
+      "tasksOver50ms": 0,
+      "maxFrame_ms": 16
+    }
+  },
+  "ux01": {
+    "expense": {
+      "medianS": 5.502,
+      "nonKeypadActivations": 4
+    },
+    "income": {
+      "medianS": 5.474,
+      "nonKeypadActivations": "4 (5 on run 1)"
+    },
+    "limits": {
+      "medianS": 10,
+      "nonKeypadActivations": 5
+    },
+    "status": "met"
+  },
+  "reducedMotion": {
+    "sheetFrames10Cycles": [
+      345,
+      50
+    ],
+    "segmentFrames10Cycles": [
+      289,
+      68
+    ],
+    "status": "met"
+  },
+  "offline": {
+    "appearances": [
+      "Dark",
+      "Light"
+    ],
+    "defaultNetwork": "none",
+    "ping": "failed",
+    "rowsVisible": true,
+    "wifiRestored": true,
+    "status": "met"
+  },
+  "accessibility": {
+    "screens": 7,
+    "appearances": 2,
+    "fontScales": [
+      1.0,
+      2.0
+    ],
+    "unlabelledControls": 0,
+    "keyboard": "bug fixed: note field 1716-1872 behind keyboard top 1167 -> 807-963 visible; Done writing 44 dp",
+    "status": "met"
+  },
+  "vis01": {
+    "baselines": 28,
+    "repeatDiffPx": 0.0,
+    "status": "met"
+  },
+  "final": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "core": "47/47",
+    "components": "35/35",
+    "checkBuild": "pass",
+    "checkContracts": "pass",
+    "validationExport": "pass",
+    "bundleCheck": "pass (1977 sources; showcase/probes absent)"
+  },
+  "ownerRestore": {
+    "db": "0ac346d7...",
+    "wal": "31261785...",
+    "shm": "6c26606d...",
+    "hashesMatch": true,
+    "fontScale": null,
+    "animationScales": [
+      0.5,
+      0.5,
+      null
+    ],
+    "dynamicFrameRate": true,
+    "wifi": 1,
+    "ime": "Sogou",
+    "users": [
+      "0 Owner"
+    ]
+  },
+  "tc": {
+    "TC-101": "met",
+    "TC-103": "Phase 1 leg met; passcode leg Phase 4",
+    "TC-113": "Phase 1 leg met; import leg Phase 5"
+  },
+  "remaining": "none for Phase 1; Phase 8 re-verifies first-open exception and outliers",
+  "scopeNotes": "Local commit only; no push, build, upload, deployment or remote migration. Phase 2 not started."
+}

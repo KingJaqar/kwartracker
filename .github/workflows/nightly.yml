@@ -1,0 +1,39 @@
+name: NIGHTLY
+on:
+  schedule:
+    - cron: '30 18 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nightly-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  ledger-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      EXPO_NO_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24.13.1'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test
+      - run: npm run check:contracts
+      - run: npm run check:build
+      - name: Export standalone JavaScript and verify probe exclusion
+        env:
+          APP_VARIANT: validation
+        run: |
+          npx expo export --platform android --output-dir dist/validation --source-maps --max-workers 2
+          npm run check:bundle
+      # Native/offline/performance and VIS-01 evidence use a reviewed existing validation APK.
+      # This workflow never submits an EAS build, changes billing, publishes, or approves a visual baseline.

@@ -1,0 +1,241 @@
+{
+  "artifact": "BUILD-VER-01",
+  "status": "TC-120 met; TC-121 shell partially met; next native validation blocked by EAS allowance",
+  "guideSha256": "247cc211a1c5bdfe9727e41bc36b43f3d821811580fa28bae5d71607aca036be",
+  "easConfigSha256": "c88e070eb5258bc0356fdd214065cdb0f4f897e4ab2c1035378226e0ad5da532",
+  "appConfigSha256": "1201684679b9e185d9321585af5d1886fdb22627ec5e6148a7446c93b7f8db5c",
+  "metroConfigSha256": "4877ef7d53c8c5a8d35a5b9208c2879e86981cf30e5440a7b53875c54ee88e95",
+  "easIgnoreSha256": "a1b3544a6e1882517b33b99b35b2f53f15ce825ce52356277539622b0510f179",
+  "projectId": "fae1b830-1f70-4084-93f2-50c752a0da77",
+  "expoAccount": "alex123superman",
+  "androidBasePackage": "com.alex123superman.kwartracker",
+  "buildIds": [
+    "ca81554a-6ca5-4990-9297-15d50d679532",
+    "69bd0351-cf9c-485a-8069-0400f942d428"
+  ],
+  "apkArtifacts": [
+    {
+      "profile": "development",
+      "id": "ca81554a-6ca5-4990-9297-15d50d679532",
+      "status": "FINISHED",
+      "package": "com.alex123superman.kwartracker.development",
+      "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+      "certificateSha256": "DB:BF:56:D7:DB:88:1F:E7:8A:01:66:C8:0B:7A:C1:87:5D:B6:59:E7:74:5E:7B:9D:30:CA:ED:7D:C7:20:98:F0"
+    },
+    {
+      "profile": "validation",
+      "id": "69bd0351-cf9c-485a-8069-0400f942d428",
+      "status": "FINISHED",
+      "package": "com.alex123superman.kwartracker.validation",
+      "apkSha256": "d8803a92ee696b2cf99d6efdb61e080f120d23def422e8e04c7c33ae2613f15a",
+      "certificateSha256": "E5:57:EE:16:8A:B2:1B:0F:BF:87:43:81:35:A5:CF:B2:86:0B:51:A4:3B:21:D5:5B:FC:E5:5E:51:D0:DF:56:96"
+    }
+  ],
+  "installs": [
+    {
+      "device": "MuMu Android12/API32/x86_64 emulator",
+      "packages": [
+        "com.alex123superman.kwartracker.development",
+        "com.alex123superman.kwartracker.validation"
+      ],
+      "result": "installed without uninstall/data clear"
+    },
+    {
+      "device": "isolated emulator-5580 Android16/API36/x86_64",
+      "packages": [
+        "com.alex123superman.kwartracker.validation"
+      ],
+      "result": "existing installation retained; offline cold launch observed"
+    }
+  ],
+  "metroRuntime": {
+    "status": "observed",
+    "date": "2026-10-27",
+    "currentLanUrl": "Terminal-generated session URL used; no hardcoded guide address",
+    "fastRefresh": "Temporary label edit visibly refreshed and exact original bytes restored",
+    "ownedMetro": "Stopped; pre-existing user server preserved",
+    "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27"
+  },
+  "standaloneOfflineRuntime": {
+    "date": "2026-10-31",
+    "serial": "emulator-5580",
+    "original": {
+      "airplane_mode_on": "0",
+      "wifi_on": "1",
+      "mobile_data": "1"
+    },
+    "status": "offline shell and non-debuggable assertions passed; runtime log review required",
+    "offline": {
+      "airplane_mode_on": "1",
+      "wifi_on": "0",
+      "mobile_data": "0"
+    },
+    "connectivity": [
+      "Active default network: none\r"
+    ],
+    "launch": "Starting: Intent { cmp=com.alex123superman.kwartracker.validation/.MainActivity }\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: com.alex123superman.kwartracker.validation/.MainActivity\r\nTotalTime: 9355\r\nWaitTime: 9444\r\nComplete\r\n",
+    "pid": "4904",
+    "runtimeErrorLines": [],
+    "cleanupErrors": [],
+    "restored": {
+      "airplane_mode_on": "0",
+      "wifi_on": "1",
+      "mobile_data": "1"
+    },
+    "artifactSha256": "d8803a92ee696b2cf99d6efdb61e080f120d23def422e8e04c7c33ae2613f15a",
+    "hermes": "APK contains embedded Hermes bytecode",
+    "optimizationAndRuntimeFlags": "Non-debuggable Android package and bundled bytecode verified; remaining explicit flag capture pending",
+    "warnings": "StatusBarModule edge-to-edge warning and startup frame stalls observed. Text-style API correction passes host checks; rebuilt runtime verification pending."
+  },
+  "localHermesExports": {
+    "validation": [
+      {
+        "path": "dist/validation/_expo/static/js/android/entry-41a864e4f5e4e46f0667da0b4b572f66.hbc",
+        "bytes": 3431360,
+        "sha256": "6a30bffc2bd35fb2d22f454d20907368e7b2fd75dec69c54e82e7e6e6deec322"
+      },
+      {
+        "path": "dist/validation/_expo/static/js/android/entry-41a864e4f5e4e46f0667da0b4b572f66.hbc.map",
+        "bytes": 8691403,
+        "sha256": "d203fe40715ac6b6a9e98f1097e76d0f423f3b8e441aad9362a2ca367ca1fba5"
+      }
+    ],
+    "foundation-probe": [
+      {
+        "path": "dist/foundation-probe/_expo/static/js/android/entry-b27c9ccddc2a3de992194dfe8c09d036.hbc",
+        "bytes": 3643872,
+        "sha256": "1aa9b98289583b85dd2f08241a31a90ddfb7b5a496db5c6543812ea97436ebc6"
+      },
+      {
+        "path": "dist/foundation-probe/_expo/static/js/android/entry-b27c9ccddc2a3de992194dfe8c09d036.hbc.map",
+        "bytes": 9233263,
+        "sha256": "dded2da2edb6bb1d50abd30d02dcee5be17645ab5535c72c2a0218584ff2ea3c"
+      }
+    ]
+  },
+  "deviceObservation": {
+    "ro.product.model": "SM-S918U",
+    "ro.product.manufacturer": "Samsung",
+    "ro.build.version.release": "12",
+    "ro.build.version.sdk": "32",
+    "ro.product.cpu.abi": "x86_64",
+    "ro.kernel.qemu": ""
+  },
+  "deviceLimit": "User explicitly accepts emulator evidence. Android16 and17 isolated profiles use installed images; Android17 not yet exercised. No physical-device claim.",
+  "pendingProcedures": "Native-verification.md",
+  "excludedActions": [
+    "store upload",
+    "production deployment",
+    "OTA publication",
+    "hosting",
+    "local native compilation"
+  ],
+  "externalAuthorization": "Explicit user yes authorizes cached Expo account/project setup, signing, reviewed-source upload and internal APK builds. Subsequent emulator instruction supersedes physical hardware requirements. No commits/pushes/store/OTA/hosting/remote migrations authorized.",
+  "date": "2026-10-31",
+  "historicalConfigDigests20261024": {
+    "easConfigSha256": "c88e070eb5258bc0356fdd214065cdb0f4f897e4ab2c1035378226e0ad5da532",
+    "appConfigSha256": "2e3d7e556154882b2172e1b24cb0ee6cae7896347d4d4aa739a4ceafd3976af6",
+    "metroConfigSha256": "4877ef7d53c8c5a8d35a5b9208c2879e86981cf30e5440a7b53875c54ee88e95",
+    "easIgnoreSha256": "d44297d8e129e2cce168ba01ee8d665d450559458878f929fd0ad45b6e0cab2a"
+  },
+  "lockSha256": "1f3ff62691d8cb47bf3a835d2c3b00361b114c7c8082231b5a78377af85849dd",
+  "probeAttempts": [
+    {
+      "id": "57891d3b-b96e-4757-8eaf-d50694723802",
+      "status": "ERRORED",
+      "cause": "Missing Android library versionName; corrected before attempt 2"
+    },
+    {
+      "id": "82ebe427-4ef7-4c7d-83ac-38680519102d",
+      "status": "ERRORED",
+      "cause": "Nonpublic O_DIRECTORY constant; SDK-confirmed O_RDONLY correction submitted in attempt 3"
+    },
+    {
+      "id": "301a0ee3-84da-4a3e-b541-14c22324bfec",
+      "status": "FINISHED",
+      "completedAt": "2026-10-31T04:39:56.211Z",
+      "label": "probe3",
+      "apkBytes": 113082448,
+      "apkSha256": "ed45dbba2f19609159955dd45ca218833bd5c4ced6d968dcfbb3cd8b067f97cd",
+      "certificateSha256": "68:7F:1C:CD:00:00:D2:D2:00:46:11:5E:01:27:E7:19:2D:E4:07:EF:A5:80:10:C8:A3:D6:69:9F:96:BB:AF:40",
+      "subject": "C=US\nST=\nL=\nO=\nOU=\nCN=",
+      "issuer": "C=US\nST=\nL=\nO=\nOU=\nCN=",
+      "validFrom": "Oct 27 06:31:41 2026 GMT",
+      "validTo": "Mar 14 06:31:41 2054 GMT",
+      "signingBlock": "APK v2 identity extracted per AOSP format",
+      "verification": "Identity extraction only; Android PackageManager installation supplies platform signature validation. keytool -jarfile does not support this v2-only APK.",
+      "limitation": "APK predates restore runner, async migration barriers, startup journal harness, UI observers, and QuickCrypto candidate"
+    }
+  ],
+  "sourceArchives": {
+    "developmentAndValidation": "02f6c7acd1829cb3b684f3a1e9b26134f010a98b3198159e44dc27c5988e453c",
+    "probe3": {
+      "label": "probe3",
+      "status": "pass",
+      "files": 110,
+      "uploadedTarballSha256": "22817e4d2f0d1f8c2cf209871149eabb730dafa125b657b448395f0fcd8fb7c8",
+      "reviewedManifestSha256": "2d271ecbe274292f6860550b100bda2b64380ce15191c74946ac7ab132babc9b"
+    },
+    "review": "Actual EAS tarball entries matched audited source manifests. Private files and signing material excluded."
+  },
+  "cliVersions": {
+    "earlierBuilds": "EAS CLI26.0.0",
+    "probe3": "EAS CLI27.2.0 (npx eas-cli@latest as required by AGENTS.md)"
+  },
+  "nextProbeBuild": {
+    "status": "blocked",
+    "provider": "EAS",
+    "action": "Create next internal Android probe build",
+    "reason": "Account monthly Android build allowance exhausted",
+    "reportedReset": "2026-11-01; approximately18hours from refusal",
+    "log": "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/probe4-build.log",
+    "logSha256": "be7e94463c6928a8738dbd0d29ca691aafa2935ac02f2ee5db27cdd7d0d5ebe0",
+    "source": {
+      "label": "probe4",
+      "status": "pass",
+      "files": 132,
+      "uploadedTarballSha256": "d1f066f27724b8de7a8b6b9fa9fca81c94a55977535d8cac8a97d35b20f2118d",
+      "reviewedManifestSha256": "dbb1b8f4b9055cdf53fe743e2cb2d8fc7b013ad89670bacfadf27d65819acd68"
+    },
+    "buildId": null,
+    "apk": null,
+    "retry": "No unchanged resubmission. Resume when allowance changes or user supplies separately authorized capacity.",
+    "billingChanged": false
+  },
+  "sourceSeparation": {
+    "normalJavaScript": "1899 sources; diagnostic entries absent",
+    "normalNative": "Expo autolinking excludes foundation module and all three unselected KDF libraries. Normal Expo and React Native resolve outputs checked.",
+    "sourceArchive": "Authored native module sources retained in reviewed archives so Doctor can validate them. Normal APK exclusion is enforced by autolinking, not archive omission.",
+    "evidence": [
+      "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/normal-autolinking-1031.json",
+      "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/normal-react-native-config.json"
+    ]
+  },
+  "android17": {
+    "status": "not verified",
+    "images": [
+      "Android17/API37/x86_64/16KB CP21.260330.005, auto and software renderers",
+      "Newer installed PlayStore CP21.260330.012, fresh task-owned profile/software renderer"
+    ],
+    "failure": "System surfaceflinger abort !hasReadColorBufferDma persisted after both diagnosed repair approaches. Newer image installed validation APK, but system service crash interrupted offline assertion before app launch; no runtime PASS.",
+    "stopped": "Both task-owned unstable VMs stopped after evidence capture; no user emulator touched.",
+    "radioCleanup": {
+      "result": "not restored on stopped newer test VM: services disappeared during cleanup",
+      "observed": {
+        "data": "0",
+        "wifi": "0",
+        "airplane": "1"
+      },
+      "scope": "Only isolated stopped task-owned VM; recheck/restore before future reuse"
+    },
+    "logs": [
+      "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-auto-gpu-crash.txt",
+      "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-software-crash.txt",
+      "C:/Users/User/.codex/visualizations/2026/10/23/01a16906-88e5-72e2-af38-a4c7ae871c24/phase0/2026-10-27/api37-play-crash.txt"
+    ]
+  },
+  "currentSourceDeltaSinceRefusedUpload": [
+    "scripts/check-build-config.mjs expanded normal exclusion guard; re-audit changed archive entry before next submission",
+    "package.json normal exclusions now also cover three unselected KDF libraries; explicit probe setup removes all four exclusions"
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "fixtureCount": 26,
+  "passed": 26,
+  "failed": 0,
+  "results": [
+    {
+      "id": "B6-01",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "passed": true
+    },
+    {
+      "id": "B6-02",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-03",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-04",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-05",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-06",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-07",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-08",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-09",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-10",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-11",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "passed": true
+    },
+    {
+      "id": "B6-12",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "passed": true
+    },
+    {
+      "id": "B6-13",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "B6-14",
+      "expected": "HASH_MISMATCH",
+      "actual": "HASH_MISMATCH",
+      "passed": true
+    },
+    {
+      "id": "B6-15",
+      "expected": "HASH_MISMATCH",
+      "actual": "HASH_MISMATCH",
+      "passed": true
+    },
+    {
+      "id": "B6-16",
+      "expected": "UNSUPPORTED_LEGACY_SCHEMA",
+      "actual": "UNSUPPORTED_LEGACY_SCHEMA",
+      "passed": true
+    },
+    {
+      "id": "B6-17",
+      "expected": "BACKUP_FROM_NEWER_APP",
+      "actual": "BACKUP_FROM_NEWER_APP",
+      "passed": true
+    },
+    {
+      "id": "B6-18",
+      "expected": "MALFORMED_BACKUP",
+      "actual": "MALFORMED_BACKUP",
+      "passed": true
+    },
+    {
+      "id": "B6-19",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-20",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-21",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "passed": true
+    },
+    {
+      "id": "B6-22",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-23",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-24",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "passed": true
+    },
+    {
+      "id": "B6-25",
+      "expected": "MALFORMED_BACKUP",
+      "actual": "MALFORMED_BACKUP",
+      "passed": true
+    },
+    {
+      "id": "B6-26",
+      "expected": "MALFORMED_BACKUP",
+      "actual": "MALFORMED_BACKUP",
+      "passed": true
+    }
+  ],
+  "goldenAccountBalancesMinor": {
+    "00000000-0000-0000-0000-000000000001": -12000,
+    "00000000-0000-0000-0000-000000000002": -500
+  },
+  "goldenNetExpenseByMonthMinor": {
+    "2026-09": 10000,
+    "2026-10": 2000
+  },
+  "scope": "Documentation fixture/schema oracle only; no app/device tests executed."
+}

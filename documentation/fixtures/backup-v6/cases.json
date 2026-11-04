@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 6,
+  "contract": "../../contracts/Backup-v6.md",
+  "cases": [
+    {
+      "id": "B6-01",
+      "file": "golden-history.json",
+      "expected": "ACCEPT",
+      "purpose": "Archived purchase/refund/category/Budget; all nine recurrence dispositions; shadowed revision, override, receipt after target deletion and unknown icon key."
+    },
+    {
+      "id": "B6-02",
+      "file": "orphan-refund.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Original missing despite valid hashes."
+    },
+    {
+      "id": "B6-03",
+      "file": "over-refund.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Refund exceeds purchase."
+    },
+    {
+      "id": "B6-04",
+      "file": "orphan-account.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Financial account does not resolve."
+    },
+    {
+      "id": "B6-05",
+      "file": "duplicate-account.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Duplicate entity UUID."
+    },
+    {
+      "id": "B6-06",
+      "file": "invalid-preference.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Imported enum cannot use local fallback."
+    },
+    {
+      "id": "B6-07",
+      "file": "unknown-security-field.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Security state cannot be imported."
+    },
+    {
+      "id": "B6-08",
+      "file": "unknown-nested-field.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Nested unknown field is rejected."
+    },
+    {
+      "id": "B6-09",
+      "file": "invalid-date.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Lexically shaped but impossible civil date."
+    },
+    {
+      "id": "B6-10",
+      "file": "amount-out-of-range.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Per-field maximum +1 rejected."
+    },
+    {
+      "id": "B6-11",
+      "file": "opening-zero.json",
+      "expected": "ACCEPT",
+      "purpose": "Zero opening balance valid."
+    },
+    {
+      "id": "B6-12",
+      "file": "opening-negative.json",
+      "expected": "ACCEPT",
+      "purpose": "Negative opening balance valid."
+    },
+    {
+      "id": "B6-13",
+      "file": "zero-transaction.json",
+      "expected": "SCHEMA_INVALID",
+      "purpose": "Transaction zero invalid."
+    },
+    {
+      "id": "B6-14",
+      "file": "broken-manifest.json",
+      "expected": "HASH_MISMATCH",
+      "purpose": "Valid structure, tampered manifest."
+    },
+    {
+      "id": "B6-15",
+      "file": "wrong-record-count.json",
+      "expected": "HASH_MISMATCH",
+      "purpose": "Manifest count mismatch."
+    },
+    {
+      "id": "B6-16",
+      "file": "legacy-v5.json",
+      "expected": "UNSUPPORTED_LEGACY_SCHEMA",
+      "purpose": "No inferred legacy mapping."
+    },
+    {
+      "id": "B6-17",
+      "file": "newer-v7.json",
+      "expected": "BACKUP_FROM_NEWER_APP",
+      "purpose": "Reject future schema."
+    },
+    {
+      "id": "B6-18",
+      "file": "string-version.json",
+      "expected": "MALFORMED_BACKUP",
+      "purpose": "Schema version is not integer."
+    },
+    {
+      "id": "B6-19",
+      "file": "archived-pending.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Pending cannot point to archived current target."
+    },
+    {
+      "id": "B6-20",
+      "file": "wrong-winning-revision.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Shadowed revision cannot own occurrence."
+    },
+    {
+      "id": "B6-21",
+      "file": "receipt-target-deleted.json",
+      "expected": "ACCEPT",
+      "purpose": "Operation result survives deleted entity."
+    },
+    {
+      "id": "B6-22",
+      "file": "dangling-ledger-transaction.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Confirmed link must resolve reciprocally."
+    },
+    {
+      "id": "B6-23",
+      "file": "missing-occurrence.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Cursor cannot skip eligible history."
+    },
+    {
+      "id": "B6-24",
+      "file": "rule-zone-change.json",
+      "expected": "INVARIANT_VIOLATION",
+      "purpose": "Revision zone must match fixed rule zone."
+    },
+    {
+      "id": "B6-25",
+      "file": "duplicate-json-key.json",
+      "expected": "MALFORMED_BACKUP",
+      "purpose": "Duplicate keys rejected before ordinary object parsing."
+    },
+    {
+      "id": "B6-26",
+      "file": "truncated.json",
+      "expected": "MALFORMED_BACKUP",
+      "purpose": "Truncated package rejected without live mutation."
+    }
+  ]
+}

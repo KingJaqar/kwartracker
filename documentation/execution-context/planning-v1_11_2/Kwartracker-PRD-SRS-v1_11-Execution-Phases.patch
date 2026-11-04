@@ -1,0 +1,468 @@
+--- baseline/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md
++++ revised/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md
+@@ -1,10 +1,10 @@
+ # Kwartracker — Execution Phases
+ 
+-**Companion to:** Kwartracker PRD/SRS v1.11.1 (the normative baseline)
++**Companion to:** Kwartracker PRD/SRS v1.11.2 (the normative baseline)
+ **Scope:** Android EAS cloud Build and internal APK installation only. No store uploads (including Google Play test tracks), TestFlight, OTA publishing, public hosting or production deployment. The PRD Section 16 applicability table defers iOS/store-specific legs for this milestone.
+ 
+-**Maintenance revision:** 1.11.1; requested filenames retained. Shared workflow lives in Section 3.5; Section 6 owns final scenario eligibility.
+-
+-**Purpose:** The order in which to build Kwartracker, what each phase delivers, and the evidence that closes it.
++**Maintenance revision:** 1.11.2; requested filenames retained. Planning authority: Section 3.4; execution workflow: 3.5; evidence labels: PRD Section 0; integration coverage: Section 6; completion/reporting: Section 9.
++
++**Purpose:** The build order and evidence that closes each phase. Future deliveries, dependencies and risks inherit **assumption (planned)** under PRD Section 0; verification is a recorded result, never intent. Cited normative IDs establish document contracts, not implemented behavior.
+ **Authority:** This plan sequences work; it never changes requirements. If a phase uncovers a defect or gap in the PRD/SRS, the PRD/SRS is revised first under its Section 1 change control, then this plan is updated. Requirement, test, and gate IDs below are the PRD/SRS IDs.
+ 
+@@ -23,5 +23,5 @@
+ | Phase | Name | What you can demo at the end | Size | Depends on | Gates it advances |
+ |---|---|---|---|---|---|
+-| 0 | Foundation, guardrails, and de-risking spikes | A gated empty app on active Android reference/compatibility devices; every risky platform assumption proven or flagged | L | — | RG-10 |
++| 0 | Foundation, guardrails, and de-risking spikes | A gated empty app on active Android reference/compatibility devices; S1–S6 measured; unmet prerequisites block dependent entry | L | — | RG-10 |
+ | 1 | Core ledger loop | A fully usable offline ledger: accounts, categories, income/expense/transfer, balances, Dark and Light | XL | 0 | RG-01, RG-02, RG-08, RG-09, RG-12 |
+ | 2 | Refunds, Budgets, and Analysis | Refund a purchase, set budgets, see spending analysis | L | 1 | RG-01, RG-02, RG-09 |
+@@ -43,5 +43,5 @@
+ - Backup (5) comes after recurrence (3) so the portable schema is complete; restoring a schema that is still changing is the most expensive rework in the project.
+ - PDF, notifications, and privacy (6) are delivery wrappers around data that is already correct.
+-- Assistive features (7) read from Budgets, recurring rules, and notifications, and add nothing to the financial core, so they go last and ship behind D-65 local build-time rollout control only; no remote-config service or new backend.
++- Assistive features (7) read from Budgets, recurring rules, and notifications, and add nothing to the financial core, so they go last and may use D-65 local build-time rollout control for tests only; no remote-config service or new backend.
+ 
+ ---
+@@ -79,11 +79,13 @@
+ | End of Phase 3 | TC-21 (recurrence catch-up portion of PERF-01) formally run |
+ | End of Phase 4 | Biometric fallback on active Android reference/compatibility devices plus one additional Android OEM (INS-SEC-02); KDF timing (SEC-REV-01) |
+-| End of Phase 5 | Restore termination matrix on Android (iOS leg Deferred) (REC-BKP-01) |
++| End of Phase 5 | REC-BKP-01 DB/credential legs only; real service-state matrix completes in 7 (iOS Deferred) |
+ | End of Phase 6 | Notification behavior after reboot and timezone change (TC-75); OS-backup exclusion smoke test (TC-76) |
+-| End of Phase 7 | AUT-VER-01/02 performance budgets on the PERF-01 fixture |
++| End of Phase 7 | AUT-VER-01/02 budgets and complete REC-BKP-01 service-state/telemetry integration |
+ | Phase 8 | Complete mandatory final-candidate suites on the actual final internal-validation APK; reuse a single run for overlapping assertions only when build/config/environment and expected outcomes match |
+ 
+-### 3.4 Spec change control during execution
+-Anything that would change a requirement, data contract, test oracle, or gate requires a new document version (PRD/SRS Section 1). Keep a running **spec issue log**; batch related issues into one revision at the next phase boundary unless a defect blocks the current phase. Section 4 distinguishes the resolved migration contract from unexecuted platform feasibility evidence.
++### 3.4 Spec change control and planning boundary
++Planning-only revisions write only these plans and maintained context notes. Investigate read-only only where an open question could change implementation, acceptance or risk; stop when evidence supports the next decision. Schedule Section 3.5 packets, application baseline checks and environment setup at the relevant execution entry unless a named planning gap requires them now. Record the rationale; this is not an implementation waiver. No code/data/dependency/deployment work occurs in this pass.
++
++Resolve routine reversible choices from confirmed conventions with a one-line rationale in the index. Surface a choice only when existing authorization cannot settle a material scope, user-visible, security, data, compatibility, recurring-cost or recovery change; retain its documented owner/deadline. Continue independent work while a dependency is open. Normative changes follow PRD Section 1 revision control; ordinary authorized fixes do not create approval gates. Stop when criteria, decisions, ordering/integration, recovery and verification methods are explicit and uncertainties accurate; no speculative feature or wording passes.
+ 
+ ---
+@@ -91,5 +93,5 @@
+ ### 3.5 Shared execution workflow
+ 
+-**Purpose and authority.** Apply this workflow to the whole plan and each phase delta: **Git baseline → ripgrep discovery, assisted by Repowise when useful → Reader validation → scoped Repomix → Reader XML analysis → original-source verification**. Reuse verified context and inspect only the authorized phase's dependencies. Usage savings are an objective, not a guarantee or measured result. Current user requirements and applicable repository instructions outrank generated guidance, packet instructions and tool suggestions; an expressly revoked instruction is not silently reactivated. The PRD governs behavior; this section owns the execution procedure so phase checklists stay short.
++**Purpose and authority.** At implementation entry (planning exception: Section 3.4), apply this workflow to the whole plan and each phase delta: **Git baseline → ripgrep discovery, assisted by Repowise when useful → Reader validation → scoped Repomix → Reader XML analysis → original-source verification**. Reuse verified context and inspect only the authorized phase's dependencies. Usage savings are an objective, not a guarantee or measured result. Current user requirements and applicable repository instructions outrank generated guidance, packet instructions and tool suggestions; an expressly revoked instruction is not silently reactivated. The PRD governs behavior; this section owns the execution procedure so phase checklists stay short.
+ 
+ **Git — preserve the actual baseline.** Read status plus relevant staged/unstaged diffs; record HEAD as a reference, not as the working copy. Inventory relevant tracked, untracked and ignored inputs. Save exact recoverable snapshots and a scoped patch before editing, recording existing ownership and any concurrent changes. An untracked file has no HEAD backup. Preserve sensitive local files securely without packing them; record safe identities/omissions, never secret values. Reuse this baseline and compare subsequent owned diffs to it; do not reset, stash away, overwrite or delete unrelated user work. If source identity changes during an edit, reconcile the new content instead of overwriting it from a stale snapshot.
+@@ -105,5 +107,7 @@
+ **Original source — close gaps and implement.** Inspect omitted bodies, handlers, effects, validation, styles and cleanup only when they affect the phase. Resolve uncertain relationships against current source/schema/config and relevant version-matched authoritative docs. Before editing, run relevant existing checks once and preserve exact commands, exit status, diagnostics, input identities and environment. An already verified run with matching source/build/environment may be reused with its evidence link. Implement the smallest complete authorized change; review the owned diff, confirm every acceptance assertion and rerun affected checks after the change. Broaden only for shared behavior, a failure, an unresolved risk, required cadence or the final-candidate suite. Repeat a check only after relevant change, diagnosed failure, required cadence or another concrete recorded reason; retain full diagnostics privately so recovering truncated output does not require rerunning the operation. Reuse CI/device evidence only for matching artifacts/assertions; actual build changes still require the specified final acceptance coverage. Never trade security/correctness/acceptance for lower usage.
+ 
+-**Bounded work, cleanup and handoff.** A phase checkpoint is scope baseline → identified gap → minimal change → affected evidence → exit review, with no automatic restart of the workflow or repeated unchanged tool/build/test submission. Diagnose a failure and change a relevant input/external condition before retry; when independent progress is exhausted, report the exact missing prerequisite without claiming completion. Runtime recovery follows PRD Section 12/FR-ERR-005, not an unbounded retry helper. Raw internal error codes stay in sanitized evidence, while UI uses plain explanations. Remove superseded helpers/routes/files only after an ownership check, reference search (imports/routes/tests/config/docs), replacement acceptance and a recoverable snapshot; remove stale imports/config references in the same owned change. Historical baselines, contracts, the supplied guide, user-owned changes and recovery data are not automatically unused. No broad directory deletion or deletion solely to reduce context size is authorized.
++**Bounded work, recovery and cleanup.** Before retry/repair/long-running work record finite input/count, max attempts (default **1**, no automatic retries), numeric deadline, progress/timeout detection, cancellation point and safe stop/recovery in the index. Select tool/API-specific deadlines at entry; missing limits block that operation. One diagnosed relevant change permits one further attempt; the same failure again stops that approach, records a blocker and requires a revised approach before another run. No unchanged repeated build/test submission or workflow restart. User-triggered runtime Retry remains explicit under PRD Section 12; success requires its result/state oracle.
++
++Snapshot code/config and affected data/credential/scheduler state before mutation; rehearse recovery on synthetic data. Code rollback cannot undo migration, replacement or reset. Before irreversible work specify compatibility, commit boundary, recovery artifacts and pre/post-commit action; preserve journals/authorized recovery instead of downgrading data or restoring stale secrets. Unknown affected state blocks that step. Remove replacements only after confirming no runtime/build/config/migration/compatibility role, reference search, replacement acceptance and snapshot. Historical sources, user work and recovery data stay protected.
+ 
+ **Tool/environment applicability.** MuMuPlayer may be the main repeatable Android emulator for development, seeded functional checks, UI navigation and applicable fault injection. Record image/API/ABI, emulator/version/host, APK variant/hash and missing native services; install an EAS-built APK instead of compiling locally. Real-device performance, biometric hardware/OEM behavior, reboot/backup/scheduler and mandatory physical OS compatibility still require physical evidence. Docker is optional for applicable isolated domain/schema/repository tests and does not emulate Android security/storage. Brave/browser automation is permitted only for a discovered authorized browser surface; this plan adds no web/admin app or deployment. A tool permission is not a new feature or a passed gate. EAS cloud Build/internal APK restrictions in Section 12 remain unchanged.
+@@ -113,9 +117,9 @@
+ ## 4. Foundation decisions and feasibility spikes
+ 
+-### SF-01 — App database migration strategy resolved
+-
+-PRD FR-ERR-005 and Section 12 now define the app-local migration contract: PRAGMA user_version, initial app schema 1, recognized sources, complete forward-only atomic chain, preserved unsupported/newer databases and no repeat on an already-current open. Portable backup schema stays v6. Implement and fault-test this in Phase 0 with TC-122 and use it for Phase 5 staging; do not defer the decision or infer mappings from backup versions. Phase 0 may use synthetic migration harness fixtures; every real supported version later added must receive matching source/target fixtures and tests before use.
+-
+-### Spikes (each has a pass condition; a failure triggers a spec revision, not a workaround)
++### SF-01 — App database migration strategy selected (D-113)
++
++PRD FR-ERR-005 and Section 12 now define the app-local migration contract: PRAGMA user_version, initial app schema 1, recognized sources, complete forward-only atomic chain, preserved unsupported/newer databases and no repeat on an already-current open. Portable backup schema stays v6. Fault-test migration legs in Phase 0, then Phase 5 staging/complete TC-122 recovery/unlock integration; do not infer mappings from backup versions. Phase 0 may use synthetic migration harness fixtures; every real supported version later added must receive matching source/target fixtures and tests before use.
++
++### Spikes (unmet conditions block dependent work; revise the contract only if an authorized measured fix cannot satisfy it)
+ | Spike | Question | Pass condition | Affects |
+ |---|---|---|---|
+@@ -124,5 +128,5 @@
+ | S3 UI stack sanity | Do Reanimated, Gesture Handler, FlashList v2, Lucide per-icon imports, and Inter work together on React Native 0.86 in an EAS internal-validation APK? | An isolated nonshipping prototype with synthetic input demonstrates the NFR-11 interactions/scale on required physical Android evidence; it does not require the completed Phase 1 product screens | Section 6A, NFR-11 |
+ | S4 Notifications | Per-identifier schedule and cancel, reboot and timezone behavior, and permission flows on Android (iOS leg Deferred) | Synthetic native schedule/cancel/permission probes support feasibility; full product reconciliation and inactivity tests remain in Phases 6–7 | FR-NOT, FR-AUT-006 |
+-| S5 OS backup exclusion | Can the SQLite file and SecureStore be excluded from OS backup and device transfer through config plugins? | TC-76 style smoke test passes on Android (iOS leg Deferred) | FR-PRV-001, NFR-02 |
++| S5 OS backup exclusion | Can the SQLite file and SecureStore be excluded from OS backup and device transfer through config plugins? | Synthetic native exclusion/transfer probe records omissions; full TC-76 save/restore/reset/export integration remains Phase 6 (iOS Deferred) | FR-PRV-001, NFR-02 |
+ | S6 Startup path timing | How long does journal recovery → migration → integrity and foreign-key checks take on the 10,000-row fixture? | Record five cold-start stage timings on the versioned 10,000-row fixture; prove gate ordering/one migration pass and existing NFR-11 responsiveness where measured. No separate subjective or invented cold-start-duration gate applies | FR-ERR-003, FR-NAV-002 |
+ 
+@@ -133,13 +137,13 @@
+ ### Phase 0 — Foundation, guardrails, and de-risking spikes (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Existing starter app; documented EAS project/variant prerequisites and safe baseline. Implement foundations/probes only, not future product screens. |
+-| Context inputs | package.json/lock, app config, build workflow/guide hash, v6 contract, domain/db/test skeletons; existing verified metadata before expanding. |
+-| Baseline | Run available config/type/domain/fixture checks once; record missing scripts separately from PASS. Migration failure probes use synthetic data. |
+-| Acceptance/cleanup | Complete TC-120/122 and native prerequisite probe evidence. Other listed Phase 0 legs are partial; cache/snapshot/index handoff via Section 3.5. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Foundation/probes only; no later workflow. Entry: intended EAS account/project, preserved package identities and schema history confirmed; unresolved S1–S6 gate dependent work. |
++| Consumers / baseline | package/lock, config/hooks/profiles, guide, schema/migration/gates and synthetic harness; baseline available type/lint/config/domain checks once under 3.5. |
++| Applicable risks | Native mismatch, unknown DB, kill/disk-full, credential exposure and gated navigation; synthetic data, no real credentials in logs. |
++| Integration / acceptance | TC-120 setup; S1–S6 finite synthetic probes meet table pass conditions without later screens. Integrate DbGate/schema/variant/APK: offline shell stays gated; migration failure preserves data. |
++| Recovery / exit | Snapshot config/install data; failed migration rolls back, unknown DB untouched. Exit: measured prerequisites pass; TC-122 native legs partial until 5; missing evidence blocks dependent entry. |
+ 
+ **Goal:** A reproducible Android EAS cloud development-build/install/Metro workflow and standalone internal-validation APK, plus the foundation and native feasibility evidence required before Phase 1.
+@@ -170,10 +174,10 @@
+ **Requirements:** BR-05–BR-08 (domain), FR-TRN-003, FR-TRN-011 (repository), FR-ERR-001 (helper), FR-ERR-005 (app-local migrations), FR-NAV-001 (route skeleton), FR-DSN-002 and FR-DSN-003 (token and font foundations).
+ 
+-**Full-pass tests:** TC-120, TC-122. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-120. Whole-case PASS requires every assertion in its PRD oracle.
+ **Partial probes:** TC-13/28/30/39/43/97 domain/token/repository legs and TC-121 shell only; no whole-case PASS before prerequisites.
+ **Artifacts started:** INS-ARC-01 (first review), COMPAT-01 (first record), QA-PLAN-01 (first draft mapping every TC to a suite and owner).
+ 
+ **Demo:** Install/open the EAS development APK through Metro, then stop Metro and cold-launch the separate validation APK offline on the active Android reference device; show the empty gated shell in the correct appearance.
+-**Exit:** TC-120 and TC-121 Phase 0 legs have actual APK/install/runtime evidence; BUILD-VER-01 confirms only internal EAS APK profiles/workflows. All six spikes have recorded Android outcomes (iOS legs explicitly Deferred). FR-ERR-005/TC-122 are implemented and pass for the available schema paths. Any failed prerequisite blocks dependent work until resolved by measured fix or authorized requirements revision; logging a failure alone does not close Phase 0.
++**Exit:** TC-120 and TC-121 Phase 0 legs have actual APK/install/runtime evidence; BUILD-VER-01 confirms only internal EAS APK profiles/workflows. All six spikes have recorded Android outcomes (iOS legs explicitly Deferred). FR-ERR-005 native migration probes pass for available schema paths; TC-122 is partial until real recovery/lock integration in Phase 5. Any failed prerequisite blocks dependent work until resolved by measured fix or authorized requirements revision; logging a failure alone does not close Phase 0.
+ 
+ ---
+@@ -181,13 +185,13 @@
+ ### Phase 1 — Core ledger loop (XL)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Phase 0 prerequisites pass; implement only the existing core ledger/accounts/categories and their UI. |
+-| Context inputs | Actual transaction/account/category repositories, their callers, records/input routes, tokens, formatter, receipt base and tests; no rules/PDF dump. |
+-| Baseline | Reuse Phase 0 identity-verified context; run relevant pre-edit ledger/UI checks once and record source/build/environment. |
+-| Acceptance/cleanup | Complete this phase’s Section 6 cases and available physical UI metrics; retain partial clone/rule/restore/screen legs for their final phase; remove only proven owned replacement debris. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Core ledger only; enter after Phase 0 gates. No rule/refund/restore acceptance implied. |
++| Consumers / baseline | Account/category/transaction repos, receipts/paging, SCR-01/05/06/07, Preferences/formatters; verify callers/config, baseline affected checks. |
++| Applicable risks | Invalid/empty/loading/offline/disk-full; duplicate Save/concurrent edits, stale pages, archives, money visibility, focus/back navigation. |
++| Integration / acceptance | Entry → commit/receipt → Records/totals: Section 6 domain/repository/UI cases; TC-07/29/79 failures preserve prior state; TC-101/105 and physical NFR-11 limits pass. |
++| Recovery / exit | Recover code/config and disposable fixture DB; preserve data-bearing installs, never reset user data. Exit: full cases and current-screen UX/device evidence pass; record blockers. |
+ 
+ **Goal:** Meet O1. A person can record an income or expense in seconds and trust the balance.
+@@ -212,13 +216,13 @@
+ ### Phase 2 — Refunds, Budgets, and Analysis (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Core ledger dependencies pass; implement refunds, Budgets and Analysis only. |
+-| Context inputs | Refund original/receivers, Budget/Analysis query consumers, date/money helpers, affected screens and fixtures. |
+-| Baseline | Confirm linked-refund/domain prerequisites in current code and baseline affected accounting tests once. |
+-| Acceptance/cleanup | Exact refund/concurrency/range tests and current performance/accessibility evidence pass; PDF/restore legs stay partial; update context/owned diff. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Refunds/Budgets/Analysis only; enter with Phase 1 ledger/receipt contracts passing. |
++| Consumers / baseline | Purchase/refund consumers, Budget/Analysis queries, money/date helpers and SCR-02/04; baseline affected finance checks. |
++| Applicable risks | Concurrent final refunds, archived refs, stale range results, negative/empty totals, accessible non-color state. |
++| Integration / acceptance | Purchase → refund → balance/Budget/Analysis: TC-41/58–61 race, TC-84/96/118 exact totals and physical TC-33 pass; PDF/restore partial. |
++| Recovery / exit | Transactional failures preserve totals; recover synthetic DB/code, never invent compensating rows. Exit: full cases/integration pass; PDF/restore explicitly wait for 5/6. |
+ 
+ **Goal:** Insight into spending, with refunds handled exactly.
+@@ -243,13 +247,13 @@
+ ### Phase 3 — Recurrence engine (XL)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Ledger/refunds ready; implement recurrence, revisions, pause, ledger and review only. |
+-| Context inputs | Scheduling zone/revision/cursor helpers, occurrence repository, archive/delete consumers, SCR-10, fixtures and whole-pass fault tests. |
+-| Baseline | Verify immutable-origin/receipt/archive dependencies, then baseline recurrence/domain tests once; do not assume backup exists. |
+-| Acceptance/cleanup | Complete recurrence-only cases in Section 6; TC-40/46/54/111/112 restore legs wait for Phase 5. Hand off exact source/packet/test identities. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Recurrence only; enter with ledger/refunds and scheduling/date contracts passing. |
++| Consumers / baseline | Rule revisions/ledger/cursors, archive/delete callers, lifecycle/focus, SCR-10/faults; baseline recurrence checks. |
++| Applicable risks | Timezone/DST, concurrent triggers, duplicate/backlog actions, pause/edit/archive races, cancellation, terminal history. |
++| Integration / acceptance | Lifecycle → serialized evaluation → ledger/receipt/UI: Section 6 cases, TC-45 interval-once, TC-55/56 faults after each rule, measured TC-21 pass. |
++| Recovery / exit | Whole-pass rollback preserves cursors/history/transactions; stop nonprogressing evaluation. Exit: recurrence gates pass; restore pending 5, real LockGate recheck 4. |
+ 
+ **Goal:** Recurring transactions that never silently lose or duplicate an occurrence.
+@@ -273,13 +277,13 @@
+ ### Phase 4 — Security and lock (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Core routing and recurrence gates exist; implement passcode/biometrics/lockout only. |
+-| Context inputs | Credential/lockout store, LockGate/root route consumers, reviewed KDF dependency, logging hooks, physical-device scripts. |
+-| Baseline | Confirm native capability/version and previous timing evidence validity; baseline affected security/gate cases once. |
+-| Acceptance/cleanup | Complete security cases/required physical OEM evidence. Recovery-reset and final navigation/full-screen legs remain partial; scrub secrets from all context. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Access gate only; enter with measured S2/native capability and lifecycle contracts; reset destination remains 5. |
++| Consumers / baseline | SecureStore/KDF/lockout, LockGate/routes, lifecycle/logging; baseline security checks, current native versions. |
++| Applicable risks | Biometric deny/cancel/enrollment change, clock rollback/reboot, concurrent unlock, secrets, accessibility tree before auth. |
++| Integration / acceptance | Recovery/migration → real unlock → recurrence/routes: full cases, native INS-SEC/SEC-REV-01 ≤750 ms pass; recheck TC-45; TC-70 transport partial until 6. |
++| Recovery / exit | Recoverable synthetic installs; failed enrollment preserves data/secrets, no bypass/downgrade. Exit: gate cases pass; TC-26 waits for 5; internal probe only until recovery works. |
+ 
+ **Goal:** An access gate that is correct, honest about its limits, and fast enough to use.
+@@ -295,6 +299,6 @@
+ **Requirements:** FR-SEC-001–009, BR-21, FR-NAV-002 (gate ordering); recover/reset integration stays pending until Phase 5.
+ 
+-**Full-pass tests:** TC-11, TC-25, TC-37, TC-70, TC-71, TC-72, TC-73. Whole-case PASS requires every assertion in its PRD oracle.
+-**Partial legs:** TC-26 reset/restore, TC-98 recovery appearance, TC-106 complete navigation and TC-117 normalization integration remain pending.
++**Full-pass tests:** TC-11, TC-25, TC-37, TC-71, TC-72, TC-73. Whole-case PASS requires every assertion in its PRD oracle.
++**Partial legs:** TC-70 telemetry transport, TC-26 reset/restore, TC-98 recovery appearance, TC-106 complete navigation and TC-117 normalization integration remain pending.
+ **Re-run:** TC-45 (recurrence evaluation after unlock now uses the real gate).
+ **Artifacts:** INS-SEC-01, INS-SEC-02 (active Android reference/compatibility devices plus one additional Android OEM), INS-SEC-03, SEC-REV-01 (timing on active Android reference/compatibility devices).
+@@ -307,13 +311,13 @@
+ ### Phase 5 — Backup, restore, reset, and recovery (XL)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Recurrence and security dependencies pass; implement existing v6 export/restore/reset/recovery only. |
+-| Context inputs | Exact schema/manifest/validator, stage/journal/migrations, receipts, all relevant writers, credential/scheduler state adapters and recovery tests. |
+-| Baseline | Verify source/staging schema and protocol dependencies; baseline fixture/recovery checks once, retaining logs privately. |
+-| Acceptance/cleanup | Phase 5 cases pass including restore legs and migration regression; notification/consent/assistive cleanup integration finishes in Phases 6–7. No blanket complete-device-state claim early. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | v6 backup/restore/reset only; enter with real security, recognized schema, measured S1; recovery specified before irreversible swap/reset. |
++| Consumers / baseline | Current writers/readers, receipts/export/staging/journal, migration/gates, SCR-08/12 and credentials; baseline fixtures/faults. |
++| Applicable risks | Malformed/hostile input, disk-full, concurrent export/write, stale drafts, auth/cancel, kill before/after commit. |
++| Integration / acceptance | Ledger/rules/security → round trip → restart: full Phase 5 cases and DB/credential faults match Section 12; TC-122 real gate order passes; service-state cases finish 7. |
++| Recovery / exit | Before DB_COMMITTED restore old data/state; after retain new DB/journal and block until normalization completes. Reset finishes authorized journal. Exit: core gates pass; REC-BKP-01 service legs pending 7. |
+ 
+ **Goal:** Recovery produces the precise pre/post-commit outcomes in PRD Section 12, preserving old data before commit and completing new data/device normalization after commit.
+@@ -329,11 +333,11 @@
+ **Requirements:** BR-18–BR-20, FR-BKP-001–011 and FR-BKP-013 (FR-BKP-012 deferred), FR-ERR-002/003/005, FR-SEC-007, FR-NAV-002 (recovery gate), FR-DSN-013 (restore with unknown icon key).
+ 
+-**Full-pass tests:** TC-09, TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-62, TC-63, TC-64, TC-65, TC-66, TC-67, TC-68, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119, TC-122. Whole-case PASS requires every assertion in its PRD oracle.
+ **Artifacts:** REC-BKP-01 (termination matrix across every restore phase on Android (iOS leg Deferred)), INS-BKP-01, INS-BKP-02.
+ 
+-**Partial legs:** TC-117 real notification/consent/assistive cleanup completes only after those feature adapters are integrated; complete it in Phase 7.
++**Partial legs:** TC-09/62/64/65/66/68 and TC-117 require real notification/consent/advisory adapters; complete them with REC-BKP-01 in Phase 7.
+ **Device evidence:** REC-BKP-01 on active Android reference/compatibility devices.
+ **Demo:** Export, kill the app during restore at several points, and verify the exact phase-specific old/new dataset and device-state oracle, not merely either hash.
+-**Exit:** Every restore phase has a passing termination test on Android (iOS leg Deferred), and a restore of a backup containing an unrecognized icon key succeeds.
++**Exit:** Database/credential journal boundaries have Phase 5 termination evidence and unknown-icon restore succeeds. Full device-state fault outcomes remain the explicit Phase 7 integration gate; do not mark REC-BKP-01 complete here.
+ 
+ ---
+@@ -341,13 +345,13 @@
+ ### Phase 6 — Delivery services: PDF, notifications, privacy (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Data recovery exists; implement existing PDF, reminder and consent/privacy paths only. |
+-| Context inputs | Exporter/formatter consumers, notification identifiers/permissions, crash capture/queue/consent, backup metadata and relevant source guide/config. |
+-| Baseline | Confirm adapters and queue/scheduler tests exist, baseline affected checks once; do not assume a provider is already selected. |
+-| Acceptance/cleanup | Applicable PDF/notification/Android backup/privacy cases pass; assistive-specific transport captures and inactivity cleanup finish in Phase 7; record physical evidence. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | PDF/reminder/privacy only; enter with core recovery; provider/retention selected before telemetry enablement (D-25/RG-06). |
++| Consumers / baseline | PDF queries, notification IDs/permission/config, consent/SDK queues/transport, normalization and SCR-09; baseline affected checks. |
++| Applicable risks | Denied/offline, stale/cancelled export, disk-full, partial provider write, reboot/timezone, sensitive captures. |
++| Integration / acceptance | Refund/range → PDF; restore/reset → real scheduler/consent: full cases and TC-70 contain no plaintext; physical TC-75/76 and base PRIV-VER-01 allowlist pass; no whole TC-77 PASS. |
++| Recovery / exit | Cancel by ID; preserve export source; opt-out stops SDK/deletes unsent queue; post-commit failure stays gated. Exit: service gates pass; FR-AUT capture/normalization pending 7. |
+ 
+ **Goal:** The remaining user-facing services, each built on data that is already trustworthy.
+@@ -361,5 +365,5 @@
+ **Requirements:** FR-PDF-001–003 (FR-PDF-004 deferred), FR-NOT-001–004, FR-PRV-001–005, FR-SET-003, FR-TRN-004 (notes never logged).
+ 
+-**Full-pass tests:** TC-12, TC-35, TC-36, TC-38, TC-57, TC-69, TC-74, TC-75, TC-76, TC-83, TC-85. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-12, TC-35, TC-36, TC-38, TC-57, TC-69, TC-70, TC-74, TC-75, TC-76, TC-83, TC-85. Whole-case PASS requires every assertion in its PRD oracle.
+ **Artifacts:** INS-PRV-01, INS-PRV-02, INS-PRV-03, PRIV-VER-01 (base capture paths), PRIV-VER-02.
+ 
+@@ -367,5 +371,5 @@
+ **Device evidence:** TC-75 and TC-76 on active Android reference/compatibility devices.
+ **Demo:** Export a PDF, enable the reminder, toggle crash-report consent.
+-**Exit:** Controlled-transport inspection shows only allowlisted fields; every implemented MVP SCR route exists and resolves (Deferred SCR-03 excluded) (TC-78).
++**Exit:** Implemented transport paths contain only allowlisted fields; current routes resolve. Whole TC-78/77 and FR-AUT transport/normalization are Phase 7 integration gates.
+ 
+ ---
+@@ -373,13 +377,13 @@
+ ### Phase 7 — Assistive suggestions (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | Budgets/rules/notifications/privacy prerequisite implementations pass; implement the already approved advisory features only. |
+-| Context inputs | Actual suggestion detection/state/queue, source financial query consumers, notification/telemetry consumers, SCR-05/06/07 and tests. |
+-| Baseline | Verify advisory writes stay after financial commit and no egress; baseline scoped heuristic/performance/privacy tests once. |
+-| Acceptance/cleanup | Complete advisory/full-route/popup/final cleanup integration cases and physical budgets; preserve existing UX/features and invalidate only changed context. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | Approved advisory features only; enter with financial, notification, privacy and recovery adapters passing; no backend. |
++| Consumers / baseline | SuggestionState/queue, Save/query consumers, notification/telemetry, SCR-05/06/07/tests; baseline affected checks. |
++| Applicable risks | Concurrent prompts/Save, stale dismissal, bounded pruning, denied/offline schedule, restore races, focus/accessibility, egress. |
++| Integration / acceptance | Convergence gate: full cases plus real-service REC-BKP-01/TC-09/62/64/65/66/68/117; TC-77 all captures, AUT-VER-01/02 and A11Y-AUT-01 pass; no unconfirmed finance mutation. |
++| Recovery / exit | Financial commit independent of advisory failure; clear/disable by existing toggle/journal, no stale credentials/queues after restore. Exit: routes/normalization/privacy/advisory gates pass; final candidate 8. |
+ 
+ **Goal:** Helpful, strictly advisory features that cannot change financial data on their own and cannot make saving slower.
+@@ -396,5 +400,5 @@
+ **Requirements:** FR-AUT-001–009, BR-24–BR-27, NFR-09, NFR-10, Section 11 `SuggestionState`.
+ 
+-**Full-pass tests:** TC-77, TC-78, TC-86, TC-87, TC-88, TC-89, TC-90, TC-91, TC-92, TC-93, TC-94, TC-95, TC-102, TC-117. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-09, TC-62, TC-64, TC-65, TC-66, TC-68, TC-77, TC-78, TC-86, TC-87, TC-88, TC-89, TC-90, TC-91, TC-92, TC-93, TC-94, TC-95, TC-102, TC-117. Whole-case PASS requires every assertion in its PRD oracle.
+ **Artifacts:** INS-AUT-01, AUT-VER-01, AUT-VER-02, A11Y-AUT-01, PRIV-VER-01 (final, with FR-AUT captures).
+ 
+@@ -407,13 +411,13 @@
+ ### Phase 8 — Hardening and internal validation candidate (L)
+ 
+-**Execution checklist** — apply shared Section 3.5 once, then only this phase’s delta.
+-
+-| Check | Phase-specific obligation |
+-|---|---|
+-| Scope/prerequisites | All earlier implemented assertions and deferred-leg mapping are complete; fix in-scope defects only. |
+-| Context inputs | Compact index plus changed packets/diffs and final artifact identities; full acceptance map/evidence links, not a regenerated repo dump. |
+-| Baseline | Validate final candidate SHA/config/environment and existing CI results; identify required missing/invalidated assertions once. |
+-| Acceptance/cleanup | Complete all mandatory final-candidate suites and every applicable assertion; review owned cleanup, open defects and named gates. No APK/store/OTA/production publication beyond allowed EAS Build. |
+-
++**Execution checklist** — planned assumptions; apply Sections 3.4/3.5 and 9 to this delta.
++
++| Check | Phase-specific obligation |
++|---|---|
++| Objective / entry | In-scope hardening only; enter after 0–7 phase gates, explicit Android/iOS applicability and no unresolved dependency. |
++| Consumers / baseline | Final commit/APK/config/environment, evidence map, diffs/notices; baseline required final-candidate checks once. |
++| Applicable risks | Cross-feature regressions, deployment hooks, stale evidence, lost recovery artifacts, inaccessible/error routes. |
++| Integration / acceptance | Final convergence: AUTO-PR/NIGHTLY/RC-DEVICE, every applicable TC/artifact and RG-01–12 meet PRD oracles in required environments; no new failures or mandatory pending checks. |
++| Recovery / exit | Retain verified APK/source/data compatibility and recovery evidence; code rollback cannot undo data. Exit: REL-EVD-01 report; implementation Verified only with all gates, deployment Excluded, production validation Not performed. |
+ 
+ **Goal:** Turn a feature-complete build into a signed internal validation candidate with a complete evidence index.
+@@ -437,29 +441,45 @@
+ | Phase | Tests first eligible for a complete scenario PASS |
+ |---|---|
+-| 0 | TC-120, TC-122 |
++| 0 | TC-120 |
+ | 1 | TC-01, TC-02, TC-03, TC-04, TC-05, TC-07, TC-08, TC-13, TC-15, TC-28, TC-29, TC-30, TC-39, TC-79, TC-97, TC-101, TC-103, TC-105, TC-113, TC-114 |
+ | 2 | TC-06, TC-27, TC-33, TC-41, TC-58, TC-59, TC-60, TC-61, TC-84, TC-96, TC-118 |
+ | 3 | TC-14, TC-16, TC-17, TC-18, TC-19, TC-21, TC-22, TC-23, TC-24, TC-31, TC-32, TC-42, TC-44, TC-45, TC-47, TC-48, TC-49, TC-50, TC-51, TC-52, TC-55, TC-56, TC-82, TC-110 |
+-| 4 | TC-11, TC-25, TC-37, TC-70, TC-71, TC-72, TC-73 |
+-| 5 | TC-09, TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-62, TC-63, TC-64, TC-65, TC-66, TC-67, TC-68, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119 |
+-| 6 | TC-12, TC-35, TC-36, TC-38, TC-57, TC-69, TC-74, TC-75, TC-76, TC-83, TC-85 |
+-| 7 | TC-77, TC-78, TC-86, TC-87, TC-88, TC-89, TC-90, TC-91, TC-92, TC-93, TC-94, TC-95, TC-102, TC-117 |
++| 4 | TC-11, TC-25, TC-37, TC-71, TC-72, TC-73 |
++| 5 | TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119, TC-122 |
++| 6 | TC-12, TC-35, TC-36, TC-38, TC-57, TC-69, TC-70, TC-74, TC-75, TC-76, TC-83, TC-85 |
++| 7 | TC-09, TC-62, TC-64, TC-65, TC-66, TC-68, TC-77, TC-78, TC-86, TC-87, TC-88, TC-89, TC-90, TC-91, TC-92, TC-93, TC-94, TC-95, TC-102, TC-117 |
+ | 8 | TC-81, TC-99, TC-100, TC-104, TC-106, TC-107, TC-108, TC-121 |
+ 
+ | Phase | Named artifacts |
+ |---|---|
+-| 0 | BUILD-VER-01 dev/shell evidence; INS-ARC-01 migration/prototype leg; COMPAT-BKP-01 investigation; QA-PLAN-01 complete assertion/phase mapping; EXEC-VER-01 context/baseline leg |
++| 0 | BUILD-VER-01 dev/shell evidence; INS-ARC-01 migration/prototype leg (TC-122 partial); COMPAT-BKP-01 investigation; QA-PLAN-01 complete assertion/phase mapping; EXEC-VER-01 context/baseline leg |
+ | 1 | UX-01/UI-PERF-01 dry runs; first applicable VIS-01 baselines; EXEC-VER-01 phase delta |
+-| 2 | TC-33 current screens; UX-01 O2 leg via TC-118; EXEC-VER-01 phase delta |
+-| 3 | TC-21 recurrence metrics; whole-pass fault results; EXEC-VER-01 phase delta |
++| 2 | TC-06, TC-27, TC-33, TC-41, TC-58, TC-59, TC-60, TC-61, TC-84, TC-96, TC-118 |
++| 3 | TC-14, TC-16, TC-17, TC-18, TC-19, TC-21, TC-22, TC-23, TC-24, TC-31, TC-32, TC-42, TC-44, TC-45, TC-47, TC-48, TC-49, TC-50, TC-51, TC-52, TC-55, TC-56, TC-82, TC-110 |
+ | 4 | INS-SEC-01/02/03 and SEC-REV-01 physical evidence; RG-05 still awaits TC-26 in Phase 5 |
+ | 5 | INS-BKP-01/02; REC-BKP-01 database/credential legs; INS-ARC-01 TC-122; remaining real scheduler/consent integration pending |
+-| 6 | INS-PRV-01/02/03; PRIV-VER-01 base captures; PRIV-VER-02 tester notice; PLAT-VER-01 Android native/config evidence |
++| 6 | INS-PRV-01/02/03; TC-70 transport; PRIV-VER-01 base captures; PRIV-VER-02 tester notice; PLAT-VER-01 Android native/config evidence |
+ | 7 | INS-AUT-01; AUT-VER-01/02; A11Y-AUT-01; final FR-AUT transport captures; TC-117/REC-BKP-01 full normalization integration |
+ | 8 | Final applicable PERF-01/PERF-GOV-01/COMPAT-01/UX-01/A11Y-01/UI-PERF-01/DSG-REV-01/VIS-01; BUILD-VER-01 final artifact; INS-ARC-01/QA-PLAN-01/DOC-VER-01/EXEC-VER-01/REL-EVD-01 |
+ 
++### Requirement → phase → verification
++
++Cited IDs are verified PRD contracts; delivery/PASS remains assumption until each oracle is observed. This summarizes boundaries, not a competing TC ownership map.
++
++| Requirement / contract | Phase / boundary | Verification method / passing condition |
++|---|---|---|
++| FR-DEV-001–007; FR-ERR-005 | 0 probes → 5 real gates → 8 APK | TC-120 setup/install; TC-122 complete ordering/atomic-version faults in 5; TC-121 final offline APK in 8. |
++| FR-TRN/ACC/CAT; BR-01–10 | 1 entry → commit → totals | Domain/repository/UI Save race/fault cases; exact money/receipts, preserved failure state; TC-101/105/NFR-11 limits. |
++| BR-23; FR-BUD/ANA | 2 refund → range/Budget | TC-41/58–61 races, TC-84/96/118 totals and physical TC-33; PDF comparison completes 6. |
++| FR-REC-001–016 | 3 lifecycle → ledger; 4 unlock; 5 round trip | TC-45/55/56/21, real unlock recheck and TC-53/54/112 exact history. |
++| FR-SEC; BR-21 | 4 auth → 5 recovery → 6 transport | INS-SEC/SEC-REV-01, TC-26/70 gate/credential/plaintext exclusions. |
++| FR-BKP; Section 12 | 5 DB/credential → 7 services | TC-122 core order; TC-09/62/64/65/66/68/117 and REC-BKP-01 actual-boundary data/device outcomes. |
++| FR-PDF/NOT/PRV | 6 adapters → 7 advisory capture/normalization | PDF totals, TC-70/75/76, base then final PRIV-VER-01/TC-77 consent/no-egress/queue oracles. |
++| FR-AUT; BR-24–27 | 7 Save/queue/service convergence | TC-86–95/102/117, AUT-VER-01/02, A11Y-AUT-01: no unconfirmed finance writes, exact suppression/cleanup. |
++| EXEC-01; NFR/DSN; RG-01–12 | Every delta → 8 candidate | EXEC-VER-01/DOC-VER-01, final suites/physical artifacts and Section 9 report; no missing mandatory gate. |
++
+ ## 7. Internal-build gate readiness
+ 
+-| Gate | Evidence complete after | Notes |
++| Gate | Earliest planned completeness (assumption) | Dependency / method |
+ |---|---|---|
+ | RG-01 Product behavior | Phase 8 | Needs every product FR test and the final UX-01 |
+@@ -467,5 +487,5 @@
+ | RG-03 Recurrence durability | Phase 5 | The backup and restore legs of TC-53 close it |
+ | RG-04 Backup/recovery | Phase 7 | Phase 6 completes PDF/storage legs; Phase 7 completes TC-117 real consent/notification/assistive normalization and full REC-BKP-01 |
+-| RG-05 Security | Phase 5 | Phase 4 supplies native/KDF evidence; required TC-26 reset/restore completes only in Phase 5 |
++| RG-05 Security | Phase 6 | Phase 4 native/KDF, Phase 5 TC-26 recovery, Phase 6 TC-70 real telemetry plaintext-exclusion |
+ | RG-06 Privacy/internal-build compliance | Phase 7 | PRIV-VER-01 is finalized with the FR-AUT captures |
+ | RG-07 Notifications | Phase 6 | |
+@@ -491,19 +511,20 @@
+ | R10 | Spec and code drift | All | Spec issue log; versioned revisions at phase boundaries |
+ 
+-## 9. Definitions
+-
+-**A story is done when**
+-- Its tests (named in Section 6) are automated and green in CI.
+-- It uses only tokens and catalogue components, with no literals outside the token source.
+-- It has accessible names, roles, and states, and works in Dark and Light and at 200% font scale.
+-- Every data screen it touches has loading, empty, error, and content states.
+-- Every write is transactional and idempotent where the PRD/SRS requires it; failures return stable error codes.
+-- Nothing sensitive reaches a log, a crash payload, or telemetry.
+-
+-**A phase is done when**
+-- All scenarios first eligible in this phase are complete, applicable earlier regressions have matching valid evidence, and required suite cadence/final-build checks pass under Section 3.5.
+-- The internal-validation APK demo works offline on active Android reference/compatibility devices.
+-- The device evidence for the phase (Section 3.3) is captured and stored.
+-- Any spec issue found has been logged, and anything blocking is resolved in a new PRD/SRS version.
++## 9. Observable completion and execution report
++
++These criteria interpret quality language under D-115/EXEC-01; none guarantees zero defects.
++
++| Goal | Verification method and passing condition |
++|---|---|
++| Fully working / bug free | Execute Section 6 journeys and named invalid/denied/offline/concurrent/fault cases in required environments. All phase gates pass; no new failures versus preserved baseline or unresolved applicable defect. Pre-existing required-gate failures still block verification. |
++| No errors | Record exact affected type/lint/build/test commands and scrubbed runtime logs, versions and before/after exit/results. No new diagnostics/unexpected runtime errors in affected journeys; injected faults follow their oracle. Missing/pending checks never pass. |
++| Lightweight / no bloat | Diff dependencies/abstractions against existing FR/NFR need and consumers; no addition without a stated requirement and need. Size/latency/memory comparisons require comparable measured baselines; existing PERF/NFR thresholds stay binding. |
++| Remove old code | Runtime/build/config/migration/compatibility reference checks find no role; replacement gates pass and recovery snapshots exist before deletion. |
++| No loops | Section 3.5 attempt/work/deadline/stop/cancel/recovery record exists before long operations; bounded fault checks terminate without unchanged retries or skipped work. |
++| Ready | Track implementation and EAS internal APK validation separately (Pending/Verified/Blocked); deployment Excluded, production validation Not performed. No blanket “production ready/validated” claim; changing exclusion requires new authorization. |
++
++QA-PLAN-01 binds phase assertions to Section 6 tests and each checklist’s integration boundary; isolated unit passes do not prove cross-feature journeys. Add tests for distinct changed behavior, failure/concurrency or real regression risk; reuse existing coverage otherwise. Prepare code/data recovery before mutation. Breaking changes state affected consumers, compatibility and transition before dependent work. Applicable screen states/accessibility/navigation, constraints, input validation and authoritative repository/service access checks remain required; no server/account feature is created.
++
++**Final execution report (REL-EVD-01):** identify changed scope/files/contracts and source/APK/config/environment; list each gate’s actual command/procedure, baseline/current result and evidence. Separate pre-existing failures, regressions and injected faults. Include integration/user-journey results, cleanup, code/data recovery, unavailable checks/limitations, unresolved risks/blockers with documented owner, and remaining actions. Report the separate readiness statuses above. A phase is Verified only with all its own gates passed; wider RGs remain Pending until their convergence/final evidence exists.
+ 
+ ## 10. Where work can run in parallel
+@@ -514,12 +535,12 @@
+ - **Phase 2:** refunds, Budgets, and Analysis, once the refund repository rules exist.
+ - **Phase 3:** the scheduling and ledger engine versus the SCR-10 and backlog UI, once the engine's interface is fixed.
+-- **Phases 4–6:** security and the early parts of PDF and notification work do not depend on each other, but each phase closes in order.
++- **Phases 4–6:** independent preparation may overlap after interfaces are confirmed; real security→recovery closes in 5, services in 6, full normalization in 7. Shared writes stay serialized; this does not authorize agents or skipped entry gates.
+ 
+ 
+ ## 11. Inherited contracts and maintenance coverage
+ 
+-The existing v6 backup/receipt/refund/revision contracts remain mandatory and are referenced by the phase scope and primary Section 6 map rather than a second competing full-pass table. In particular TC-109/111/112/115/116/119 finish their restore legs in Phase 5; TC-110 includes recurring date correction and finishes in Phase 3; TC-113/114 finish in Phase 1; TC-118 finishes in Phase 2; TC-117 real scheduler/privacy/advisory integration finishes in Phase 7. No document or fixture pass is an application/device pass. The source [v6 contract](contracts/Backup-v6.md) and [PRD/SRS v1.11.1](Kwartracker-PRD-SRS-v1_11.md) define the outcomes.
+-
+-Maintenance revision 1.11.1 adds no feature/UI. It resolves SF-01 through FR-ERR-005/TC-122, centralizes shared work in Section 3.5, documents the optional tools and physical-evidence limits, and corrects circular/early acceptance mappings. [execution-context/index.json](execution-context/index.json) identifies inspected sources, reusable reads and actual checks; cached packets/snapshots are not shipped runtime code. Historical baselines remain referenced provenance and are not deleted as unused files.
++The existing v6 backup/receipt/refund/revision contracts remain mandatory and are referenced by the phase scope and primary Section 6 map rather than a second competing full-pass table. In particular TC-109/111/112/115/116/119 finish their restore legs in Phase 5; TC-110 includes recurring date correction and finishes in Phase 3; TC-113/114 finish in Phase 1; TC-118 finishes in Phase 2; TC-117 real scheduler/privacy/advisory integration finishes in Phase 7. No document or fixture pass is an application/device pass. The source [v6 contract](contracts/Backup-v6.md) and [PRD/SRS v1.11.2](Kwartracker-PRD-SRS-v1_11.md) define the outcomes.
++
++Maintenance revision 1.11.2 refines planning evidence, measurable completion, integration/recovery and reporting under D-114/115; no feature/UI change. [execution-context/index.json](execution-context/index.json) identifies inspected sources, reusable reads and actual checks; cached packets/snapshots are not shipped runtime code. Historical baselines remain referenced provenance and are not deleted as unused files.
+ 
+ ## 12. EAS-only acceptance boundary

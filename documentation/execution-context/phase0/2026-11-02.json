@@ -1,0 +1,291 @@
+{
+  "date": "2026-11-02",
+  "phase": 0,
+  "status": "Partially complete; native acceptance pending authorization and suitable Android targets",
+  "scope": "TC-120 static guard correction; current baseline and native readiness investigation. No later phase work.",
+  "baseline": {
+    "head": "c2cc5f23a1d313adda90cd24e6828777c87c3553",
+    "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-1102",
+    "status": "git-status.txt",
+    "trackedPatch": "tracked.patch",
+    "snapshots": "baseline/",
+    "ownership": "All starting tracked/untracked changes belong to the user; owned delta compared with exact snapshots, not HEAD.",
+    "sensitiveInputs": "No credential or financial file copied or packed."
+  },
+  "workflow": {
+    "sequence": [
+      "Git baseline",
+      "ripgrep discovery",
+      "Reader identity validation",
+      "scoped Repomix",
+      "complete Reader XML analysis",
+      "original-source verification"
+    ],
+    "instructions": [
+      "AGENTS.md",
+      "CLAUDE.md (imports AGENTS.md)"
+    ],
+    "repowise": "Optional; unused. Narrow direct rg and existing phase evidence used.",
+    "packet": {
+      "tool": "Repomix 1.18.1 cached",
+      "path": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-1102/context.xml",
+      "sha256": "6b74912a9e68dce0f665894e43df8654a4157a0c7cd28c32c15fb79848ddc8d6",
+      "flags": "--include (13 explicit source paths) --ignore **/.env*,**/*.db,**/*.sqlite*,**/*.key,**/*.keystore --style xml --parsable-style --no-file-summary --no-directory-structure",
+      "exitCode": 0,
+      "security": "Enabled; no suspicious files detected",
+      "fileManifest": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-1102/source-manifest.json",
+      "tokenEstimate": 13281,
+      "actualUsage": "Not measured; no savings claim",
+      "omittedEntries": [],
+      "compressed": false,
+      "readCoverage": "All 723 lines in five extractions; every entry complete",
+      "boundaries": [
+        {
+          "first": 1,
+          "last": 180,
+          "lines": 180,
+          "chars": 11788,
+          "complete": true,
+          "next": 181,
+          "deviation": null
+        },
+        {
+          "first": 181,
+          "last": 330,
+          "lines": 150,
+          "chars": 11163,
+          "complete": true,
+          "next": 331,
+          "deviation": null
+        },
+        {
+          "first": 331,
+          "last": 460,
+          "lines": 130,
+          "chars": 10496,
+          "complete": true,
+          "next": 461,
+          "deviation": null
+        },
+        {
+          "first": 461,
+          "last": 590,
+          "lines": 130,
+          "chars": 9366,
+          "complete": true,
+          "next": 591,
+          "deviation": null
+        },
+        {
+          "first": 591,
+          "last": 723,
+          "lines": 133,
+          "chars": 7299,
+          "complete": true,
+          "next": null,
+          "deviation": null
+        }
+      ]
+    },
+    "sourceVerification": "Read original build guard/config/workflow, migration/startup/coordinator, domain money/date/balance, receipt repository, appearance/icon registry, native probe procedures/protocol and relevant PRD contracts. The packet is the pre-edit baseline; exact owned patches describe its two changed entries.",
+    "reuse": "Historical native observations remain attributed to old builds; no current native pass inferred. PRD current digest recorded below; old narrative is discovery input, not current gate evidence."
+  },
+  "sources": {
+    "documentation/Kwartracker-PRD-SRS-v1_11.md": "c703f2ce029b719d63b4f454013b59bf84fe26d93f48018a6b623f378aa337be",
+    "package-lock.json": "1f3ff62691d8cb47bf3a835d2c3b00361b114c7c8082231b5a78377af85849dd",
+    "app.config.js": "1201684679b9e185d9321585af5d1886fdb22627ec5e6148a7446c93b7f8db5c",
+    "eas.json": "c88e070eb5258bc0356fdd214065cdb0f4f897e4ab2c1035378226e0ad5da532",
+    "documentation_guides/expo-android-development-build-guide.docx": "247cc211a1c5bdfe9727e41bc36b43f3d821811580fa28bae5d71607aca036be",
+    "scripts/check-build-config.mjs": "28c125475325a88a10df370769a3db30a8eb566fc8104a968072e410c3b50a0a",
+    "tests/guardrails.test.ts": "48e2fc0b852b5b7317a94a45708e4f58f238ea9dae7d70d1d7a3b9249d44ed45"
+  },
+  "docs": [
+    "https://docs.expo.dev/versions/v57.0.0/",
+    "https://docs.expo.dev/versions/v57.0.0/sdk/sqlite/",
+    "https://docs.expo.dev/llms.txt",
+    "https://docs.expo.dev/eas/json/",
+    "https://docs.expo.dev/build-reference/npm-hooks/",
+    "https://docs.expo.dev/eas/workflows/syntax/"
+  ],
+  "changes": {
+    "files": [
+      "scripts/check-build-config.mjs",
+      "tests/guardrails.test.ts"
+    ],
+    "behavior": [
+      "Reject Android nested options that override reviewed APK/distribution/environment settings or select custom workflows",
+      "Restrict variant environment keys; allow isolated probe only with validation and value 1",
+      "Detect versioned EAS/Expo publication/local-compilation commands and declarative publication job types"
+    ],
+    "dependenciesAdded": [],
+    "limitations": "Static text scan is a regression guard, not a shell parser/security sandbox; indirect scripts and actual cloud archive still require preflight review."
+  },
+  "checks": {
+    "baseline": [
+      {
+        "command": "npm run lint",
+        "exitCode": 0,
+        "log": "baseline-0.log"
+      },
+      {
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "log": "baseline-1.log"
+      },
+      {
+        "command": "npm test",
+        "exitCode": 0,
+        "corePassed": 29,
+        "componentPassed": 5,
+        "log": "baseline-2.log"
+      },
+      {
+        "command": "npm run check:contracts",
+        "exitCode": 0,
+        "log": "baseline-3.log"
+      },
+      {
+        "command": "npm run check:build",
+        "exitCode": 0,
+        "log": "baseline-4.log"
+      }
+    ],
+    "after": [
+      {
+        "command": "npm run lint",
+        "exitCode": 0
+      },
+      {
+        "command": "npm run typecheck",
+        "exitCode": 0
+      },
+      {
+        "command": "npm run test:core",
+        "exitCode": 0,
+        "passed": 31
+      },
+      {
+        "command": "npm run check:build",
+        "exitCode": 0
+      },
+      {
+        "command": "APP_VARIANT=validation npx expo export --platform android --output-dir <evidence>/validation-repaired --source-maps --max-workers 2",
+        "exitCode": 0,
+        "log": "validation-export-repaired.log"
+      },
+      {
+        "command": "node scripts/check-validation-bundle.mjs <evidence>/validation-repaired",
+        "exitCode": 0,
+        "sourcesChecked": 1899,
+        "diagnosticsAbsent": true
+      }
+    ],
+    "reuse": "Baseline five component tests and contract checks reused: no dependent runtime/schema/component/contract files changed.",
+    "environmentFailures": [
+      "Initial Expo account request failed DNS in restricted execution; read-only request outside restriction confirmed account",
+      "Initial ADB server unavailable in restricted execution; read-only device inventory outside restriction succeeded",
+      "Initial Hermes export exited 1: temporary-folder output permission denied; one diagnosed retry with TEMP/TMP under writable evidence root exited 0"
+    ],
+    "warnings": "Existing Node module-type/experimental SQLite, EAS punycode/outdated CLI, NO_COLOR/FORCE_COLOR and Hermes vendor undeclared-global warnings observed; no new lint/type/test diagnostic. No current APK runtime-console result.",
+    "native": "Not run; no new build, install, app launch, migration or test-device state mutation.",
+    "remoteCI": "Not run; no push authorized"
+  },
+  "classification": {
+    "doneLocally": [
+      "Expo57/TypeScript/Router shell and route stubs",
+      "Configuration and separate identities",
+      "Tokens/appearance/font/icon foundation and literal lint",
+      "Exact money/date/balance and receipt/coordinator foundation",
+      "Atomic real 0-to-1 app schema migration and host fault coverage",
+      "CI definition, deterministic PERF fixture and fault harness",
+      "Corrected TC-120 static guards"
+    ],
+    "partial": [
+      "TC-120 current APK/install/Metro evidence relies on historical build",
+      "TC-121 standalone shell/runtime warning correction needs new APK",
+      "S1 restore native interruption/durability matrix",
+      "S2 measured QuickCrypto candidate selection",
+      "S3 UI native performance",
+      "S4 remaining timezone/compatibility observations",
+      "S5 actual transfer omission",
+      "S6 five full-fixture process-cold samples",
+      "TC-122 Phase0 native fault/termination assertions"
+    ],
+    "notStartedThisSession": [
+      "New EAS source upload/build and Android native acceptance runs",
+      "Phase1 product work"
+    ]
+  },
+  "acceptance": {
+    "staticTC120": "met for reviewed current files; runtime assertions remain historical",
+    "TC121Shell": "pending manual/native verification",
+    "S1": "pending native verification",
+    "S2": "pending native verification; BC/JS previously failed speed gate",
+    "S3": "pending native verification",
+    "S4": "pending native verification",
+    "S5": "pending native verification",
+    "S6": "pending native verification",
+    "TC122Phase0": "host met; native pending",
+    "overallPhase0": "not met",
+    "phase1Entry": "blocked"
+  },
+  "provider": {
+    "account": "alex123superman",
+    "verifiedReadOnly": true,
+    "cli": "25.0.0 installed global; no upgrade",
+    "accountUsageCommand": "eas account:usage alex123superman --json --non-interactive",
+    "cycleUTC": {
+      "start": "2026-11-01T00:00:00Z",
+      "end": "2026-12-01T00:00:00Z"
+    },
+    "android": {
+      "used": 0,
+      "limit": 15
+    },
+    "latestBuild": "301a0ee3-84da-4a3e-b541-14c22324bfec",
+    "latestBuildCreatedUTC": "2026-10-31T04:20:05.988Z",
+    "reusableForNewProbes": false,
+    "pendingJobs": "None in latest five records; exhaustive queue not checked",
+    "proposedBudget": {
+      "nextProbe": 1,
+      "normalShellValidation": 1,
+      "diagnosedPhase0CorrectionReserve": 1,
+      "finalCandidateReserve": 2,
+      "unallocatedForLaterPhases": 10
+    },
+    "submissions": 0,
+    "billingChanged": false
+  },
+  "targets": {
+    "connected": "127.0.0.1:5557 and emulator-5556 report same model; no independence inferred",
+    "inspected": "127.0.0.1:5557",
+    "sdk": 28,
+    "abi": "x86_64",
+    "kwartrackerPackages": "none returned",
+    "limitation": "Current connected image cannot replace recent Android compatibility targets; historical API36/API37 profiles not started or changed."
+  },
+  "operations": {
+    "attempts": "One per check, one diagnosed environment repair for account/ADB/export",
+    "checkTimeoutMs": 180000,
+    "nativeProbeTimeoutMs": 30000,
+    "sourceMutationRecovery": "Exact baseline snapshots and owned patches",
+    "deviations": "Earlier host commands relied on tool/session timeouts rather than an explicit process watchdog; record this limitation, not perfect bounded-operation compliance.",
+    "cancellation": "No polling or automatic build submission; no owned running native session."
+  },
+  "blocker": {
+    "owner": "User",
+    "issue": "Current request excludes sending anything to third parties; historical plan records upload/build permission but cannot override the current restriction.",
+    "question": "Authorize reviewed Phase0 source uploads and EAS internal probe/validation builds using the existing project and available free allowance?",
+    "recommended": "Authorize internal builds only; preserve publication/billing exclusions. Use designated recent-OS emulators for acceptance.",
+    "independentWork": "Owned guards/tests, host verification, bundle exclusion, quota/build/device observations and evidence update complete."
+  },
+  "remainingProcedures": "Follow Native-verification.md: 56 restore interruption points and provider/cleanup/corruption failures; measure 600000-iteration KDF; UI frame/event samples in both appearances; notification permission/reboot/timezone; local backup/transfer omission; five distinct process-cold full-PERF startup samples; migration termination/unknown/current fixtures; normal offline shell with actual runtime flags. Preserve app data and original device state.",
+  "exclusions": [
+    "No commits/pushes",
+    "No new cloud source uploads/builds",
+    "No deployments or remote migrations",
+    "No external configuration/billing changes",
+    "iOS device legs Deferred",
+    "Phase5 full recovery/unlock integration remains out of scope"
+  ]
+}

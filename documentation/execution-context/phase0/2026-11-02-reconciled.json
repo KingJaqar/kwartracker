@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-02",
+  "status": "Partially complete; Phase1 entry blocked",
+  "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized",
+  "scope": "Reconcile outstanding builds/results and correct the missing development-client installation on MuMu james. No new build submissions after the user questioned the verification loop.",
+  "developmentClient": {
+    "instance": "james",
+    "managerIndex": 0,
+    "androidApi": 32,
+    "target": "127.0.0.1:16384",
+    "alias": "emulator-5554 reports the same product/model; do not count these as distinct test devices",
+    "buildId": "ca81554a-6ca5-4990-9297-15d50d679532",
+    "profile": "development",
+    "package": "com.alex123superman.kwartracker.development",
+    "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+    "installation": "Verified recorded APK hash; adb install -r returned Success; no uninstall/data clearing",
+    "launch": "Cold launch resolved expo.modules.devlauncher.launcher.DevLauncherActivity; Development Build launcher observed",
+    "server": "Reused existing project Expo process34648 on8081, adb reverse8081 scoped to james; opened development scheme. No extra Metro server started.",
+    "runtime": "Current Kwartracker Records shell and Foundation checks visible; first-run developer-menu overlay dismissed",
+    "evidence": [
+      "james-dev-install.xml",
+      "james-dev-ready.png",
+      "james-dev-final.xml",
+      "james-dev-final.png"
+    ],
+    "limitations": "Existing October27 native client reused. Current normal shell loaded; no claim that it contains later native probe additions. Emulator/vendor and development-runtime warnings observed; not a zero-warning acceptance claim.",
+    "correction": "Historical October27 install evidence did not establish installation on the currently running james instance. The missing current installation was an execution omission; a separate ADB connection was not proof of a distinct device."
+  },
+  "checks": {
+    "lint": 0,
+    "typecheck": 0,
+    "tests": 0,
+    "corePassed": 32,
+    "componentPassed": 7,
+    "logs": [
+      "reconciled-lint.log",
+      "reconciled-typecheck.log",
+      "reconciled-tests.log"
+    ],
+    "warnings": "Retained tool/vendor diagnostics; no blanket clean native-console claim"
+  },
+  "observerCorrection": {
+    "requirement": "S3 reliable observation; numeric acceptance thresholds unchanged",
+    "cause": "Pinned RN0.86 observer stores one event-duration threshold per observer; second longtask observe without threshold resets it to104ms, hiding responsive events.",
+    "correction": "Independent event/longtask observers; explicit event threshold0; both records collected/disconnected on stop or setup failure. Empty samples remain invalid.",
+    "files": [
+      "src/probes/ui-observation.ts",
+      "tests/components/ui-observation.test.tsx"
+    ],
+    "sourceHashes": {
+      "src/probes/ui-observation.ts": "59db8cb4aa2cb606fdb7a2ad22a0f6754c22929e433c70bd756fc326d7be524b",
+      "tests/components/ui-observation.test.tsx": "1a11ebd4e0e59d97446950cf7ea65da46fcaf61d7bf6fa695b33752629e1c9cd"
+    },
+    "packet": {
+      "path": "observation-context.xml",
+      "sha256": "35f7118717a8e59611d7d2711e31f1dd277647b6c16e3760e7c86e00944a3a6d",
+      "tool": "Repomix1.18.1",
+      "files": [
+        "src/probes/ui-observation.ts",
+        "jest.config.js"
+      ],
+      "security": "Enabled; no suspicious files",
+      "read": "Complete2-entry XML,3444characters, one bounded extraction; historical pre-edit entry. Current original source and new regression test read separately.",
+      "tokenEstimate": 876,
+      "actualUsage": "Not measured"
+    },
+    "tests": "Two new tests verify fast9ms event alongside61ms longtask; setup-failure cleanup, double-stop protection, empty invalid sample",
+    "nativeVerification": "Corrected APK built/downloaded/signature verified. Not installed or measured in this reconciliation: isolated API36 emulator was no longer attached. No S3 PASS."
+  },
+  "builds": {
+    "fixtureCorrection": {
+      "id": "21f814bb-d9b1-485a-bcaa-f4cc06da51ff",
+      "status": "FINISHED",
+      "artifact": "Initial download interrupted/partial; not a verified APK and not used. Superseded for pending runtime checks by observer correction."
+    },
+    "observerCorrection": {
+      "id": "80c8dd8c-8843-46bf-8442-734941b0168c",
+      "status": "FINISHED",
+      "package": "com.alex123superman.kwartracker.validation.probe",
+      "profile": "validation",
+      "distribution": "INTERNAL",
+      "file": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/probe3.apk",
+      "bytes": 152827626,
+      "sha256": "1f8271200956b0b1514879b7c74381b08f78706b48f21f0ce8e153441a9a1f2a",
+      "certificateSha256": "687f1ccd0000d2d20046115e0127e7192de407efa58010c8a3d6699f96bbaf40",
+      "manifestSha256": "8393ab86ded29176d3acecab86b41bbf5cb5dc5b332b8c547b3e54a87c3a94a0",
+      "reviewedSourceFiles": 133,
+      "installed": false
+    },
+    "quota": "Provider reported3/15 Android builds before observer build; one subsequent finished build implies4/15 attributable to this task. Not a fresh account-wide usage observation. No overage or billing change authorized."
+  },
+  "notification": {
+    "status": "Failed current-APK reboot observation; timezone leg not reached",
+    "result": "Retained daily request advanced to next day, but no matching delivered notification before660second bound. Earlier short-bound attempt was inconclusive. Do not repeat unchanged or claim delivery.",
+    "cleanup": {
+      "timezone": "GMT",
+      "autoTime": "1",
+      "autoZone": "1"
+    },
+    "scheduledMarker": "Explicitly cancelled in finally",
+    "sourceReview": "Expo57 notification scheduling/handling/presentation native source inspected. Background missing presentation cause unresolved; no speculative handler workaround or dependency edit."
+  },
+  "acceptance": {
+    "foundation": "met locally; foundation/config/domain/schema/guard checks, no full later-phase product claim",
+    "TC120": "Current james dev-client install/Metro shell met; historical Fast Refresh retains October27 provenance; no new Fast Refresh test claimed",
+    "TC121": "Offline release shell met onAPI36/API37 earlier in this session; remaining explicit appearance/font/runtime flags pending",
+    "S1": "Partially met: API36 all56+10 extra native cases; API37 first25/56 only",
+    "S2": "Met under approved emulator scope:213.36ms/API36,570.46ms/API37 plus constant-time native-source review",
+    "S3": "Not met: prior invalid event sample/jank3.69%; corrected observation instrumentation host-tested, native measurement pending",
+    "S4": "Not met: permission/cancel legs met; current reboot delivery failed, timezone pending",
+    "S5": "Not met: packaged exclusion verified; local transfer preflight rejection is not marker-omission proof",
+    "S6": "Not met: original full fixture preparation timed out; loader correction host-tested, five cold samples per target pending",
+    "TC122": "Partially met:8 API36 migration cases; API37 pending; full recovery/lock integration remainsPhase5"
+  },
+  "remaining": "Use existing corrected APK for the pending isolated-device checks. Diagnose missing notification presentation and local-transfer preflight before another attempt. No further cloud builds, duplicate completed tests, threshold changes or later-phase implementation in this reconciliation.",
+  "preservation": "Existing project changes/data preserved. james and existing Metro remain available to the user. No changes to publication, billing, remote databases, commits or pushes."
+}

@@ -1,0 +1,418 @@
+{
+  "revision": "1.11.1",
+  "recordedDate": "2026-10-23",
+  "scope": "Document maintenance only; no app implementation, dependency installation, EAS submission or deployment.",
+  "state": {
+    "documentation": "edited; validation results in companion revision report",
+    "implementationPhases": {
+      "0": "Not started by this maintenance task; runtime acceptance unverified",
+      "1": "Not started by this maintenance task; runtime acceptance unverified",
+      "2": "Not started by this maintenance task; runtime acceptance unverified",
+      "3": "Not started by this maintenance task; runtime acceptance unverified",
+      "4": "Not started by this maintenance task; runtime acceptance unverified",
+      "5": "Not started by this maintenance task; runtime acceptance unverified",
+      "6": "Not started by this maintenance task; runtime acceptance unverified",
+      "7": "Not started by this maintenance task; runtime acceptance unverified",
+      "8": "Not started by this maintenance task; runtime acceptance unverified"
+    }
+  },
+  "baseline": {
+    "repository": "G:\\codebase\\kwartracker",
+    "head": "c2cc5f23a1d313adda90cd24e6828777c87c3553",
+    "workingCopy": "47 untracked paths at baseline; tracked staged/unstaged diff empty. Documentation was untracked; HEAD is not its backup.",
+    "ownership": "Pre-existing working-copy inputs preserved; this task owns only documented subsequent deltas.",
+    "evidence": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\git-baseline.json",
+    "recoverySnapshots": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline",
+    "patch": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-owned-paths.patch",
+    "patchLimitation": "Empty tracked patch; exact file snapshots are the recovery source for untracked inputs.",
+    "inputs": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "b7d381dd55800d242252e8bf89a40b026586d254e34908210931bc35582396a3",
+        "bytes": 2598,
+        "lines": 41,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "package.json",
+        "sha256": "a4b8c7ddbc691cd58f8e0f45e2401c52b08bb7fdf25dc54e7f141a5bd8e1f189",
+        "bytes": 1208,
+        "lines": 43,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "app.json",
+        "sha256": "6325cf4dead4071ad8c8d4b727a32d6d252017b2c3e9cd4ad7144866a0e59582",
+        "bytes": 1059,
+        "lines": 42,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "1044ca3cb6bbe9ef040cdad2c9314bf75d93129778690378f2f9e710e1fe23d2",
+        "bytes": 449,
+        "lines": 43,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+        "sha256": "79c2dac5bca96469769a04f27ee5510637a87abd349747590550ab0922d4417c",
+        "bytes": 285320,
+        "lines": 1490,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+        "sha256": "775e959194023ae30a9304a8b7acc74127c6e6032f6557b079638d350a08a7ca",
+        "bytes": 39575,
+        "lines": 433,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Kwartracker-PRD-SRS-v1_11-Revision-Validation.md",
+        "sha256": "482c2da82058f0760e75e1f16c624ae8512ba83cd604b3f849410f3ba8427364",
+        "bytes": 3443,
+        "lines": 50,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/Android-EAS-Build-Workflow.md",
+        "sha256": "86b183495464688c53f6a4edf1036884812366b5898adfaba382137ad1293c5d",
+        "bytes": 13248,
+        "lines": 121,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/contracts/Backup-v6.md",
+        "sha256": "b400051b0e36693a2be118ab4d7fada7d27b8aed555d1b4eb6c81ea831f5982e",
+        "bytes": 18938,
+        "lines": 82,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      },
+      {
+        "path": "documentation/contracts/eas-build-profiles.example.json",
+        "sha256": "0acdd97a4e4e4a2d76fa291b90e739d404cc66575939fab17ecaf3dda8c946e4",
+        "bytes": 537,
+        "lines": 26,
+        "owner": "pre-existing working-copy input; current task owns only subsequent documented edits"
+      }
+    ]
+  },
+  "instructions": {
+    "authority": "Current human instructions and applicable repository instructions precede generated guidance.",
+    "AGENTS": "Read for provenance; earlier user revocation retained. No submit/update or unrelated lint obligation reactivated.",
+    "deployment": "EAS cloud Build/internal Android APK only. No store tracks, submit/auto-submit, OTA publication, hosting or production deployment."
+  },
+  "versions": {
+    "expoDeclared": "~57.0.24",
+    "reactNativeDeclared": "0.86.3",
+    "versionLimit": "Declared package versions, not proof of installed native runtime or build configuration.",
+    "repomix": "1.18.1 installed/cached; no installation",
+    "reader": "Local XML validation/extraction role; no vendor service assumed",
+    "repowise": "Not available in exposed tools; optional, unused; direct discovery used"
+  },
+  "context": {
+    "baselinePacket": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-context.xml",
+      "sha256": "55ab391577d8f960e91e09567e7838e168c030e2f12ec928b9de3d463035bf93",
+      "manifest": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\packet-manifest.json",
+      "status": "Historical identity archive; not a claim the full main PRD was re-read this pass.",
+      "tokenEstimate": 87922,
+      "estimateIsActualUsage": false
+    },
+    "requiredScopedPacket": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\scoped-context.xml",
+      "sha256": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+      "selectors": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\range-selectors.json",
+      "entries": "Full original execution plan plus 74 exact requirement/oracle source-line selections.",
+      "completedReads": [
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 1,
+          "endLine": 121,
+          "chars": 11952,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 122,
+          "endLine": 243,
+          "chars": 11939,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 244,
+          "endLine": 398,
+          "chars": 11980,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "execution-plan.md",
+          "startLine": 399,
+          "endLine": 433,
+          "chars": 5188,
+          "complete": true
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "requirements-and-oracles.md",
+          "startLine": 1,
+          "endLine": 38,
+          "chars": 11645,
+          "complete": false
+        },
+        {
+          "packet": "52fa581c162ecced1c672cc4d93b59bc9559016872c9b87c608a12863bae34b2",
+          "entry": "requirements-and-oracles.md",
+          "startLine": 39,
+          "endLine": 74,
+          "chars": 10198,
+          "complete": true
+        }
+      ]
+    },
+    "ownedChangeSupplement": {
+      "packet": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-context.xml",
+      "sha256": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+      "tool": "Repomix 1.18.1",
+      "command": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\repomix\\bin\\repomix.cjs",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-inputs",
+        "--style",
+        "xml",
+        "--parsable-style",
+        "--output",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\changed-context.xml",
+        "--include",
+        "*.diff",
+        "--ignore",
+        "**/.env*,**/*.key,**/*.db,**/node_modules/**"
+      ],
+      "exitCode": 0,
+      "security": "enabled; no suspicious files detected; see generation log",
+      "sourceCompression": false,
+      "selectors": "two source diff extracts: all additions/revisions, hunk positions, two context lines",
+      "expectedActualMatch": true,
+      "entries": [
+        {
+          "path": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+          "sha256": "a289a287c55a55e5a83b1db1ab076bb782688d22c546fa02c887ae99d0aa9fa7",
+          "lines": 363,
+          "chars": 39650
+        },
+        {
+          "path": "Kwartracker-PRD-SRS-v1_11.md.diff",
+          "sha256": "1a475d4ef2861330fb39d7bc10a1f47af99224dc57567f4161b93a98cff9b20d",
+          "lines": 200,
+          "chars": 39264
+        }
+      ],
+      "omissions": "Unchanged bodies and previously read deleted bodies; complete original-to-target patches retained beside manifest. No application code or private financial data included.",
+      "diagnosedRetry": "Initial XML-style output was not parsable XML; regenerated once with --parsable-style and narrower extracts. No source edit or security bypass.",
+      "tokenEstimate": 19525,
+      "estimateIsActualModelUsage": false
+    },
+    "supplementReads": [
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 1,
+        "endLine": 55,
+        "chars": 11332,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 56,
+        "endLine": 154,
+        "chars": 11946,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 155,
+        "endLine": 304,
+        "chars": 11752,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11-Execution-Phases.md.diff",
+        "startLine": 305,
+        "endLine": 363,
+        "chars": 6328,
+        "complete": true
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 1,
+        "endLine": 64,
+        "chars": 11878,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 65,
+        "endLine": 110,
+        "chars": 11942,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 111,
+        "endLine": 178,
+        "chars": 11952,
+        "complete": false
+      },
+      {
+        "packet": "d8825734ddb3aa2ca25744d6db396f4cd7282257c706b0cb0737c9b0283b2ca8",
+        "entry": "Kwartracker-PRD-SRS-v1_11.md.diff",
+        "startLine": 179,
+        "endLine": 200,
+        "chars": 4385,
+        "complete": true
+      }
+    ],
+    "finalCorrectionSupplement": {
+      "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-context.xml",
+      "sha256": "db5a0ac5c02ac51a902fefd6d73f2f675328a072e4fe2b7def62cdd6a6552143",
+      "tool": "Repomix 1.18.1",
+      "exitCode": 0,
+      "security": "enabled; see correction-generation.log",
+      "selectors": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-selectors.json",
+      "scope": "seven exact lines correcting CI/device and TC-77 phase prerequisites and historical wording; prior supplement remains historical",
+      "generationCommand": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/User/AppData/Roaming/npm/node_modules/repomix/bin/repomix.cjs",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-inputs",
+        "--style",
+        "xml",
+        "--parsable-style",
+        "--output",
+        "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\correction-context.xml",
+        "--include",
+        "corrections.md"
+      ],
+      "tokenEstimate": 1348,
+      "estimateIsActualModelUsage": false
+    },
+    "correctionReads": [
+      {
+        "packet": "db5a0ac5c02ac51a902fefd6d73f2f675328a072e4fe2b7def62cdd6a6552143",
+        "entry": "corrections.md",
+        "startLine": 1,
+        "endLine": 15,
+        "chars": 2777,
+        "complete": true
+      }
+    ],
+    "supersession": "First changed packet is the reviewed predecessor; final correction packet updates only CI/device environment, TC-77 ownership and historical wording. currentSources identify final document bytes.",
+    "cacheRule": "Local cache paths are evidence references, not portable committed payloads. If unavailable, regenerate and revalidate required context; never fabricate reuse.",
+    "sourceVerification": "All initial XML entries compared to original-source content (wrapper whitespace only); original baseline input hashes rechecked before installation; supplemental diffs computed from exact baseline and revised sources.",
+    "readLimits": "Initially <=12000 characters and <=200 lines; all required scoped entries and supplemental entries consumed across explicit continuations.",
+    "analysisLimit": "No claim of exhaustive new review of all unchanged historical source documents or app behavior.",
+    "usage": "No measured usage savings claimed."
+  },
+  "currentSources": [
+    {
+      "path": "documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+      "sha256": "20f44b269d70ee19a36dc423cf0e02f0d4858b77b88e290d4f09901fbafaf519"
+    },
+    {
+      "path": "documentation/Kwartracker-PRD-SRS-v1_11.md",
+      "sha256": "efb7a6442b4961a57c0fba43130fc0dff56b9b177d0182f1931d339952d0b552"
+    }
+  ],
+  "verifiedFindings": [
+    {
+      "id": "P-01",
+      "source": "plan Sections 4–7; TC-13/14/28/30/31/32/38/39/40/43/46/54/97/98/99/106/108/111/112/117",
+      "result": "Full-pass ownership corrected; prototypes/partial legs explicitly separate; 121 active cases assigned exactly once."
+    },
+    {
+      "id": "P-02",
+      "source": "plan SF-01; FR-ERR-003/005; TC-122; PRD Section 12",
+      "result": "Local schema migration contract and interruption/version checks specified; implementation remains unverified."
+    },
+    {
+      "id": "P-03",
+      "source": "EXEC-01/EXEC-VER-01; plan Section 3.5 and Phase 0–8 checklists",
+      "result": "One centralized context/reuse/security/verification workflow; compact index; no unbounded retries or unjustified deletions."
+    }
+  ],
+  "verification": {
+    "documentChecks": {
+      "command": "python check_polish.py (task-local checker)",
+      "resultSource": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\post-edit-checks.json",
+      "scope": "Static document IDs, references, tables, maps, workflow and scope checks; not app functionality.",
+      "checks": 57,
+      "passed": 57,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "baselineDocumentChecks": {
+      "checks": 7,
+      "passed": 0,
+      "evidence": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\baseline-checks.json",
+      "meaning": "Known document gaps before the authorized edit, not application test failures."
+    },
+    "backupFixtures": {
+      "command": "python G:/codebase/kwartracker/documentation/contracts/validate_backup_v6.py",
+      "result": "26/26 passed in pre-edit baseline; golden balances -12000/-500; September net Expense 10000, October 2000.",
+      "reuseReason": "No backup schema, validator, contract or fixture edits in this task; current identities retained in local evidence. No duplicate rerun.",
+      "inputIdentities": "C:\\Users\\User\\.codex\\visualizations\\2026\\09\\24\\01a0d44f-abee-7ab1-8db3-49782ad8dced\\kwartracker-prd-revision\\polish-v1_11\\verified-fixture-identities.json",
+      "evidenceLimit": "Observed command result in task history; not a native SQLite/restore test."
+    },
+    "appBuildDeviceSecurity": "Not run by document maintenance; mandatory phase/candidate gates remain pending.",
+    "contextIntegrity": {
+      "result": "PASS",
+      "assertions": "Continuous full required-entry read coverage, <=12000 chars/200 lines, packet/input identities, security results and final document source identities verified."
+    }
+  },
+  "externalVerification": [
+    {
+      "url": "https://docs.expo.dev/versions/v57.0.0/sdk/sqlite/",
+      "date": "2026-10-23",
+      "scope": "SDK57 exclusive transaction uses supplied transaction handle and commit/rollback behavior; capability only."
+    },
+    {
+      "url": "https://www.sqlite.org/pragma.html#pragma_user_version",
+      "date": "2026-10-23",
+      "scope": "Application-controlled database user_version; native interruption safety still requires tests."
+    }
+  ],
+  "guide": {
+    "path": "documentation_guides/expo-android-development-build-guide.docx",
+    "sha256": "247cc211a1c5bdfe9727e41bc36b43f3d821811580fa28bae5d71607aca036be",
+    "status": "Previously consulted; identity revalidated, unchanged. Referenced in Phase 0 and build workflow."
+  },
+  "unresolved": [
+    {
+      "topic": "Native recovery, migration, secrets, notification and performance feasibility",
+      "status": "Unrun evidence, not assumed success; OCR remains Deferred",
+      "nextGate": "Phase0 isolated probes then feature phases and final physical APK suites"
+    },
+    {
+      "topic": "EAS project/account/projectId, provider/configuration and actual native dependency selection",
+      "status": "Use existing documented owners and gates; no credentials or project identity invented",
+      "nextGate": "Phase0/BUILD-VER-01 and relevant security/privacy gates"
+    },
+    {
+      "topic": "Historical deployed backups",
+      "status": "No absence inferred; COMPAT-BKP-01 investigation retained",
+      "nextGate": "Before compatibility freeze/final APK acceptance"
+    }
+  ],
+  "cleanup": "No original product code, historical requirements, contracts, guide or user files deleted. Only task-owned staging helpers exist outside the repository."
+}

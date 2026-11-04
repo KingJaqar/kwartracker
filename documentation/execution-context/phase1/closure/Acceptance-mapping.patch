@@ -1,0 +1,55 @@
+--- a/documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md
++++ b/documentation/Kwartracker-PRD-SRS-v1_11-Execution-Phases.md
+@@ -322,7 +322,9 @@
+ 
+ **Requirements:** BR-01–BR-04, BR-09, BR-10 (transaction side); FR-TRN-001/002/004–007, FR-TRN-008/009 (non-refund paths), FR-TRN-011; FR-ACC-001–004; FR-CAT-001–004; FR-ACC-005 and FR-CAT-005 (scale targets, verified through the PERF-01 fixture and TC-105); FR-SET-001/002; FR-NAV-002 (first-launch); FR-ERR-004; FR-DSN-001–014 for the screens that exist.
+ 
+-**Full-pass tests:** TC-01, TC-02, TC-03, TC-04, TC-05, TC-07, TC-08, TC-13, TC-15, TC-28, TC-29, TC-30, TC-39, TC-79, TC-97, TC-101, TC-103, TC-105, TC-113, TC-114. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-01, TC-02, TC-03, TC-04, TC-05, TC-07, TC-08, TC-13, TC-15, TC-28, TC-29, TC-30, TC-39, TC-79, TC-97, TC-101, TC-105, TC-114. Whole-case PASS requires every assertion in its PRD oracle.
++
++**Partial legs:** TC-103 current-screen motion/reduced-motion/feedback assertions remain required here; passcode-error assertions finish in Phase 4. TC-113 account/transaction bounds, rounding and exact aggregate assertions remain required here; Budget/rule writes follow their owning phases and real import rejection finishes in Phase 5. Missing assertions never count as a whole-case PASS.
+ 
+ **Device evidence:** UX-01 dry run, Records scroll dry run, UI-PERF-01 dry run.
+ **Demo:** An offline ledger usable end to end in Dark and Light.
+@@ -470,7 +472,7 @@
+ 
+ **Requirements:** FR-SEC-001–009, BR-21, FR-NAV-002 (gate ordering); recover/reset integration stays pending until Phase 5.
+ 
+-**Full-pass tests:** TC-11, TC-25, TC-37, TC-71, TC-72, TC-73. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-11, TC-25, TC-37, TC-71, TC-72, TC-73, TC-103. Whole-case PASS requires every assertion in its PRD oracle.
+ **Partial legs:** TC-70 telemetry transport, TC-26 reset/restore, TC-98 recovery appearance, TC-106 complete navigation and TC-117 normalization integration remain pending.
+ **Re-run:** TC-45 (recurrence evaluation after unlock now uses the real gate).
+ **Artifacts:** INS-SEC-01, INS-SEC-02 (active Android reference/compatibility devices plus one additional Android OEM), INS-SEC-03, SEC-REV-01 (timing on active Android reference/compatibility devices).
+@@ -504,7 +506,7 @@
+ 
+ **Requirements:** BR-18–BR-20, FR-BKP-001–011 and FR-BKP-013 (FR-BKP-012 deferred), FR-ERR-002/003/005, FR-SEC-007, FR-NAV-002 (recovery gate), FR-DSN-013 (restore with unknown icon key).
+ 
+-**Full-pass tests:** TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119, TC-122. Whole-case PASS requires every assertion in its PRD oracle.
++**Full-pass tests:** TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-113, TC-115, TC-116, TC-119, TC-122. Whole-case PASS requires every assertion in its PRD oracle.
+ **Artifacts:** REC-BKP-01 (termination matrix across every restore phase on Android (iOS leg Deferred)), INS-BKP-01, INS-BKP-02.
+ 
+ **Partial legs:** TC-09/62/64/65/66/68 and TC-117 require real notification/consent/advisory adapters; complete them with REC-BKP-01 in Phase 7.
+@@ -613,11 +615,11 @@
+ | Phase | Tests first eligible for a complete scenario PASS |
+ |---|---|
+ | 0 | TC-120 |
+-| 1 | TC-01, TC-02, TC-03, TC-04, TC-05, TC-07, TC-08, TC-13, TC-15, TC-28, TC-29, TC-30, TC-39, TC-79, TC-97, TC-101, TC-103, TC-105, TC-113, TC-114 |
++| 1 | TC-01, TC-02, TC-03, TC-04, TC-05, TC-07, TC-08, TC-13, TC-15, TC-28, TC-29, TC-30, TC-39, TC-79, TC-97, TC-101, TC-105, TC-114 |
+ | 2 | TC-06, TC-27, TC-33, TC-41, TC-58, TC-59, TC-60, TC-61, TC-84, TC-96, TC-118 |
+ | 3 | TC-14, TC-16, TC-17, TC-18, TC-19, TC-21, TC-22, TC-23, TC-24, TC-31, TC-32, TC-42, TC-44, TC-45, TC-47, TC-48, TC-49, TC-50, TC-51, TC-52, TC-55, TC-56, TC-82, TC-110 |
+-| 4 | TC-11, TC-25, TC-37, TC-71, TC-72, TC-73 |
+-| 5 | TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-115, TC-116, TC-119, TC-122 |
++| 4 | TC-11, TC-25, TC-37, TC-71, TC-72, TC-73, TC-103 |
++| 5 | TC-10, TC-26, TC-34, TC-40, TC-43, TC-46, TC-53, TC-54, TC-63, TC-67, TC-80, TC-98, TC-109, TC-111, TC-112, TC-113, TC-115, TC-116, TC-119, TC-122 |
+ | 6 | TC-12, TC-35, TC-36, TC-38, TC-57, TC-69, TC-70, TC-74, TC-75, TC-76, TC-83, TC-85 |
+ | 7 | TC-09, TC-62, TC-64, TC-65, TC-66, TC-68, TC-77, TC-78, TC-86, TC-87, TC-88, TC-89, TC-90, TC-91, TC-92, TC-93, TC-94, TC-95, TC-102, TC-117 |
+ | 8 | TC-81, TC-99, TC-100, TC-104, TC-106, TC-107, TC-108, TC-121 |
+@@ -711,7 +713,7 @@
+ 
+ ## 11. Inherited contracts and maintenance coverage
+ 
+-The existing v6 backup/receipt/refund/revision contracts remain mandatory and are referenced by the phase scope and primary Section 6 map rather than a second competing full-pass table. In particular TC-109/111/112/115/116/119 finish their restore legs in Phase 5; TC-110 includes recurring date correction and finishes in Phase 3; TC-113/114 finish in Phase 1; TC-118 finishes in Phase 2; TC-117 real scheduler/privacy/advisory integration finishes in Phase 7. No document or fixture pass is an application/device pass. The source [v6 contract](contracts/Backup-v6.md) and [PRD/SRS v1.11.2](Kwartracker-PRD-SRS-v1_11.md) define the outcomes.
++The existing v6 backup/receipt/refund/revision contracts remain mandatory and are referenced by the phase scope and primary Section 6 map rather than a second competing full-pass table. In particular TC-109/111/112/115/116/119 finish their restore legs in Phase 5; TC-110 includes recurring date correction and finishes in Phase 3; TC-114 finishes in Phase 1; TC-113 finishes in Phase 5 after its earlier write-boundary legs; TC-118 finishes in Phase 2; TC-117 real scheduler/privacy/advisory integration finishes in Phase 7. No document or fixture pass is an application/device pass. The source [v6 contract](contracts/Backup-v6.md) and [PRD/SRS v1.11.2](Kwartracker-PRD-SRS-v1_11.md) define the outcomes.
+ 
+ Maintenance revision 1.11.2 refines planning evidence, measurable completion, integration/recovery and reporting under D-114/115; no feature/UI change. [execution-context/index.json](execution-context/index.json) identifies inspected sources, reusable reads and actual checks; cached packets/snapshots are not shipped runtime code. Historical baselines remain referenced provenance and are not deleted as unused files.
+ 

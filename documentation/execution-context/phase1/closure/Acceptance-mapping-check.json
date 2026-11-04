@@ -1,0 +1,12 @@
+{
+  "status": "proposed only; not applied",
+  "activeCases": 121,
+  "duplicateCompletePassOwners": 0,
+  "TC-103": 4,
+  "TC-113": 5,
+  "oracleTextChanged": false,
+  "revisionControl": "Maintenance revision and PRD/QA records prepared only after owner approves scheduling correction",
+  "patchApplicability": "pass: git apply --check; not applied",
+  "planSHA256": "527dbece08129a040800b8c8aa5d788e02025c8e8ef23eae442b376dbfef1f28",
+  "patchSHA256": "91d41c90c0754fb577b8adf7e4e8a99f4c205a1a44f78f864066b597b2371e8e"
+}

@@ -1,0 +1,423 @@
+{
+  "date": "2026-11-02",
+  "authorization": "User explicitly authorized internal EAS probe/validation builds; publication and billing exclusions retained",
+  "existingBaselineReuse": {
+    "sourceIdentities": [
+      "documentation/Kwartracker-PRD-SRS-v1_11.md",
+      "package-lock.json",
+      "app.config.js",
+      "eas.json",
+      "documentation_guides/expo-android-development-build-guide.docx",
+      "scripts/check-build-config.mjs",
+      "tests/guardrails.test.ts"
+    ],
+    "checks": {
+      "baseline": [
+        {
+          "command": "npm run lint",
+          "exitCode": 0,
+          "log": "baseline-0.log"
+        },
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0,
+          "log": "baseline-1.log"
+        },
+        {
+          "command": "npm test",
+          "exitCode": 0,
+          "corePassed": 29,
+          "componentPassed": 5,
+          "log": "baseline-2.log"
+        },
+        {
+          "command": "npm run check:contracts",
+          "exitCode": 0,
+          "log": "baseline-3.log"
+        },
+        {
+          "command": "npm run check:build",
+          "exitCode": 0,
+          "log": "baseline-4.log"
+        }
+      ],
+      "after": [
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test:core",
+          "exitCode": 0,
+          "passed": 31
+        },
+        {
+          "command": "npm run check:build",
+          "exitCode": 0
+        },
+        {
+          "command": "APP_VARIANT=validation npx expo export --platform android --output-dir <evidence>/validation-repaired --source-maps --max-workers 2",
+          "exitCode": 0,
+          "log": "validation-export-repaired.log"
+        },
+        {
+          "command": "node scripts/check-validation-bundle.mjs <evidence>/validation-repaired",
+          "exitCode": 0,
+          "sourcesChecked": 1899,
+          "diagnosticsAbsent": true
+        }
+      ],
+      "reuse": "Baseline five component tests and contract checks reused: no dependent runtime/schema/component/contract files changed.",
+      "environmentFailures": [
+        "Initial Expo account request failed DNS in restricted execution; read-only request outside restriction confirmed account",
+        "Initial ADB server unavailable in restricted execution; read-only device inventory outside restriction succeeded",
+        "Initial Hermes export exited 1: temporary-folder output permission denied; one diagnosed retry with TEMP/TMP under writable evidence root exited 0"
+      ],
+      "warnings": "Existing Node module-type/experimental SQLite, EAS punycode/outdated CLI, NO_COLOR/FORCE_COLOR and Hermes vendor undeclared-global warnings observed; no new lint/type/test diagnostic. No current APK runtime-console result.",
+      "native": "Not run; no new build, install, app launch, migration or test-device state mutation.",
+      "remoteCI": "Not run; no push authorized"
+    },
+    "reason": "All previously checked source/dependency identities unchanged; build-only transforms separately reviewed"
+  },
+  "packet": {
+    "path": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/build-context.xml",
+    "sha256": "7ddc3c9209482cdd443ccb5763c44716bd900a5799a4f23c1c4365f04358f3dc",
+    "tool": "Repomix1.18.1",
+    "security": "Enabled; no suspicious files",
+    "entries": [
+      "eas.json",
+      "package.json"
+    ],
+    "chars": 4633,
+    "lines": 100,
+    "read": "Complete single extraction under12000 characters/200 lines; supersedes only two staged entries"
+  },
+  "builds": [
+    {
+      "id": "83caa6fc-e946-40ef-a505-07d26e33f268",
+      "kind": "isolated nonshipping probe",
+      "manifest": "08fbd882106e2f128157f72c95bbf83323acbf796112c3e08cdb99e76d911767",
+      "status": "FINISHED",
+      "package": "com.alex123superman.kwartracker.validation.probe",
+      "profile": "validation",
+      "distribution": "INTERNAL",
+      "file": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/probe.apk",
+      "bytes": 152825946,
+      "sha256": "2343c5cc89df9183991b6322471ba1ad55c6015df02dfc44c30c43073d6f414a",
+      "certificateFile": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/probe-certificate.txt",
+      "sourceIdentity": "Exact reviewed staged132-file content manifest; actual uploaded temporary tarball was not retained. No claim of observed gzip-byte hash."
+    },
+    {
+      "id": "45d749c0-d222-4c6b-a7e9-1b6833b6ee10",
+      "kind": "normal standalone validation",
+      "manifest": "50ca85853857a2a8bca24177b219c190ff94f4011c94a16f5824d8475cd1e705",
+      "status": "FINISHED",
+      "package": "com.alex123superman.kwartracker.validation",
+      "profile": "validation",
+      "distribution": "INTERNAL",
+      "file": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/normal.apk",
+      "bytes": 112859656,
+      "sha256": "1f1ecdf8f9f35374356ef4e57ab4e6a0f84210b6c05b43d9c44fae21966e08fd",
+      "certificateFile": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/normal-certificate.txt",
+      "sourceIdentity": "Exact reviewed staged132-file content manifest; actual uploaded temporary tarball was not retained. No claim of observed gzip-byte hash."
+    }
+  ],
+  "sourceSnapshots": [
+    "probe-source",
+    "normal-source",
+    "probe-upload-archive",
+    "normal-upload-archive"
+  ],
+  "limits": "operations.json; first fingerprint failure diagnosed, one corrected retry creates job; no unchanged failure loop",
+  "nativeTargets": "API36 task-owned emulator booted; official regular API37 revision8 installation selected after earlier16KB system-surface failures",
+  "publication": false,
+  "billingChanged": false,
+  "phaseStatus": "Partially complete; additional native acceptance running",
+  "privacy": "Existing project internalDistributionBuildPrivacy PRIVATE read back; no mutation",
+  "capacityBefore": {
+    "androidUsed": 0,
+    "androidLimit": 15,
+    "cycleUTC": [
+      "2026-11-01T00:00:00Z",
+      "2026-12-01T00:00:00Z"
+    ]
+  },
+  "localFailure": "Initial staged-source automatic fingerprint failed due Windows dependency-junction path. No job created. One diagnosed retry with EAS_SKIP_AUTO_FINGERPRINT=1 created probe job; explicit archive hashes retained.",
+  "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized",
+  "capacityAfter": {
+    "androidUsed": 2,
+    "androidLimit": 15,
+    "billingChanged": false
+  },
+  "native": {
+    "S2": {
+      "status": "Selected for Phase4 based on both measured emulator results and reread native derive/comparison source; full production credential review remains Phase4",
+      "api36": {
+        "candidate": "react-native-quick-crypto1.1.9 fastpbkdf2/OpenSSL (unselected)",
+        "iterations": 600000,
+        "outputBits": 256,
+        "saltBits": 128,
+        "milliseconds": 213.35529400012456,
+        "includesFirstModuleLoad": true,
+        "within750ms": true,
+        "vectorMatches": true,
+        "rejectsMismatch": true,
+        "comparison": "Fixed32-byte inputs; native CRYPTO_memcmp; source provenance retained. Full dependency review recorded separately."
+      },
+      "api37": {
+        "candidate": "react-native-quick-crypto1.1.9 fastpbkdf2/OpenSSL (unselected)",
+        "iterations": 600000,
+        "outputBits": 256,
+        "saltBits": 128,
+        "milliseconds": 570.4645999999484,
+        "includesFirstModuleLoad": true,
+        "within750ms": true,
+        "vectorMatches": true,
+        "rejectsMismatch": true,
+        "comparison": "Fixed32-byte inputs; native CRYPTO_memcmp; source provenance retained. Full dependency review recorded separately."
+      },
+      "sourceReview": {
+        "derive": "Pinned1.1.9 HybridPbkdf2.cpp uses native fastpbkdf2_hmac_sha256 in async-owned buffers",
+        "compare": "HybridUtils.cpp checks equal byte length then CRYPTO_memcmp; probe uses fixed32-byte inputs",
+        "files": {
+          "node_modules/react-native-quick-crypto/cpp/pbkdf2/HybridPbkdf2.cpp": "15dffff26286182d64a2ae141ccc8399e18ea1754b8661b9046ec3283830b0cb",
+          "node_modules/react-native-quick-crypto/cpp/utils/HybridUtils.cpp": "aa99cc10cfecf0da4664beea70d44ae195ecfedfab24eba5024860366a4bf227"
+        }
+      },
+      "selectionRecord": "native-crypto-review.json"
+    },
+    "shell": {
+      "api36": {
+        "serial": "emulator-5580",
+        "buildId": "45d749c0-d222-4c6b-a7e9-1b6833b6ee10",
+        "baseline": {
+          "airplane_mode_on": "0",
+          "wifi_on": "1",
+          "mobile_data": "1"
+        },
+        "taskMetro": "No Metro started for this run; normal release app uses embedded bundle. Unrelated user servers left untouched.",
+        "launch": "Starting: Intent { cmp=com.alex123superman.kwartracker.validation/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.alex123superman.kwartracker.validation/.MainActivity\nTotalTime: 3573\nWaitTime: 3708\nComplete\n",
+        "pid": "6069",
+        "shellVisible": true,
+        "debuggableFlagPresent": false,
+        "radios": {
+          "airplane_mode_on": "1",
+          "wifi_on": "0",
+          "mobile_data": "0"
+        },
+        "unexpectedErrorLines": [],
+        "embeddedBundles": [
+          {
+            "path": "assets/index.android.bundle",
+            "bytes": 3431840,
+            "first8Hex": "c61fbc03c103191f"
+          }
+        ],
+        "nativeProbeClassPresent": false,
+        "status": "passed shell observations",
+        "restored": {
+          "airplane_mode_on": "0",
+          "wifi_on": "1",
+          "mobile_data": "1"
+        }
+      },
+      "api37": {
+        "serial": "emulator-5584",
+        "buildId": "45d749c0-d222-4c6b-a7e9-1b6833b6ee10",
+        "baseline": {
+          "airplane_mode_on": "0",
+          "wifi_on": "1",
+          "mobile_data": "1"
+        },
+        "taskMetro": "No Metro started for this run; normal release app uses embedded bundle. Unrelated user servers left untouched.",
+        "launch": "Starting: Intent { cmp=com.alex123superman.kwartracker.validation/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.alex123superman.kwartracker.validation/.MainActivity\nTotalTime: 5871\nWaitTime: 5923\nComplete\n",
+        "pid": "6260",
+        "shellVisible": true,
+        "debuggableFlagPresent": false,
+        "radios": {
+          "airplane_mode_on": "1",
+          "wifi_on": "0",
+          "mobile_data": "0"
+        },
+        "unexpectedErrorLines": [],
+        "embeddedBundles": [
+          {
+            "path": "assets/index.android.bundle",
+            "bytes": 3431840,
+            "first8Hex": "c61fbc03c103191f"
+          }
+        ],
+        "nativeProbeClassPresent": false,
+        "status": "passed shell observations",
+        "restored": {
+          "airplane_mode_on": "0",
+          "wifi_on": "1",
+          "mobile_data": "1"
+        }
+      }
+    },
+    "S1": {
+      "api36": {
+        "status": "All56 external process-restart checkpoints and10 provider/cleanup/corruption cases passed",
+        "evidence": [
+          "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-restore-result.json",
+          "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-restore-extra-result.json"
+        ],
+        "limits": "Synthetic credentials/scheduler requests plus representative local-service markers; not full product restore/unlock or native internal-instruction crash coverage"
+      },
+      "api37": {
+        "status": "25 cases passed; host launch timeout before case25 action, resumed work must reuse existing evidence",
+        "cases": 25,
+        "evidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api37-restore-result.json"
+      },
+      "remaining": "Android17 remaining31 checkpoints plus10 failure/corruption cases; full product integrationPhase5"
+    },
+    "S3": {
+      "status": "not met",
+      "softwareRenderer": "Failed frame/event limits;10injection taps span3594ms, so not valid1second injection test",
+      "hostGPU": "SameAPK, actualNVIDIA renderer;10keys all in order398.6757ms,zeroobservedJS>50ms;0evententries abovecapturethreshold16meansp95unavailable,validfalse;gfxsummary10/271janky3.69% exceeds2%",
+      "evidence": [
+        "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-ui-keypad-software-renderer-result.json",
+        "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-ui-keypad-result.json",
+        "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-ui-keypad-framestats.txt"
+      ],
+      "limits": "No wholeS3PASS or physical-device inference; bothappearances,10motionruns,gesture/list/fullframeoracles remain pending"
+    },
+    "S4": {
+      "permissionCancel": "BothAPI36andAPI37 denied/granted/peridentifier cancellation observations pass",
+      "rebootTimezone": {
+        "firstAttempt": "Native request retained across reboot but observation ended before OSinexactwindow; not deliveryPASS",
+        "correction": "One diagnosed retry:1800second suite,660second delivery windows, actualreboot, supported syntheticclockalignment nearretainedtrigger; originalclock/timezone restoration mandatory",
+        "status": "running"
+      },
+      "evidenceRoot": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized"
+    },
+    "S5": {
+      "status": "not met",
+      "evidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-backup-exclusion-result.json",
+      "cloud": "Backup not allowed",
+      "transfer": "ERROR_PREFLIGHT/transportrejectedpackage; omission oracle not observed",
+      "settings": "Original transport/disabled state/nullparameters restored; synthetic markers remain present",
+      "rules": "Actual normalAPK compiledallowBackup=false pluscloud/device-transferexcludeall XML inspected",
+      "remaining": "Diagnose nativepreflight,actual localtransfer markeromission onbothOS; do not weaken exclusions"
+    },
+    "S6": {
+      "status": "FirstoldAPKpreparationfailed; correctedbatchedloaderbuildcompiling",
+      "failedEvidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-startup-result.json",
+      "samplesCompleted": 0,
+      "nextBuildId": "21f814bb-d9b1-485a-bcaa-f4cc06da51ff"
+    },
+    "TC122": {
+      "api36": {
+        "status": "passed Phase0 native8-case scope",
+        "cases": 8,
+        "evidence": "C:/Users/User/.codex/visualizations/2026/11/01/01a197e0-4a7a-7a40-a35b-45fc18848b56/phase0-authorized/api36-migration-result.json"
+      },
+      "api37": "pending",
+      "scope": "Four fixtures plus four actual migration-transaction process terminations; full product recovery/unlock integration remains Phase5"
+    }
+  },
+  "environmentCorrections": {
+    "android17": "SDK12 generated targetandroid0 and800MB partition. ModernSDK23 generator verified targetandroid37.0 and10GB; failed profiles retained, corrected fresh profile now booted and compositorPID544 stable.",
+    "systemDialogs": "First-launch SystemUI ANRs obstructed observations; Wait selected on task-owned targets; failed attempts retained. No app code fix claimed.",
+    "capture": "Uncompressed UI observation timed out on recoverycase09. Same process returned passing result, read with documented compact dump without repeating action; remaining cases resumed.",
+    "sourceUpload": "Initial optional fingerprint path failure; one diagnosed skip-auto-fingerprint retry. Native acceptance and explicit source manifests retained.",
+    "hostGPU": "API36 auto mode resolved to lavapipe/swiftshader; explicit -gpu host selectsNVIDIA RTX4060, recordedbootlog. Software result retained. Numericframe/eventgate stillnotpassed."
+  },
+  "hostRecovery": {
+    "status": "Host low-memory and process-launch/ADB failures diagnosed; serialize test emulators",
+    "freeMemoryGB": {
+      "before": 1.11,
+      "afterStoppingIdleTaskAndroid17": 6.6
+    },
+    "Android17": "Task-owned profile stopped with files intact; last paused UI showed untouched Run button forcase25",
+    "limits": "ADB launch now45s, other calls15s; restore short batches1..8 new cases/300s; no automatic retries"
+  },
+  "approvalReview": {
+    "historicalFailure": "Automatic approval review unavailable due usage limit; action not executed, not an unsafe-action verdict",
+    "resolution": "After user continue, read-only review request accepted; no approval bypass"
+  },
+  "remainingChecklist": {
+    "S1": [
+      "Android16 provider/cleanup/corruption cases running",
+      "Android17 remaining31 interruption cases then failure/corruption cases"
+    ],
+    "S2": "Measured/selected, no further build required; full production integration Phase4",
+    "S3": [
+      "Real UI observations and frame/event numeric evaluation in both appearances on both OS targets",
+      "10 taps1second: capture registration timing; slow host injection is not app failure proof"
+    ],
+    "S4": [
+      "Current APK actual reboot/timezone delivery pertarget; permission/cancel already observed"
+    ],
+    "S5": [
+      "Synthetic SQLite/SecureStore markers; actual local-only backup/transfer omission, never preflight-rejection-as-PASS",
+      "Restore transport/enabled/parameters afterward; never use cloud transport"
+    ],
+    "S6": [
+      "Five fullPERF prepared journal process-cold launches pertarget; exact counts/stage ordering/current no-write oracle"
+    ],
+    "TC122": [
+      "Android17 empty/current/unknown/newer and4 real migration process terminations"
+    ],
+    "TC121": [
+      "Current offline shell observed on both; appearance/font and remaining runtime-flag evidence pending"
+    ],
+    "completion": "Phase0 cannot close until all mandatory gate results verified; Phase1 remains blocked"
+  },
+  "operationsClarification": {
+    "migrationSuite": "8 distinct native cases, completed383.627seconds, no automatic retry; caller retained output. newCases field0 is only a host resume-counter field, not zero tests.",
+    "restoreExtra": "Finite10 cases:8 provider/cleanup injection+explicit recovery plus2 corruption sides; no overlap with product DB, no automatic retries.",
+    "backupPrimarySource": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/master/services/backup/java/com/android/server/backup/utils/BackupEligibilityRules.java; isAppBackupAllowed lines201–220 inspected. Current installed Android result remains authoritative."
+  },
+  "fixtureCorrection": {
+    "trigger": "First fullPERF preparation did not finish before180second cooperative deadline; no cold samples completed, retained failed result. Per-row awaited native insert path confirmed from source; batching chosen to reduce call overhead without changing fixture.",
+    "files": [
+      "tests/fixtures/load.ts",
+      "tests/database.test.ts"
+    ],
+    "behavior": "At most100rows and900bindings perSQL statement; distinct column shape flushes; one exclusive transaction; monotonic processed-row checkpoint and rollback on cancellation; no product restore code added",
+    "verification": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "coreTests": 32,
+      "buildConfig": "pass",
+      "contracts": "pass",
+      "probeHermesExport": "pass"
+    },
+    "packet": {
+      "tool": "Repomix1.18.1",
+      "sha256": "b053d0ab7cb672501a920e1bd64174b2c1a1bbdbe5ed71a5a083c42285b8eb78",
+      "source": "fixture-context.xml",
+      "read": "Complete3-entry uncompressed packet, one extraction under12000characters/200lines",
+      "entries": [
+        "tests/fixtures/load.ts",
+        "tests/helpers/sqlite.ts",
+        "src/db/connection.ts"
+      ],
+      "security": "Enabled,no suspicious files",
+      "tokenEstimate": 1140,
+      "actualUsage": "Not measured"
+    },
+    "snapshot": "fixture-baseline/",
+    "sourceHashes": {
+      "tests/fixtures/load.ts": "995f3f18db95c5d58a2b0c90922f98cedf6f214000bd8e1e46472e6cea29293e",
+      "tests/database.test.ts": "3843dd09b149891ca9f4494741ee8d58e6678786ac5b5cc007acfd0e82a78128"
+    },
+    "build": {
+      "id": "21f814bb-d9b1-485a-bcaa-f4cc06da51ff",
+      "status": "submitted,compiling",
+      "kind": "nonshipping diagnostic correction",
+      "manifestSha256": "eb0fb0d828cc4620070167323f172f8235af7480ccbe59d11b0f13977777d4c0"
+    },
+    "quota": {
+      "beforeUsed": 2,
+      "androidLimit": 15,
+      "reservePolicy": "Use one planned correction slot; retain2final+1correction minimum; no billing changes"
+    }
+  }
+}

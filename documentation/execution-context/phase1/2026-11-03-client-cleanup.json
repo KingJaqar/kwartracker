@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-03",
+  "authority": "User requested one consistent development-client APK across all phases, removal of the others, and plan update",
+  "target": "MuMu james, instance0, Android12/API32, ADB127.0.0.1:16384",
+  "keptPackage": "com.alex123superman.kwartracker.development",
+  "buildId": "ca81554a-6ca5-4990-9297-15d50d679532",
+  "apkSha256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+  "removedPackages": [
+    "com.alex123superman.kwartracker.validation",
+    "com.alex123superman.kwartracker.validation.probe"
+  ],
+  "method": "pm uninstall -k; both returned Success; app data retained",
+  "testProfileApps": "pm uninstall -k --user10/11 development package; both Success; subsequent lists empty",
+  "ownerApp": "Final installed-package list contains only development package; APK SHA2565739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e unchanged",
+  "numberedIcons": "Complete: MuMu clones required separate launcher Uninstall confirmation explicitly naming #N2 kwartracker then #N1 kwartracker. Final UI XML and viewed screenshot contain exactly one Kwartracker icon. The earlier assumption that deleting QA profiles alone would remove these clones was incorrect.",
+  "profileDeletion": "Complete: user explicitly approved deletion2026-11-03. Users10/11 each removed successfully. Final pm list users contains only Owner0. Package-service connection interrupted after each removal; james-only restart recovered Android.",
+  "user0": "Current user0 confirmed; kept client not uninstalled, reinstalled, cleared or migrated",
+  "settings": "dynamic_adjust_frame_rate restored true and james restarted successfully; post-restart boot complete1/current user0 confirmed; Night mode reset and verified no",
+  "cloud": "No EAS build, reinstall, source upload, EAS history deletion or deployment",
+  "evidenceRoot": ".cache/phase1/continuation-2026-11-03",
+  "context": {
+    "baseline": "cleanup-*-before snapshots and existing phase baseline",
+    "packet": "cleanup-context.xml",
+    "repomixVersion": "1.18.1",
+    "security": "No suspicious files",
+    "included": [
+      "documentation/Android-EAS-Build-Workflow.md"
+    ],
+    "xmlReads": [
+      "lines1–90",
+      "lines91–149"
+    ],
+    "original": "Full XML entry compared with original source; unchanged plan context reused from context.xml and packet-manifest.json",
+    "tokenEstimate": 4284,
+    "usage": "Packet estimate, not measured model usage"
+  },
+  "verification": "Final Owner-only profile list, single installed package, unchanged pinned APK hash, exactly one launcher icon and viewed screenshot verified. Existing final lint/typecheck/tests reused with all four source identities unchanged.",
+  "status": "Complete: duplicate apps, MuMu clones and approved temporary QA profiles removed",
+  "finalEvidence": [
+    "cleanup-approved-users.txt",
+    "cleanup-approved-packages.txt",
+    "cleanup-approved-apk.txt",
+    "cleanup-approved-final.xml",
+    "cleanup-complete.png"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "date": "2026-11-03",
+  "phase": 1,
+  "status": "Partially complete",
+  "evidenceRoot": ".cache\\phase1\\resume-2026-11-03",
+  "applicationSourceChanges": [],
+  "dependenciesAdded": [],
+  "ownership": "All existing application/configuration changes belong to the pre-existing working copy and were preserved. This continuation adds evidence and selected Phase 1 progress only.",
+  "baseline": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "coreTests": "47 pass",
+    "componentTests": "24 pass, four suites",
+    "buildConfig": "pass",
+    "contracts": "pass",
+    "logs": [
+      "baseline-0.log",
+      "baseline-1.log",
+      "baseline-2.log",
+      "baseline-3.log"
+    ]
+  },
+  "final": {
+    "androidHermesExport": "pass",
+    "bundleGuard": "pass; 1977 source entries; probes/showcase/tests absent",
+    "affectedChecks": "Baseline results retained for unchanged application sources; documentation-only progress writes do not require another identical application check."
+  },
+  "classification": [
+    {
+      "requirement": "Phase 0 prerequisites",
+      "implementation": "done",
+      "evidence": "Current startup and migration-chain source inspected; complete 47-test core suite including foundation/fault/migration cases passes. Earlier MuMu native evidence remains historical."
+    },
+    {
+      "requirement": "Accounts/categories lifecycle and seeds",
+      "implementation": "done",
+      "acceptance": "Automated suite passes; fresh native guidance/account create and saved balance observed; complete lifecycle native recertification not performed."
+    },
+    {
+      "requirement": "Income/Expense/Transfer CRUD, dates, notes, receipt replay and exact balances",
+      "implementation": "done",
+      "acceptance": "Host ledger/component suite passes. Actual Expense/Income save and Records totals pass on LDPlayer; full device matrix remains incomplete."
+    },
+    {
+      "requirement": "Display preferences, navigation, design-system/screens",
+      "implementation": "done",
+      "acceptance": "Host component/token tests pass; applicable native state/visual/performance verification is partially done."
+    },
+    {
+      "requirement": "TC-103 passcode and TC-113 Budget/rule/import legs",
+      "implementation": "not started in this phase",
+      "acceptance": "Scheduled for later phases; current full-case Phase 1 mapping conflicts with phase-only scope. Prepared mapping remains unapplied pending user response."
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "TC-01",
+      "status": "met",
+      "scope": "automated Income/Expense matching categories, one row and exact account effects"
+    },
+    {
+      "id": "TC-02",
+      "status": "met",
+      "scope": "automated symmetric Transfer and unchanged Income/Expense aggregates"
+    },
+    {
+      "id": "TC-03",
+      "status": "met",
+      "scope": "automated same/missing/archived destination rejection with unchanged logical tables/receipts"
+    },
+    {
+      "id": "TC-04",
+      "status": "met",
+      "scope": "automated midnight/noon/DST/correction/accounting-month and creation-metadata assertions"
+    },
+    {
+      "id": "TC-05",
+      "status": "met",
+      "scope": "automated referenced category archive/restore, active pickers/history and invariant totals"
+    },
+    {
+      "id": "TC-07",
+      "status": "met",
+      "scope": "automated Transfer deletion fault checkpoints; both derived account effects roll back together"
+    },
+    {
+      "id": "TC-08",
+      "status": "met",
+      "scope": "automated referenced account archive/restore with picker and balance invariance"
+    },
+    {
+      "id": "TC-13",
+      "status": "met",
+      "scope": "automated persisted 2\u00e2\u2020\u20190\u00e2\u2020\u20192 display and unchanged financial rows"
+    },
+    {
+      "id": "TC-15",
+      "status": "met",
+      "scope": "automated exact seven seeds, no reseed after deletion/restart admission, first-account guidance action"
+    },
+    {
+      "id": "TC-28",
+      "status": "met",
+      "scope": "automated repository concurrency/receipt replay and UI double-Save guard"
+    },
+    {
+      "id": "TC-29",
+      "status": "met",
+      "scope": "automated Transfer amount/destination edit faults and atomic replacement"
+    },
+    {
+      "id": "TC-30",
+      "status": "met",
+      "scope": "automated exact terminating/non-terminating/malformed arithmetic and no-write rejection"
+    },
+    {
+      "id": "TC-39",
+      "status": "met",
+      "scope": "automated half-up and zero-after-rounding rejection; display never rescales finance"
+    },
+    {
+      "id": "TC-79",
+      "status": "met",
+      "scope": "actual host SQLite max_page_count exhaustion plus injected checkpoints and component draft/token retention; Android native run remains pending under the demo gate"
+    },
+    {
+      "id": "TC-97",
+      "status": "met",
+      "scope": "source lint/token scan, both-appearance text/control/palette/tinted-tile contrast and deterministic palette identity; no row blur/gradient/shadow added"
+    },
+    {
+      "id": "TC-101",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Applicable agent-run evidence incomplete. Historical scope: Host render isolation/arithmetic/loading/latest-type/haptics-mock assertions pass; native ordered1234567890 retained. Native ten taps within exactly one second and complete final keypad latency not certified."
+    },
+    {
+      "id": "TC-103",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Applicable agent-run evidence incomplete. Historical scope: Source motion/worklet inventory retained. System transition scale0, JS reload, month-sheet open/close pass functionally; original0.5 restored. Every-animation instant/<=100ms motion timing unverified. Native haptics deferred under3.6; passcode leg Phase4, mapping approval pending."
+    },
+    {
+      "id": "TC-105",
+      "status": "met",
+      "scope": "Host exact keysets/concurrency/aggregate and saved-row paging tests pass; native PERF counts,pages,exact totals and six scroll samples recorded. Final overlay shared-UI retest pending separately."
+    },
+    {
+      "id": "TC-113",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. write endpoints, signed opening balances, half-up and exact totals above2^53 pass. App import rejection is unimplemented until Phase5; no whole-case pass or waiver"
+    },
+    {
+      "id": "TC-114",
+      "status": "met",
+      "scope": "automated exact approved seeds/icons, name/icon edits, type immutability and historical linked-name/totals assertions"
+    },
+    {
+      "id": "UX-01 dry run",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Five unique Income and Expense UI runs,medians7.660/7.714seconds,four activations+one scroll; measured after saved-row fix and before final overlay isolation; final shared-UI regression remains pending separately."
+    },
+    {
+      "id": "Records scroll dry run",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Six60s warmed Dark/Light samples on verified fixture meet measured frame/response/no-long-task targets; final overlay change not re-certified. No standalone/release claim."
+    },
+    {
+      "id": "UI-PERF-01 dry run",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Retained Light20valid sheet samples:mean57.5475fps,max116.667ms frame interval,eventp95201.0176ms,JSmax119.5467ms(1task>50). Modal-onShow experiment alsofailed and reverted. Final30tabs/30segments/ten-key observed96.2957ms eventp95,3tasks>50,max104.6104ms;308history entries dropped,so no complete p95/no-loss PASS."
+    },
+    {
+      "id": "VIS-01",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Applicable agent-run evidence incomplete. Historical scope: 24raw content-state candidates:fivePhase1screens plus bottomPreferences,bothappearances,font100/200;20primary titles/dimensions/hashes/embeddedbytes pass. Owner approval,0.1% regression comparison and expanded error/loading/empty states pending."
+    },
+    {
+      "id": "Offline Dark/Light demo and native accessibility/state review",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Applicable agent-run evidence incomplete. Historical scope: Offline saves separately met. Five settled screens in bothappearances at100/200; bounded scrolling reaches200% Entry controls. TalkBack absent;fullfocus/one-handed/software-IME/state audit and animation-duration proof unpassed. No standalone startup claim."
+    },
+    {
+      "id": "Offline Dark/Light loaded-client save",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Actual normal-UI saves whileWiFi0/no default network; rows7.90/8.90 verified,WiFi1 restored; no cold-start claim."
+    },
+    {
+      "id": "200% settled content/reachability",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. AllfivePhase1screens bothappearances have correct titles; Entry controls reached via bounded scrolling. Limited content/reachability evidence,not whole accessibility PASS."
+    },
+    {
+      "id": "Keyboard and reduced-motion functional smoke",
+      "status": "not met",
+      "scope": "Current LDPlayer complete criterion unverified; earlier observations remain historical. Hardware text input retains unsaved note; focus hides keypad,scroll reachesDonewriting,dismiss restores keypad,Back cancels. OS reduce-motion0+reload sheet open/close passes functionally; original0.5 restored. Software IME occlusion/every-animation timing unverified."
+    }
+  ],
+  "currentNative": {
+    "instance": "LDPlayer Deposito Seguro Dev",
+    "verifiedManagerIndex": 1,
+    "verifiedSerial": "emulator-5556",
+    "model": "SH-M24",
+    "api": 28,
+    "abi": "x86_64",
+    "display": "1080x1920, density480 (manager list2)",
+    "apkSHA256": "5739550adcc889146a25c544cf279ddb9829e52516f7799f42d06d9a5a83ad4e",
+    "installation": "Exact cached accepted development APK hash verified; fresh installation Success. No new APK/build/upload.",
+    "metro": "Localhost only, IPv4 preferred, port8095; no-dev/minify; 2064 Metro modules observed. LAN attempt rejected and never executed.",
+    "passes": [
+      "First-launch account guidance and zero totals",
+      "Created synthetic account Phase1-QA-Cash with zero opening balance",
+      "Saved Food Expense 1.00; matching row and Expense month total 1.00",
+      "Accounts balance exactly -1.00, rendered using confirmed prefix formatter",
+      "Month sheet open and Android Back dismissal",
+      "Saved Salary Income 2.00; matching row and Income month total 2.00"
+    ],
+    "limits": [
+      "These are functional smoke results, not five-run UX or performance certification.",
+      "Hermes WebSocket connects but evaluation times out: original45s sample, then diagnosed10s Runtime.enable/evaluate attempt; no further unchanged retry. No current performance PASS.",
+      "No full current-device Dark/Light, 200%, accessibility/state matrix, PERF fixture or VIS comparison completed.",
+      "Developer Tools bubble overlaps the app menu; automated menu activation reached developer controls. No app drawer/Preferences PASS claimed.",
+      "No native storage-exhaustion or Transfer matrix newly claimed."
+    ],
+    "data": "Synthetic account and two transactions retained in the newly installed Kwartracker package. No data deletion, app reset, additional Android profile or changes to other app data.",
+    "logs": "app-runtime.log includes pre-existing native generated-setter warnings; Metro NO_COLOR/FORCE_COLOR warnings retained. No warning-free certification."
+  },
+  "discrepancies": [
+    "User LDPlayer-only instruction overrides plan MuMu james target. No other emulator targeted.",
+    "Actual Expo dependency ~57.0.31, not PRD declaration ~57.0.24; SDK57 docs used.",
+    "TC103/TC113 full-case/later-phase scheduling conflict remains unapplied.",
+    "Section3.7 removes human-only reviews; older pending-human labels are historical, not current blockers."
+  ],
+  "remaining": [
+    "Resolve acceptance scheduling question without waiving assertions.",
+    "Obtain lossless current-source interaction/JS-task/frame evidence and fix measured failures; previous MuMu failure is unclosed.",
+    "Complete current-device UX/scale/accessibility/state/reduced-motion and both-appearance visual comparisons."
+  ],
+  "approvalReview": "LAN start rejected for source exposure; safe IPv4 localhost alternative approved and used. No unresolved LAN permission needed.",
+  "docs": [
+    "https://docs.expo.dev/versions/v57.0.0/",
+    "https://docs.expo.dev/versions/v57.0.0/sdk/router/",
+    "https://docs.expo.dev/versions/v57.0.0/sdk/reanimated/",
+    "https://reactnative.dev/docs/0.86/modal"
+  ],
+  "recovery": {
+    "gitStatus": "git-status.txt",
+    "trackedPatch": "baseline.patch",
+    "untrackedSelectedSnapshots": "baseline/",
+    "sourceHashes": "source-hashes.json"
+  },
+  "diagnostics": [
+    "Initial localhost connection reset diagnosed as IPv6-only listener; restarted with IPv4 preference.",
+    "Account helper initially targeted Name label; selector corrected to prioritize accessible input.",
+    "Account-balance assertion initially expected transaction sign placement; source formatMoney confirmed correct prefix currency position.",
+    "No production-source fix was justified or retained; no arbitrary change made to obtain a pass."
+  ],
+  "removedAssertions": "Human visual sign-off and human-only listening/attended usability tests removed by plan3.7; no human-run verification is requested.",
+  "cleanup": "Stopped this continuation\u2019s Metro and outstanding diagnostic sessions. Removing local adb reverse8095 timed out after10seconds; removal is unverified, no unchanged retry. Installed APK and synthetic account/two transactions retained. No data deletion."
+}

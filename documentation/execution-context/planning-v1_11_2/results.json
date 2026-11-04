@@ -1,0 +1,89 @@
+{
+  "growth": [
+    {
+      "path": "G:\\codebase\\kwartracker\\documentation\\Kwartracker-PRD-SRS-v1_11.md",
+      "beforeBytes": 299497,
+      "afterBytes": 302443,
+      "growthPercent": 0.98
+    },
+    {
+      "path": "G:\\codebase\\kwartracker\\documentation\\Kwartracker-PRD-SRS-v1_11-Execution-Phases.md",
+      "beforeBytes": 57478,
+      "afterBytes": 64542,
+      "growthPercent": 12.29
+    }
+  ],
+  "planningChecks": [
+    {
+      "check": "Growth <=15% per plan",
+      "passed": true
+    },
+    {
+      "check": "Nine sequential phase headings",
+      "passed": true
+    },
+    {
+      "check": "121 unique active primary scenarios",
+      "passed": true
+    },
+    {
+      "check": "Body and primary map agree",
+      "passed": true
+    },
+    {
+      "check": "Five checklist rows for every phase",
+      "passed": true
+    },
+    {
+      "check": "Required evidence labels mapped",
+      "passed": true
+    },
+    {
+      "check": "Planning exception and report explicit",
+      "passed": true
+    },
+    {
+      "check": "Operation bounds and code/data recovery",
+      "passed": true
+    },
+    {
+      "check": "Compact requirement/phase/verification map",
+      "passed": true
+    },
+    {
+      "check": "Product/test/decision ID set unchanged",
+      "passed": true
+    },
+    {
+      "check": "Stable filenames and schema; revision aligned",
+      "passed": true
+    },
+    {
+      "check": "EAS-only boundary preserved",
+      "passed": true
+    },
+    {
+      "check": "Local links and anchors resolve",
+      "passed": true
+    },
+    {
+      "check": "Markdown tables well formed",
+      "passed": true
+    }
+  ],
+  "failures": {
+    "links": [],
+    "tables": []
+  },
+  "phaseCounts": {
+    "0": 1,
+    "1": 20,
+    "2": 11,
+    "3": 24,
+    "4": 6,
+    "5": 19,
+    "6": 12,
+    "7": 20,
+    "8": 8
+  }
+}

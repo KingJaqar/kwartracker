@@ -570,10 +570,27 @@ Section 3.7 removes the human approval of visual baselines and human-run testing
 - **Device (MuMu james emulator-5554 only; pinned APK sha256 verified; PERF-01 copy under the Owner snapshot/restore procedure):** refunded the ₱382.39 2025-03-27 purchase from its overflow action. The receiving account and category came from the purchase, and the refund landed on 2026-11-04 as "+₱382.39 · Refund". Analysis net Expense moved by exactly ₱382.39 and Income was unchanged; the March Budget stayed unchanged, as BR-23 requires (the refund counts in its own month). A November Budget of ₱100 for that category showed "Net refund +₱382.39 · Limit ₱100.00" and "₱482.39 left" in Dark and Light. Current-month Records → Analysis showed "Net refund", "No positive spending" and no largest category in two views (TC-118). An inverted range showed the inline error and kept the range. The 2025-03 Budget showed "Over by ₱53801.29" as text with the icon. No ReactNativeJS warnings or errors.
 - **TC-27:** Budgets and Analysis × Dark/Light × 100%/200%: no unlabelled control or sub-44 dp target, and repeat captures differ by 0.0 pixels.
 - **TC-33 (Metro `--no-dev --minify`, 60 Hz, one warm-up excluded, 12 scored 30 s runs on the fixed bundle):** every run had 0 frames over 100 ms, 0% jank and event p95 ≤ 47 ms. The no-JS-task-over-50 ms limit was met in 9 of 12 runs: Analysis 4/4, Budgets 3/4 (one 57.5 ms), Records 2/4 (56.5 and 63.8 ms; Phase 1 code). These single mid-scroll tasks are the same class as Phase 1's accepted 50–54 ms outliers, so Phase 8 re-verifies them. Earlier dev-bundle and stale-bundle runs are kept under `qa/superseded-oldbundle` and are not scored.
+- **TC-33 outlier diagnosis (2026-11-05, james, same conditions; evidence in `.cache/phase2/session-2026-11-04b/qa`):**
+  - **Cause.** A 120 s DevTools CPU trace of Records found no task over 40 ms. The longest, 37 ms, was a 32 ms Hermes GC pause inside a React Fabric commit, under a FlashList re-render.
+  - **Where JS time goes.** React reconciliation (`propagateParentContextChanges`, `completeRoot`), FlashList measurement (`measureLayout`) and GC. App `src/` code is under 1% of JS time while scrolling.
+  - **Allocation.** Records allocates about 300–450 MB per 30 s run and Budgets about 130–320 MB. Live heap stays at 16–29 MB.
+  - **Experiments.** Fresh launch, Light, 4 scored runs per screen (`exp.py`):
+
+    | Config | Allocated | GC time | Stalls >30 ms | Tasks >50 ms |
+    |---|---|---|---|---|
+    | Baseline, first run | 2.1 GB | 0.78 s | 0 | 0 |
+    | Baseline, repeat | 2.3 GB | 1.0 s | 4 | 1 (50.5 ms) |
+    | `drawDistance` 100 | 4.6 GB | 1.7 s | 6 | 0 |
+    | `drawDistance` 500 | 5.2 GB | 1.9 s | 5 | 1 (60.6 ms) |
+
+  - **Ruled out.**
+    - The fixture month's 278 rows all have the same shape, so row heights do not vary within an item type.
+    - FlashList 2.0.3–2.3.3 release notes list no scroll-performance fixes.
+  - **Decision.** The default FlashList configuration stays and no code changed. The outliers are library-level GC pauses landing in a commit, so the exception still carries to Phase 8.
 - **Final checks:** lint, typecheck, 60 core and 43 component tests (no act warnings), build and contract checks, Android validation export and the 1982-source bundle check all pass.
 - **Owner restore:** DB/WAL/SHM hashes match the snapshot; font scale null, animation scales 0.5/0.5/null, frame rate back to automatic, port reverse removed; only user 0.
 - **TC status:** met: TC-06, TC-27, TC-41, TC-58, TC-59, TC-60, TC-61, TC-84, TC-118. Exception carried: TC-33 (isolated outliers, Phase 8). Partial (later phases): TC-96 (`budget_pace` Phase 7, PDF Phase 6), TC-40 (rule/restore legs), TC-57/83/85 (PDF Phase 6, restore Phase 5).
-- **Remaining:** none in Phase 2 scope. Not done (not authorized): commit, push, build, deployment, remote migration.
+- **Remaining:** none in Phase 2 scope. Committed as `aaf52c4` and pushed to `origin/main` on 2026-11-05, after merging the repository's GitHub-created README commits. Not done (not authorized): build, deployment, remote migration.
 
 ---
 
